@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<nidocument>
+<nicomment>
+
+<nifamily familyname="GxGVLib" displayname="GxGVLib">
+</nifamily>
+</nicomment>
+<nierror code="5000">
+Invalid param
+</nierror>
+<nierror code="5001">
+Not found device
+</nierror>
+</nidocument>

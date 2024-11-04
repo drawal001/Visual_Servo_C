@@ -1,0 +1,254 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(简体，中国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#include ""res\\GxImageProcess.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""     // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\GxImageProcess.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_GXIMAGEPROCESS_DIALOG DIALOGEX 0, 0, 700, 449
+STYLE DS_SETFONT | DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "GxImageProcess"
+FONT 9, "宋体", 400, 0, 0x86
+BEGIN
+    PUSHBUTTON      "打开设备",IDC_OPEN_DEVICE,536,18,58,14
+    PUSHBUTTON      "关闭设备",IDC_CLOSE_DEVICE,626,18,58,14
+    PUSHBUTTON      "   开始采集   ",IDC_START_SNAP,536,40,58,14
+    PUSHBUTTON      "停止采集",IDC_STOP_SNAP,626,40,58,14
+    COMBOBOX        IDC_COMBO_AWB,535,115,66,44,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_AWB_LIGHT,618,115,66,88,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "开启(CPU需支持SSSE3指令集)",IDC_AIDC_OPEN_ACCELERATECCELERATE_CHECK,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,535,153,123,10
+    CONTROL         "开启",IDC_OPEN_BAD_PIXEL_CORRECT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,535,183,35,10
+    CONTROL         "开启",IDC_OPEN_DENOISE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,597,183,29,10
+    CONTROL         "开启",IDC_OPEN_COLOR_CORRECT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,653,183,29,10
+    CONTROL         "开启",IDC_OPEN_SHARPEN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,653,219,32,10
+    CONTROL         "",IDC_SLIDER_SHARPEN,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,534,237,104,15
+    EDITTEXT        IDC_EDIT_SHARPEN,641,237,43,14,ES_AUTOHSCROLL | ES_READONLY
+    CONTROL         "",IDC_SLIDER_GAMMA,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,533,280,106,15
+    EDITTEXT        IDC_EDIT_GAMMA,641,279,43,14,ES_AUTOHSCROLL | ES_READONLY
+    CONTROL         "",IDC_SLIDER_CONTRAST,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,533,325,106,15
+    EDITTEXT        IDC_EDIT_CONTRAST,642,325,43,14,ES_AUTOHSCROLL | ES_READONLY
+    CONTROL         "",IDC_SLIDER_LIGHTNESS,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,533,371,105,15
+    EDITTEXT        IDC_EDIT_LIGHTNESS,642,371,43,14,ES_AUTOHSCROLL | ES_READONLY
+    CONTROL         "",IDC_SLIDER_SATURATION,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,534,415,106,15
+    EDITTEXT        IDC_EDIT_SATURATION,641,416,43,14,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "设备采集",IDC_STATIC,531,7,158,53
+    GROUPBOX        "自动白平衡",IDC_STATIC,531,104,76,29
+    GROUPBOX        "自动白平衡光源",IDC_STATIC,613,104,76,30
+    GROUPBOX        "算法加速",IDC_STATIC,531,137,158,29
+    GROUPBOX        "坏点校正",IDC_STATIC,531,171,41,32
+    GROUPBOX        "图像降噪",IDC_STATIC,589,171,41,32
+    GROUPBOX        "颜色校正",IDC_STATIC,648,171,41,32
+    LTEXT           "0.1",IDC_STATIC,538,229,13,8
+    LTEXT           "5",IDC_STATIC,628,227,9,8
+    GROUPBOX        "Gamma",IDC_STATIC,531,259,158,40
+    GROUPBOX        "对比度",IDC_STATIC,531,303,158,42
+    LTEXT           "-50",IDC_STATIC,539,315,12,8
+    LTEXT           "100",IDC_STATIC,624,317,13,8
+    GROUPBOX        "亮度",IDC_STATIC,532,349,157,41
+    LTEXT           "-150",IDC_STATIC,537,361,16,8
+    LTEXT           "150",IDC_STATIC,621,361,16,8
+    GROUPBOX        "饱和度",IDC_STATIC,532,394,157,41
+    LTEXT           "0",IDC_STATIC,539,405,9,8
+    LTEXT           "128",IDC_STATIC,625,407,13,8
+    LTEXT           "0.1",IDC_STATIC,539,271,13,8
+    LTEXT           "10",IDC_STATIC,629,271,9,8
+    CONTROL         "",IDC_SHOW_PICTURE_STATIC,"Static",SS_WHITEFRAME | SS_SUNKEN | WS_BORDER,7,7,518,435
+    GROUPBOX        "锐化",IDC_STATIC,531,209,158,47
+    COMBOBOX        IDC_COMBO_ChooseDevice,538,78,146,88,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "选择设备",IDC_STATIC,532,65,157,34
+END
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About GxImageProcess"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,20,20
+    LTEXT           "GxImageProcess, Version 1.1",IDC_STATIC_PRODUCTVERSION,42,14,114,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2015",IDC_STATIC_LEGALCOPYRIGHT,42,26,114,8
+    DEFPUSHBUTTON   "OK",IDOK,113,41,50,14,WS_GROUP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_GXIMAGEPROCESS_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 696
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 442
+    END
+
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 163
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,2403,8191
+ PRODUCTVERSION 1,0,2403,8191
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "FileDescription", "GxImageProcess Microsoft 基础类应用程序"
+            VALUE "FileVersion", "1.0.2403.8191"
+            VALUE "InternalName", "GxImageProcess.exe"
+            VALUE "LegalCopyright", "版权所有 （C）2020"
+            VALUE "OriginalFilename", "GxImageProcess.exe"
+            VALUE "ProductName", "GxImageProcess 应用程序"
+            VALUE "ProductVersion", "1.0.2403.8191"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+#endif    // 中文(简体，中国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// 英语(美国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_ABOUTBOX            "&About GxImageProcess..."
+END
+
+#endif    // 英语(美国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#include "res\GxImageProcess.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"     // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

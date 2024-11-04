@@ -1,0 +1,242 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(简体，中国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\GxFlatFieldCorrection.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.chs\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\GxFlatFieldCorrection.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 GxFlatFieldCorrection"
+FONT 9, "宋体"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "GxFlatFieldCorrection 1.0 版",IDC_STATIC_PRODUCTVERSION,40,10,119,8,SS_NOPREFIX
+    LTEXT           "版权所有 (C) 2013",IDC_STATIC_LEGALCOPYRIGHT,40,25,119,8
+    DEFPUSHBUTTON   "确定",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_GxFlatFieldCorrection_DIALOG DIALOGEX 0, 0, 643, 409
+STYLE DS_SETFONT | DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "GxFlatFieldCorrection"
+FONT 9, "宋体", 0, 0, 0x1
+BEGIN
+    LTEXT           "Static",IDC_STATIC_SHOW_FRAME,7,7,448,395,0,WS_EX_STATICEDGE
+    GROUPBOX        "设备控制",IDC_STATIC,459,7,177,52
+    PUSHBUTTON      "打开设备",IDC_BTN_OPEN_DEVICE,480,18,59,15
+    PUSHBUTTON      "关闭设备",IDC_BTN_CLOSE_DEVICE,571,18,59,15
+    PUSHBUTTON      "开始采集",IDC_BTN_START_SNAP,480,38,59,15
+    PUSHBUTTON      "停止采集",IDC_BTN_STOP_SNAP,571,38,59,15
+    GROUPBOX        "属性设置",IDC_STATIC,459,63,177,88
+    LTEXT           "曝光",IDC_STC_SHUTTER_SHOW,467,77,115,10,SS_CENTERIMAGE
+    EDITTEXT        IDC_EDIT_SHUTTER,589,75,44,12,ES_AUTOHSCROLL
+    LTEXT           "增益",IDC_STC_GAIN,467,92,104,10,SS_CENTERIMAGE
+    EDITTEXT        IDC_EDIT_GAIN,589,90,44,12,ES_AUTOHSCROLL
+    LTEXT           "自动白平衡",IDC_STATIC,467,107,41,10,SS_CENTERIMAGE
+    COMBOBOX        IDC_COMBO_AWB,574,105,59,76,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "白平衡通道选择",IDC_STATIC,467,122,57,10,SS_CENTERIMAGE
+    COMBOBOX        IDC_COMBO_RATIO_SELECTOR,574,120,59,61,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "白平衡系数",IDC_STATIC_WHITE_RATIO,467,137,119,10,SS_CENTERIMAGE
+    EDITTEXT        IDC_EDIT_BALANCE_RATIO,594,135,39,12,ES_AUTOHSCROLL
+    GROUPBOX        "平场校正",IDC_STATIC,460,154,177,147
+    CONTROL         "期望灰度值",IDC_CHECK_GRAY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,476,204,56,10
+    CONTROL         "",IDC_SLIDER_GRAY,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,470,217,120,15
+    EDITTEXT        IDC_EDIT_GRAY,591,217,40,15,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "",IDC_SPIN_EXPECT_GRAY_VALUE,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS,619,217,11,15
+    PUSHBUTTON      "采集暗场图像",IDC_BUTTON_ACQUIRE_DARK_IMG,517,245,58,14
+    PUSHBUTTON      "采集亮场图像",IDC_BUTTON_ACQUIRE_BRIGHT_IMG,517,263,58,14
+    PUSHBUTTON      "执行平场校正",IDC_BUTTON_EXECUTE_FFC,517,281,58,14
+    CONTROL         "预览",IDC_CHECK_PREVIEW,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,577,281,40,14
+    GROUPBOX        "平场校正系数从文件读取/保存到文件",IDC_STATIC,459,305,177,36
+    PUSHBUTTON      "从文件读取",IDC_BUTTON_READ,489,319,54,15
+    PUSHBUTTON      "保存到文件",IDC_BUTTON_WRITE,567,319,54,15
+    GROUPBOX        "平场校正提示信息",IDC_STATIC,459,347,177,55
+    CONTROL         "",IDC_SLIDER_FRAME_NUM,"msctls_trackbar32",TBS_AUTOTICKS | WS_TABSTOP,506,167,125,19
+    LTEXT           "采集帧数",IDC_STATIC_FRAME_NUM,473,167,33,15,SS_CENTERIMAGE
+    LTEXT           "255",IDC_STATIC,572,236,13,8,SS_CENTERIMAGE
+    LTEXT           "0",IDC_STATIC,475,236,13,8,SS_CENTERIMAGE
+    CTEXT           "16",IDC_STATIC,619,190,9,8,SS_CENTERIMAGE
+    CTEXT           "8",IDC_STATIC,592,190,9,8,SS_CENTERIMAGE
+    CTEXT           "4",IDC_STATIC,565,190,9,8,SS_CENTERIMAGE
+    CTEXT           "2",IDC_STATIC,538,190,9,8,SS_CENTERIMAGE
+    CTEXT           "1",IDC_STATIC,511,190,9,8,SS_CENTERIMAGE
+    LTEXT           "",IDC_STATIC_PROMPT_INFOR,464,357,165,38
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 2,0,2403,9111
+ PRODUCTVERSION 2,0,2403,9111
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "FileDescription", "GxFlatFieldCorrection Microsoft 基础类应用程序"
+            VALUE "FileVersion", "2.0.2403.9111"
+            VALUE "InternalName", "GxFlatFieldCorrection"
+            VALUE "LegalCopyright", "Copyright (C) 2019-2020"
+            VALUE "OriginalFilename", "GxFlatFieldCorrection.EXE"
+            VALUE "ProductName", "GxFlatFieldCorrection 应用程序"
+            VALUE "ProductVersion", "2.0.2403.9111"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_GxFlatFieldCorrection_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 637
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 402
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// RT_MANIFEST
+//
+
+1                       RT_MANIFEST             "GxFlatFieldCorrection.manifest"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_ABOUTBOX            "关于 GxFlatFieldCorrection(&A)..."
+END
+
+#endif    // 中文(简体，中国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE 4, 2
+#pragma code_page(936)
+#endif //_WIN32
+#include "res\GxFlatFieldCorrection.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.chs\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

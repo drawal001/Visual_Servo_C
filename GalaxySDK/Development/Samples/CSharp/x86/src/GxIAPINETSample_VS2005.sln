@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GxGetImage_VS2005", "GxGetImage\GxGetImage_VS2005.csproj", "{74EDB293-B31E-4689-B17A-AAA769C4F11B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GxSingleCam_VS2005", "GxSingleCam\GxSingleCam_VS2005.csproj", "{3BD133B8-770A-4DDF-B113-539DCD22FC88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GxCameraEvents_VS2005", "GxCameraEvents\GxCameraEvents_VS2005.csproj", "{CCE0DB00-A1B5-4AC1-ABF4-541557F82EBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GxGigeRecovery_VS2005", "GxGigeRecovery\GxGigeRecovery_VS2005.csproj", "{0F0B43BE-8EAE-47AD-B9E6-CA1EE682819B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GxImageProcess_VS2005", "GxImageProcess\GxImageProcess_VS2005.csproj", "{A5319FB4-0421-4C18-8398-0DC636CF90CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GxMultiCam_VS2005", "GxMultiCam\GxMultiCam_VS2005.csproj", "{1C680DE9-E310-4BFC-B478-7C68E21DFE61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GxMultiCamForHDR_VS2005", "GxMultiCamForHDR\GxMultiCamForHDR_VS2005.csproj", "{AB9AE7D2-8110-4C1A-887A-8DADACCCE1EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74EDB293-B31E-4689-B17A-AAA769C4F11B}.Debug|x86.ActiveCfg = Debug|x86
+		{74EDB293-B31E-4689-B17A-AAA769C4F11B}.Debug|x86.Build.0 = Debug|x86
+		{74EDB293-B31E-4689-B17A-AAA769C4F11B}.Release|x86.ActiveCfg = Release|x86
+		{74EDB293-B31E-4689-B17A-AAA769C4F11B}.Release|x86.Build.0 = Release|x86
+		{3BD133B8-770A-4DDF-B113-539DCD22FC88}.Debug|x86.ActiveCfg = Debug|x86
+		{3BD133B8-770A-4DDF-B113-539DCD22FC88}.Debug|x86.Build.0 = Debug|x86
+		{3BD133B8-770A-4DDF-B113-539DCD22FC88}.Release|x86.ActiveCfg = Release|x86
+		{3BD133B8-770A-4DDF-B113-539DCD22FC88}.Release|x86.Build.0 = Release|x86
+		{CCE0DB00-A1B5-4AC1-ABF4-541557F82EBB}.Debug|x86.ActiveCfg = Debug|x86
+		{CCE0DB00-A1B5-4AC1-ABF4-541557F82EBB}.Debug|x86.Build.0 = Debug|x86
+		{CCE0DB00-A1B5-4AC1-ABF4-541557F82EBB}.Release|x86.ActiveCfg = Release|x86
+		{CCE0DB00-A1B5-4AC1-ABF4-541557F82EBB}.Release|x86.Build.0 = Release|x86
+		{0F0B43BE-8EAE-47AD-B9E6-CA1EE682819B}.Debug|x86.ActiveCfg = Debug|x86
+		{0F0B43BE-8EAE-47AD-B9E6-CA1EE682819B}.Debug|x86.Build.0 = Debug|x86
+		{0F0B43BE-8EAE-47AD-B9E6-CA1EE682819B}.Release|x86.ActiveCfg = Release|x86
+		{0F0B43BE-8EAE-47AD-B9E6-CA1EE682819B}.Release|x86.Build.0 = Release|x86
+		{A5319FB4-0421-4C18-8398-0DC636CF90CC}.Debug|x86.ActiveCfg = Debug|x86
+		{A5319FB4-0421-4C18-8398-0DC636CF90CC}.Debug|x86.Build.0 = Debug|x86
+		{A5319FB4-0421-4C18-8398-0DC636CF90CC}.Release|x86.ActiveCfg = Release|x86
+		{A5319FB4-0421-4C18-8398-0DC636CF90CC}.Release|x86.Build.0 = Release|x86
+		{1C680DE9-E310-4BFC-B478-7C68E21DFE61}.Debug|x86.ActiveCfg = Debug|x86
+		{1C680DE9-E310-4BFC-B478-7C68E21DFE61}.Debug|x86.Build.0 = Debug|x86
+		{1C680DE9-E310-4BFC-B478-7C68E21DFE61}.Release|x86.ActiveCfg = Release|x86
+		{1C680DE9-E310-4BFC-B478-7C68E21DFE61}.Release|x86.Build.0 = Release|x86
+		{AB9AE7D2-8110-4C1A-887A-8DADACCCE1EB}.Debug|x86.ActiveCfg = Debug|x86
+		{AB9AE7D2-8110-4C1A-887A-8DADACCCE1EB}.Debug|x86.Build.0 = Debug|x86
+		{AB9AE7D2-8110-4C1A-887A-8DADACCCE1EB}.Release|x86.ActiveCfg = Release|x86
+		{AB9AE7D2-8110-4C1A-887A-8DADACCCE1EB}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
