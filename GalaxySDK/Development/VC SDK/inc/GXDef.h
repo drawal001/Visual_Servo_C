@@ -1,6 +1,6 @@
 /**
 @File      GXDef.h
-@Brief     the define for the GxIAPI dll module. 
+@Brief     the define for the GxIAPI dll module.
 @Author    Software Department
 @Date      2024-05-20
 @Version   1.0.2405.9201
@@ -9,414 +9,411 @@
 #ifndef GX_DEF_H
 #define GX_DEF_H
 
-
 //////////////////////////////////////////////////////////////////////////
-//Chinese£º	ÀàĞÍ¶¨Òå£¬ÒÔÏÂÀàĞÍ¶¼ÔÚ±ê×¼C¿âÍ·ÎÄ¼şstdint.hÖĞÓĞ¶¨Òå£¬µ«ÊÇÔÚÎ¢ÈíµÄ±àÒëÆ½Ì¨
-//			VS2010Ö®Ç°µÄ°æ±¾ÖĞ¶¼²»°üº¬´ËÎÄ¼ş,ËùÒÔÔÚ´ËĞèÒªÖØ¶¨Òå
+// Chineseï¼š	ç±»å‹å®šä¹‰ï¼Œä»¥ä¸‹ç±»å‹éƒ½åœ¨æ ‡å‡†Cåº“å¤´æ–‡ä»¶stdint.hä¸­æœ‰å®šä¹‰ï¼Œä½†æ˜¯åœ¨å¾®è½¯çš„ç¼–è¯‘å¹³å°
+//			VS2010ä¹‹å‰çš„ç‰ˆæœ¬ä¸­éƒ½ä¸åŒ…å«æ­¤æ–‡ä»¶,æ‰€ä»¥åœ¨æ­¤éœ€è¦é‡å®šä¹‰
 
-//English:	The following types are defined in the standard C library header file stdint.h, but are available on Microsoft's compilation platform
+// English:	The following types are defined in the standard C library header file stdint.h, but are available on Microsoft's compilation platform
 //			This file was not included in previous versions of VS2010, so it needs to be redefined here
 //////////////////////////////////////////////////////////////////////////
 
 #if defined(_WIN32)
-	#ifndef _STDINT_H 
-		#ifdef _MSC_VER // Microsoft compiler
-			#if _MSC_VER < 1600
-				typedef __int8            int8_t;
-				typedef __int16           int16_t;
-				typedef __int32           int32_t;
-				typedef __int64           int64_t;
-				typedef unsigned __int8   uint8_t;
-				typedef unsigned __int16  uint16_t;
-				typedef unsigned __int32  uint32_t;
-				typedef unsigned __int64  uint64_t;
-			#else
-				// In Visual Studio 2010 is stdint.h already included
-				#include <stdint.h>
-			#endif
-		#else
-			// Not a Microsoft compiler
-			#include <stdint.h>
-		#endif
-	#endif 
+#ifndef _STDINT_H
+#ifdef _MSC_VER // Microsoft compiler
+#if _MSC_VER < 1600
+typedef __int8 int8_t;
+typedef __int16 int16_t;
+typedef __int32 int32_t;
+typedef __int64 int64_t;
+typedef unsigned __int8 uint8_t;
+typedef unsigned __int16 uint16_t;
+typedef unsigned __int32 uint32_t;
+typedef unsigned __int64 uint64_t;
 #else
-	// Linux
-	#include <stdint.h>
+// In Visual Studio 2010 is stdint.h already included
+#include <stdint.h>
+#endif
+#else
+// Not a Microsoft compiler
+#include <stdint.h>
+#endif
+#endif
+#else
+// Linux
+#include <stdint.h>
 #endif
 
-
 //------------------------------------------------------------------------------
-//Chinese£º ²Ù×÷ÏµÍ³Æ½Ì¨¶¨Òå
-//English:	Operating system platform definition
+// Chineseï¼š æ“ä½œç³»ç»Ÿå¹³å°å®šä¹‰
+// English:	Operating system platform definition
 //------------------------------------------------------------------------------
 
 #include <stddef.h>
 
 #ifdef WIN32
-	#ifndef _WIN32
-		#define _WIN32
-	#endif
+#ifndef _WIN32
+#define _WIN32
+#endif
 #endif
 
 #ifdef _WIN32
-	#include <Windows.h>
-	#define GX_DLLIMPORT   __declspec(dllimport)
-	#define GX_DLLEXPORT   __declspec(dllexport)
+#include <Windows.h>
+#define GX_DLLIMPORT __declspec(dllimport)
+#define GX_DLLEXPORT __declspec(dllexport)
 
-	#define GX_STDC __stdcall
-	#define GX_CDEC __cdecl
+#define GX_STDC __stdcall
+#define GX_CDEC __cdecl
 
-	#if defined(__cplusplus)
-		#define GX_EXTC extern "C"
-	#else
-		#define GX_EXTC
-	#endif
+#if defined(__cplusplus)
+#define GX_EXTC extern "C"
 #else
-	// remove the None #define conflicting with GenApi
-	#undef None
-	#if __GNUC__>=4
-		#define GX_DLLIMPORT   __attribute__((visibility("default")))
-		#define GX_DLLEXPORT   __attribute__((visibility("default")))
+#define GX_EXTC
+#endif
+#else
+// remove the None #define conflicting with GenApi
+#undef None
+#if __GNUC__ >= 4
+#define GX_DLLIMPORT __attribute__((visibility("default")))
+#define GX_DLLEXPORT __attribute__((visibility("default")))
 
-		#if defined(__i386__)
-			#define GX_STDC __attribute__((stdcall))
-			#define GX_CDEC __attribute__((cdecl))
-		#else
-			#define GX_STDC 
-			#define GX_CDEC 
-		#endif
-
-		#if defined(__cplusplus)
-			#define GX_EXTC extern "C"
-		#else
-			#define GX_EXTC
-		#endif
-	#else
-		#error Unknown compiler
-	#endif
+#if defined(__i386__)
+#define GX_STDC __attribute__((stdcall))
+#define GX_CDEC __attribute__((cdecl))
+#else
+#define GX_STDC
+#define GX_CDEC
 #endif
 
+#if defined(__cplusplus)
+#define GX_EXTC extern "C"
+#else
+#define GX_EXTC
+#endif
+#else
+#error Unknown compiler
+#endif
+#endif
 
-#define GX_INFO_LENGTH_8_BYTE   (8)						///< \Chinese 8×Ö½Ú												\English 8byte
-#define GX_INFO_LENGTH_32_BYTE  (32)					///< \Chinese 32×Ö½Ú											\English 32byte
-#define GX_INFO_LENGTH_64_BYTE  (64)					///< \Chinese 64×Ö½Ú											\English 64byte
-#define GX_INFO_LENGTH_128_BYTE (128)					///< \Chinese 128×Ö½Ú											\English 128byte
-#define GX_INFO_LENGTH_256_BYTE (256)					///< \Chinese 256×Ö½Ú											\English 256byte
+#define GX_INFO_LENGTH_8_BYTE (8)	  ///< \Chinese 8å­—èŠ‚												\English 8byte
+#define GX_INFO_LENGTH_32_BYTE (32)	  ///< \Chinese 32å­—èŠ‚											\English 32byte
+#define GX_INFO_LENGTH_64_BYTE (64)	  ///< \Chinese 64å­—èŠ‚											\English 64byte
+#define GX_INFO_LENGTH_128_BYTE (128) ///< \Chinese 128å­—èŠ‚											\English 128byte
+#define GX_INFO_LENGTH_256_BYTE (256) ///< \Chinese 256å­—èŠ‚											\English 256byte
 
-typedef void* GX_DEV_HANDLE;							///< \Chinese Éè±¸¾ä±ú£¬Í¨¹ıGXOpenDevice»ñÈ¡£¬Í¨¹ı´Ë¾ä±ú½øĞĞ¿ØÖÆÓë²É¼¯												\English The device handle, which is obtained through gxopendevice, is controlled and collected by this handle 
-typedef void* GX_IF_HANDLE;								///< \Chinese Interface¾ä±ú£¬Í¨¹ıGXGetInterfaceHandle»ñÈ¡£¬Í¨¹ı´Ë¾ä±ú½øĞĞIF²ãµÄ¶ÁĞ´¿ØÖÆ 						\English The interface handle, obtained by gxgetinterfacehandle, makes read and write control on the if layer through this handle 
-typedef void* GX_LOCAL_DEV_HANDLE;						///< \Chinese ±¾µØÉè±¸²ã¾ä±ú£¬Í¨¹ıGXGetLocalDeviceHandle»ñÈ¡£¬Í¨¹ı´Ë¾ä±ú½øĞĞ±¾µØÉè±¸²ãµÄ¶ÁĞ´¿ØÖÆ 				\English The local device layer handle, obtained by gxgetlocaldevicehandle, USES this handle to make read and write control of the local device layer 
-typedef void* GX_DS_HANDLE;								///< \Chinese DataStream¾ä±ú£¬Í¨¹ıGXGetDataStreamHandle»ñÈ¡£¬Í¨¹ı´Ë¾ä±ú½øĞĞÁ÷²ã¶ÁĞ´¿ØÖÆ 						\English The datastream handle is obtained by gxgetdatastreamhandle, and the flow layer reads and writes control through this handle 
-typedef void* GX_PORT_HANDLE;							///< \Chinese Í¨ÓÃ¾ä±ú(ÔÚ½øĞĞ¶ÁĞ´¿ØÖÆµÄÊ±ºò´ú³ÆGX_IF_HANDLE¡¢GX_DEV_HANDLE¡¢GX_DEV_LOCAL_HANDLE¡¢GX_DS_HANDLE)	\English Common handle (GX_IF_HANDLE, GX_DEV_HANDLE, GX_DEV_LOCAL_HANDLE, and GX_DS_HANDLE for read/write control)
-typedef void* GX_EVENT_CALLBACK_HANDLE;					///< \Chinese Éè±¸ÊÂ¼ş»Øµ÷¾ä±ú£¬×¢²áÉè±¸Ïà¹ØÊÂ¼ş»Øµ÷º¯Êı£¬±ÈÈçÉè±¸µôÏß»Øµ÷º¯Êı										\English Device event callback handle registers device-related event callback functions, such as the device drop callback function
-typedef void* GX_FEATURE_CALLBACK_HANDLE;				///< \Chinese Éè±¸ÊôĞÔ¸üĞÂ»Øµ÷¾ä±ú£¬×¢²áÉè±¸ÊôĞÔ¸üĞÂ»Øµ÷º¯ÊıµÄÊ±ºò»ñÈ¡												\English Secondary property update callback handle, obtained when registering the device property update callback function
-typedef void* GX_FEATURE_CALLBACK_BY_STRING_HANDLE;		///< \Chinese Éè±¸ÊôĞÔ¸üĞÂ»Øµ÷¾ä±ú£¬×¢²áÉè±¸ÊôĞÔ¸üĞÂ»Øµ÷º¯ÊıµÄÊ±ºò»ñÈ¡												\English Device property update callback handle, obtained when registering the device property update callback function
+typedef void *GX_DEV_HANDLE;						///< \Chinese è®¾å¤‡å¥æŸ„ï¼Œé€šè¿‡GXOpenDeviceè·å–ï¼Œé€šè¿‡æ­¤å¥æŸ„è¿›è¡Œæ§åˆ¶ä¸é‡‡é›†												\English The device handle, which is obtained through gxopendevice, is controlled and collected by this handle
+typedef void *GX_IF_HANDLE;							///< \Chinese Interfaceå¥æŸ„ï¼Œé€šè¿‡GXGetInterfaceHandleè·å–ï¼Œé€šè¿‡æ­¤å¥æŸ„è¿›è¡ŒIFå±‚çš„è¯»å†™æ§åˆ¶ 						\English The interface handle, obtained by gxgetinterfacehandle, makes read and write control on the if layer through this handle
+typedef void *GX_LOCAL_DEV_HANDLE;					///< \Chinese æœ¬åœ°è®¾å¤‡å±‚å¥æŸ„ï¼Œé€šè¿‡GXGetLocalDeviceHandleè·å–ï¼Œé€šè¿‡æ­¤å¥æŸ„è¿›è¡Œæœ¬åœ°è®¾å¤‡å±‚çš„è¯»å†™æ§åˆ¶ 				\English The local device layer handle, obtained by gxgetlocaldevicehandle, USES this handle to make read and write control of the local device layer
+typedef void *GX_DS_HANDLE;							///< \Chinese DataStreamå¥æŸ„ï¼Œé€šè¿‡GXGetDataStreamHandleè·å–ï¼Œé€šè¿‡æ­¤å¥æŸ„è¿›è¡Œæµå±‚è¯»å†™æ§åˆ¶ 						\English The datastream handle is obtained by gxgetdatastreamhandle, and the flow layer reads and writes control through this handle
+typedef void *GX_PORT_HANDLE;						///< \Chinese é€šç”¨å¥æŸ„(åœ¨è¿›è¡Œè¯»å†™æ§åˆ¶çš„æ—¶å€™ä»£ç§°GX_IF_HANDLEã€GX_DEV_HANDLEã€GX_DEV_LOCAL_HANDLEã€GX_DS_HANDLE)	\English Common handle (GX_IF_HANDLE, GX_DEV_HANDLE, GX_DEV_LOCAL_HANDLE, and GX_DS_HANDLE for read/write control)
+typedef void *GX_EVENT_CALLBACK_HANDLE;				///< \Chinese è®¾å¤‡äº‹ä»¶å›è°ƒå¥æŸ„ï¼Œæ³¨å†Œè®¾å¤‡ç›¸å…³äº‹ä»¶å›è°ƒå‡½æ•°ï¼Œæ¯”å¦‚è®¾å¤‡æ‰çº¿å›è°ƒå‡½æ•°										\English Device event callback handle registers device-related event callback functions, such as the device drop callback function
+typedef void *GX_FEATURE_CALLBACK_HANDLE;			///< \Chinese è®¾å¤‡å±æ€§æ›´æ–°å›è°ƒå¥æŸ„ï¼Œæ³¨å†Œè®¾å¤‡å±æ€§æ›´æ–°å›è°ƒå‡½æ•°çš„æ—¶å€™è·å–												\English Secondary property update callback handle, obtained when registering the device property update callback function
+typedef void *GX_FEATURE_CALLBACK_BY_STRING_HANDLE; ///< \Chinese è®¾å¤‡å±æ€§æ›´æ–°å›è°ƒå¥æŸ„ï¼Œæ³¨å†Œè®¾å¤‡å±æ€§æ›´æ–°å›è°ƒå‡½æ•°çš„æ—¶å€™è·å–												\English Device property update callback handle, obtained when registering the device property update callback function
 
-typedef enum GX_TL_TYPE_LIST 
+typedef enum GX_TL_TYPE_LIST
 {
-    GX_TL_TYPE_UNKNOWN  = 0,							///< \Chinese Î´ÖªÀàĞÍÉè±¸										\English Unknown type device
-    GX_TL_TYPE_USB      = 1,							///< \Chinese USB2.0											\English USB2.0	
-	GX_TL_TYPE_GEV      = 2,							///< \Chinese GEV												\English GEV	
-	GX_TL_TYPE_U3V      = 4,							///< \Chinese U3V												\English U3V
-	GX_TL_TYPE_CXP      = 8,							///< \Chinese CXP												\English CXP
-}GX_TL_TYPE_LIST;
+	GX_TL_TYPE_UNKNOWN = 0, ///< \Chinese æœªçŸ¥ç±»å‹è®¾å¤‡										\English Unknown type device
+	GX_TL_TYPE_USB = 1,		///< \Chinese USB2.0											\English USB2.0
+	GX_TL_TYPE_GEV = 2,		///< \Chinese GEV												\English GEV
+	GX_TL_TYPE_U3V = 4,		///< \Chinese U3V												\English U3V
+	GX_TL_TYPE_CXP = 8,		///< \Chinese CXP												\English CXP
+} GX_TL_TYPE_LIST;
 typedef int32_t GX_TL_TYPE;
 
 typedef enum GX_ACCESS_MODE
 {
-	GX_ACCESS_READONLY = 2,								///< \Chinese Ö»¶Á·½Ê½											\English Open the device in read-only mode
-	GX_ACCESS_CONTROL = 3,								///< \Chinese ¿ØÖÆ·½Ê½											\English Open the device in controlled mode
-	GX_ACCESS_EXCLUSIVE = 4,							///< \Chinese ¶ÀÕ¼·½Ê½											\English Open the device in exclusive mode
-}GX_ACCESS_MODE;
+	GX_ACCESS_READONLY = 2,	 ///< \Chinese åªè¯»æ–¹å¼											\English Open the device in read-only mode
+	GX_ACCESS_CONTROL = 3,	 ///< \Chinese æ§åˆ¶æ–¹å¼											\English Open the device in controlled mode
+	GX_ACCESS_EXCLUSIVE = 4, ///< \Chinese ç‹¬å æ–¹å¼											\English Open the device in exclusive mode
+} GX_ACCESS_MODE;
 typedef int32_t GX_ACCESS_MODE_CMD;
 
 typedef enum GX_FRAME_STATUS_LIST
 {
-	GX_FRAME_STATUS_SUCCESS = 0,						///< \Chinese Õı³£Ö¡											\English Normal frame
-	GX_FRAME_STATUS_INCOMPLETE = -1,					///< \Chinese ²ĞÖ¡												\English Incomplete frame
-}GX_FRAME_STATUS_LIST;
-typedef  int32_t  GX_FRAME_STATUS;
+	GX_FRAME_STATUS_SUCCESS = 0,	 ///< \Chinese æ­£å¸¸å¸§											\English Normal frame
+	GX_FRAME_STATUS_INCOMPLETE = -1, ///< \Chinese æ®‹å¸§												\English Incomplete frame
+} GX_FRAME_STATUS_LIST;
+typedef int32_t GX_FRAME_STATUS;
 
 //------------------------------------------------------------------------------
-//Chinese	Éè±¸µÄ´ò¿ª·½Ê½
-//English	Open mode of device 
+// Chinese	è®¾å¤‡çš„æ‰“å¼€æ–¹å¼
+// English	Open mode of device
 //------------------------------------------------------------------------------
 typedef enum GX_OPEN_MODE
 {
-	GX_OPEN_SN              =0,							///< \Chinese Í¨¹ıSN´ò¿ª										\English Opens the device via a serial number
-	GX_OPEN_IP              =1,							///< \Chinese Í¨¹ıIP´ò¿ª										\English Opens the device via an IP address
-	GX_OPEN_MAC             =2,							///< \Chinese Í¨¹ıMAC´ò¿ª										\English Opens the device via a MAC address
-	GX_OPEN_INDEX           =3,							///< \Chinese Í¨¹ıIndex´ò¿ª										\English Opens the device via a serial number (Start from 1, such as 1, 2, 3, 4...)
-	GX_OPEN_USERID          =4,							///< \Chinese Í¨¹ıÓÃ»§×Ô¶¨ÒåID´ò¿ª								\English Opens the device via user defined ID
-}GX_OPEN_MODE;
+	GX_OPEN_SN = 0,		///< \Chinese é€šè¿‡SNæ‰“å¼€										\English Opens the device via a serial number
+	GX_OPEN_IP = 1,		///< \Chinese é€šè¿‡IPæ‰“å¼€										\English Opens the device via an IP address
+	GX_OPEN_MAC = 2,	///< \Chinese é€šè¿‡MACæ‰“å¼€										\English Opens the device via a MAC address
+	GX_OPEN_INDEX = 3,	///< \Chinese é€šè¿‡Indexæ‰“å¼€										\English Opens the device via a serial number (Start from 1, such as 1, 2, 3, 4...)
+	GX_OPEN_USERID = 4, ///< \Chinese é€šè¿‡ç”¨æˆ·è‡ªå®šä¹‰IDæ‰“å¼€								\English Opens the device via user defined ID
+} GX_OPEN_MODE;
 typedef int32_t GX_OPEN_MODE_CMD;
 
 //------------------------------------------------------------------------------
-//Chinese	IPÅäÖÃ·½Ê½
-//English	IP configuration 
+// Chinese	IPé…ç½®æ–¹å¼
+// English	IP configuration
 //------------------------------------------------------------------------------
 enum GX_IP_CONFIGURE_MODE_LIST
 {
-	GX_IP_CONFIGURE_DHCP       = 0x6,					///< \Chinese ÆôÓÃDHCP£¬×Ô¶¯»ñÈ¡IPµØÖ·							\English Enable the DHCP mode to allocate the IP address by the DHCP server
-	GX_IP_CONFIGURE_LLA        = 0x4,					///< \Chinese Ê¹ÓÃLLA·½Ê½·ÖÅäIPµØÖ·								\English Enable the LLA mode to allocate the IP address
-	GX_IP_CONFIGURE_STATIC_IP  = 0x5,					///< \Chinese ÉèÖÃ¾²Ì¬IPµØÖ·									\English Enable the static IP mode to configure the IP address
-	GX_IP_CONFIGURE_DEFAULT    = 0x7,					///< \Chinese Ê¹ÓÃÄ¬ÈÏ·½Ê½ÅäÖÃIPµØÖ·¡£							\English Enable the default mode to configure the IP address
+	GX_IP_CONFIGURE_DHCP = 0x6,		 ///< \Chinese å¯ç”¨DHCPï¼Œè‡ªåŠ¨è·å–IPåœ°å€							\English Enable the DHCP mode to allocate the IP address by the DHCP server
+	GX_IP_CONFIGURE_LLA = 0x4,		 ///< \Chinese ä½¿ç”¨LLAæ–¹å¼åˆ†é…IPåœ°å€								\English Enable the LLA mode to allocate the IP address
+	GX_IP_CONFIGURE_STATIC_IP = 0x5, ///< \Chinese è®¾ç½®é™æ€IPåœ°å€									\English Enable the static IP mode to configure the IP address
+	GX_IP_CONFIGURE_DEFAULT = 0x7,	 ///< \Chinese ä½¿ç”¨é»˜è®¤æ–¹å¼é…ç½®IPåœ°å€ã€‚							\English Enable the default mode to configure the IP address
 };
 typedef int32_t GX_IP_CONFIGURE_MODE;
 
 typedef struct GX_OPEN_PARAM
 {
-	char* pszContent;									///< \Chinese ÊäÈë²ÎÊıÄÚÈİ,²»ÔÊĞíÎª¿Õ×Ö·û´®						\English Standard C string that is decided by openMode. It could be an IP address, a camera serial number
-	GX_OPEN_MODE_CMD   openMode;						///< \Chinese ´ò¿ª·½Ê½											\English Device open mode. The device can be open via the SN, IP, MAC, etc. Please refer to GX_OPEN_MODE
-	GX_ACCESS_MODE_CMD accessMode;						///< \Chinese ·ÃÎÊÄ£Ê½											\English Device access mode, such as read-only, control, exclusive, etc. Please refer to GX_ACCESS_MODE
-}GX_OPEN_PARAM;
+	char *pszContent;			   ///< \Chinese è¾“å…¥å‚æ•°å†…å®¹,ä¸å…è®¸ä¸ºç©ºå­—ç¬¦ä¸²						\English Standard C string that is decided by openMode. It could be an IP address, a camera serial number
+	GX_OPEN_MODE_CMD openMode;	   ///< \Chinese æ‰“å¼€æ–¹å¼											\English Device open mode. The device can be open via the SN, IP, MAC, etc. Please refer to GX_OPEN_MODE
+	GX_ACCESS_MODE_CMD accessMode; ///< \Chinese è®¿é—®æ¨¡å¼											\English Device access mode, such as read-only, control, exclusive, etc. Please refer to GX_ACCESS_MODE
+} GX_OPEN_PARAM;
 
 typedef struct GX_FRAME_CALLBACK_PARAM
 {
-	void* pUserParam;									///< \Chinese ÓÃ»§Ë½ÓĞÊı¾İ																			\English User's private data pointer
-	GX_FRAME_STATUS     status;							///< \Chinese Í¼ÏñµÄ·µ»Ø×´Ì¬																		\English The image state returned by the callback function. Please refer to GX_FRAME_STATUS
-	const  void* pImgBuf;								///< \Chinese Í¼ÏñbufferµØÖ·£¨¿ªÆôchunkdataºó£¬pImgBuf °üº¬Í¼ÏñÊı¾İºÍÖ¡ĞÅÏ¢Êı¾İ £©					\English The image data address (After the frame information is enabled, the pImgBuf contains image data and frame information data)
-	int32_t             nImgSize;						///< \Chinese Í¼Ïñ´óĞ¡Êı¾İ´óĞ¡£¬µ¥Î»×Ö½Ú£¨¿ªÆôchunkdataºó£¬nImgsizeÎªÍ¼ÏñÊı¾İ´óĞ¡+Ö¡ĞÅÏ¢´óĞ¡£©		\English Data size, in bytes (After the frame information is enabled, nImgSize is the sum of the size of the image data and the size of the frame information)
-	int32_t             nWidth;							///< \Chinese Í¼ÏñµÄ¿í																				\English Image width
-	int32_t             nHeight;						///< \Chinese Í¼ÏñµÄ¸ß																				\English Image height
-	int32_t             nPixelFormat;					///< \Chinese Í¼ÏñµÄPixFormat																		\English PixelFormat of image
-	uint64_t            nFrameID;						///< \Chinese Í¼ÏñµÄÖ¡ºÅ																			\English Frame identification of image
-	uint64_t            nTimestamp;						///< \Chinese Í¼ÏñµÄÊ±¼ä´Á																			\English Timestamp of image
-	int32_t             reserved[1];					///< \Chinese ±£Áô																					\English 4 bytes,reserved
-}GX_FRAME_CALLBACK_PARAM;
+	void *pUserParam;		///< \Chinese ç”¨æˆ·ç§æœ‰æ•°æ®																			\English User's private data pointer
+	GX_FRAME_STATUS status; ///< \Chinese å›¾åƒçš„è¿”å›çŠ¶æ€																		\English The image state returned by the callback function. Please refer to GX_FRAME_STATUS
+	const void *pImgBuf;	///< \Chinese å›¾åƒbufferåœ°å€ï¼ˆå¼€å¯chunkdataåï¼ŒpImgBuf åŒ…å«å›¾åƒæ•°æ®å’Œå¸§ä¿¡æ¯æ•°æ® ï¼‰					\English The image data address (After the frame information is enabled, the pImgBuf contains image data and frame information data)
+	int32_t nImgSize;		///< \Chinese å›¾åƒå¤§å°æ•°æ®å¤§å°ï¼Œå•ä½å­—èŠ‚ï¼ˆå¼€å¯chunkdataåï¼ŒnImgsizeä¸ºå›¾åƒæ•°æ®å¤§å°+å¸§ä¿¡æ¯å¤§å°ï¼‰		\English Data size, in bytes (After the frame information is enabled, nImgSize is the sum of the size of the image data and the size of the frame information)
+	int32_t nWidth;			///< \Chinese å›¾åƒçš„å®½																				\English Image width
+	int32_t nHeight;		///< \Chinese å›¾åƒçš„é«˜																				\English Image height
+	int32_t nPixelFormat;	///< \Chinese å›¾åƒçš„PixFormat																		\English PixelFormat of image
+	uint64_t nFrameID;		///< \Chinese å›¾åƒçš„å¸§å·																			\English Frame identification of image
+	uint64_t nTimestamp;	///< \Chinese å›¾åƒçš„æ—¶é—´æˆ³																			\English Timestamp of image
+	int32_t reserved[1];	///< \Chinese ä¿ç•™																					\English 4 bytes,reserved
+} GX_FRAME_CALLBACK_PARAM;
 
 typedef struct GX_FRAME_DATA
 {
-	GX_FRAME_STATUS		nStatus;						///< \Chinese Í¼ÏñµÄ·µ»Ø×´Ì¬																		\English The state of the acquired image. Please refer to GX_FRAME_STATUS
-	void* pImgBuf;										///< \Chinese Í¼ÏñbufferµØÖ·£¨¿ªÆôchunkdataºó£¬pImgBuf °üº¬Í¼ÏñÊı¾İºÍÖ¡ĞÅÏ¢Êı¾İ £©					\English The image data address (After the frame information is enabled, the pImgBuf contains image data and frame information data)
-	int32_t				nWidth;							///< \Chinese Í¼ÏñµÄ¿í																				\English Image width
-	int32_t				nHeight;						///< \Chinese Í¼ÏñµÄ¸ß																				\English Image height
-	int32_t				nPixelFormat;					///< \Chinese Í¼ÏñµÄPixFormat																		\English Pixel format of image
-	int32_t				nImgSize;						///< \Chinese Í¼Ïñ´óĞ¡Êı¾İ´óĞ¡£¬µ¥Î»×Ö½Ú£¨¿ªÆôchunkdataºó£¬nImgsizeÎªÍ¼ÏñÊı¾İ´óĞ¡+Ö¡ĞÅÏ¢´óĞ¡£©		\English Data size (After the frame information is enabled, nImgSize is the sum of the size of the image data and the size of the frame information)
-	uint64_t			nFrameID;						///< \Chinese Í¼ÏñµÄÖ¡ºÅ																			\English Frame identification of image
-	uint64_t			nTimestamp;						///< \Chinese Í¼ÏñµÄÊ±¼ä´Á																			\English Timestamp of image
-	int32_t				reserved[3];					///< \Chinese ±£Áô																					\English 4 bytes,reserved
-}GX_FRAME_DATA;
+	GX_FRAME_STATUS nStatus; ///< \Chinese å›¾åƒçš„è¿”å›çŠ¶æ€																		\English The state of the acquired image. Please refer to GX_FRAME_STATUS
+	void *pImgBuf;			 ///< \Chinese å›¾åƒbufferåœ°å€ï¼ˆå¼€å¯chunkdataåï¼ŒpImgBuf åŒ…å«å›¾åƒæ•°æ®å’Œå¸§ä¿¡æ¯æ•°æ® ï¼‰					\English The image data address (After the frame information is enabled, the pImgBuf contains image data and frame information data)
+	int32_t nWidth;			 ///< \Chinese å›¾åƒçš„å®½																				\English Image width
+	int32_t nHeight;		 ///< \Chinese å›¾åƒçš„é«˜																				\English Image height
+	int32_t nPixelFormat;	 ///< \Chinese å›¾åƒçš„PixFormat																		\English Pixel format of image
+	int32_t nImgSize;		 ///< \Chinese å›¾åƒå¤§å°æ•°æ®å¤§å°ï¼Œå•ä½å­—èŠ‚ï¼ˆå¼€å¯chunkdataåï¼ŒnImgsizeä¸ºå›¾åƒæ•°æ®å¤§å°+å¸§ä¿¡æ¯å¤§å°ï¼‰		\English Data size (After the frame information is enabled, nImgSize is the sum of the size of the image data and the size of the frame information)
+	uint64_t nFrameID;		 ///< \Chinese å›¾åƒçš„å¸§å·																			\English Frame identification of image
+	uint64_t nTimestamp;	 ///< \Chinese å›¾åƒçš„æ—¶é—´æˆ³																			\English Timestamp of image
+	int32_t reserved[3];	 ///< \Chinese ä¿ç•™																					\English 4 bytes,reserved
+} GX_FRAME_DATA;
 
 typedef enum GX_NODE_ACCESS_MODE
 {
-	GX_NODE_ACCESS_MODE_NI = 0,							///< \Chinese Ã»ÊµÏÖ													\English Not come true
-	GX_NODE_ACCESS_MODE_NA = 1,							///< \Chinese ²»¿É¶ÁĞ´													\English Not read-write
-	GX_NODE_ACCESS_MODE_WO = 2,							///< \Chinese Ö»Ğ´														\English Write only
-	GX_NODE_ACCESS_MODE_RO = 3,							///< \Chinese Ö»¶Á														\English Read only
-	GX_NODE_ACCESS_MODE_RW = 4,							///< \Chinese ¿É¶ÁĞ´													\English read-write
-	GX_NODE_ACCESS_MODE_UNDEF = 5						///< \Chinese Î´¶¨Òå													\English Undefined
-}GX_NODE_ACCESS_MODE;
+	GX_NODE_ACCESS_MODE_NI = 0,	  ///< \Chinese æ²¡å®ç°													\English Not come true
+	GX_NODE_ACCESS_MODE_NA = 1,	  ///< \Chinese ä¸å¯è¯»å†™													\English Not read-write
+	GX_NODE_ACCESS_MODE_WO = 2,	  ///< \Chinese åªå†™														\English Write only
+	GX_NODE_ACCESS_MODE_RO = 3,	  ///< \Chinese åªè¯»														\English Read only
+	GX_NODE_ACCESS_MODE_RW = 4,	  ///< \Chinese å¯è¯»å†™													\English read-write
+	GX_NODE_ACCESS_MODE_UNDEF = 5 ///< \Chinese æœªå®šä¹‰													\English Undefined
+} GX_NODE_ACCESS_MODE;
 
 typedef struct GX_CXP_INTERFACE_INFO
 {
-	unsigned char       chInterfaceID[GX_INFO_LENGTH_64_BYTE];      ///< \Chinese ²É¼¯¿¨ID										\English CXP card ID
-	unsigned char       chDisplayName[GX_INFO_LENGTH_64_BYTE];      ///< \Chinese ÏÔÊ¾Ãû³Æ										\English Display name
-	unsigned char       chSerialNumber[GX_INFO_LENGTH_64_BYTE];     ///< \Chinese ĞòÁĞºÅ										\English Serial number
-	unsigned int        ui32InitFlag;                               ///< \Chinese ³õÊ¼»¯×´Ì¬									\English Initialization state
-	unsigned int        nReserved[65];                              ///< \Chinese Ô¤Áô											\English reserve
-}GX_CXP_INTERFACE_INFO;
+	unsigned char chInterfaceID[GX_INFO_LENGTH_64_BYTE];  ///< \Chinese é‡‡é›†å¡ID										\English CXP card ID
+	unsigned char chDisplayName[GX_INFO_LENGTH_64_BYTE];  ///< \Chinese æ˜¾ç¤ºåç§°										\English Display name
+	unsigned char chSerialNumber[GX_INFO_LENGTH_64_BYTE]; ///< \Chinese åºåˆ—å·										\English Serial number
+	unsigned int ui32InitFlag;							  ///< \Chinese åˆå§‹åŒ–çŠ¶æ€									\English Initialization state
+	unsigned int nReserved[65];							  ///< \Chinese é¢„ç•™											\English reserve
+} GX_CXP_INTERFACE_INFO;
 
 typedef struct GX_GEV_INTERFACE_INFO
 {
-	unsigned char       chInterfaceID[GX_INFO_LENGTH_64_BYTE];      ///< \Chinese ²É¼¯¿¨ID										\English GEV card ID
-	unsigned char       chDisplayName[GX_INFO_LENGTH_64_BYTE];      ///< \Chinese ÏÔÊ¾Ãû³Æ										\English Display name
-	unsigned char       chSerialNumber[GX_INFO_LENGTH_64_BYTE];     ///< \Chinese ĞòÁĞºÅ										\English Serial number
-	char                szDescription[GX_INFO_LENGTH_256_BYTE];     ///< \Chinese ¿¨ÃèÊö										\English Card description 
-	unsigned int        nReserved[64];								///< \Chinese Ô¤Áô											\English reserve
-}GX_GEV_INTERFACE_INFO;
+	unsigned char chInterfaceID[GX_INFO_LENGTH_64_BYTE];  ///< \Chinese é‡‡é›†å¡ID										\English GEV card ID
+	unsigned char chDisplayName[GX_INFO_LENGTH_64_BYTE];  ///< \Chinese æ˜¾ç¤ºåç§°										\English Display name
+	unsigned char chSerialNumber[GX_INFO_LENGTH_64_BYTE]; ///< \Chinese åºåˆ—å·										\English Serial number
+	char szDescription[GX_INFO_LENGTH_256_BYTE];		  ///< \Chinese å¡æè¿°										\English Card description
+	unsigned int nReserved[64];							  ///< \Chinese é¢„ç•™											\English reserve
+} GX_GEV_INTERFACE_INFO;
 
 typedef struct GX_U3V_INTERFACE_INFO
 {
-	unsigned char       chInterfaceID[GX_INFO_LENGTH_64_BYTE];      ///< \Chinese ²É¼¯¿¨ID										\English U3 card ID
-	unsigned char       chDisplayName[GX_INFO_LENGTH_64_BYTE];      ///< \Chinese ÏÔÊ¾Ãû³Æ										\English Display name
-	unsigned char       chSerialNumber[GX_INFO_LENGTH_64_BYTE];     ///< \Chinese ĞòÁĞºÅ										\English Serial number
-	char                szDescription[GX_INFO_LENGTH_256_BYTE];     ///< \Chinese ¿¨ÃèÊö										\English Card description 
-	unsigned int        nReserved[64];								///< \Chinese Ô¤Áô											\English reserve
-}GX_U3V_INTERFACE_INFO;
+	unsigned char chInterfaceID[GX_INFO_LENGTH_64_BYTE];  ///< \Chinese é‡‡é›†å¡ID										\English U3 card ID
+	unsigned char chDisplayName[GX_INFO_LENGTH_64_BYTE];  ///< \Chinese æ˜¾ç¤ºåç§°										\English Display name
+	unsigned char chSerialNumber[GX_INFO_LENGTH_64_BYTE]; ///< \Chinese åºåˆ—å·										\English Serial number
+	char szDescription[GX_INFO_LENGTH_256_BYTE];		  ///< \Chinese å¡æè¿°										\English Card description
+	unsigned int nReserved[64];							  ///< \Chinese é¢„ç•™											\English reserve
+} GX_U3V_INTERFACE_INFO;
 
 typedef struct GX_USB_INTERFACE_INFO
 {
-	unsigned char       chInterfaceID[GX_INFO_LENGTH_64_BYTE];      ///< \Chinese ²É¼¯¿¨ID										\English USB card ID
-	unsigned char       chDisplayName[GX_INFO_LENGTH_64_BYTE];      ///< \Chinese ÏÔÊ¾Ãû³Æ										\English Display name
-	unsigned char       chSerialNumber[GX_INFO_LENGTH_64_BYTE];     ///< \Chinese ĞòÁĞºÅ										\English Serial number
-	char                szDescription[GX_INFO_LENGTH_256_BYTE];     ///< \Chinese ¿¨ÃèÊö										\English Card description 
-	unsigned int        nReserved[64];								///< \Chinese Ô¤Áô											\English reserve
-}GX_USB_INTERFACE_INFO;
+	unsigned char chInterfaceID[GX_INFO_LENGTH_64_BYTE];  ///< \Chinese é‡‡é›†å¡ID										\English USB card ID
+	unsigned char chDisplayName[GX_INFO_LENGTH_64_BYTE];  ///< \Chinese æ˜¾ç¤ºåç§°										\English Display name
+	unsigned char chSerialNumber[GX_INFO_LENGTH_64_BYTE]; ///< \Chinese åºåˆ—å·										\English Serial number
+	char szDescription[GX_INFO_LENGTH_256_BYTE];		  ///< \Chinese å¡æè¿°										\English Card description
+	unsigned int nReserved[64];							  ///< \Chinese é¢„ç•™											\English reserve
+} GX_USB_INTERFACE_INFO;
 
-typedef struct GX_INTERFACE_INFO 
+typedef struct GX_INTERFACE_INFO
 {
-	GX_TL_TYPE          emTLayerType;								///< \Chinese ¿¨ÀàĞÍ										\English Type of card 
-	unsigned int        nReserved[4];								///< \Chinese ±£Áô×Ö¶Î										\English reserve
+	GX_TL_TYPE emTLayerType;   ///< \Chinese å¡ç±»å‹										\English Type of card
+	unsigned int nReserved[4]; ///< \Chinese ä¿ç•™å­—æ®µ										\English reserve
 	union
 	{
-		GX_CXP_INTERFACE_INFO   stCXPIFInfo;						///< \Chinese CXP²É¼¯¿¨ĞÅÏ¢									\English CXP card Information
-		GX_GEV_INTERFACE_INFO   stGEVIFInfo;						///< \Chinese GEV²É¼¯¿¨ĞÅÏ¢									\English GEV card Information
-		GX_U3V_INTERFACE_INFO   stU3VIFInfo;						///< \Chinese U3V²É¼¯¿¨ĞÅÏ¢									\English U3V card Information
-		GX_USB_INTERFACE_INFO   stUSBIFInfo;						///< \Chinese USB²É¼¯¿¨ĞÅÏ¢									\English USB card Information
-		unsigned int            nReserved[64];						///< \Chinese ±£Áô×Ö¶Î										\English reserve
-	}IFInfo;
-}GX_INTERFACE_INFO;
+		GX_CXP_INTERFACE_INFO stCXPIFInfo; ///< \Chinese CXPé‡‡é›†å¡ä¿¡æ¯									\English CXP card Information
+		GX_GEV_INTERFACE_INFO stGEVIFInfo; ///< \Chinese GEVé‡‡é›†å¡ä¿¡æ¯									\English GEV card Information
+		GX_U3V_INTERFACE_INFO stU3VIFInfo; ///< \Chinese U3Vé‡‡é›†å¡ä¿¡æ¯									\English U3V card Information
+		GX_USB_INTERFACE_INFO stUSBIFInfo; ///< \Chinese USBé‡‡é›†å¡ä¿¡æ¯									\English USB card Information
+		unsigned int nReserved[64];		   ///< \Chinese ä¿ç•™å­—æ®µ										\English reserve
+	} IFInfo;
+} GX_INTERFACE_INFO;
 
 //------------------------------------------------------------------------------
-//Chinese	Éè±¸ÀàĞÍÂë¶¨Òå
-//English	Device type code definition 
+// Chinese	è®¾å¤‡ç±»å‹ç å®šä¹‰
+// English	Device type code definition
 //------------------------------------------------------------------------------
 typedef enum GX_DEVICE_CLASS_LIST
 {
-    GX_DEVICE_CLASS_UNKNOWN = 0,									///< \Chinese Î´ÖªÉè±¸ÀàĞÍ									\English Unknown device
-    GX_DEVICE_CLASS_USB2    = 1,									///< \Chinese USB2.0Éè±¸									\English USB2.0 device
-    GX_DEVICE_CLASS_GEV     = 2,									///< \Chinese Ç§Õ×ÍøÉè±¸									\English GEV device
-    GX_DEVICE_CLASS_U3V     = 3,									///< \Chinese USB3.0Éè±¸									\English USB3.0 device
-	GX_DEVICE_CLASS_SMART	= 4,									///< \Chinese Smart camera device							\English Smart camera device	
-	GX_DEVICE_CLASS_CXP		= 5,									///< \Chinese CXPÉè±¸										\English CXP device
-}GX_DEVICE_CLASS_LIST;
-typedef  int32_t GX_DEVICE_CLASS;
+	GX_DEVICE_CLASS_UNKNOWN = 0, ///< \Chinese æœªçŸ¥è®¾å¤‡ç±»å‹									\English Unknown device
+	GX_DEVICE_CLASS_USB2 = 1,	 ///< \Chinese USB2.0è®¾å¤‡									\English USB2.0 device
+	GX_DEVICE_CLASS_GEV = 2,	 ///< \Chinese åƒå…†ç½‘è®¾å¤‡									\English GEV device
+	GX_DEVICE_CLASS_U3V = 3,	 ///< \Chinese USB3.0è®¾å¤‡									\English USB3.0 device
+	GX_DEVICE_CLASS_SMART = 4,	 ///< \Chinese Smart camera device							\English Smart camera device
+	GX_DEVICE_CLASS_CXP = 5,	 ///< \Chinese CXPè®¾å¤‡										\English CXP device
+} GX_DEVICE_CLASS_LIST;
+typedef int32_t GX_DEVICE_CLASS;
 
 typedef struct GX_CXP_DEVICE_INFO
 {
-	unsigned char       chVendorName[GX_INFO_LENGTH_64_BYTE];		///< \Chinese ¹©Ó¦ÉÌÃû×Ö									\English Supplier name 
-	unsigned char       chModelName[GX_INFO_LENGTH_64_BYTE];		///< \Chinese ĞÍºÅÃû×Ö										\English Model name
-	unsigned char       chManufacturerInfo[GX_INFO_LENGTH_64_BYTE];	///< \Chinese ³§ÉÌĞÅÏ¢										\English Vendor information 
-	unsigned char       chDeviceVersion[GX_INFO_LENGTH_64_BYTE];	///< \Chinese Éè±¸°æ±¾										\English Device version
-	unsigned char       chSerialNumber[GX_INFO_LENGTH_64_BYTE];		///< \Chinese ĞòÁĞºÅ										\English Serial number
-	unsigned char       chUserDefinedName[GX_INFO_LENGTH_64_BYTE];	///< \Chinese ÓÃ»§×Ô¶¨ÒåÃû×Ö								\English User-defined name 
-	unsigned int        nReserved[64];								///< \Chinese ±£Áô×Ö¶Î										\English reserve
+	unsigned char chVendorName[GX_INFO_LENGTH_64_BYTE];		  ///< \Chinese ä¾›åº”å•†åå­—									\English Supplier name
+	unsigned char chModelName[GX_INFO_LENGTH_64_BYTE];		  ///< \Chinese å‹å·åå­—										\English Model name
+	unsigned char chManufacturerInfo[GX_INFO_LENGTH_64_BYTE]; ///< \Chinese å‚å•†ä¿¡æ¯										\English Vendor information
+	unsigned char chDeviceVersion[GX_INFO_LENGTH_64_BYTE];	  ///< \Chinese è®¾å¤‡ç‰ˆæœ¬										\English Device version
+	unsigned char chSerialNumber[GX_INFO_LENGTH_64_BYTE];	  ///< \Chinese åºåˆ—å·										\English Serial number
+	unsigned char chUserDefinedName[GX_INFO_LENGTH_64_BYTE];  ///< \Chinese ç”¨æˆ·è‡ªå®šä¹‰åå­—								\English User-defined name
+	unsigned int nReserved[64];								  ///< \Chinese ä¿ç•™å­—æ®µ										\English reserve
 } GX_CXP_DEVICE_INFO;
 
 typedef struct GX_GEV_DEVICE_INFO
 {
-    unsigned int        nCurrentIp;                                 ///< \Chinese µ±Ç°IPµØÖ·									\English Current IP configuration
-	unsigned int        nCurrentSubNetMask;                         ///< \Chinese µ±Ç°×ÓÍøÑÚÂë									\English Current subnet mask
-	unsigned int        nDefaultGateWay;                            ///< \Chinese µ±Ç°Íø¹Ø										\English Current gateway
-	unsigned int        nNetExport;                                 ///< \Chinese Íø¿ÚIPµØÖ·									\English IP address 
-	uint64_t            nMacAddress;								///< \Chinese MACµØÖ·										\English MAC address
-	unsigned char       chVendorName[GX_INFO_LENGTH_64_BYTE];		///< \Chinese ¹©Ó¦ÉÌÃû×Ö									\English Supplier name 
-	unsigned char       chModelName[GX_INFO_LENGTH_64_BYTE];		///< \Chinese ĞÍºÅÃû×Ö										\English Model name
-	unsigned char       chManufacturerInfo[GX_INFO_LENGTH_64_BYTE];	///< \Chinese ³§ÉÌĞÅÏ¢										\English Vendor information 
-	unsigned char       chDeviceVersion[GX_INFO_LENGTH_64_BYTE];	///< \Chinese Éè±¸°æ±¾										\English Device version
-	unsigned char       chSerialNumber[GX_INFO_LENGTH_64_BYTE];		///< \Chinese ĞòÁĞºÅ										\English Serial number
-	unsigned char       chUserDefinedName[GX_INFO_LENGTH_64_BYTE];	///< \Chinese ÓÃ»§×Ô¶¨ÒåÃû×Ö								\English User-defined name 
-	unsigned int        nReserved[64];                              ///< \Chinese ±£Áô×Ö¶Î										\English reserve
+	unsigned int nCurrentIp;								  ///< \Chinese å½“å‰IPåœ°å€									\English Current IP configuration
+	unsigned int nCurrentSubNetMask;						  ///< \Chinese å½“å‰å­ç½‘æ©ç 									\English Current subnet mask
+	unsigned int nDefaultGateWay;							  ///< \Chinese å½“å‰ç½‘å…³										\English Current gateway
+	unsigned int nNetExport;								  ///< \Chinese ç½‘å£IPåœ°å€									\English IP address
+	uint64_t nMacAddress;									  ///< \Chinese MACåœ°å€										\English MAC address
+	unsigned char chVendorName[GX_INFO_LENGTH_64_BYTE];		  ///< \Chinese ä¾›åº”å•†åå­—									\English Supplier name
+	unsigned char chModelName[GX_INFO_LENGTH_64_BYTE];		  ///< \Chinese å‹å·åå­—										\English Model name
+	unsigned char chManufacturerInfo[GX_INFO_LENGTH_64_BYTE]; ///< \Chinese å‚å•†ä¿¡æ¯										\English Vendor information
+	unsigned char chDeviceVersion[GX_INFO_LENGTH_64_BYTE];	  ///< \Chinese è®¾å¤‡ç‰ˆæœ¬										\English Device version
+	unsigned char chSerialNumber[GX_INFO_LENGTH_64_BYTE];	  ///< \Chinese åºåˆ—å·										\English Serial number
+	unsigned char chUserDefinedName[GX_INFO_LENGTH_64_BYTE];  ///< \Chinese ç”¨æˆ·è‡ªå®šä¹‰åå­—								\English User-defined name
+	unsigned int nReserved[64];								  ///< \Chinese ä¿ç•™å­—æ®µ										\English reserve
 
-}GX_GEV_DEVICE_INFO;
+} GX_GEV_DEVICE_INFO;
 
 typedef struct GX_U3V_DEVICE_INFO
 {
-	unsigned char       chVendorName[GX_INFO_LENGTH_64_BYTE];		///< \Chinese ¹©Ó¦ÉÌÃû×Ö									\English Supplier name
-	unsigned char       chModelName[GX_INFO_LENGTH_64_BYTE];		///< \Chinese ĞÍºÅÃû×Ö										\English Model name
-	unsigned char       chManufacturerInfo[GX_INFO_LENGTH_64_BYTE];	///< \Chinese ³§ÉÌĞÅÏ¢										\English Vendor information 
-	unsigned char       chDeviceVersion[GX_INFO_LENGTH_64_BYTE];	///< \Chinese Éè±¸°æ±¾										\English Device version
-	unsigned char       chSerialNumber[GX_INFO_LENGTH_64_BYTE];		///< \Chinese ĞòÁĞºÅ										\English Serial number
-	unsigned char       chUserDefinedName[GX_INFO_LENGTH_64_BYTE];	///< \Chinese ÓÃ»§×Ô¶¨ÒåÃû×Ö								\English User-defined name 
-	unsigned int        nReserved[64];								///< \Chinese ±£Áô×Ö¶Î										\English reserve
-}GX_U3V_DEVICE_INFO;
+	unsigned char chVendorName[GX_INFO_LENGTH_64_BYTE];		  ///< \Chinese ä¾›åº”å•†åå­—									\English Supplier name
+	unsigned char chModelName[GX_INFO_LENGTH_64_BYTE];		  ///< \Chinese å‹å·åå­—										\English Model name
+	unsigned char chManufacturerInfo[GX_INFO_LENGTH_64_BYTE]; ///< \Chinese å‚å•†ä¿¡æ¯										\English Vendor information
+	unsigned char chDeviceVersion[GX_INFO_LENGTH_64_BYTE];	  ///< \Chinese è®¾å¤‡ç‰ˆæœ¬										\English Device version
+	unsigned char chSerialNumber[GX_INFO_LENGTH_64_BYTE];	  ///< \Chinese åºåˆ—å·										\English Serial number
+	unsigned char chUserDefinedName[GX_INFO_LENGTH_64_BYTE];  ///< \Chinese ç”¨æˆ·è‡ªå®šä¹‰åå­—								\English User-defined name
+	unsigned int nReserved[64];								  ///< \Chinese ä¿ç•™å­—æ®µ										\English reserve
+} GX_U3V_DEVICE_INFO;
 
 typedef struct GX_USB_DEVICE_INFO
 {
-	unsigned char       chVendorName[GX_INFO_LENGTH_64_BYTE];		///< \Chinese ¹©Ó¦ÉÌÃû×Ö									\English Supplier name
-	unsigned char       chModelName[GX_INFO_LENGTH_64_BYTE];		///< \Chinese ĞÍºÅÃû×Ö										\English Model name
-	unsigned char       chManufacturerInfo[GX_INFO_LENGTH_64_BYTE];	///< \Chinese ³§ÉÌĞÅÏ¢										\English Vendor information 
-	unsigned char       chDeviceVersion[GX_INFO_LENGTH_64_BYTE];	///< \Chinese Éè±¸°æ±¾										\English Device version
-	unsigned char       chSerialNumber[GX_INFO_LENGTH_64_BYTE];		///< \Chinese ĞòÁĞºÅ										\English Serial number
-	unsigned char       chUserDefinedName[GX_INFO_LENGTH_64_BYTE];	///< \Chinese ÓÃ»§×Ô¶¨ÒåÃû×Ö								\English User-defined name 
-	unsigned int        nReserved[64];								///< \Chinese ±£Áô×Ö¶Î										\English reserve
-}GX_USB_DEVICE_INFO;
+	unsigned char chVendorName[GX_INFO_LENGTH_64_BYTE];		  ///< \Chinese ä¾›åº”å•†åå­—									\English Supplier name
+	unsigned char chModelName[GX_INFO_LENGTH_64_BYTE];		  ///< \Chinese å‹å·åå­—										\English Model name
+	unsigned char chManufacturerInfo[GX_INFO_LENGTH_64_BYTE]; ///< \Chinese å‚å•†ä¿¡æ¯										\English Vendor information
+	unsigned char chDeviceVersion[GX_INFO_LENGTH_64_BYTE];	  ///< \Chinese è®¾å¤‡ç‰ˆæœ¬										\English Device version
+	unsigned char chSerialNumber[GX_INFO_LENGTH_64_BYTE];	  ///< \Chinese åºåˆ—å·										\English Serial number
+	unsigned char chUserDefinedName[GX_INFO_LENGTH_64_BYTE];  ///< \Chinese ç”¨æˆ·è‡ªå®šä¹‰åå­—								\English User-defined name
+	unsigned int nReserved[64];								  ///< \Chinese ä¿ç•™å­—æ®µ										\English reserve
+} GX_USB_DEVICE_INFO;
 
-typedef struct GX_DEVICE_INFO 
+typedef struct GX_DEVICE_INFO
 {
-	GX_DEVICE_CLASS             emDevType;							///< \Chinese Éè±¸ÀàĞÍ										\English device class
-	unsigned int                nReserved[4];						///< \Chinese ±£Áô×Ö¶Î										\English reserve
+	GX_DEVICE_CLASS emDevType; ///< \Chinese è®¾å¤‡ç±»å‹										\English device class
+	unsigned int nReserved[4]; ///< \Chinese ä¿ç•™å­—æ®µ										\English reserve
 	union
 	{
-		GX_CXP_DEVICE_INFO      stCXPDevInfo;						///< \Chinese CXPÉè±¸ĞÅÏ¢									\English CXP device information
-		GX_GEV_DEVICE_INFO      stGEVDevInfo;						///< \Chinese GEVÉè±¸ĞÅÏ¢									\English GEV device information
-		GX_U3V_DEVICE_INFO      stU3VDevInfo;						///< \Chinese U3VÉè±¸ĞÅÏ¢									\English U3V device information
-		GX_USB_DEVICE_INFO      stUSBDevInfo;						///< \Chinese USBÉè±¸ĞÅÏ¢									\English USB device information
-		unsigned int            nReserved[256];						///< \Chinese ±£Áô×Ö¶Î										\English reserve
+		GX_CXP_DEVICE_INFO stCXPDevInfo; ///< \Chinese CXPè®¾å¤‡ä¿¡æ¯									\English CXP device information
+		GX_GEV_DEVICE_INFO stGEVDevInfo; ///< \Chinese GEVè®¾å¤‡ä¿¡æ¯									\English GEV device information
+		GX_U3V_DEVICE_INFO stU3VDevInfo; ///< \Chinese U3Vè®¾å¤‡ä¿¡æ¯									\English U3V device information
+		GX_USB_DEVICE_INFO stUSBDevInfo; ///< \Chinese USBè®¾å¤‡ä¿¡æ¯									\English USB device information
+		unsigned int nReserved[256];	 ///< \Chinese ä¿ç•™å­—æ®µ										\English reserve
 	} DevInfo;
-}GX_DEVICE_INFO;
+} GX_DEVICE_INFO;
 
 typedef struct GX_INT_VALUE
 {
-	int64_t nCurValue;												///< \Chinese ÕûĞÍÖµµ±Ç°Öµ									\English The integer value is the current value 
-	int64_t nMin;													///< \Chinese ÕûĞÍÖµ×îĞ¡Öµ									\English The integer value is the minimum 
-	int64_t nMax;													///< \Chinese ÕûĞÍÖµ×î´óÖµ									\English The integer value is the maximum 
-	int64_t nInc;													///< \Chinese ÕûĞÍÖµ²½³¤									\English The integer value is the step
-	int32_t reserved[16];											///< \Chinese ÕûĞÍÖµ±£Áô									\English reserve
-}GX_INT_VALUE;
+	int64_t nCurValue;	  ///< \Chinese æ•´å‹å€¼å½“å‰å€¼									\English The integer value is the current value
+	int64_t nMin;		  ///< \Chinese æ•´å‹å€¼æœ€å°å€¼									\English The integer value is the minimum
+	int64_t nMax;		  ///< \Chinese æ•´å‹å€¼æœ€å¤§å€¼									\English The integer value is the maximum
+	int64_t nInc;		  ///< \Chinese æ•´å‹å€¼æ­¥é•¿									\English The integer value is the step
+	int32_t reserved[16]; ///< \Chinese æ•´å‹å€¼ä¿ç•™									\English reserve
+} GX_INT_VALUE;
 
 typedef struct GX_FLOAT_VALUE
 {
-	double  dCurValue;												///< \Chinese ¸¡µãĞÍµ±Ç°Öµ									\English The float value is the current value 
-	double  dMin;													///< \Chinese ¸¡µãĞÍ×îĞ¡Öµ									\English The float value is the minimum 
-	double  dMax;													///< \Chinese ¸¡µãĞÍ×î´óÖµ									\English The float value is the maximum 
-	double  dInc;													///< \Chinese ¸¡µãĞÍ²½³¤									\English The float value is the step
-	bool    bIncIsValid;											///< \Chinese ¸¡µãĞÍ²½³¤ÊÇ·ñÓĞĞ§							\English If a floating-point step is valid
-	char    szUnit[GX_INFO_LENGTH_8_BYTE];							///< \Chinese ¸¡µãĞÍµ¥Î»									\English Floating point unit 
-	int32_t reserved[16];											///< \Chinese ±£Áô											\English reserve
-}GX_FLOAT_VALUE;
+	double dCurValue;					///< \Chinese æµ®ç‚¹å‹å½“å‰å€¼									\English The float value is the current value
+	double dMin;						///< \Chinese æµ®ç‚¹å‹æœ€å°å€¼									\English The float value is the minimum
+	double dMax;						///< \Chinese æµ®ç‚¹å‹æœ€å¤§å€¼									\English The float value is the maximum
+	double dInc;						///< \Chinese æµ®ç‚¹å‹æ­¥é•¿									\English The float value is the step
+	bool bIncIsValid;					///< \Chinese æµ®ç‚¹å‹æ­¥é•¿æ˜¯å¦æœ‰æ•ˆ							\English If a floating-point step is valid
+	char szUnit[GX_INFO_LENGTH_8_BYTE]; ///< \Chinese æµ®ç‚¹å‹å•ä½									\English Floating point unit
+	int32_t reserved[16];				///< \Chinese ä¿ç•™											\English reserve
+} GX_FLOAT_VALUE;
 
 typedef struct GX_ENUM_VALUE_DES
 {
-	int64_t nCurValue;												///< \Chinese Ã¶¾ÙĞÍµ±Ç°Öµ									\English Enumeration current values 
-	char    strCurSymbolic[GX_INFO_LENGTH_128_BYTE];				///< \Chinese Ã¶¾ÙĞÍµ±Ç°ÖµµÄ·ûºÅÃû³Æ						\English The symbol name of the current value of the enumeration type
-	int32_t reserved[4];											///< \Chinese ±£Áô											\English reserve
-}GX_ENUM_VALUE_DES;
+	int64_t nCurValue;							  ///< \Chinese æšä¸¾å‹å½“å‰å€¼									\English Enumeration current values
+	char strCurSymbolic[GX_INFO_LENGTH_128_BYTE]; ///< \Chinese æšä¸¾å‹å½“å‰å€¼çš„ç¬¦å·åç§°						\English The symbol name of the current value of the enumeration type
+	int32_t reserved[4];						  ///< \Chinese ä¿ç•™											\English reserve
+} GX_ENUM_VALUE_DES;
 
 typedef struct GX_ENUM_VALUE
 {
-	GX_ENUM_VALUE_DES stCurValue;									///< \Chinese Ã¶¾ÙĞÍµ±Ç°Öµ									\English Enumeration current values 
-	uint32_t          nSupportedNum;								///< \Chinese Ã¶¾ÙĞÍÖ§³ÖµÄ×ÓÏî¸öÊı							\English Enumeration supported subterm number 
-	GX_ENUM_VALUE_DES nArrySupportedValue[128];						///< \Chinese Ã¶¾ÙĞÍÖ§³ÖµÄ×ÓÏîµÄÖµ							\English The value of the subitems supported by the enumeration type 
-	int32_t           reserved[16];									///< \Chinese ±£Áô											\English reserve
-}GX_ENUM_VALUE;
+	GX_ENUM_VALUE_DES stCurValue;				///< \Chinese æšä¸¾å‹å½“å‰å€¼									\English Enumeration current values
+	uint32_t nSupportedNum;						///< \Chinese æšä¸¾å‹æ”¯æŒçš„å­é¡¹ä¸ªæ•°							\English Enumeration supported subterm number
+	GX_ENUM_VALUE_DES nArrySupportedValue[128]; ///< \Chinese æšä¸¾å‹æ”¯æŒçš„å­é¡¹çš„å€¼							\English The value of the subitems supported by the enumeration type
+	int32_t reserved[16];						///< \Chinese ä¿ç•™											\English reserve
+} GX_ENUM_VALUE;
 
 typedef struct GX_STRING_VALUE
 {
-	char    strCurValue[GX_INFO_LENGTH_256_BYTE];					///< \Chinese ×Ö·û´®ÀàĞÍµ±Ç°Öµ								\English The current value of the string type 
-	int64_t nMaxLength;												///< \Chinese ×Ö·û´®ÀàĞÍ×î´ó³¤¶È							\English Maximum length of string type 
-	int32_t reserved[4];											///< \Chinese ±£Áô											\English reserve
-}GX_STRING_VALUE;
+	char strCurValue[GX_INFO_LENGTH_256_BYTE]; ///< \Chinese å­—ç¬¦ä¸²ç±»å‹å½“å‰å€¼								\English The current value of the string type
+	int64_t nMaxLength;						   ///< \Chinese å­—ç¬¦ä¸²ç±»å‹æœ€å¤§é•¿åº¦							\English Maximum length of string type
+	int32_t reserved[4];					   ///< \Chinese ä¿ç•™											\English reserve
+} GX_STRING_VALUE;
 
-/* 
-\Chinese ÖØÖÃÉè±¸Ä£Ê½
-\English Reset Device Mode 
+/*
+\Chinese é‡ç½®è®¾å¤‡æ¨¡å¼
+\English Reset Device Mode
 */
 typedef enum GX_RESET_DEVICE_MODE
 {
-	GX_MANUFACTURER_SPECIFIC_RECONNECT   = 0x1,						///< \Chinese ÖØÁ¬Éè±¸										\English reconnect Device
-	GX_MANUFACTURER_SPECIFIC_RESET       = 0x2						///< \Chinese ÖØÖÃÉè±¸										\English reset Device
-}GX_RESET_DEVICE_MODE;
+	GX_MANUFACTURER_SPECIFIC_RECONNECT = 0x1, ///< \Chinese é‡è¿è®¾å¤‡										\English reconnect Device
+	GX_MANUFACTURER_SPECIFIC_RESET = 0x2	  ///< \Chinese é‡ç½®è®¾å¤‡										\English reset Device
+} GX_RESET_DEVICE_MODE;
 
 typedef struct GX_REGISTER_STACK_ENTRY
 {
-    uint64_t   nAddress;											///> \Chinese ¼Ä´æÆ÷µØÖ·									\English Address of the register
-    void*      pBuffer;												///> \Chinese ¼Ä´æÆ÷ÖµµØÖ·									\English Pointer to the buffer containing the data
-    size_t     nSize;												///> \Chinese ¼Ä´æÆ÷Öµ³¤¶È									\English Number of bytes to read
+	uint64_t nAddress; ///> \Chinese å¯„å­˜å™¨åœ°å€									\English Address of the register
+	void *pBuffer;	   ///> \Chinese å¯„å­˜å™¨å€¼åœ°å€									\English Pointer to the buffer containing the data
+	size_t nSize;	   ///> \Chinese å¯„å­˜å™¨å€¼é•¿åº¦									\English Number of bytes to read
 } GX_REGISTER_STACK_ENTRY;
 
 typedef enum GX_LOG_TYPE_LIST
 {
-    GX_LOG_TYPE_OFF   = 0x00000000,							///< \Chinese ËùÓĞÀàĞÍ¾ù·¢ËÍ\²»·¢ËÍ     \English All types are sent \ Not sent
-    GX_LOG_TYPE_FATAL = 0x00000001,							///< \Chinese FATALÀàĞÍ               \English log type: fatal
-    GX_LOG_TYPE_ERROR = 0x00000010,							///< \Chinese ERRORÀàĞÍ               \English log type: error
-    GX_LOG_TYPE_WARN  = 0x00000100,							///< \Chinese WARNÀàĞÍ                \English log type: warning
-    GX_LOG_TYPE_INFO  = 0x00001000,							///< \Chinese INFOÀàĞÍ                \English log type: info
-    GX_LOG_TYPE_DEBUG = 0x00010000,							///< \Chinese DEBUGÀàĞÍ               \English log type: debug
-    GX_LOG_TYPE_TRACE = 0x00100000,							///< \Chinese TRACEÀàĞÍ               \English log type: trace
-}GX_LOG_TYPE_LIST;
+	GX_LOG_TYPE_OFF = 0x00000000,	///< \Chinese æ‰€æœ‰ç±»å‹å‡å‘é€\ä¸å‘é€     \English All types are sent \ Not sent
+	GX_LOG_TYPE_FATAL = 0x00000001, ///< \Chinese FATALç±»å‹               \English log type: fatal
+	GX_LOG_TYPE_ERROR = 0x00000010, ///< \Chinese ERRORç±»å‹               \English log type: error
+	GX_LOG_TYPE_WARN = 0x00000100,	///< \Chinese WARNç±»å‹                \English log type: warning
+	GX_LOG_TYPE_INFO = 0x00001000,	///< \Chinese INFOç±»å‹                \English log type: info
+	GX_LOG_TYPE_DEBUG = 0x00010000, ///< \Chinese DEBUGç±»å‹               \English log type: debug
+	GX_LOG_TYPE_TRACE = 0x00100000, ///< \Chinese TRACEç±»å‹               \English log type: trace
+} GX_LOG_TYPE_LIST;
 typedef uint32_t GX_LOG_TYPE;
 
 //------------------------------------------------------------------------------
-//Chinese   »Øµ÷º¯ÊıÀàĞÍ¶¨Òå
-//English   The callback is defined by the number type 
+// Chinese   å›è°ƒå‡½æ•°ç±»å‹å®šä¹‰
+// English   The callback is defined by the number type
 //------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief     ²É¼¯»Øµ÷º¯Êı¶¨Òå
-\param     pFrameData    Ö¡Êı¾İĞÅÏ¢½á¹¹Ìå
+\Chineseï¼š
+\brief     é‡‡é›†å›è°ƒå‡½æ•°å®šä¹‰
+\param     pFrameData    å¸§æ•°æ®ä¿¡æ¯ç»“æ„ä½“
 \return    void
 
 \English:
@@ -425,12 +422,12 @@ typedef uint32_t GX_LOG_TYPE;
 \return    void
 */
 //----------------------------------------------------------------------------------
-typedef void (GX_STDC* GXCaptureCallBack) (GX_FRAME_CALLBACK_PARAM *pFrameData);
+typedef void(GX_STDC *GXCaptureCallBack)(GX_FRAME_CALLBACK_PARAM *pFrameData);
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief     µôÏß»Øµ÷º¯Êı¶¨Òå
-\param     pUserParam    ÓÃ»§Ë½ÓĞ²ÎÊı£¬×¢²áµôÏß»Øµ÷º¯ÊıµÄÊ±ºò´«Èë´Ë²ÎÊı
+\Chineseï¼š
+\brief     æ‰çº¿å›è°ƒå‡½æ•°å®šä¹‰
+\param     pUserParam    ç”¨æˆ·ç§æœ‰å‚æ•°ï¼Œæ³¨å†Œæ‰çº¿å›è°ƒå‡½æ•°çš„æ—¶å€™ä¼ å…¥æ­¤å‚æ•°
 \return    void
 
 \English:
@@ -439,13 +436,13 @@ typedef void (GX_STDC* GXCaptureCallBack) (GX_FRAME_CALLBACK_PARAM *pFrameData);
 \return    void
 */
 //----------------------------------------------------------------------------------
-typedef void (GX_STDC *GXDeviceOfflineCallBack) (void *pUserParam);
+typedef void(GX_STDC *GXDeviceOfflineCallBack)(void *pUserParam);
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief     »ù±¾ÊôĞÔ»Øµ÷º¯Êı¶¨Òå
-\param     strFeatureName   ÊôĞÔÃû³Æ×Ö·û´®£¬Óë×¢²á»ù±¾ÊôĞÔ»Øµ÷º¯ÊıµÄÊ±ºò´«ÈëµÄÖµÒ»ÖÂ
-\param     pUserParam       ÓÃ»§Ë½ÓĞ²ÎÊı£¬Óë×¢²á»ù±¾ÊôĞÔ»Øµ÷º¯ÊıµÄÊ±ºò´«ÈëµÄÖµÒ»ÖÂ
+\Chineseï¼š
+\brief     åŸºæœ¬å±æ€§å›è°ƒå‡½æ•°å®šä¹‰
+\param     strFeatureName   å±æ€§åç§°å­—ç¬¦ä¸²ï¼Œä¸æ³¨å†ŒåŸºæœ¬å±æ€§å›è°ƒå‡½æ•°çš„æ—¶å€™ä¼ å…¥çš„å€¼ä¸€è‡´
+\param     pUserParam       ç”¨æˆ·ç§æœ‰å‚æ•°ï¼Œä¸æ³¨å†ŒåŸºæœ¬å±æ€§å›è°ƒå‡½æ•°çš„æ—¶å€™ä¼ å…¥çš„å€¼ä¸€è‡´
 \return    void
 
 \English:
@@ -455,14 +452,14 @@ typedef void (GX_STDC *GXDeviceOfflineCallBack) (void *pUserParam);
 \return    void
 */
 //----------------------------------------------------------------------------------
-typedef void (GX_STDC* GXFeatureCallBackByString) (const char* strFeatureName, void* pUserParam);
+typedef void(GX_STDC *GXFeatureCallBackByString)(const char *strFeatureName, void *pUserParam);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief     »ù±¾ÊôĞÔ»Øµ÷º¯Êı¶¨Òå
-\param     nFeatureID    ÊôĞÔ¿ØÖÆID£¬Óë×¢²á»ù±¾ÊôĞÔ»Øµ÷º¯ÊıµÄÊ±ºò´«ÈëµÄÖµÒ»ÖÂ
-\param     pUserParam    ÓÃ»§Ë½ÓĞ²ÎÊı£¬Óë×¢²á»ù±¾ÊôĞÔ»Øµ÷º¯ÊıµÄÊ±ºò´«ÈëµÄÖµÒ»ÖÂ
+\Chineseï¼š
+\brief     åŸºæœ¬å±æ€§å›è°ƒå‡½æ•°å®šä¹‰
+\param     nFeatureID    å±æ€§æ§åˆ¶IDï¼Œä¸æ³¨å†ŒåŸºæœ¬å±æ€§å›è°ƒå‡½æ•°çš„æ—¶å€™ä¼ å…¥çš„å€¼ä¸€è‡´
+\param     pUserParam    ç”¨æˆ·ç§æœ‰å‚æ•°ï¼Œä¸æ³¨å†ŒåŸºæœ¬å±æ€§å›è°ƒå‡½æ•°çš„æ—¶å€™ä¼ å…¥çš„å€¼ä¸€è‡´
 \return    void
 
 \English:
@@ -473,6 +470,6 @@ typedef void (GX_STDC* GXFeatureCallBackByString) (const char* strFeatureName, v
 */
 //----------------------------------------------------------------------------------
 typedef int32_t GX_FEATURE_ID_CMD;
-typedef void (GX_STDC *GXFeatureCallBack) (GX_FEATURE_ID_CMD  nFeatureID, void *pUserParam);
+typedef void(GX_STDC *GXFeatureCallBack)(GX_FEATURE_ID_CMD nFeatureID, void *pUserParam);
 
-#endif //GX_DEF_H
+#endif // GX_DEF_H

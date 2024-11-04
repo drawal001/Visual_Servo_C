@@ -1,6 +1,6 @@
 /**
 @File      GxIAPI.h
-@Brief     the interface for the GxIAPI dll module. 
+@Brief     the interface for the GxIAPI dll module.
 @Author    Software Department
 @Date      2024-06-12
 @Version   2.0.2406.9121
@@ -10,9 +10,9 @@
 #define GX_GALAXY_H
 
 #ifdef GX_GALAXY_DLL
-	#define GX_DLLENTRY GX_EXTC GX_DLLEXPORT
+#define GX_DLLENTRY GX_EXTC GX_DLLEXPORT
 #else
-	#define GX_DLLENTRY GX_EXTC GX_DLLIMPORT
+#define GX_DLLENTRY GX_EXTC GX_DLLIMPORT
 #endif
 
 #include "GXErrorList.h"
@@ -20,8 +20,8 @@
 #include "GxPixelFormat.h"
 
 //------------------------------------------------------------------------------
-//Chinese	±ê×¼C API¹¦ÄÜº¯Êı¶¨Òå
-//English	Standard C API function definition 
+// Chinese	æ ‡å‡†C APIåŠŸèƒ½å‡½æ•°å®šä¹‰
+// English	Standard C API function definition
 //------------------------------------------------------------------------------
 #define GX_API GX_EXTC GX_STATUS GX_STDC
 
@@ -29,17 +29,17 @@ typedef uint64_t void_64;
 
 //------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief		³õÊ¼»¯Éè±¸¿â¡£
-\attention	µ÷ÓÃÆäËû½Ó¿Ú£¨³ıÁËGXGetLastErrorºÍGXCloseLib£©Ö®Ç°±ØĞëÏÈµ÷ÓÃ´Ë½Ó¿Ú£¬µ±ÓÃ»§²»ÔÙÊ¹ÓÃ¿âµÄÊ±ºòµ÷ÓÃGXCloseLibÊÍ·Å¿â×ÊÔ´¡£
-			Èç¹ûÖ®Ç°ÓÃ»§ÒÑ¾­µ÷ÓÃ¹ıGXInitLib£¬Ã»ÓĞµ÷ÓÃGXCloseLib£¬¶øÔÙ´Îµ÷ÓÃGXInitLib½Ó¿Ú£¬½Ó¿Ú·µ»Ø³É¹¦¡£
-\return		GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_FOUND_TL			ÕÒ²»µ½TL¿â
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief		åˆå§‹åŒ–è®¾å¤‡åº“ã€‚
+\attention	è°ƒç”¨å…¶ä»–æ¥å£ï¼ˆé™¤äº†GXGetLastErrorå’ŒGXCloseLibï¼‰ä¹‹å‰å¿…é¡»å…ˆè°ƒç”¨æ­¤æ¥å£ï¼Œå½“ç”¨æˆ·ä¸å†ä½¿ç”¨åº“çš„æ—¶å€™è°ƒç”¨GXCloseLibé‡Šæ”¾åº“èµ„æºã€‚
+			å¦‚æœä¹‹å‰ç”¨æˆ·å·²ç»è°ƒç”¨è¿‡GXInitLibï¼Œæ²¡æœ‰è°ƒç”¨GXCloseLibï¼Œè€Œå†æ¬¡è°ƒç”¨GXInitLibæ¥å£ï¼Œæ¥å£è¿”å›æˆåŠŸã€‚
+\return		GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_FOUND_TL			æ‰¾ä¸åˆ°TLåº“
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief		Initialize the device library.
-\attention	This interface must be called before calling any other interface (except GXGetLastError and GXCloseLib), 
+\attention	This interface must be called before calling any other interface (except GXGetLastError and GXCloseLib),
 			and GXCloseLib is called to release library resources when the user is no longer using the library.
 			If the user has called GXInitLib before, does not call GXCloseLib, and calls the GXInitLib interface again, the interface returns success.
 \return		GX_STATUS_SUCCESS				The operation is successful, no error occurs.
@@ -51,15 +51,15 @@ GX_API GXInitLib();
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief		¹Ø±ÕÉè±¸¿â£¬ÊÍ·Å×ÊÔ´
-\attention	ÊÍ·Å¿â×ÊÔ´£¬µ±ÓÃ»§²»ÔÙÊ¹ÓÃ¿âµÄÊ±ºòµ÷ÓÃ´Ë½Ó¿Ú¡£
-			Èç¹ûÓÃ»§Ö®Ç°Ã»ÓĞµ÷ÓÃGXInitLib£¬Ö±½Óµ÷ÓÃGXCloseLib£¬½Ó¿Ú·µ»Ø³É¹¦¡£
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST   
+\Chineseï¼š
+\brief		å…³é—­è®¾å¤‡åº“ï¼Œé‡Šæ”¾èµ„æº
+\attention	é‡Šæ”¾åº“èµ„æºï¼Œå½“ç”¨æˆ·ä¸å†ä½¿ç”¨åº“çš„æ—¶å€™è°ƒç”¨æ­¤æ¥å£ã€‚
+			å¦‚æœç”¨æˆ·ä¹‹å‰æ²¡æœ‰è°ƒç”¨GXInitLibï¼Œç›´æ¥è°ƒç”¨GXCloseLibï¼Œæ¥å£è¿”å›æˆåŠŸã€‚
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
-\brief		Close the device library to release resources. 
+\brief		Close the device library to release resources.
 \attention	Frees library resources and invokes this interface when the user is no longer using the library.
 			If the user did not call GXInitLib before, call GXCloseLib directly and the interface returns success.
 \return		GX_STATUS_SUCCESS				The operation is successful, no error occurs.
@@ -70,73 +70,73 @@ GX_API GXCloseLib();
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ÉèÖÃÖ¸¶¨ÀàĞÍµÄÈÕÖ¾¿É·¢ËÍ
-\attention  ´Ë½Ó¿ÚµÄ×÷ÓÃÊÇÉèÖÃÖ¸¶¨ÀàĞÍÈÕÖ¾¿É·¢ËÍ£¬µ÷ÓÃÖ®Ç°ĞèÒªµ÷ÓÃGXInitLib½Ó¿Ú
-\param      [in]ui32LogType                 ÈÕÖ¾ÀàĞÍ£º GX_LOG_TYPE_FATAL|GX_LOG_TYPE_ERROR|GX_LOG_TYPE_INFO
-                                                        GX_LOG_TYPE_OFF£º È«²¿²»¿É·¢ËÍ
-\return     GX_STATUS_SUCCESS               ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-            GX_STATUS_NOT_INIT_API          Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-            GX_STATUS_INVALID_ACCESS        ÅäÖÃÎÄ¼şÂ·¾¶´íÎó
-            ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è®¾ç½®æŒ‡å®šç±»å‹çš„æ—¥å¿—å¯å‘é€
+\attention  æ­¤æ¥å£çš„ä½œç”¨æ˜¯è®¾ç½®æŒ‡å®šç±»å‹æ—¥å¿—å¯å‘é€ï¼Œè°ƒç”¨ä¹‹å‰éœ€è¦è°ƒç”¨GXInitLibæ¥å£
+\param      [in]ui32LogType                 æ—¥å¿—ç±»å‹ï¼š GX_LOG_TYPE_FATAL|GX_LOG_TYPE_ERROR|GX_LOG_TYPE_INFO
+														GX_LOG_TYPE_OFFï¼š å…¨éƒ¨ä¸å¯å‘é€
+\return     GX_STATUS_SUCCESS               æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API          æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_ACCESS        é…ç½®æ–‡ä»¶è·¯å¾„é”™è¯¯
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Set whether logs of the specified type can be sent
-\attention  The function of this interface is to set whether the specified type of logs can be sent. 
-            The GXInitLib interface needs to be called before the invocation
+\attention  The function of this interface is to set whether the specified type of logs can be sent.
+			The GXInitLib interface needs to be called before the invocation
 \param      [in]ui32LogType                 log type:   GX_LOG_TYPE_FATAL|GX_LOG_TYPE_ERROR|GX_LOG_TYPE_INFO
-                                                        GX_LOG_TYPE_OFF: all cannot be sent
+														GX_LOG_TYPE_OFF: all cannot be sent
 \return		GX_STATUS_SUCCESS				The operation is successful and no error occurs.
-            GX_STATUS_NOT_INIT_API			The GXInitLib initialization library is not called.
-            GX_STATUS_INVALID_ACCESS		The config file path is not available.
-            The errors that are not covered above please reference GX_STATUS_LIST.
+			GX_STATUS_NOT_INIT_API			The GXInitLib initialization library is not called.
+			GX_STATUS_INVALID_ACCESS		The config file path is not available.
+			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
 GX_API GXSetLogType(const uint32_t ui32LogType);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡Ö¸¶¨ÀàĞÍµÄÈÕÖ¾ÊÇ·ñ¿É·¢ËÍ
-\attention  ´Ë½Ó¿ÚµÄ×÷ÓÃÊÇ»ñÈ¡Ö¸¶¨ÀàĞÍÈÕÖ¾ÊÇ·ñ¿É·¢ËÍ£¬µ÷ÓÃÖ®Ç°ĞèÒªµ÷ÓÃGXInitLib½Ó¿Ú
-\param      [out]pui32Value                  ÈÕÖ¾ÀàĞÍÊÇ·ñ¿É·¢ËÍ£ºFATAL|ERROR|WARN|INFO|DEBUG|TRACE
-\return     GX_STATUS_SUCCESS               ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-            GX_STATUS_NOT_INIT_API          Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-            GX_STATUS_INVALID_PARAMETER     ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-            GX_STATUS_INVALID_ACCESS        ÅäÖÃÎÄ¼şÂ·¾¶´íÎó
-            ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è·å–æŒ‡å®šç±»å‹çš„æ—¥å¿—æ˜¯å¦å¯å‘é€
+\attention  æ­¤æ¥å£çš„ä½œç”¨æ˜¯è·å–æŒ‡å®šç±»å‹æ—¥å¿—æ˜¯å¦å¯å‘é€ï¼Œè°ƒç”¨ä¹‹å‰éœ€è¦è°ƒç”¨GXInitLibæ¥å£
+\param      [out]pui32Value                  æ—¥å¿—ç±»å‹æ˜¯å¦å¯å‘é€ï¼šFATAL|ERROR|WARN|INFO|DEBUG|TRACE
+\return     GX_STATUS_SUCCESS               æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API          æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER     ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_ACCESS        é…ç½®æ–‡ä»¶è·¯å¾„é”™è¯¯
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Gets whether logs of a specified type can be sent
-\attention  The function of this interface is to get whether the specified type of logs can be sent. 
-            The GXInitLib interface needs to be called before the invocation
+\attention  The function of this interface is to get whether the specified type of logs can be sent.
+			The GXInitLib interface needs to be called before the invocation
 \param      [out]pui32Value                 log type value: FATAL|ERROR|WARN|INFO|DEBUG|TRACE
 \return		GX_STATUS_SUCCESS				The operation is successful and no error occurs.
-            GX_STATUS_NOT_INIT_API			The GXInitLib initialization library is not called.
-            GX_STATUS_INVALID_PARAMETER		The pointer that the user input is NULL.
-            GX_STATUS_INVALID_ACCESS		The config file path is not available.
-            The errors that are not covered above please reference GX_STATUS_LIST.
+			GX_STATUS_NOT_INIT_API			The GXInitLib initialization library is not called.
+			GX_STATUS_INVALID_PARAMETER		The pointer that the user input is NULL.
+			GX_STATUS_INVALID_ACCESS		The config file path is not available.
+			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXGetLogType(uint32_t* pui32Value);
+GX_API GXGetLogType(uint32_t *pui32Value);
 
 //------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡³ÌĞò×îºóµÄ´íÎóÃèÊöĞÅÏ¢
-\attention  µ±ÓÃ»§µ÷ÓÃÆäËü½Ó¿ÚÊ§°ÜµÄÊ±ºò£¬¿ÉÒÔµ÷ÓÃ´Ë½Ó¿Ú»ñÈ¡¹ØÓÚÊ§°ÜĞÅÏ¢µÄÏêÏ¸ÃèÊö
-\param		[out] pErrorCode		·µ»Ø×îºóµÄ´íÎóÂë£¬Èç¹ûÓÃ»§²»Ïë»ñÈ¡´ËÖµ£¬ÄÇÃ´´Ë²ÎÊı¿ÉÒÔ´«NULL
-\param		[out] pszErrText		·µ»Ø´íÎóĞÅÏ¢»º³åÇøµØÖ·
-\param		[in,out] pSize			´íÎóĞÅÏ¢»º³åÇøµØÖ·´óĞ¡£¬µ¥Î»×Ö½Ú
-									Èç¹ûpszErrTextÎªNULL£º
-									[out]pnSize·µ»ØÊµ¼ÊĞèÒªµÄbuffer´óĞ¡
-									Èç¹ûpszErrText·ÇNULL£º
-									[in]pnSizeÎªÊµ¼Ê·ÖÅäµÄbuffer´óĞ¡
-									[out]pnSize·µ»ØÊµ¼ÊÌî³äbuffer´óĞ¡
-\return		GX_STATUS_SUCCESS                ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_INVALID_PARAMETER      ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_NEED_MORE_BUFFER       ÓÃ»§·ÖÅäµÄbuffer¹ıĞ¡
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è·å–ç¨‹åºæœ€åçš„é”™è¯¯æè¿°ä¿¡æ¯
+\attention  å½“ç”¨æˆ·è°ƒç”¨å…¶å®ƒæ¥å£å¤±è´¥çš„æ—¶å€™ï¼Œå¯ä»¥è°ƒç”¨æ­¤æ¥å£è·å–å…³äºå¤±è´¥ä¿¡æ¯çš„è¯¦ç»†æè¿°
+\param		[out] pErrorCode		è¿”å›æœ€åçš„é”™è¯¯ç ï¼Œå¦‚æœç”¨æˆ·ä¸æƒ³è·å–æ­¤å€¼ï¼Œé‚£ä¹ˆæ­¤å‚æ•°å¯ä»¥ä¼ NULL
+\param		[out] pszErrText		è¿”å›é”™è¯¯ä¿¡æ¯ç¼“å†²åŒºåœ°å€
+\param		[in,out] pSize			é”™è¯¯ä¿¡æ¯ç¼“å†²åŒºåœ°å€å¤§å°ï¼Œå•ä½å­—èŠ‚
+									å¦‚æœpszErrTextä¸ºNULLï¼š
+									[out]pnSizeè¿”å›å®é™…éœ€è¦çš„bufferå¤§å°
+									å¦‚æœpszErrTextéNULLï¼š
+									[in]pnSizeä¸ºå®é™…åˆ†é…çš„bufferå¤§å°
+									[out]pnSizeè¿”å›å®é™…å¡«å……bufferå¤§å°
+\return		GX_STATUS_SUCCESS                æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_INVALID_PARAMETER      ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_NEED_MORE_BUFFER       ç”¨æˆ·åˆ†é…çš„bufferè¿‡å°
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      To get the latest error descriptions information of the program.
@@ -155,53 +155,53 @@ GX_API GXGetLogType(uint32_t* pui32Value);
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //------------------------------------------------------------------------
-GX_API GXGetLastError             (GX_STATUS *pErrorCode, char *pszErrText, size_t *pSize);
+GX_API GXGetLastError(GX_STATUS *pErrorCode, char *pszErrText, size_t *pSize);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief		Ã¶¾ÙÌØ¶¨ÀàĞÍÉè±¸²¢ÇÒ»ñÈ¡Éè±¸¸öÊı
-\attention	´Ë½Ó¿ÚµÄ×÷ÓÃÊÇ¸üĞÂ¿âÄÚ²¿Éè±¸ÁĞ±í£¬´Ë½Ó¿Ú»á¸Ä±ä¿âÄÚ²¿Éè±¸ÁĞ±í£¬
-			ËùÒÔµ÷ÓÃGXGetInterfaceInfo¡¢GXGetInterfaceNum¡¢GXGetInterfaceHandle¡¢GXGetDeviceInfoºÍGXOpenDeviceÖ®Ç°ĞèÒªµ÷ÓÃ´Ë½Ó¿Ú¡£
-			Èç¹ûÔÚÓÃ»§Ö¸¶¨³¬Ê±Ê±¼äÄÚ³É¹¦Ã¶¾Ùµ½Éè±¸£¬ÔòÁ¢¼´·µ»Ø£»Èç¹ûÔÚÓÃ»§Ö¸¶¨³¬Ê±Ê±¼äÄÚÃ»ÓĞÃ¶¾Ùµ½Éè±¸£¬ÔòÒ»Ö±µÈ´ı£¬Ö±µ½´ïµ½ÓÃ»§Ö¸¶¨µÄ³¬Ê±Ê±¼ä·µ»Ø¡£
-\param		[in]nTLType				Ã¶¾ÙÌØ¶¨ÀàĞÍµÄÉè±¸£¬²Î¿¼GX_TL_TYPE_LIST
-			[out]punNumDevices		·µ»ØÉè±¸¸öÊı
-\param		[in]unTimeOut			Ã¶¾ÙµÄ³¬Ê±Ê±¼ä(µ¥Î»ms)¡£
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief		æšä¸¾ç‰¹å®šç±»å‹è®¾å¤‡å¹¶ä¸”è·å–è®¾å¤‡ä¸ªæ•°
+\attention	æ­¤æ¥å£çš„ä½œç”¨æ˜¯æ›´æ–°åº“å†…éƒ¨è®¾å¤‡åˆ—è¡¨ï¼Œæ­¤æ¥å£ä¼šæ”¹å˜åº“å†…éƒ¨è®¾å¤‡åˆ—è¡¨ï¼Œ
+			æ‰€ä»¥è°ƒç”¨GXGetInterfaceInfoã€GXGetInterfaceNumã€GXGetInterfaceHandleã€GXGetDeviceInfoå’ŒGXOpenDeviceä¹‹å‰éœ€è¦è°ƒç”¨æ­¤æ¥å£ã€‚
+			å¦‚æœåœ¨ç”¨æˆ·æŒ‡å®šè¶…æ—¶æ—¶é—´å†…æˆåŠŸæšä¸¾åˆ°è®¾å¤‡ï¼Œåˆ™ç«‹å³è¿”å›ï¼›å¦‚æœåœ¨ç”¨æˆ·æŒ‡å®šè¶…æ—¶æ—¶é—´å†…æ²¡æœ‰æšä¸¾åˆ°è®¾å¤‡ï¼Œåˆ™ä¸€ç›´ç­‰å¾…ï¼Œç›´åˆ°è¾¾åˆ°ç”¨æˆ·æŒ‡å®šçš„è¶…æ—¶æ—¶é—´è¿”å›ã€‚
+\param		[in]nTLType				æšä¸¾ç‰¹å®šç±»å‹çš„è®¾å¤‡ï¼Œå‚è€ƒGX_TL_TYPE_LIST
+			[out]punNumDevices		è¿”å›è®¾å¤‡ä¸ªæ•°
+\param		[in]unTimeOut			æšä¸¾çš„è¶…æ—¶æ—¶é—´(å•ä½ms)ã€‚
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief		Enumerate a specific type of device and get the number of devices
 \attention  The function of this interface is to update the list of internal devices in the library. This interface changes the list of internal devices in the library.
 			Therefore, this interface must be invoked before calling GXGetInterfaceInfo, GXGetInterfaceNum, GXGetInterfaceHandle, GXGetDeviceInfo, and GXOpenDevice.
-			If the device is successfully enumerated within the specified timeout time, the value returns immediately. 
+			If the device is successfully enumerated within the specified timeout time, the value returns immediately.
 			If the device is not enumerated within the specified timeout time, then it waits until the specified timeout time is over and then it returns.
 \param		[in]nTLType				Enumerate specific types of devices,reference to GX_TL_TYPE_LIST
 			[out]punNumDevices		Return number of devices
-\param		[in]unTimeOut			The timeout time of enumeration (unit: ms). 
+\param		[in]unTimeOut			The timeout time of enumeration (unit: ms).
 \return		GX_STATUS_SUCCESS				The operation is successful and no error occurs.
 			GX_STATUS_NOT_INIT_API			The GXInitLib initialization library is not called.
 			GX_STATUS_INVALID_PARAMETER		The pointer that the user input is NULL.
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXUpdateAllDeviceListEx( uint64_t nTLType, uint32_t* punNumDevices, uint32_t nTimeOut);
+GX_API GXUpdateAllDeviceListEx(uint64_t nTLType, uint32_t *punNumDevices, uint32_t nTimeOut);
 
 //----------------------------------------------------------------------------------
 /**
-\ Chinese£º
-\brief		Ã¶¾ÙËùÓĞÉè±¸²¢ÇÒ»ñÈ¡Éè±¸¸öÊı,¶ÔÓÚÇ§Õ×ÍøÉè±¸´Ë½Ó¿ÚÄÜ¹»Ã¶¾ÙËùÓĞ×ÓÍøÄÚµÄÉè±¸
-\attention	´Ë½Ó¿ÚµÄ×÷ÓÃÊÇ¸üĞÂ¿âÄÚ²¿Éè±¸ÁĞ±í£¬´Ë½Ó¿Ú»á¸Ä±ä¿âÄÚ²¿Éè±¸ÁĞ±í£¬
-			ËùÒÔµ÷ÓÃGXGetInterfaceInfo¡¢GXGetInterfaceNum¡¢GXGetInterfaceHandle¡¢GXGetDeviceInfoºÍGXOpenDeviceÖ®Ç°ĞèÒªµ÷ÓÃ´Ë½Ó¿Ú¡£
-			Èç¹ûÔÚÓÃ»§Ö¸¶¨³¬Ê±Ê±¼äÄÚ³É¹¦Ã¶¾Ùµ½Éè±¸£¬ÔòÁ¢¼´·µ»Ø£»Èç¹ûÔÚÓÃ»§Ö¸¶¨³¬Ê±Ê±¼äÄÚÃ»ÓĞÃ¶¾Ùµ½Éè±¸£¬ÔòÒ»Ö±µÈ´ı£¬Ö±µ½´ïµ½ÓÃ»§Ö¸¶¨µÄ³¬Ê±Ê±¼ä·µ»Ø
-\param		[out]punNumDevices			 ·µ»ØÉè±¸¸öÊı
-\param		[in]unTimeOut				 Ã¶¾ÙµÄ³¬Ê±Ê±¼ä(µ¥Î»ms)¡£
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\ Chineseï¼š
+\brief		æšä¸¾æ‰€æœ‰è®¾å¤‡å¹¶ä¸”è·å–è®¾å¤‡ä¸ªæ•°,å¯¹äºåƒå…†ç½‘è®¾å¤‡æ­¤æ¥å£èƒ½å¤Ÿæšä¸¾æ‰€æœ‰å­ç½‘å†…çš„è®¾å¤‡
+\attention	æ­¤æ¥å£çš„ä½œç”¨æ˜¯æ›´æ–°åº“å†…éƒ¨è®¾å¤‡åˆ—è¡¨ï¼Œæ­¤æ¥å£ä¼šæ”¹å˜åº“å†…éƒ¨è®¾å¤‡åˆ—è¡¨ï¼Œ
+			æ‰€ä»¥è°ƒç”¨GXGetInterfaceInfoã€GXGetInterfaceNumã€GXGetInterfaceHandleã€GXGetDeviceInfoå’ŒGXOpenDeviceä¹‹å‰éœ€è¦è°ƒç”¨æ­¤æ¥å£ã€‚
+			å¦‚æœåœ¨ç”¨æˆ·æŒ‡å®šè¶…æ—¶æ—¶é—´å†…æˆåŠŸæšä¸¾åˆ°è®¾å¤‡ï¼Œåˆ™ç«‹å³è¿”å›ï¼›å¦‚æœåœ¨ç”¨æˆ·æŒ‡å®šè¶…æ—¶æ—¶é—´å†…æ²¡æœ‰æšä¸¾åˆ°è®¾å¤‡ï¼Œåˆ™ä¸€ç›´ç­‰å¾…ï¼Œç›´åˆ°è¾¾åˆ°ç”¨æˆ·æŒ‡å®šçš„è¶…æ—¶æ—¶é—´è¿”å›
+\param		[out]punNumDevices			 è¿”å›è®¾å¤‡ä¸ªæ•°
+\param		[in]unTimeOut				 æšä¸¾çš„è¶…æ—¶æ—¶é—´(å•ä½ms)ã€‚
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief		Enumerate all devices and obtain the number of devices,
@@ -218,19 +218,19 @@ GX_API GXUpdateAllDeviceListEx( uint64_t nTLType, uint32_t* punNumDevices, uint3
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXUpdateAllDeviceList      (uint32_t* punNumDevices, uint32_t nTimeOut);
+GX_API GXUpdateAllDeviceList(uint32_t *punNumDevices, uint32_t nTimeOut);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡Ã¶¾Ùµ½µÄInterfaceÁĞ±íÊıÁ¿
-\attention  ´Ë½Ó¿ÚµÄ×÷ÓÃÊÇ»ñÈ¡Ã¶¾Ùµ½µÄInterfaceÊıÁ¿£¬
-			µ÷ÓÃÖ®Ç°ĞèÒªµ÷ÓÃGXUpdateAllDeviceList¡¢GXUpdateAllDeviceListEx½Ó¿Ú¡£
-\param      [in,out]punNumInterfaces      ·µ»ØInterface¸öÊı
-\return     GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è·å–æšä¸¾åˆ°çš„Interfaceåˆ—è¡¨æ•°é‡
+\attention  æ­¤æ¥å£çš„ä½œç”¨æ˜¯è·å–æšä¸¾åˆ°çš„Interfaceæ•°é‡ï¼Œ
+			è°ƒç”¨ä¹‹å‰éœ€è¦è°ƒç”¨GXUpdateAllDeviceListã€GXUpdateAllDeviceListExæ¥å£ã€‚
+\param      [in,out]punNumInterfaces      è¿”å›Interfaceä¸ªæ•°
+\return     GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Obtain the number of interface lists enumerated.
@@ -243,20 +243,20 @@ GX_API GXUpdateAllDeviceList      (uint32_t* punNumDevices, uint32_t nTimeOut);
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXGetInterfaceNum(uint32_t* punNumInterfaces);
+GX_API GXGetInterfaceNum(uint32_t *punNumInterfaces);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡´ÎĞòÎªIndexµÄInterfaceĞÅÏ¢
-\attention  ´Ë½Ó¿ÚµÄ×÷ÓÃÊÇ»ñÈ¡Ã¶¾Ùµ½Interface½Ó¿Ú£¬
-            µ÷ÓÃÖ®Ç°ĞèÒªµ÷ÓÃGXUpdateAllDeviceList¡¢GXUpdateAllDeviceListEx½Ó¿Ú
-\param      [in]nIndex					Interface ´ÎĞò£¬´Ó¿ªÊ¼ 1
-            [in,out]pstInterfaceInfo	·µ»ØInterfaceĞÅÏ¢
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-            GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-            GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-            ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è·å–æ¬¡åºä¸ºIndexçš„Interfaceä¿¡æ¯
+\attention  æ­¤æ¥å£çš„ä½œç”¨æ˜¯è·å–æšä¸¾åˆ°Interfaceæ¥å£ï¼Œ
+			è°ƒç”¨ä¹‹å‰éœ€è¦è°ƒç”¨GXUpdateAllDeviceListã€GXUpdateAllDeviceListExæ¥å£
+\param      [in]nIndex					Interface æ¬¡åºï¼Œä»å¼€å§‹ 1
+			[in,out]pstInterfaceInfo	è¿”å›Interfaceä¿¡æ¯
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Obtain basic interface information nIndex device.
@@ -270,20 +270,20 @@ GX_API GXGetInterfaceNum(uint32_t* punNumInterfaces);
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXGetInterfaceInfo(uint32_t nIndex, GX_INTERFACE_INFO* pstInterfaceInfo);
+GX_API GXGetInterfaceInfo(uint32_t nIndex, GX_INTERFACE_INFO *pstInterfaceInfo);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡´ÎĞòÎªIndexµÄInterface Handle
-\attention  ´Ë½Ó¿ÚµÄ×÷ÓÃÊÇ»ñÈ¡Ã¶¾Ùµ½Interface HandleµÄ½Ó¿Ú£¬
-            µ÷ÓÃÖ®Ç°ĞèÒªµ÷ÓÃGXUpdateAllDeviceList¡¢GXUpdateAllDeviceListEx½Ó¿Ú
-\param      [in]nIndex              Interface´ÎĞò£¬´Ó1¿ªÊ¼
-            [in,out]phIF			·µ»ØInterface¾ä±ú
-\return     GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-            GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-            GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-            ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è·å–æ¬¡åºä¸ºIndexçš„Interface Handle
+\attention  æ­¤æ¥å£çš„ä½œç”¨æ˜¯è·å–æšä¸¾åˆ°Interface Handleçš„æ¥å£ï¼Œ
+			è°ƒç”¨ä¹‹å‰éœ€è¦è°ƒç”¨GXUpdateAllDeviceListã€GXUpdateAllDeviceListExæ¥å£
+\param      [in]nIndex              Interfaceæ¬¡åºï¼Œä»1å¼€å§‹
+			[in,out]phIF			è¿”å›Interfaceå¥æŸ„
+\return     GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Get Interface Handles of Index.
@@ -297,20 +297,20 @@ GX_API GXGetInterfaceInfo(uint32_t nIndex, GX_INTERFACE_INFO* pstInterfaceInfo);
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXGetInterfaceHandle(uint32_t nIndex, GX_IF_HANDLE* phIF);
+GX_API GXGetInterfaceHandle(uint32_t nIndex, GX_IF_HANDLE *phIF);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡´ÎĞòÎªIndexµÄÉè±¸ĞÅÏ¢
-\attention  ´Ë½Ó¿ÚµÄ×÷ÓÃÊÇ»ñÈ¡Ã¶¾Ùµ½Éè±¸ĞÅÏ¢½Ó¿Ú£¬
-            µ÷ÓÃÖ®Ç°ĞèÒªµ÷ÓÃGXUpdateAllDeviceList¡¢GXUpdateAllDeviceListEx½Ó¿Ú
-\param      [in]nIndex                    Éè±¸´ÎĞò£¬´Ó1¿ªÊ¼
-            [in,out]pstDeviceInfo         ·µ»ØÉè±¸ĞÅÏ¢
-\return     GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-            GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-            GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-            ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è·å–æ¬¡åºä¸ºIndexçš„è®¾å¤‡ä¿¡æ¯
+\attention  æ­¤æ¥å£çš„ä½œç”¨æ˜¯è·å–æšä¸¾åˆ°è®¾å¤‡ä¿¡æ¯æ¥å£ï¼Œ
+			è°ƒç”¨ä¹‹å‰éœ€è¦è°ƒç”¨GXUpdateAllDeviceListã€GXUpdateAllDeviceListExæ¥å£
+\param      [in]nIndex                    è®¾å¤‡æ¬¡åºï¼Œä»1å¼€å§‹
+			[in,out]pstDeviceInfo         è¿”å›è®¾å¤‡ä¿¡æ¯
+\return     GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Obtain basic information of nIndex devices
@@ -324,21 +324,21 @@ GX_API GXGetInterfaceHandle(uint32_t nIndex, GX_IF_HANDLE* phIF);
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXGetDeviceInfo(uint32_t nIndex, GX_DEVICE_INFO* pstDeviceInfo);
+GX_API GXGetDeviceInfo(uint32_t nIndex, GX_DEVICE_INFO *pstDeviceInfo);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief		Í¨¹ıÖ¸¶¨Î¨Ò»±êÊ¾´ò¿ªÉè±¸£¬ÀıÈçÖ¸¶¨SN¡¢IP¡¢MACµÈ
-\attention	´Ë½Ó¿Úµ÷ÓÃÖ®Ç°ĞèÒªµ÷ÓÃGXUpdateAllDeviceList¡¢GXUpdateAllDeviceListEx½Ó¿Ú£¬¸üĞÂ¿âÄÚ²¿Éè±¸ÁĞ±í
-\param		[in]pOpenParam		ÓÃ»§ÅäÖÃµÄ´ò¿ªÉè±¸²ÎÊı,²Î¼ûGX_OPEN_PARAM½á¹¹Ìå¶¨Òå
-\param		[out]phDevice		·µ»ØÉè±¸¾ä±ú
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_NOT_FOUND_DEVICE    Ã»ÓĞÕÒµ½ÓëÖ¸¶¨ĞÅÏ¢Æ¥ÅäµÄÉè±¸
-			GX_STATUS_INVALID_ACCESS      Éè±¸µÄ·ÃÎÊ·½Ê½²»¶Ô
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST  
+\Chineseï¼š
+\brief		é€šè¿‡æŒ‡å®šå”¯ä¸€æ ‡ç¤ºæ‰“å¼€è®¾å¤‡ï¼Œä¾‹å¦‚æŒ‡å®šSNã€IPã€MACç­‰
+\attention	æ­¤æ¥å£è°ƒç”¨ä¹‹å‰éœ€è¦è°ƒç”¨GXUpdateAllDeviceListã€GXUpdateAllDeviceListExæ¥å£ï¼Œæ›´æ–°åº“å†…éƒ¨è®¾å¤‡åˆ—è¡¨
+\param		[in]pOpenParam		ç”¨æˆ·é…ç½®çš„æ‰“å¼€è®¾å¤‡å‚æ•°,å‚è§GX_OPEN_PARAMç»“æ„ä½“å®šä¹‰
+\param		[out]phDevice		è¿”å›è®¾å¤‡å¥æŸ„
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_NOT_FOUND_DEVICE    æ²¡æœ‰æ‰¾åˆ°ä¸æŒ‡å®šä¿¡æ¯åŒ¹é…çš„è®¾å¤‡
+			GX_STATUS_INVALID_ACCESS      è®¾å¤‡çš„è®¿é—®æ–¹å¼ä¸å¯¹
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief		Open the device by a specific unique identification, such as: SN, IP, MAC, Index etc.
@@ -353,18 +353,18 @@ GX_API GXGetDeviceInfo(uint32_t nIndex, GX_DEVICE_INFO* pstDeviceInfo);
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXOpenDevice               (GX_OPEN_PARAM* pOpenParam, GX_DEV_HANDLE* phDevice);
+GX_API GXOpenDevice(GX_OPEN_PARAM *pOpenParam, GX_DEV_HANDLE *phDevice);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief		Ö¸¶¨Éè±¸¾ä±ú¹Ø±ÕÉè±¸
-\attention	²»ÄÜÖØ¸´¹Ø±ÕÍ¬Ò»¸öÉè±¸
-\param		[in]hDevice			¼´½«Òª¹Ø±ÕµÄÉè±¸¾ä±ú
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST  
+\Chineseï¼š
+\brief		æŒ‡å®šè®¾å¤‡å¥æŸ„å…³é—­è®¾å¤‡
+\attention	ä¸èƒ½é‡å¤å…³é—­åŒä¸€ä¸ªè®¾å¤‡
+\param		[in]hDevice			å³å°†è¦å…³é—­çš„è®¾å¤‡å¥æŸ„
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief		Specify the device handle to close the device.
@@ -376,20 +376,19 @@ GX_API GXOpenDevice               (GX_OPEN_PARAM* pOpenParam, GX_DEV_HANDLE* phD
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXCloseDevice              (GX_DEV_HANDLE hDevice);
-
+GX_API GXCloseDevice(GX_DEV_HANDLE hDevice);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡Éè±¸µÄ¸¸Interface handle
-\param		[in]hDevice			    Éè±¸handle
+\Chineseï¼š
+\brief      è·å–è®¾å¤‡çš„çˆ¶Interface handle
+\param		[in]hDevice			    è®¾å¤‡handle
 \param		[in,out]phIF            Interface Handle
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-            GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-            GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-            ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Obtain the device's interface handle.
@@ -402,21 +401,20 @@ GX_API GXCloseDevice              (GX_DEV_HANDLE hDevice);
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXGetParentInterfaceFromDev(GX_DEV_HANDLE hDevice, GX_IF_HANDLE* phIF);
-
+GX_API GXGetParentInterfaceFromDev(GX_DEV_HANDLE hDevice, GX_IF_HANDLE *phIF);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡±¾µØÉè±¸handle
-\param		[in]hDevice			    Éè±¸handle
-\param		[in,out]phLocalDev      ±¾µØÉè±¸Handle
-\return     GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-            GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-            GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-            ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
-		
+\Chineseï¼š
+\brief      è·å–æœ¬åœ°è®¾å¤‡handle
+\param		[in]hDevice			    è®¾å¤‡handle
+\param		[in,out]phLocalDev      æœ¬åœ°è®¾å¤‡Handle
+\return     GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
+
 \English:
 \brief      Get local device handle.
 \param		[in]hDevice			    Device handle
@@ -428,20 +426,20 @@ GX_API GXGetParentInterfaceFromDev(GX_DEV_HANDLE hDevice, GX_IF_HANDLE* phIF);
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXGetLocalDeviceHandleFromDev(GX_DEV_HANDLE hDevice, GX_LOCAL_DEV_HANDLE* phLocalDev);
+GX_API GXGetLocalDeviceHandleFromDev(GX_DEV_HANDLE hDevice, GX_LOCAL_DEV_HANDLE *phLocalDev);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡Éè±¸Éè±¸Á÷ÊıÁ¿
-\param		[in]hDevice			    Éè±¸handle
-\param		[in|out]pnDSNum         Éè±¸Á÷ÊıÁ¿
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-            GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-            GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-            ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
-			
+\Chineseï¼š
+\brief      è·å–è®¾å¤‡è®¾å¤‡æµæ•°é‡
+\param		[in]hDevice			    è®¾å¤‡handle
+\param		[in|out]pnDSNum         è®¾å¤‡æµæ•°é‡
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
+
 \English:
 \brief      Obtain the number of data stream.
 \param		[in]hDevice			    Device handle
@@ -453,21 +451,21 @@ GX_API GXGetLocalDeviceHandleFromDev(GX_DEV_HANDLE hDevice, GX_LOCAL_DEV_HANDLE*
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXGetDataStreamNumFromDev(GX_DEV_HANDLE hDevice, uint32_t* pnDSNum);
+GX_API GXGetDataStreamNumFromDev(GX_DEV_HANDLE hDevice, uint32_t *pnDSNum);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡Éè±¸Á÷handle
-\param		[in]hDevice			    Éè±¸handle
-\param		[in]nDSIndex			Éè±¸Á÷ĞòºÅ£¬ĞòºÅ´Ó1 ¿ªÊ¼
-\param		[in|out]phDS            Éè±¸Á÷handle
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-            GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-            GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-            ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
-			
+\Chineseï¼š
+\brief      è·å–è®¾å¤‡æµhandle
+\param		[in]hDevice			    è®¾å¤‡handle
+\param		[in]nDSIndex			è®¾å¤‡æµåºå·ï¼Œåºå·ä»1 å¼€å§‹
+\param		[in|out]phDS            è®¾å¤‡æµhandle
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
+
 \English:
 \brief      Get data stream handle.
 \param		[in]hDevice			    Device handle
@@ -480,30 +478,30 @@ GX_API GXGetDataStreamNumFromDev(GX_DEV_HANDLE hDevice, uint32_t* pnDSNum);
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXGetDataStreamHandleFromDev(GX_DEV_HANDLE hDevice, uint32_t nDSIndex, GX_DS_HANDLE* phDS);
+GX_API GXGetDataStreamHandleFromDev(GX_DEV_HANDLE hDevice, uint32_t nDSIndex, GX_DS_HANDLE *phDS);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief     »ñÈ¡Éè±¸µÄÓÀ¾ÃIPĞÅÏ¢
-\attention ¸Ã½Ó¿ÚÖ»ÊÊÓÃÓÚÍøÂçÉè±¸
-\param     [in]       hDevice                  Éè±¸¾ä±ú
-\param     [in]       pszIP                    Éè±¸ÓÀ¾ÃIP×Ö·û´®µØÖ·
-\param     [in, out]  pnIPLength               Éè±¸ÓÀ¾ÃIPµØÖ·×Ö·û´®³¤¶È,µ¥Î»×Ö½Ú¡£
-\param     [in]       pnIPLength:              ÓÃ»§buffer´óĞ¡
-\param     [out]      pnIPLength:              Êµ¼ÊÌî³ä´óĞ¡
-\param     [in]       pszSubNetMask            Éè±¸ÓÀ¾Ã×ÓÍøÑÚÂë×Ö·û´®µØÖ·
-\param     [in, out]  pnSubNetMaskLength       Éè±¸ÓÀ¾Ã×ÓÍøÑÚÂë×Ö·û´®³¤¶È
-\param     [in]       pnSubNetMaskLength:      ÓÃ»§buffer´óĞ¡
-\param     [out]      pnSubNetMaskLength:      Êµ¼ÊÌî³ä´óĞ¡
-\param     [in]       pszDefaultGateWay        Éè±¸ÓÀ¾ÃÍø¹Ø×Ö·û´®µØÖ·
-\param     [in, out]  pnDefaultGateWayLength   Éè±¸ÓÀ¾ÃÍø¹Ø×Ö·û´®³¤¶È
-\param     [in]       pnDefaultGateWayLength:  ÓÃ»§buffer´óĞ¡
-\param     [out]      pnDefaultGateWayLength:  Êµ¼ÊÌî³ä´óĞ¡
-\return    GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-		   GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-		   GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-		   ÉÏÃæÃ»ÓĞº­¸Çµ½µÄ£¬²»³£¼ûµÄ´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief     è·å–è®¾å¤‡çš„æ°¸ä¹…IPä¿¡æ¯
+\attention è¯¥æ¥å£åªé€‚ç”¨äºç½‘ç»œè®¾å¤‡
+\param     [in]       hDevice                  è®¾å¤‡å¥æŸ„
+\param     [in]       pszIP                    è®¾å¤‡æ°¸ä¹…IPå­—ç¬¦ä¸²åœ°å€
+\param     [in, out]  pnIPLength               è®¾å¤‡æ°¸ä¹…IPåœ°å€å­—ç¬¦ä¸²é•¿åº¦,å•ä½å­—èŠ‚ã€‚
+\param     [in]       pnIPLength:              ç”¨æˆ·bufferå¤§å°
+\param     [out]      pnIPLength:              å®é™…å¡«å……å¤§å°
+\param     [in]       pszSubNetMask            è®¾å¤‡æ°¸ä¹…å­ç½‘æ©ç å­—ç¬¦ä¸²åœ°å€
+\param     [in, out]  pnSubNetMaskLength       è®¾å¤‡æ°¸ä¹…å­ç½‘æ©ç å­—ç¬¦ä¸²é•¿åº¦
+\param     [in]       pnSubNetMaskLength:      ç”¨æˆ·bufferå¤§å°
+\param     [out]      pnSubNetMaskLength:      å®é™…å¡«å……å¤§å°
+\param     [in]       pszDefaultGateWay        è®¾å¤‡æ°¸ä¹…ç½‘å…³å­—ç¬¦ä¸²åœ°å€
+\param     [in, out]  pnDefaultGateWayLength   è®¾å¤‡æ°¸ä¹…ç½‘å…³å­—ç¬¦ä¸²é•¿åº¦
+\param     [in]       pnDefaultGateWayLength:  ç”¨æˆ·bufferå¤§å°
+\param     [out]      pnDefaultGateWayLength:  å®é™…å¡«å……å¤§å°
+\return    GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+		   GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+		   GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+		   ä¸Šé¢æ²¡æœ‰æ¶µç›–åˆ°çš„ï¼Œä¸å¸¸è§çš„é”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief     Obtain the permanent IP information of the device.
@@ -527,66 +525,65 @@ GX_API GXGetDataStreamHandleFromDev(GX_DEV_HANDLE hDevice, uint32_t nDSIndex, GX
 		   The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXGetDevicePersistentIpAddress (GX_DEV_HANDLE  hDevice, 
-                                       char* pszIP, 
-                                       size_t *pnIPLength, 
-                                       char* pszSubNetMask, 
-                                       size_t *pnSubNetMaskLength, 
-                                       char* pszDefaultGateWay, 
-                                       size_t *pnDefaultGateWayLength);
+GX_API GXGetDevicePersistentIpAddress(GX_DEV_HANDLE hDevice,
+									  char *pszIP,
+									  size_t *pnIPLength,
+									  char *pszSubNetMask,
+									  size_t *pnSubNetMaskLength,
+									  char *pszDefaultGateWay,
+									  size_t *pnDefaultGateWayLength);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief     ÉèÖÃÉè±¸µÄÓÀ¾ÃIPĞÅÏ¢
-\attention ¸Ã½Ó¿ÚÖ»ÊÊÓÃÓÚÍøÂçÉè±¸
-\param     [in]     hDevice              Éè±¸¾ä±ú
-\param     [in]     pszIP                Éè±¸ÓÀ¾ÃIP×Ö·û´®£¬Ä©Î²¡¯\0¡¯
-\param     [in]     pszSubNetMask        Éè±¸ÓÀ¾Ã×ÓÍøÑÚÂë×Ö·û´®£¬Ä©Î²¡¯\0¡¯
-\param     [in]     pszDefaultGateWay    Éè±¸ÓÀ¾ÃÍø¹Ø×Ö·û´®£¬Ä©Î²¡¯\0¡¯
-\return    GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-           GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-		   GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-		   ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST  
+\Chineseï¼š
+\brief     è®¾ç½®è®¾å¤‡çš„æ°¸ä¹…IPä¿¡æ¯
+\attention è¯¥æ¥å£åªé€‚ç”¨äºç½‘ç»œè®¾å¤‡
+\param     [in]     hDevice              è®¾å¤‡å¥æŸ„
+\param     [in]     pszIP                è®¾å¤‡æ°¸ä¹…IPå­—ç¬¦ä¸²ï¼Œæœ«å°¾â€™\0â€™
+\param     [in]     pszSubNetMask        è®¾å¤‡æ°¸ä¹…å­ç½‘æ©ç å­—ç¬¦ä¸²ï¼Œæœ«å°¾â€™\0â€™
+\param     [in]     pszDefaultGateWay    è®¾å¤‡æ°¸ä¹…ç½‘å…³å­—ç¬¦ä¸²ï¼Œæœ«å°¾â€™\0â€™
+\return    GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+		   GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+		   GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+		   å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief     Set the permanent IP information of the device.
 \attention This interface applies only to network devices
 \param     [in]     hDevice              The handle of the device.
-\param     [in]     pszIP                Device permanent IP string address, end with ¡¯\0¡¯.
-\param     [in]     pszSubNetMask        Device persistent subnet mask string address, end with ¡¯\0¡¯.
-\param     [in]     pszDefaultGateWay    Device permanent gateway string address, end with ¡¯\0¡¯.
+\param     [in]     pszIP                Device permanent IP string address, end with â€™\0â€™.
+\param     [in]     pszSubNetMask        Device persistent subnet mask string address, end with â€™\0â€™.
+\param     [in]     pszDefaultGateWay    Device permanent gateway string address, end with â€™\0â€™.
 \return    GX_STATUS_SUCCESS             The operation is successful and no error occurs.
 		   GX_STATUS_NOT_INIT_API        The GXInitLib initialization library is not called.
 		   GX_STATUS_INVALID_HANDLE      The illegal handle that the user introduces, or reclose the device.
 		   The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXSetDevicePersistentIpAddress (GX_DEV_HANDLE  hDevice, 
-									   const char* pszIP, 
-									   const char* pszSubNetMask, 
-									   const char* pszDefaultGateWay);
-
+GX_API GXSetDevicePersistentIpAddress(GX_DEV_HANDLE hDevice,
+									  const char *pszIP,
+									  const char *pszSubNetMask,
+									  const char *pszDefaultGateWay);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ÉèÖÃÔ¶¶ËÉè±¸¾²Ì¬£¨ÓÀ¾Ã£©IPµØÖ·
-\param		[in]   pszDevcieMacAddress  Éè±¸MACµØÖ·
-\param		[in]   ui32IpConfigFlag     ipÅäÖÃ·½Ê½£¨¾²Ì¬IP¡¢DHCP¡¢LLA¡¢Ä¬ÈÏ·½Ê½£©
-\param		[in]   pszIPAddress         Éè±¸IPµØÖ·
-\param		[in]   pszSubnetMask        ×ÓÍøÑÚÂë
-\param		[in]   pszDefaultGateway    Íø¹Ø
-\param		[in]   pszUserID            ÓÃ»§×Ô¶¨ÒåÃû³Æ
-\return     GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER   ÎŞĞ§²ÎÊı
-			GX_STATUS_NOT_FOUND_DEVICE    Ã»ÓĞÕÒµ½Éè±¸
-			GX_STATUS_ERROR               ²Ù×÷Ê§°Ü
-			GX_STATUS_INVALID_ACCESS      ¾Ü¾ø·ÃÎÊ
-			GX_STATUS_TIMEOUT             ²Ù×÷³¬Ê±
-			GC_ERR_IO                     IOÍ¨Ñ¶´íÎó
-			GC_ERR_INVALID_ID             IDÎŞ·¨Óë×ÊÔ´½¨Á¢Á¬½Ó
+\Chineseï¼š
+\brief      è®¾ç½®è¿œç«¯è®¾å¤‡é™æ€ï¼ˆæ°¸ä¹…ï¼‰IPåœ°å€
+\param		[in]   pszDevcieMacAddress  è®¾å¤‡MACåœ°å€
+\param		[in]   ui32IpConfigFlag     ipé…ç½®æ–¹å¼ï¼ˆé™æ€IPã€DHCPã€LLAã€é»˜è®¤æ–¹å¼ï¼‰
+\param		[in]   pszIPAddress         è®¾å¤‡IPåœ°å€
+\param		[in]   pszSubnetMask        å­ç½‘æ©ç 
+\param		[in]   pszDefaultGateway    ç½‘å…³
+\param		[in]   pszUserID            ç”¨æˆ·è‡ªå®šä¹‰åç§°
+\return     GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER   æ— æ•ˆå‚æ•°
+			GX_STATUS_NOT_FOUND_DEVICE    æ²¡æœ‰æ‰¾åˆ°è®¾å¤‡
+			GX_STATUS_ERROR               æ“ä½œå¤±è´¥
+			GX_STATUS_INVALID_ACCESS      æ‹’ç»è®¿é—®
+			GX_STATUS_TIMEOUT             æ“ä½œè¶…æ—¶
+			GC_ERR_IO                     IOé€šè®¯é”™è¯¯
+			GC_ERR_INVALID_ID             IDæ— æ³•ä¸èµ„æºå»ºç«‹è¿æ¥
 
 \English:
 \brief      Configure the static IP address of the camera.
@@ -608,30 +605,30 @@ GX_API GXSetDevicePersistentIpAddress (GX_DEV_HANDLE  hDevice,
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXGigEIpConfiguration(const char* pszDeviceMacAddress, 
+GX_API GXGigEIpConfiguration(const char *pszDeviceMacAddress,
 							 GX_IP_CONFIGURE_MODE emIpConfigMode,
-							 const char* pszIpAddress,
-							 const char* pszSubnetMask, 
-							 const char* pszDefaultGateway,
-							 const char* pszUserID);
+							 const char *pszIpAddress,
+							 const char *pszSubnetMask,
+							 const char *pszDefaultGateway,
+							 const char *pszUserID);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
+\Chineseï¼š
 \brief      ForceIP
-\param		[in]   pszDevcieMacAddress  Éè±¸MACµØÖ·
-\param		[in]   pszIPAddress         Éè±¸IPµØÖ·
-\param		[in]   pszSubnetMask        ×ÓÍøÑÚÂë
-\param		[in]   pszDefaultGateway    Íø¹Ø
-\return		GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER		ÎŞĞ§²ÎÊı
-			GX_STATUS_NOT_FOUND_DEVICE		Ã»ÓĞÕÒµ½Éè±¸
-			GX_STATUS_ERROR					²Ù×÷Ê§°Ü
-			GX_STATUS_INVALID_ACCESS		¾Ü¾ø·ÃÎÊ
-			GX_STATUS_TIMEOUT				²Ù×÷³¬Ê±
-			GC_ERR_IO						IOÍ¨Ñ¶´íÎó
-			GC_ERR_INVALID_ID				IDÎŞ·¨Óë×ÊÔ´½¨Á¢Á¬½Ó
+\param		[in]   pszDevcieMacAddress  è®¾å¤‡MACåœ°å€
+\param		[in]   pszIPAddress         è®¾å¤‡IPåœ°å€
+\param		[in]   pszSubnetMask        å­ç½‘æ©ç 
+\param		[in]   pszDefaultGateway    ç½‘å…³
+\return		GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		æ— æ•ˆå‚æ•°
+			GX_STATUS_NOT_FOUND_DEVICE		æ²¡æœ‰æ‰¾åˆ°è®¾å¤‡
+			GX_STATUS_ERROR					æ“ä½œå¤±è´¥
+			GX_STATUS_INVALID_ACCESS		æ‹’ç»è®¿é—®
+			GX_STATUS_TIMEOUT				æ“ä½œè¶…æ—¶
+			GC_ERR_IO						IOé€šè®¯é”™è¯¯
+			GC_ERR_INVALID_ID				IDæ— æ³•ä¸èµ„æºå»ºç«‹è¿æ¥
 
 \English:
 \brief      Execute the Force IP.
@@ -650,26 +647,26 @@ GX_API GXGigEIpConfiguration(const char* pszDeviceMacAddress,
 			GC_ERR_INVALID_ID               Invalid ID.
 */
 // ---------------------------------------------------------------------------
-GX_API GXGigEForceIp(const char* pszDeviceMacAddress, 
-							 const char* pszIpAddress,
-							 const char* pszSubnetMask, 
-							 const char* pszDefaultGateway);							 
+GX_API GXGigEForceIp(const char *pszDeviceMacAddress,
+					 const char *pszIpAddress,
+					 const char *pszSubnetMask,
+					 const char *pszDefaultGateway);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ÖØÁ¬/¸´Î»
-\param		[in]   pszDevcieMacAddress  Éè±¸MACµØÖ·
-\param		[in]   ui32FeatureInfo      ÖØÖÃÉè±¸Ä£Ê½
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER		ÎŞĞ§²ÎÊı
-			GX_STATUS_NOT_FOUND_DEVICE		Ã»ÓĞÕÒµ½Éè±¸
-			GX_STATUS_ERROR					²Ù×÷Ê§°Ü
-			GX_STATUS_INVALID_ACCESS		¾Ü¾ø·ÃÎÊ
-			GX_STATUS_TIMEOUT				²Ù×÷³¬Ê±
-			GC_ERR_IO						IOÍ¨Ñ¶´íÎó
-			GC_ERR_INVALID_ID				IDÎŞ·¨Óë×ÊÔ´½¨Á¢Á¬½Ó
+\Chineseï¼š
+\brief      é‡è¿/å¤ä½
+\param		[in]   pszDevcieMacAddress  è®¾å¤‡MACåœ°å€
+\param		[in]   ui32FeatureInfo      é‡ç½®è®¾å¤‡æ¨¡å¼
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		æ— æ•ˆå‚æ•°
+			GX_STATUS_NOT_FOUND_DEVICE		æ²¡æœ‰æ‰¾åˆ°è®¾å¤‡
+			GX_STATUS_ERROR					æ“ä½œå¤±è´¥
+			GX_STATUS_INVALID_ACCESS		æ‹’ç»è®¿é—®
+			GX_STATUS_TIMEOUT				æ“ä½œè¶…æ—¶
+			GC_ERR_IO						IOé€šè®¯é”™è¯¯
+			GC_ERR_INVALID_ID				IDæ— æ³•ä¸èµ„æºå»ºç«‹è¿æ¥
 
 \English:
 \brief      Reconnection/Reset
@@ -686,18 +683,18 @@ GX_API GXGigEForceIp(const char* pszDeviceMacAddress,
 			GC_ERR_INVALID_ID               Invalid ID.
 */
 // ---------------------------------------------------------------------------
-GX_API GXGigEResetDevice(const char* pszDeviceMacAddress, GX_RESET_DEVICE_MODE ui32FeatureInfo);
+GX_API GXGigEResetDevice(const char *pszDeviceMacAddress, GX_RESET_DEVICE_MODE ui32FeatureInfo);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡Éè±¸Á÷PayLoadSize³¤¶È
-\param		[in]hDStream			   Éè±¸Á÷handle
-\param		[in|out]punPacketSize      PayLoadSize³¤¶ÈÖ¸Õë
-\return     GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-            GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-            GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-            ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è·å–è®¾å¤‡æµPayLoadSizeé•¿åº¦
+\param		[in]hDStream			   è®¾å¤‡æµhandle
+\param		[in|out]punPacketSize      PayLoadSizeé•¿åº¦æŒ‡é’ˆ
+\return     GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Get device stream PayLoadSize length.
@@ -709,19 +706,19 @@ GX_API GXGigEResetDevice(const char* pszDeviceMacAddress, GX_RESET_DEVICE_MODE u
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXGetPayLoadSize(GX_DS_HANDLE hDStream, uint32_t* punPacketSize);
+GX_API GXGetPayLoadSize(GX_DS_HANDLE hDStream, uint32_t *punPacketSize);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ±£´æÓÃ»§²ÎÊı×é
-\param		[in]hPort               Handle¾ä±ú
-\param		[in]strFileName         ±£´æÓÃ»§²ÎÊı×éµÄÎÄ¼şÂ·¾¶
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      ä¿å­˜ç”¨æˆ·å‚æ•°ç»„
+\param		[in]hPort               Handleå¥æŸ„
+\param		[in]strFileName         ä¿å­˜ç”¨æˆ·å‚æ•°ç»„çš„æ–‡ä»¶è·¯å¾„
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Save the user parameter group
@@ -734,20 +731,20 @@ GX_API GXGetPayLoadSize(GX_DS_HANDLE hDStream, uint32_t* punPacketSize);
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXFeatureSave(GX_PORT_HANDLE hPort, const char* strFileName);
+GX_API GXFeatureSave(GX_PORT_HANDLE hPort, const char *strFileName);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ¼ÓÔØÓÃ»§²ÎÊı×é
-\param		[in]hPort               Handle¾ä±ú
-\param		[in]strFileName         ¼ÓÔØÓÃ»§²ÎÊı×éµÄÎÄ¼şÂ·¾¶
-\param		[in]bVerify             Èç¹û´ËÖµÎªtrue£¬ËùÓĞµ¼Èë½øÈ¥µÄÖµ½«»á±»¶Á³ö½øĞĞĞ£ÑéÊÇ·ñÒ»ÖÂ
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      åŠ è½½ç”¨æˆ·å‚æ•°ç»„
+\param		[in]hPort               Handleå¥æŸ„
+\param		[in]strFileName         åŠ è½½ç”¨æˆ·å‚æ•°ç»„çš„æ–‡ä»¶è·¯å¾„
+\param		[in]bVerify             å¦‚æœæ­¤å€¼ä¸ºtrueï¼Œæ‰€æœ‰å¯¼å…¥è¿›å»çš„å€¼å°†ä¼šè¢«è¯»å‡ºè¿›è¡Œæ ¡éªŒæ˜¯å¦ä¸€è‡´
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Load the user parameter group
@@ -761,19 +758,19 @@ GX_API GXFeatureSave(GX_PORT_HANDLE hPort, const char* strFileName);
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXFeatureLoad(GX_PORT_HANDLE hPort, const char* strFileName, bool bVerify);
+GX_API GXFeatureLoad(GX_PORT_HANDLE hPort, const char *strFileName, bool bVerify);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ±£´æÓÃ»§²ÎÊı×é
-\param		[in]hPort               Handle¾ä±ú
-\param		[in]strFileName         ±£´æÓÃ»§²ÎÊı×éµÄÎÄ¼şÂ·¾¶£¨¿í×Ö½Ú£©
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      ä¿å­˜ç”¨æˆ·å‚æ•°ç»„
+\param		[in]hPort               Handleå¥æŸ„
+\param		[in]strFileName         ä¿å­˜ç”¨æˆ·å‚æ•°ç»„çš„æ–‡ä»¶è·¯å¾„ï¼ˆå®½å­—èŠ‚ï¼‰
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Save the user parameter group
@@ -786,20 +783,20 @@ GX_API GXFeatureLoad(GX_PORT_HANDLE hPort, const char* strFileName, bool bVerify
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXFeatureSaveW(GX_PORT_HANDLE hPort, const wchar_t* strFileName);
+GX_API GXFeatureSaveW(GX_PORT_HANDLE hPort, const wchar_t *strFileName);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ¼ÓÔØÓÃ»§²ÎÊı×é
-\param		[in]hPort               Handle¾ä±ú
-\param		[in]strFileName         ¼ÓÔØÓÃ»§²ÎÊı×éµÄÎÄ¼şÂ·¾¶£¨¿í×Ö½Ú£©
-\param		[in]bVerify             Èç¹û´ËÖµÎªtrue£¬ËùÓĞµ¼Èë½øÈ¥µÄÖµ½«»á±»¶Á³ö½øĞĞĞ£ÑéÊÇ·ñÒ»ÖÂ
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      åŠ è½½ç”¨æˆ·å‚æ•°ç»„
+\param		[in]hPort               Handleå¥æŸ„
+\param		[in]strFileName         åŠ è½½ç”¨æˆ·å‚æ•°ç»„çš„æ–‡ä»¶è·¯å¾„ï¼ˆå®½å­—èŠ‚ï¼‰
+\param		[in]bVerify             å¦‚æœæ­¤å€¼ä¸ºtrueï¼Œæ‰€æœ‰å¯¼å…¥è¿›å»çš„å€¼å°†ä¼šè¢«è¯»å‡ºè¿›è¡Œæ ¡éªŒæ˜¯å¦ä¸€è‡´
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Load the user parameter group
@@ -813,20 +810,20 @@ GX_API GXFeatureSaveW(GX_PORT_HANDLE hPort, const wchar_t* strFileName);
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXFeatureLoadW(GX_PORT_HANDLE hPort, const wchar_t* strFileName, bool bVerify);
+GX_API GXFeatureLoadW(GX_PORT_HANDLE hPort, const wchar_t *strFileName, bool bVerify);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡½ÚµãµÄ¶ÁĞ´ÊôĞÔ
-\param		[in]hPort					Handle¾ä±ú
-\param		[in]strName					½ÚµãÃû³Æ
-\param		[in|out]pemAccessMode      ½Úµã¶ÁĞ´ÊôĞÔ
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è·å–èŠ‚ç‚¹çš„è¯»å†™å±æ€§
+\param		[in]hPort					Handleå¥æŸ„
+\param		[in]strName					èŠ‚ç‚¹åç§°
+\param		[in|out]pemAccessMode      èŠ‚ç‚¹è¯»å†™å±æ€§
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Get the read and write attributes of the node.
@@ -840,20 +837,20 @@ GX_API GXFeatureLoadW(GX_PORT_HANDLE hPort, const wchar_t* strFileName, bool bVe
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXGetNodeAccessMode(GX_PORT_HANDLE hPort, const char* strName, GX_NODE_ACCESS_MODE* pemAccessMode);
-//ÊÇ·ñÖ§³Ö½Ó¿Ú£¬½Ó¿ÚÀàĞÍ
-// ---------------------------------------------------------------------------
+GX_API GXGetNodeAccessMode(GX_PORT_HANDLE hPort, const char *strName, GX_NODE_ACCESS_MODE *pemAccessMode);
+// æ˜¯å¦æ”¯æŒæ¥å£ï¼Œæ¥å£ç±»å‹
+//  ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡ÕûĞÍ½ÚµãĞÅÏ¢
-\param		[in]       hPort              Handle¾ä±ú
-\param		[in]       strName            ½ÚµãÃû³Æ
-\param		[in|out]   pstIntValue        ÕûĞÍ½ÚµãĞÅÏ¢
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è·å–æ•´å‹èŠ‚ç‚¹ä¿¡æ¯
+\param		[in]       hPort              Handleå¥æŸ„
+\param		[in]       strName            èŠ‚ç‚¹åç§°
+\param		[in|out]   pstIntValue        æ•´å‹èŠ‚ç‚¹ä¿¡æ¯
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Get int value information.
@@ -867,20 +864,20 @@ GX_API GXGetNodeAccessMode(GX_PORT_HANDLE hPort, const char* strName, GX_NODE_AC
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXGetIntValue(GX_PORT_HANDLE hPort, const char* strName, GX_INT_VALUE* pstIntValue);
+GX_API GXGetIntValue(GX_PORT_HANDLE hPort, const char *strName, GX_INT_VALUE *pstIntValue);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ÉèÖÃÕûĞÍ½ÚµãÖµ
-\param		[in]hPort              Handle¾ä±ú
-\param		[in]strName            ½ÚµãÃû³Æ
-\param		[in|out]i64Value       ÕûĞÍ½ÚµãÖµ
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è®¾ç½®æ•´å‹èŠ‚ç‚¹å€¼
+\param		[in]hPort              Handleå¥æŸ„
+\param		[in]strName            èŠ‚ç‚¹åç§°
+\param		[in|out]i64Value       æ•´å‹èŠ‚ç‚¹å€¼
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Set int value information.
@@ -894,20 +891,20 @@ GX_API GXGetIntValue(GX_PORT_HANDLE hPort, const char* strName, GX_INT_VALUE* ps
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXSetIntValue(GX_PORT_HANDLE hPort, const char* strName, int64_t i64Value);
+GX_API GXSetIntValue(GX_PORT_HANDLE hPort, const char *strName, int64_t i64Value);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡Ã¶¾ÙĞÍ½ÚµãĞÅÏ¢
-\param		[in]hPort				Handle¾ä±ú
-\param		[in]strName				½ÚµãÃû³Æ
-\param		[in|out]pstEnumValue    Ã¶¾ÙÀàĞÍ½ÚµãĞÅÏ¢£¨ÊıÖµĞÍÖµ£©
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è·å–æšä¸¾å‹èŠ‚ç‚¹ä¿¡æ¯
+\param		[in]hPort				Handleå¥æŸ„
+\param		[in]strName				èŠ‚ç‚¹åç§°
+\param		[in|out]pstEnumValue    æšä¸¾ç±»å‹èŠ‚ç‚¹ä¿¡æ¯ï¼ˆæ•°å€¼å‹å€¼ï¼‰
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      To get the current enumeration value
@@ -921,20 +918,20 @@ GX_API GXSetIntValue(GX_PORT_HANDLE hPort, const char* strName, int64_t i64Value
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXGetEnumValue(GX_PORT_HANDLE hPort, const char* strName, GX_ENUM_VALUE* pstEnumValue);
+GX_API GXGetEnumValue(GX_PORT_HANDLE hPort, const char *strName, GX_ENUM_VALUE *pstEnumValue);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ÉèÖÃÃ¶¾ÙĞÍ½ÚµãÖµ
-\param		[in]hPort           Handle¾ä±ú
-\param		[in]strName         ½ÚµãÃû³Æ
-\param		[in]i64Value        Ã¶¾ÙÀàĞÍ½ÚµãÖµ
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è®¾ç½®æšä¸¾å‹èŠ‚ç‚¹å€¼
+\param		[in]hPort           Handleå¥æŸ„
+\param		[in]strName         èŠ‚ç‚¹åç§°
+\param		[in]i64Value        æšä¸¾ç±»å‹èŠ‚ç‚¹å€¼
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Sets the value of an enumerated node
@@ -948,20 +945,20 @@ GX_API GXGetEnumValue(GX_PORT_HANDLE hPort, const char* strName, GX_ENUM_VALUE* 
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXSetEnumValue(GX_PORT_HANDLE hPort, const char* strName, int64_t i64Value);
+GX_API GXSetEnumValue(GX_PORT_HANDLE hPort, const char *strName, int64_t i64Value);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ÉèÖÃÃ¶¾ÙĞÍ½ÚµãÖµ
-\param		[in]hPort           Handle¾ä±ú
-\param		[in]strName         ½ÚµãÃû³Æ
-\param		[in]strValue        Ã¶¾ÙÀàĞÍ½ÚµãÖµ£¨×Ö·û´®ĞÍÖµ£©
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è®¾ç½®æšä¸¾å‹èŠ‚ç‚¹å€¼
+\param		[in]hPort           Handleå¥æŸ„
+\param		[in]strName         èŠ‚ç‚¹åç§°
+\param		[in]strValue        æšä¸¾ç±»å‹èŠ‚ç‚¹å€¼ï¼ˆå­—ç¬¦ä¸²å‹å€¼ï¼‰
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Sets the value of an enumerated node
@@ -975,20 +972,20 @@ GX_API GXSetEnumValue(GX_PORT_HANDLE hPort, const char* strName, int64_t i64Valu
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXSetEnumValueByString(GX_PORT_HANDLE hPort, const char* strName, const char* strValue);
+GX_API GXSetEnumValueByString(GX_PORT_HANDLE hPort, const char *strName, const char *strValue);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡¸¡µãĞÍ½ÚµãĞÅÏ¢
-\param		[in]hPort				Handle¾ä±ú
-\param		[in]strName				½ÚµãÃû³Æ
-\param		[in|out]pstFloatValue   ¸¡µãÀàĞÍ½ÚµãĞÅÏ¢
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è·å–æµ®ç‚¹å‹èŠ‚ç‚¹ä¿¡æ¯
+\param		[in]hPort				Handleå¥æŸ„
+\param		[in]strName				èŠ‚ç‚¹åç§°
+\param		[in|out]pstFloatValue   æµ®ç‚¹ç±»å‹èŠ‚ç‚¹ä¿¡æ¯
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Get the value of float type.
@@ -1002,20 +999,20 @@ GX_API GXSetEnumValueByString(GX_PORT_HANDLE hPort, const char* strName, const c
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXGetFloatValue(GX_PORT_HANDLE hPort, const char* strName, GX_FLOAT_VALUE* pstFloatValue);
+GX_API GXGetFloatValue(GX_PORT_HANDLE hPort, const char *strName, GX_FLOAT_VALUE *pstFloatValue);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ÉèÖÃ¸¡µãĞÍ½ÚµãÖµ
-\param		[in]hPort           Handle¾ä±ú
-\param		[in]strName         ½ÚµãÃû³Æ
-\param		[in]dValue          ¸¡µãÀàĞÍ½ÚµãÖµ
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è®¾ç½®æµ®ç‚¹å‹èŠ‚ç‚¹å€¼
+\param		[in]hPort           Handleå¥æŸ„
+\param		[in]strName         èŠ‚ç‚¹åç§°
+\param		[in]dValue          æµ®ç‚¹ç±»å‹èŠ‚ç‚¹å€¼
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Set the value of float type.
@@ -1029,20 +1026,20 @@ GX_API GXGetFloatValue(GX_PORT_HANDLE hPort, const char* strName, GX_FLOAT_VALUE
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXSetFloatValue(GX_PORT_HANDLE hPort, const char* strName, double dValue);
+GX_API GXSetFloatValue(GX_PORT_HANDLE hPort, const char *strName, double dValue);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡²¼¶ûĞÍ½ÚµãĞÅÏ¢
-\param		[in]hPort              Handle¾ä±ú
-\param		[in]strName            ½ÚµãÃû³Æ
-\param		[in|out]pbValue        ²¼¶ûÀàĞÍ½ÚµãĞÅÏ¢
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è·å–å¸ƒå°”å‹èŠ‚ç‚¹ä¿¡æ¯
+\param		[in]hPort              Handleå¥æŸ„
+\param		[in]strName            èŠ‚ç‚¹åç§°
+\param		[in|out]pbValue        å¸ƒå°”ç±»å‹èŠ‚ç‚¹ä¿¡æ¯
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Get the value of bool type.
@@ -1056,20 +1053,20 @@ GX_API GXSetFloatValue(GX_PORT_HANDLE hPort, const char* strName, double dValue)
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXGetBoolValue(GX_PORT_HANDLE hPort, const char* strName, bool* pbValue);
+GX_API GXGetBoolValue(GX_PORT_HANDLE hPort, const char *strName, bool *pbValue);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ÉèÖÃ²¼¶ûĞÍ½ÚµãÖµ
-\param		[in]hPort           Handle¾ä±ú
-\param		[in]strName         ½ÚµãÃû³Æ
-\param		[in]bValue          ²¼¶ûÀàĞÍ½ÚµãÖµ
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è®¾ç½®å¸ƒå°”å‹èŠ‚ç‚¹å€¼
+\param		[in]hPort           Handleå¥æŸ„
+\param		[in]strName         èŠ‚ç‚¹åç§°
+\param		[in]bValue          å¸ƒå°”ç±»å‹èŠ‚ç‚¹å€¼
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 
 \English:
@@ -1084,20 +1081,20 @@ GX_API GXGetBoolValue(GX_PORT_HANDLE hPort, const char* strName, bool* pbValue);
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXSetBoolValue(GX_PORT_HANDLE hPort, const char* strName, bool bValue);
+GX_API GXSetBoolValue(GX_PORT_HANDLE hPort, const char *strName, bool bValue);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡×Ö·û´®ĞÍ½ÚµãĞÅÏ¢
-\param		[in]hPort					Handle¾ä±ú
-\param		[in]strName					½ÚµãÃû³Æ
-\param		[in|out]pstStringValue		×Ö·û´®ÀàĞÍ½ÚµãÊı¾İ
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è·å–å­—ç¬¦ä¸²å‹èŠ‚ç‚¹ä¿¡æ¯
+\param		[in]hPort					Handleå¥æŸ„
+\param		[in]strName					èŠ‚ç‚¹åç§°
+\param		[in|out]pstStringValue		å­—ç¬¦ä¸²ç±»å‹èŠ‚ç‚¹æ•°æ®
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Get the content of the string type.
@@ -1111,20 +1108,20 @@ GX_API GXSetBoolValue(GX_PORT_HANDLE hPort, const char* strName, bool bValue);
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXGetStringValue(GX_PORT_HANDLE hPort, const char* strName, GX_STRING_VALUE* pstStringValue);
+GX_API GXGetStringValue(GX_PORT_HANDLE hPort, const char *strName, GX_STRING_VALUE *pstStringValue);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ÉèÖÃ×Ö·û´®ÀàĞÍ½ÚµãÖµ
-\param		[in]hPort				Handle¾ä±ú
-\param		[in]strName				½ÚµãÃû³Æ
-\param		[in]strValue			×Ö·û´®ÀàĞÍ½ÚµãÖµ
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è®¾ç½®å­—ç¬¦ä¸²ç±»å‹èŠ‚ç‚¹å€¼
+\param		[in]hPort				Handleå¥æŸ„
+\param		[in]strName				èŠ‚ç‚¹åç§°
+\param		[in]strValue			å­—ç¬¦ä¸²ç±»å‹èŠ‚ç‚¹å€¼
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Set a string type node value
@@ -1138,21 +1135,21 @@ GX_API GXGetStringValue(GX_PORT_HANDLE hPort, const char* strName, GX_STRING_VAL
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXSetStringValue(GX_PORT_HANDLE hPort, const char* strName, const char* strValue);
+GX_API GXSetStringValue(GX_PORT_HANDLE hPort, const char *strName, const char *strValue);
 
-//string ³¤¶È
+// string é•¿åº¦
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ·¢ËÍÃüÁî
-\param		[in]hPort				Handle¾ä±ú
-\param		[in]strName				½ÚµãÃû³Æ
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      å‘é€å‘½ä»¤
+\param		[in]hPort				Handleå¥æŸ„
+\param		[in]strName				èŠ‚ç‚¹åç§°
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Send the command.
@@ -1165,20 +1162,20 @@ GX_API GXSetStringValue(GX_PORT_HANDLE hPort, const char* strName, const char* s
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXSetCommandValue(GX_PORT_HANDLE hPort, const char* strName);
+GX_API GXSetCommandValue(GX_PORT_HANDLE hPort, const char *strName);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡¼Ä´æÆ÷ĞÍ½ÚµãÊı¾İ³¤¶È
-\param		[in]hPort              Handle¾ä±ú
-\param		[in]strName            ½ÚµãÃû³Æ
-\param		[in|out]pnSize         ±£´æÊı¾İ³¤¶È
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è·å–å¯„å­˜å™¨å‹èŠ‚ç‚¹æ•°æ®é•¿åº¦
+\param		[in]hPort              Handleå¥æŸ„
+\param		[in]strName            èŠ‚ç‚¹åç§°
+\param		[in|out]pnSize         ä¿å­˜æ•°æ®é•¿åº¦
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Gets the data length of a register node
@@ -1192,21 +1189,21 @@ GX_API GXSetCommandValue(GX_PORT_HANDLE hPort, const char* strName);
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXGetRegisterLength(GX_PORT_HANDLE hPort, const char* strName, size_t* pnSize);
+GX_API GXGetRegisterLength(GX_PORT_HANDLE hPort, const char *strName, size_t *pnSize);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡¼Ä´æÆ÷ĞÍ½ÚµãÖµ
-\param		[in]hPort              Handle¾ä±ú
-\param		[in]strName            ½ÚµãÃû³Æ
-\param		[in|out]pBuffer        ¼Ä´æÆ÷ÖµÊı¾İ
-\param		[in|out]pnSize         Êı¾İ³¤¶È
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è·å–å¯„å­˜å™¨å‹èŠ‚ç‚¹å€¼
+\param		[in]hPort              Handleå¥æŸ„
+\param		[in]strName            èŠ‚ç‚¹åç§°
+\param		[in|out]pBuffer        å¯„å­˜å™¨å€¼æ•°æ®
+\param		[in|out]pnSize         æ•°æ®é•¿åº¦
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Get register type node values.
@@ -1221,21 +1218,21 @@ GX_API GXGetRegisterLength(GX_PORT_HANDLE hPort, const char* strName, size_t* pn
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXGetRegisterValue(GX_PORT_HANDLE hPort, const char* strName, uint8_t* pBuffer, size_t* pnSize);
+GX_API GXGetRegisterValue(GX_PORT_HANDLE hPort, const char *strName, uint8_t *pBuffer, size_t *pnSize);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ÉèÖÃ¼Ä´æÆ÷Öµ
-\param		[in]hPort           Handle¾ä±ú
-\param		[in]strName         ½ÚµãÃû³Æ
-\param		[in]pBuffer         ¼Ä´æÆ÷Êı¾İ
-\param		[in]nSize           ¼Ä´æÆ÷Êı¾İ³¤¶È
-\return     GX_STATUS_SUCCESS				²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API			Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER		ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_HANDLE		ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú£¬»òÕß¹Ø±ÕÒÑ¾­±»¹Ø±ÕµÄÉè±¸
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è®¾ç½®å¯„å­˜å™¨å€¼
+\param		[in]hPort           Handleå¥æŸ„
+\param		[in]strName         èŠ‚ç‚¹åç§°
+\param		[in]pBuffer         å¯„å­˜å™¨æ•°æ®
+\param		[in]nSize           å¯„å­˜å™¨æ•°æ®é•¿åº¦
+\return     GX_STATUS_SUCCESS				æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API			æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER		ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_HANDLE		ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„ï¼Œæˆ–è€…å…³é—­å·²ç»è¢«å…³é—­çš„è®¾å¤‡
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Set register value
@@ -1250,21 +1247,21 @@ GX_API GXGetRegisterValue(GX_PORT_HANDLE hPort, const char* strName, uint8_t* pB
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API GXSetRegisterValue(GX_PORT_HANDLE hPort, const char* strName, uint8_t* pBuffer, size_t nSize);
+GX_API GXSetRegisterValue(GX_PORT_HANDLE hPort, const char *strName, uint8_t *pBuffer, size_t nSize);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ¶ÁÓÃ»§Ö¸¶¨¼Ä´æÆ÷µÄÖµ
-\param		[in]hPort           ¾ä±ú
-\param		[in]ui64Address     ¼Ä´æÆ÷µØÖ·
-\param		[out]pBuffer        ·µ»Ø¼Ä´æÆ÷µÄÖµ£¬²»ÄÜÎªNULL
-\param		[in, out]piSize     [in]ÓÃ»§ÉêÇëµÄBuffer´óĞ¡
-								[out]³É¹¦¶ÁÈ¡¼Ä´æÆ÷µÄÖµºó£¬·µ»ØÊµ¼Ê´óĞ¡
-\return     GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			ÉÏÃæÃ»ÓĞº­¸Çµ½µÄ£¬²»³£¼ûµÄ´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è¯»ç”¨æˆ·æŒ‡å®šå¯„å­˜å™¨çš„å€¼
+\param		[in]hPort           å¥æŸ„
+\param		[in]ui64Address     å¯„å­˜å™¨åœ°å€
+\param		[out]pBuffer        è¿”å›å¯„å­˜å™¨çš„å€¼ï¼Œä¸èƒ½ä¸ºNULL
+\param		[in, out]piSize     [in]ç”¨æˆ·ç”³è¯·çš„Bufferå¤§å°
+								[out]æˆåŠŸè¯»å–å¯„å­˜å™¨çš„å€¼åï¼Œè¿”å›å®é™…å¤§å°
+\return     GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			ä¸Šé¢æ²¡æœ‰æ¶µç›–åˆ°çš„ï¼Œä¸å¸¸è§çš„é”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Reads the value of a user-specified register
@@ -1279,21 +1276,21 @@ GX_API GXSetRegisterValue(GX_PORT_HANDLE hPort, const char* strName, uint8_t* pB
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXReadPort(GX_PORT_HANDLE hPort, uint64_t ui64Address, void* pBuffer, size_t* piSize);
+GX_API GXReadPort(GX_PORT_HANDLE hPort, uint64_t ui64Address, void *pBuffer, size_t *piSize);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ÏòÓÃ»§Ö¸¶¨µÄ¼Ä´æÆ÷ÖĞĞ´ÈëÓÃ»§¸ø¶¨µÄÊı¾İ
-\param		[in]hPort           ¾ä±ú
-\param		[in]ui64Address     ¼Ä´æÆ÷µØÖ·
-\param		[in]pBuffer         ¼Ä´æÆ÷µÄÖµ£¬²»ÄÜÎªNULL
-\param		[in, out]piSize     [in]ÓÃ»§ÒªĞ´ÈëµÄBuffer³¤¶È
-								[out]·µ»ØÊµ¼ÊĞ´Èë¼Ä´æÆ÷µÄ³¤¶È
-\return     GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			ÉÏÃæÃ»ÓĞº­¸Çµ½µÄ£¬²»³£¼ûµÄ´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      å‘ç”¨æˆ·æŒ‡å®šçš„å¯„å­˜å™¨ä¸­å†™å…¥ç”¨æˆ·ç»™å®šçš„æ•°æ®
+\param		[in]hPort           å¥æŸ„
+\param		[in]ui64Address     å¯„å­˜å™¨åœ°å€
+\param		[in]pBuffer         å¯„å­˜å™¨çš„å€¼ï¼Œä¸èƒ½ä¸ºNULL
+\param		[in, out]piSize     [in]ç”¨æˆ·è¦å†™å…¥çš„Bufferé•¿åº¦
+								[out]è¿”å›å®é™…å†™å…¥å¯„å­˜å™¨çš„é•¿åº¦
+\return     GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			ä¸Šé¢æ²¡æœ‰æ¶µç›–åˆ°çš„ï¼Œä¸å¸¸è§çš„é”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Writes the data given by the user to a register specified by the user
@@ -1308,21 +1305,21 @@ GX_API GXReadPort(GX_PORT_HANDLE hPort, uint64_t ui64Address, void* pBuffer, siz
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXWritePort(GX_PORT_HANDLE hPort, uint64_t ui64Address, const void* pBuffer, size_t* piSize);
+GX_API GXWritePort(GX_PORT_HANDLE hPort, uint64_t ui64Address, const void *pBuffer, size_t *piSize);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ÅúÁ¿¶ÁÓÃ»§Ö¸¶¨¼Ä´æÆ÷µÄÖµ£¨½öÏŞÃüÁîÖµÎª4×Ö½Ú³¤¶ÈµÄ¼Ä´æÆ÷,ÆäÓàÀàĞÍ²»±£Ö¤Êı¾İÓĞĞ§ĞÔ£©
-\param		[in]hPort           ¾ä±ú
-\param		[in|out]pstEntries  [in]ÅúÁ¿¶ÁÈ¡¼Ä´æÆ÷µÄµØÖ·¼°Öµ
-								[out]¶ÁÈ¡µ½¶ÔÓ¦¼Ä´æÆ÷µÄÊı¾İ
-\param		[in, out]piSize     [in]¶ÁÈ¡Éè±¸¼Ä´æÆ÷µÄ¸öÊı
-								[out]³É¹¦¶ÁÈ¡¼Ä´æÆ÷µÄ¸öÊı
-\return     GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			ÉÏÃæÃ»ÓĞº­¸Çµ½µÄ£¬²»³£¼ûµÄ´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      æ‰¹é‡è¯»ç”¨æˆ·æŒ‡å®šå¯„å­˜å™¨çš„å€¼ï¼ˆä»…é™å‘½ä»¤å€¼ä¸º4å­—èŠ‚é•¿åº¦çš„å¯„å­˜å™¨,å…¶ä½™ç±»å‹ä¸ä¿è¯æ•°æ®æœ‰æ•ˆæ€§ï¼‰
+\param		[in]hPort           å¥æŸ„
+\param		[in|out]pstEntries  [in]æ‰¹é‡è¯»å–å¯„å­˜å™¨çš„åœ°å€åŠå€¼
+								[out]è¯»å–åˆ°å¯¹åº”å¯„å­˜å™¨çš„æ•°æ®
+\param		[in, out]piSize     [in]è¯»å–è®¾å¤‡å¯„å­˜å™¨çš„ä¸ªæ•°
+								[out]æˆåŠŸè¯»å–å¯„å­˜å™¨çš„ä¸ªæ•°
+\return     GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			ä¸Šé¢æ²¡æœ‰æ¶µç›–åˆ°çš„ï¼Œä¸å¸¸è§çš„é”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Batch read the value of the user specified register (only the command value is 4 bytes long register, other types do not guarantee data validity)
@@ -1337,23 +1334,22 @@ GX_API GXWritePort(GX_PORT_HANDLE hPort, uint64_t ui64Address, const void* pBuff
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXReadPortStacked(GX_PORT_HANDLE hPort, GX_REGISTER_STACK_ENTRY* pstEntries, size_t *piSize);
-
+GX_API GXReadPortStacked(GX_PORT_HANDLE hPort, GX_REGISTER_STACK_ENTRY *pstEntries, size_t *piSize);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ÅúÁ¿ÏòÓÃ»§Ö¸¶¨µÄ¼Ä´æÆ÷ÖĞĞ´ÈëÓÃ»§¸ø¶¨µÄÊı¾İ£¨½öÏŞÃüÁîÖµÎª4×Ö½Ú³¤¶ÈµÄ¼Ä´æÆ÷£©
-            µ÷ÓÃµ±Ç°½Ó¿Úºó£¬Ê¹ÓÃGXGetEnum¡¢GXGetInt¡¢GXGetBoolµÈ½Ó¿Ú»ñÈ¡µ½µÄ½ÚµãÖµÎªĞŞ¸ÄÇ°Öµ
-            ¿ÉÊ¹ÓÃGXReadPort½Ó¿Ú»ñÈ¡×îĞÂµÄ¼Ä´æÆ÷Öµ
-\param		[in]hPort           ¾ä±ú
-\param		[in]pstEntries      [in]ÅúÁ¿Ğ´¼Ä´æÆ÷µÄµØÖ·¼°Öµ
-\param		[in|out]piSize      [in]ÉèÖÃÉè±¸¼Ä´æÆ÷µÄ¸öÊı
-								[out]³É¹¦Ğ´¼Ä´æÆ÷µÄ¸öÊı
-\return     GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			ÉÏÃæÃ»ÓĞº­¸Çµ½µÄ£¬²»³£¼ûµÄ´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      æ‰¹é‡å‘ç”¨æˆ·æŒ‡å®šçš„å¯„å­˜å™¨ä¸­å†™å…¥ç”¨æˆ·ç»™å®šçš„æ•°æ®ï¼ˆä»…é™å‘½ä»¤å€¼ä¸º4å­—èŠ‚é•¿åº¦çš„å¯„å­˜å™¨ï¼‰
+			è°ƒç”¨å½“å‰æ¥å£åï¼Œä½¿ç”¨GXGetEnumã€GXGetIntã€GXGetBoolç­‰æ¥å£è·å–åˆ°çš„èŠ‚ç‚¹å€¼ä¸ºä¿®æ”¹å‰å€¼
+			å¯ä½¿ç”¨GXReadPortæ¥å£è·å–æœ€æ–°çš„å¯„å­˜å™¨å€¼
+\param		[in]hPort           å¥æŸ„
+\param		[in]pstEntries      [in]æ‰¹é‡å†™å¯„å­˜å™¨çš„åœ°å€åŠå€¼
+\param		[in|out]piSize      [in]è®¾ç½®è®¾å¤‡å¯„å­˜å™¨çš„ä¸ªæ•°
+								[out]æˆåŠŸå†™å¯„å­˜å™¨çš„ä¸ªæ•°
+\return     GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			ä¸Šé¢æ²¡æœ‰æ¶µç›–åˆ°çš„ï¼Œä¸å¸¸è§çš„é”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Write user-specified data in batches to user-specified registers (only registers with 4-byte command values)
@@ -1369,21 +1365,21 @@ GX_API GXReadPortStacked(GX_PORT_HANDLE hPort, GX_REGISTER_STACK_ENTRY* pstEntri
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXWritePortStacked(GX_PORT_HANDLE hPort, const GX_REGISTER_STACK_ENTRY* pstEntries, size_t *piSize);
+GX_API GXWritePortStacked(GX_PORT_HANDLE hPort, const GX_REGISTER_STACK_ENTRY *pstEntries, size_t *piSize);
 
 // ---------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief       »ñÈ¡×îÓÅ°ü³¤Öµ
-\param		[in]hDevice				Éè±¸¾ä±ú
-\param		[out]punPacketSize		×îÓÅ°ü³¤Öµ
-\return     GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_TIMEOUT             ²Ù×÷³¬Ê±
-			GC_ERR_IO                     IOÍ¨Ñ¶´íÎó
-			GX_STATUS_INVALID_PARAMETER   ÎŞĞ§²ÎÊı
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			ÉÏÃæÃ»ÓĞº­¸Çµ½µÄ£¬²»³£¼ûµÄ´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief       è·å–æœ€ä¼˜åŒ…é•¿å€¼
+\param		[in]hDevice				è®¾å¤‡å¥æŸ„
+\param		[out]punPacketSize		æœ€ä¼˜åŒ…é•¿å€¼
+\return     GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_TIMEOUT             æ“ä½œè¶…æ—¶
+			GC_ERR_IO                     IOé€šè®¯é”™è¯¯
+			GX_STATUS_INVALID_PARAMETER   æ— æ•ˆå‚æ•°
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			ä¸Šé¢æ²¡æœ‰æ¶µç›–åˆ°çš„ï¼Œä¸å¸¸è§çš„é”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Gets the optimal packet length value
@@ -1398,19 +1394,19 @@ GX_API GXWritePortStacked(GX_PORT_HANDLE hPort, const GX_REGISTER_STACK_ENTRY* p
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 // ---------------------------------------------------------------------------
-GX_API  GXGetOptimalPacketSize (GX_DEV_HANDLE hDevice, uint32_t* punPacketSize);
+GX_API GXGetOptimalPacketSize(GX_DEV_HANDLE hDevice, uint32_t *punPacketSize);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ÓÃ»§ÉèÖÃ²É¼¯buffer¸öÊı
-\param		[in]hDevice         Éè±¸¾ä±ú
-\param		[in]nBufferNum      ÓÃ»§ÉèÖÃµÄbuffer¸öÊı
-\return     GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_INVALID_PARAMETER    ÊäÈë²ÎÊıÎŞĞ§
-			ÉÏÃæÃ»ÓĞº­¸Çµ½µÄ£¬²»³£¼ûµÄ´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      ç”¨æˆ·è®¾ç½®é‡‡é›†bufferä¸ªæ•°
+\param		[in]hDevice         è®¾å¤‡å¥æŸ„
+\param		[in]nBufferNum      ç”¨æˆ·è®¾ç½®çš„bufferä¸ªæ•°
+\return     GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_INVALID_PARAMETER    è¾“å…¥å‚æ•°æ— æ•ˆ
+			ä¸Šé¢æ²¡æœ‰æ¶µç›–åˆ°çš„ï¼Œä¸å¸¸è§çš„é”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Set the number of the acquisition buffers.
@@ -1427,18 +1423,18 @@ GX_API GXSetAcqusitionBufferNumber(GX_DEV_HANDLE hDevice, uint64_t nBufferNum);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ×¢²á²É¼¯»Øµ÷º¯Êı
-\attention  ±ØĞëÔÚ·¢ËÍ¿ª²ÉÃüÁîÖ®Ç°×¢²á²É¼¯»Øµ÷º¯Êı
-\param		[in]hDevice			Éè±¸¾ä±ú
-\param		[in]pUserParam		ÓÃ»§Ë½ÓĞÊı¾İ
-\param		[in]callBackFun		ÓÃ»§×¢²áµÄ»Øµ÷º¯Êı
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§´«ÈëÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_CALL        ·¢ËÍ¿ª²ÉÃüÁîºó£¬²»ÄÜ×¢²á²É¼¯»Øµ÷º¯Êı
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      æ³¨å†Œé‡‡é›†å›è°ƒå‡½æ•°
+\attention  å¿…é¡»åœ¨å‘é€å¼€é‡‡å‘½ä»¤ä¹‹å‰æ³¨å†Œé‡‡é›†å›è°ƒå‡½æ•°
+\param		[in]hDevice			è®¾å¤‡å¥æŸ„
+\param		[in]pUserParam		ç”¨æˆ·ç§æœ‰æ•°æ®
+\param		[in]callBackFun		ç”¨æˆ·æ³¨å†Œçš„å›è°ƒå‡½æ•°
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·ä¼ å…¥æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_CALL        å‘é€å¼€é‡‡å‘½ä»¤åï¼Œä¸èƒ½æ³¨å†Œé‡‡é›†å›è°ƒå‡½æ•°
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Register the capture callback function
@@ -1454,19 +1450,19 @@ GX_API GXSetAcqusitionBufferNumber(GX_DEV_HANDLE hDevice, uint64_t nBufferNum);
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXRegisterCaptureCallback  (GX_DEV_HANDLE hDevice, void *pUserParam, GXCaptureCallBack callBackFun);
+GX_API GXRegisterCaptureCallback(GX_DEV_HANDLE hDevice, void *pUserParam, GXCaptureCallBack callBackFun);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ×¢Ïú²É¼¯»Øµ÷º¯Êı
-\attention  ±ØĞëÔÚ·¢ËÍÍ£²ÉÃüÁîÖ®ºó×¢Ïú²É¼¯»Øµ÷º¯Êı
-\param		[in]hDevice				Éè±¸¾ä±ú
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_INVALID_CALL        ·¢ËÍÍ£²ÉÃüÁîÖ®Ç°£¬²»ÄÜ×¢Ïú²É¼¯»Øµ÷º¯Êı
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      æ³¨é”€é‡‡é›†å›è°ƒå‡½æ•°
+\attention  å¿…é¡»åœ¨å‘é€åœé‡‡å‘½ä»¤ä¹‹åæ³¨é”€é‡‡é›†å›è°ƒå‡½æ•°
+\param		[in]hDevice				è®¾å¤‡å¥æŸ„
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_INVALID_CALL        å‘é€åœé‡‡å‘½ä»¤ä¹‹å‰ï¼Œä¸èƒ½æ³¨é”€é‡‡é›†å›è°ƒå‡½æ•°
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Unregister the capture callback function
@@ -1483,19 +1479,19 @@ GX_API GXUnregisterCaptureCallback(GX_DEV_HANDLE hDevice);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      Ö±½Ó»ñÈ¡Ò»Ö¡Í¼Ïñ
-\attention  Èç¹ûÓÃ»§ÒÑ×¢²á²É¼¯»Øµ÷º¯Êı£¬µ÷ÓÃ´Ë½Ó¿Ú»á±¨´íGX_STATUS_INVALID_CALL
-\param		[in]hDevice        Éè±¸¾ä±ú
-\param		[in|out]pFrameData Í¼ÏñĞÅÏ¢½á¹¹ÌåÖ¸Õë
-\param		[in]nTimeout       ³¬Ê±Ê±¼ä
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_INVALID_CALL        ·¢ËÍÍ£²ÉÃüÁîÖ®Ç°£¬²»ÄÜ×¢Ïú²É¼¯»Øµ÷º¯Êı
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§´«ÈëÍ¼ÏñµØÖ·Ö¸ÕëÎªNULL
-			GX_STATUS_NEED_MORE_BUFFER    ÓÃ»§·ÖÅäµÄÍ¼ÏñbufferĞ¡ÓÚÊµ¼ÊĞèÒªµÄ´óĞ¡
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      ç›´æ¥è·å–ä¸€å¸§å›¾åƒ
+\attention  å¦‚æœç”¨æˆ·å·²æ³¨å†Œé‡‡é›†å›è°ƒå‡½æ•°ï¼Œè°ƒç”¨æ­¤æ¥å£ä¼šæŠ¥é”™GX_STATUS_INVALID_CALL
+\param		[in]hDevice        è®¾å¤‡å¥æŸ„
+\param		[in|out]pFrameData å›¾åƒä¿¡æ¯ç»“æ„ä½“æŒ‡é’ˆ
+\param		[in]nTimeout       è¶…æ—¶æ—¶é—´
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_INVALID_CALL        å‘é€åœé‡‡å‘½ä»¤ä¹‹å‰ï¼Œä¸èƒ½æ³¨é”€é‡‡é›†å›è°ƒå‡½æ•°
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·ä¼ å…¥å›¾åƒåœ°å€æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_NEED_MORE_BUFFER    ç”¨æˆ·åˆ†é…çš„å›¾åƒbufferå°äºå®é™…éœ€è¦çš„å¤§å°
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Get a frame of image directly
@@ -1516,16 +1512,16 @@ GX_API GXGetImage(GX_DEV_HANDLE hDevice, GX_FRAME_DATA *pFrameData, uint32_t nTi
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      Çå¿Õ²É¼¯Êä³ö¶ÓÁĞ
-\attention  Èç¹ûÓÃ»§´¦ÀíÍ¼ÏñµÄËÙ¶È½ÏÂı£¬¿âÄÚ»á²ĞÁôÉÏ´Î²É¼¯¹ı³ÌµÄ»º´æÍ¼Ïñ£¬ÌØ±ğÔÚ´¥·¢Ä£Ê½ÏÂ£¬
-            ÓÃ»§·¢ËÍÍê´¥·¢Ö®ºó£¬»ñÈ¡µ½µÄÊÇ¾ÉÍ¼£¬Èç¹ûÓÃ»§Ïë»ñÈ¡µ½µ±Ç°´¥·¢¶ÔÓ¦µÄÍ¼Ïñ£¬ĞèÒªÔÚ
-		    ·¢ËÍ´¥·¢Ö®Ç°µ÷ÓÃGXFlushQueue½Ó¿Ú£¬ÏÈÇå¿ÕÍ¼ÏñÊä³ö¶ÓÁĞ¡£
-\param		[in]hDevice        Éè±¸¾ä±ú
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      æ¸…ç©ºé‡‡é›†è¾“å‡ºé˜Ÿåˆ—
+\attention  å¦‚æœç”¨æˆ·å¤„ç†å›¾åƒçš„é€Ÿåº¦è¾ƒæ…¢ï¼Œåº“å†…ä¼šæ®‹ç•™ä¸Šæ¬¡é‡‡é›†è¿‡ç¨‹çš„ç¼“å­˜å›¾åƒï¼Œç‰¹åˆ«åœ¨è§¦å‘æ¨¡å¼ä¸‹ï¼Œ
+			ç”¨æˆ·å‘é€å®Œè§¦å‘ä¹‹åï¼Œè·å–åˆ°çš„æ˜¯æ—§å›¾ï¼Œå¦‚æœç”¨æˆ·æƒ³è·å–åˆ°å½“å‰è§¦å‘å¯¹åº”çš„å›¾åƒï¼Œéœ€è¦åœ¨
+			å‘é€è§¦å‘ä¹‹å‰è°ƒç”¨GXFlushQueueæ¥å£ï¼Œå…ˆæ¸…ç©ºå›¾åƒè¾“å‡ºé˜Ÿåˆ—ã€‚
+\param		[in]hDevice        è®¾å¤‡å¥æŸ„
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Clear the collection output queue
@@ -1544,23 +1540,23 @@ GX_API GXFlushQueue(GX_DEV_HANDLE hDevice);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ×¢²áÊÂ¼ş»Øµ÷º¯Êı
-\attention  Éè±¸ÊÂ¼ş±ÈÈç£¬µôÏßÊÂ¼ş¡¢ÆØ¹â½áÊøµÈ£¬ÕâĞ©ÊÂ¼ş¶¼¿ÉÒÔÍ¨¹ıÕâ¸ö½Ó¿ÚµÄ»Øµ÷·½Ê½´«³ö£¬
-            ÓÃ»§²»ĞèÒª»ñÈ¡ÊÂ¼şµÄÊ±ºòµ÷ÓÃGXUnregisterEventCallback½Ó¿Ú×¢Ïú»Øµ÷º¯Êı
-\param		[in]hDevice			Éè±¸¾ä±ú
-\param		[in]pUserParam		ÓÃ»§Ë½ÓĞÊı¾İ
-\param		[in]callBackFun		ÓÃ»§×¢²áµÄ»Øµ÷º¯Êı
-\param		[out]pHCallBack		µôÏß»Øµ÷º¯Êı¾ä±ú£¬´Ë¾ä±úÓÃÀ´×¢Ïú»Øµ÷º¯ÊıÊ¹ÓÃ
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§´«Èë»Øµ÷º¯Êı·Ç·¨»òÕß´«ÈëÊÂ¼şÀàĞÍ·Ç·¨
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      æ³¨å†Œäº‹ä»¶å›è°ƒå‡½æ•°
+\attention  è®¾å¤‡äº‹ä»¶æ¯”å¦‚ï¼Œæ‰çº¿äº‹ä»¶ã€æ›å…‰ç»“æŸç­‰ï¼Œè¿™äº›äº‹ä»¶éƒ½å¯ä»¥é€šè¿‡è¿™ä¸ªæ¥å£çš„å›è°ƒæ–¹å¼ä¼ å‡ºï¼Œ
+			ç”¨æˆ·ä¸éœ€è¦è·å–äº‹ä»¶çš„æ—¶å€™è°ƒç”¨GXUnregisterEventCallbackæ¥å£æ³¨é”€å›è°ƒå‡½æ•°
+\param		[in]hDevice			è®¾å¤‡å¥æŸ„
+\param		[in]pUserParam		ç”¨æˆ·ç§æœ‰æ•°æ®
+\param		[in]callBackFun		ç”¨æˆ·æ³¨å†Œçš„å›è°ƒå‡½æ•°
+\param		[out]pHCallBack		æ‰çº¿å›è°ƒå‡½æ•°å¥æŸ„ï¼Œæ­¤å¥æŸ„ç”¨æ¥æ³¨é”€å›è°ƒå‡½æ•°ä½¿ç”¨
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·ä¼ å…¥å›è°ƒå‡½æ•°éæ³•æˆ–è€…ä¼ å…¥äº‹ä»¶ç±»å‹éæ³•
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Register the event callback function
-\attention  Exposure device events, for example, offline events, such as end, these events can be covered by the interface mode of the callback, 
+\attention  Exposure device events, for example, offline events, such as end, these events can be covered by the interface mode of the callback,
 			users do not need to access the event called when GXUnregisterEventCallback interface cancelled the callback function
 \param		[in]hDevice			The handle of the device.
 \param		[in]pUserParam		User private parameter.
@@ -1573,25 +1569,25 @@ GX_API GXFlushQueue(GX_DEV_HANDLE hDevice);
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXRegisterDeviceOfflineCallback    (GX_DEV_HANDLE hDevice, 
-										   void* pUserParam, 
-										   GXDeviceOfflineCallBack callBackFun, 
-										   GX_EVENT_CALLBACK_HANDLE *pHCallBack);
+GX_API GXRegisterDeviceOfflineCallback(GX_DEV_HANDLE hDevice,
+									   void *pUserParam,
+									   GXDeviceOfflineCallBack callBackFun,
+									   GX_EVENT_CALLBACK_HANDLE *pHCallBack);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ×¢ÏúÊÂ¼ş»Øµ÷º¯Êı
-\attention  Éè±¸ÊÂ¼ş±ÈÈç£¬µôÏßÊÂ¼ş¡¢ÆØ¹â½áÊøµÈ£¬ÕâĞ©ÊÂ¼ş¶¼¿ÉÒÔÍ¨¹ıÕâ¸ö½Ó¿ÚµÄ»Øµ÷·½Ê½´«³ö£¬
-            ÓÃ»§²»ĞèÒª»ñÈ¡ÊÂ¼şµÄÊ±ºòµ÷ÓÃGXUnregisterEventCallback½Ó¿Ú×¢Ïú»Øµ÷º¯Êı
-\param		[in]hDevice			Éè±¸¾ä±ú
-\param		[in]pHCallBack		µôÏß»Øµ÷º¯Êı¾ä±ú
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_INVALID_CALL        ·¢ËÍÍ£²ÉÃüÁîÖ®Ç°£¬²»ÄÜ×¢Ïú²É¼¯»Øµ÷º¯Êı
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§´«ÈëÊÂ¼şÀàĞÍ·Ç·¨
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      æ³¨é”€äº‹ä»¶å›è°ƒå‡½æ•°
+\attention  è®¾å¤‡äº‹ä»¶æ¯”å¦‚ï¼Œæ‰çº¿äº‹ä»¶ã€æ›å…‰ç»“æŸç­‰ï¼Œè¿™äº›äº‹ä»¶éƒ½å¯ä»¥é€šè¿‡è¿™ä¸ªæ¥å£çš„å›è°ƒæ–¹å¼ä¼ å‡ºï¼Œ
+			ç”¨æˆ·ä¸éœ€è¦è·å–äº‹ä»¶çš„æ—¶å€™è°ƒç”¨GXUnregisterEventCallbackæ¥å£æ³¨é”€å›è°ƒå‡½æ•°
+\param		[in]hDevice			è®¾å¤‡å¥æŸ„
+\param		[in]pHCallBack		æ‰çº¿å›è°ƒå‡½æ•°å¥æŸ„
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_INVALID_CALL        å‘é€åœé‡‡å‘½ä»¤ä¹‹å‰ï¼Œä¸èƒ½æ³¨é”€é‡‡é›†å›è°ƒå‡½æ•°
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·ä¼ å…¥äº‹ä»¶ç±»å‹éæ³•
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Unregister event handle callback function
@@ -1607,20 +1603,20 @@ GX_API GXRegisterDeviceOfflineCallback    (GX_DEV_HANDLE hDevice,
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXUnregisterDeviceOfflineCallback  (GX_DEV_HANDLE hDevice, GX_EVENT_CALLBACK_HANDLE  hCallBack);
+GX_API GXUnregisterDeviceOfflineCallback(GX_DEV_HANDLE hDevice, GX_EVENT_CALLBACK_HANDLE hCallBack);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      Çå¿ÕÊÂ¼şÊä³ö¶ÓÁĞ
-\attention  ¿âÄÚ²¿ÊÂ¼şÊı¾İµÄ½ÓÊÕºÍ´¦Àí²ÉÓÃ»º´æ»úÖÆ£¬Èç¹ûÓÃ»§½ÓÊÕ¡¢´¦ÀíÊÂ¼şµÄËÙ¶ÈÂıÓÚÊÂ¼ş²úÉúµÄËÙ¶È£¬
-            ÊÂ¼şÊı¾İ¾Í»áÔÚ¿âÄÚ»ıÀÛ£¬»áÓ°ÏìÓÃ»§»ñÈ¡ÊµÊ±ÊÂ¼şÊı¾İ¡£Èç¹ûÓÃ»§Ïë»ñÈ¡ÊµÊ±ÊÂ¼şÊı¾İ£¬ĞèÒªÏÈ
-			µ÷ÓÃGXFlushEvent½Ó¿ÚÇå¿ÕÊÂ¼ş»º´æÊı¾İ¡£´Ë½Ó¿ÚÒ»´ÎĞÔÇå¿ÕËùÓĞÊÂ¼şÊı¾İ¡£
-\param		[in]hDevice        Éè±¸¾ä±ú
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      æ¸…ç©ºäº‹ä»¶è¾“å‡ºé˜Ÿåˆ—
+\attention  åº“å†…éƒ¨äº‹ä»¶æ•°æ®çš„æ¥æ”¶å’Œå¤„ç†é‡‡ç”¨ç¼“å­˜æœºåˆ¶ï¼Œå¦‚æœç”¨æˆ·æ¥æ”¶ã€å¤„ç†äº‹ä»¶çš„é€Ÿåº¦æ…¢äºäº‹ä»¶äº§ç”Ÿçš„é€Ÿåº¦ï¼Œ
+			äº‹ä»¶æ•°æ®å°±ä¼šåœ¨åº“å†…ç§¯ç´¯ï¼Œä¼šå½±å“ç”¨æˆ·è·å–å®æ—¶äº‹ä»¶æ•°æ®ã€‚å¦‚æœç”¨æˆ·æƒ³è·å–å®æ—¶äº‹ä»¶æ•°æ®ï¼Œéœ€è¦å…ˆ
+			è°ƒç”¨GXFlushEventæ¥å£æ¸…ç©ºäº‹ä»¶ç¼“å­˜æ•°æ®ã€‚æ­¤æ¥å£ä¸€æ¬¡æ€§æ¸…ç©ºæ‰€æœ‰äº‹ä»¶æ•°æ®ã€‚
+\param		[in]hDevice        è®¾å¤‡å¥æŸ„
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Empty the event output queue
@@ -1636,19 +1632,19 @@ GX_API GXUnregisterDeviceOfflineCallback  (GX_DEV_HANDLE hDevice, GX_EVENT_CALLB
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXFlushEvent               (GX_DEV_HANDLE hDevice);
+GX_API GXFlushEvent(GX_DEV_HANDLE hDevice);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief     »ñÈ¡µ±Ç°ÊÂ¼ş¶ÓÁĞÀïÃæµÄÊÂ¼ş¸öÊı
-\param     [in]hDevice        Éè±¸¾ä±ú
-\param     [in]pnEventNum     ÊÂ¼ş¸öÊıÖ¸Õë
-\return    GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-		   GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-           GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-           GX_STATUS_INVALID_PARAMETER   ÓÃ»§´«ÈëpnEventNumÎªNULLÖ¸Õë
-           ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief     è·å–å½“å‰äº‹ä»¶é˜Ÿåˆ—é‡Œé¢çš„äº‹ä»¶ä¸ªæ•°
+\param     [in]hDevice        è®¾å¤‡å¥æŸ„
+\param     [in]pnEventNum     äº‹ä»¶ä¸ªæ•°æŒ‡é’ˆ
+\return    GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+		   GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+		   GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+		   GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·ä¼ å…¥pnEventNumä¸ºNULLæŒ‡é’ˆ
+		   å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief     Get the number of the events in the current remote device event queue cache.
@@ -1661,23 +1657,23 @@ GX_API GXFlushEvent               (GX_DEV_HANDLE hDevice);
 		   The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXGetEventNumInQueue       (GX_DEV_HANDLE hDevice, uint32_t *pnEventNum);
+GX_API GXGetEventNumInQueue(GX_DEV_HANDLE hDevice, uint32_t *pnEventNum);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ×¢²áÊôĞÔ¸üĞÂ»Øµ÷º¯Êı
-\attention  ÓÃ»§¿ÉÍ¨¹ı´Ë½Ó¿Ú»ñÈ¡ÊÂ¼şÊı¾İ£¬Ïê¼ûÊ¾Àı³ÌĞò
-\param		[in]hDevice          Éè±¸¾ä±ú
-\param		[in]pUserParam       ÓÃ»§Ë½ÓĞÊı¾İ
-\param		[in]callBackFun      ÓÃ»§×¢²áµÄ»Øµ÷º¯Êı
-\param		[in]strfeatureName   ½ÚµãÃû³Æ
-\param		[out]pHCallBack      »Øµ÷º¯Êı¾ä±ú
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§´«Èë»Øµ÷º¯Êı·Ç·¨
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      æ³¨å†Œå±æ€§æ›´æ–°å›è°ƒå‡½æ•°
+\attention  ç”¨æˆ·å¯é€šè¿‡æ­¤æ¥å£è·å–äº‹ä»¶æ•°æ®ï¼Œè¯¦è§ç¤ºä¾‹ç¨‹åº
+\param		[in]hDevice          è®¾å¤‡å¥æŸ„
+\param		[in]pUserParam       ç”¨æˆ·ç§æœ‰æ•°æ®
+\param		[in]callBackFun      ç”¨æˆ·æ³¨å†Œçš„å›è°ƒå‡½æ•°
+\param		[in]strfeatureName   èŠ‚ç‚¹åç§°
+\param		[out]pHCallBack      å›è°ƒå‡½æ•°å¥æŸ„
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·ä¼ å…¥å›è°ƒå‡½æ•°éæ³•
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Register property update callback function.
@@ -1694,24 +1690,24 @@ GX_API GXGetEventNumInQueue       (GX_DEV_HANDLE hDevice, uint32_t *pnEventNum);
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXRegisterFeatureCallbackByString  (GX_PORT_HANDLE hPort, 
-								   void* pUserParam, 
-								   GXFeatureCallBackByString  callBackFun, 
-								   const char*  strfeatureName,
-								   GX_FEATURE_CALLBACK_BY_STRING_HANDLE *pHCallBack);
+GX_API GXRegisterFeatureCallbackByString(GX_PORT_HANDLE hPort,
+										 void *pUserParam,
+										 GXFeatureCallBackByString callBackFun,
+										 const char *strfeatureName,
+										 GX_FEATURE_CALLBACK_BY_STRING_HANDLE *pHCallBack);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ×¢ÏúÊôĞÔ¸üĞÂ»Øµ÷º¯Êı
-\attention  ÓëGXRegisterFeatureCallbackÅäÌ×Ê¹ÓÃ£¬Ã¿´Î×¢²á¶¼±ØĞëÓĞÏàÓ¦µÄ×¢ÏúÓëÖ®¶ÔÓ¦
-\param		[in]hDevice				Éè±¸¾ä±ú
-\param		[in]strfeatureName		½ÚµãÃû³Æ
-\param		[out]pHCallBack			»Øµ÷º¯Êı¾ä±ú
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      æ³¨é”€å±æ€§æ›´æ–°å›è°ƒå‡½æ•°
+\attention  ä¸GXRegisterFeatureCallbacké…å¥—ä½¿ç”¨ï¼Œæ¯æ¬¡æ³¨å†Œéƒ½å¿…é¡»æœ‰ç›¸åº”çš„æ³¨é”€ä¸ä¹‹å¯¹åº”
+\param		[in]hDevice				è®¾å¤‡å¥æŸ„
+\param		[in]strfeatureName		èŠ‚ç‚¹åç§°
+\param		[out]pHCallBack			å›è°ƒå‡½æ•°å¥æŸ„
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Unregister device attribute update callback function.
@@ -1725,1647 +1721,1640 @@ GX_API GXRegisterFeatureCallbackByString  (GX_PORT_HANDLE hPort,
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXUnregisterFeatureCallbackByString(GX_PORT_HANDLE  hPort, 
-                                    const char* strfeatureName, 
-                                    GX_FEATURE_CALLBACK_BY_STRING_HANDLE  hCallBack);
+GX_API GXUnregisterFeatureCallbackByString(GX_PORT_HANDLE hPort,
+										   const char *strfeatureName,
+										   GX_FEATURE_CALLBACK_BY_STRING_HANDLE hCallBack);
 
 #if 1
 //***************************************************
-//Chinese£º ²»½¨ÒéÊ¹ÓÃµÄ¹¦ÄÜºÍ¶¨Òå
-//English£º Features and definitions not recommended
+// Chineseï¼š ä¸å»ºè®®ä½¿ç”¨çš„åŠŸèƒ½å’Œå®šä¹‰
+// Englishï¼š Features and definitions not recommended
 //***************************************************
 
 typedef enum GX_ACCESS_STATUS
 {
-	GX_ACCESS_STATUS_UNKNOWN = 0,						///< \Chinese Éè±¸µ±Ç°×´Ì¬Î´Öª																\English The device's current status is unknown
-	GX_ACCESS_STATUS_READWRITE = 1,						///< \Chinese Éè±¸µ±Ç°¿É¶Á¿ÉĞ´																\English The device currently supports reading and writing
-	GX_ACCESS_STATUS_READONLY = 2,						///< \Chinese Éè±¸µ±Ç°Ö»Ö§³Ö¶Á																\English The device currently only supports reading
-	GX_ACCESS_STATUS_NOACCESS = 3,						///< \Chinese Éè±¸µ±Ç°¼È²»Ö§³Ö¶Á£¬ÓÖ²»Ö§³ÖĞ´												\English The device currently does neither support reading nor support writing
-}GX_ACCESS_STATUS;
+	GX_ACCESS_STATUS_UNKNOWN = 0,	///< \Chinese è®¾å¤‡å½“å‰çŠ¶æ€æœªçŸ¥																\English The device's current status is unknown
+	GX_ACCESS_STATUS_READWRITE = 1, ///< \Chinese è®¾å¤‡å½“å‰å¯è¯»å¯å†™																\English The device currently supports reading and writing
+	GX_ACCESS_STATUS_READONLY = 2,	///< \Chinese è®¾å¤‡å½“å‰åªæ”¯æŒè¯»																\English The device currently only supports reading
+	GX_ACCESS_STATUS_NOACCESS = 3,	///< \Chinese è®¾å¤‡å½“å‰æ—¢ä¸æ”¯æŒè¯»ï¼Œåˆä¸æ”¯æŒå†™												\English The device currently does neither support reading nor support writing
+} GX_ACCESS_STATUS;
 typedef int32_t GX_ACCESS_STATUS_CMD;
 
 typedef struct GX_DEVICE_IP_INFO
 {
-	char szDeviceID[GX_INFO_LENGTH_64_BYTE + 4];         ///< \Chinese Éè±¸Î¨Ò»±êÊ¶,Èç¹ûÊµ¼Ê³¤¶È³¬¹ı64×Ö½ÚÓĞĞ§×Ö·û´®£¬ÔòÖ»±£Áô64¸öÓĞĞ§×Ö·û			\English the unique identifier of the device, 64+4 bytes
-	char szMAC[GX_INFO_LENGTH_32_BYTE];                  ///< \Chinese MACµØÖ·,Èç¹ûÊµ¼Ê³¤¶È³¬¹ı32×Ö½ÚÓĞĞ§×Ö·û´®£¬ÔòÖ»±£Áô31¸öÓĞĞ§×Ö·û				\English MAC address, 32 bytes,
-	char szIP[GX_INFO_LENGTH_32_BYTE];                   ///< \Chinese IPµØÖ·,Èç¹ûÊµ¼Ê³¤¶È³¬¹ı32×Ö½ÚÓĞĞ§×Ö·û´®£¬ÔòÖ»±£Áô31¸öÓĞĞ§×Ö·û				\English IP address, 32 bytes,
-	char szSubNetMask[GX_INFO_LENGTH_32_BYTE];           ///< \Chinese ×ÓÍøÑÚÂë,Èç¹ûÊµ¼Ê³¤¶È³¬¹ı32×Ö½ÚÓĞĞ§×Ö·û´®£¬ÔòÖ»±£Áô31¸öÓĞĞ§×Ö·û				\English subnet mask, 32 bytes
-	char szGateWay[GX_INFO_LENGTH_32_BYTE];              ///< \Chinese Íø¹Ø,Èç¹ûÊµ¼Ê³¤¶È³¬¹ı32×Ö½ÚÓĞĞ§×Ö·û´®£¬ÔòÖ»±£Áô31¸öÓĞĞ§×Ö·û					\English gateway, 32 bytes
-	char szNICMAC[GX_INFO_LENGTH_32_BYTE];               ///< \Chinese ¶ÔÓ¦Íø¿¨µÄMACµØÖ·,Èç¹ûÊµ¼Ê³¤¶È³¬¹ı32×Ö½ÚÓĞĞ§×Ö·û´®£¬ÔòÖ»±£Áô31¸öÓĞĞ§×Ö·û		\English the MAC address of the corresponding NIC(Network Interface Card), 32 bytes
-	char szNICIP[GX_INFO_LENGTH_32_BYTE];                ///< \Chinese ¶ÔÓ¦Íø¿¨µÄIPµØÖ·,Èç¹ûÊµ¼Ê³¤¶È³¬¹ı32×Ö½ÚÓĞĞ§×Ö·û´®£¬ÔòÖ»±£Áô31¸öÓĞĞ§×Ö·û		\English the IP address of the corresponding NIC, 32 bytes
-	char szNICSubNetMask[GX_INFO_LENGTH_32_BYTE];        ///< \Chinese ¶ÔÓ¦Íø¿¨µÄ×ÓÍøÑÚÂë,Èç¹ûÊµ¼Ê³¤¶È³¬¹ı32×Ö½ÚÓĞĞ§×Ö·û´®£¬ÔòÖ»±£Áô31¸öÓĞĞ§×Ö·û	\English the subnet mask of the corresponding NIC, 32 bytes
-	char szNICGateWay[GX_INFO_LENGTH_32_BYTE];           ///< \Chinese ¶ÔÓ¦Íø¿¨µÄÍø¹Ø,Èç¹ûÊµ¼Ê³¤¶È³¬¹ı32×Ö½ÚÓĞĞ§×Ö·û´®£¬ÔòÖ»±£Áô31¸öÓĞĞ§×Ö·û		\English the gateway of the corresponding NIC, 32 bytes
-	char szNICDescription[GX_INFO_LENGTH_128_BYTE + 4];  ///< \Chinese ¶ÔÓ¦Íø¿¨ÃèÊö,Èç¹ûÊµ¼Ê³¤¶È³¬¹ı128×Ö½ÚÓĞĞ§×Ö·û´®£¬ÔòÖ»±£Áô128¸öÓĞĞ§×Ö·û		\English the description of the corresponding NIC, 128+4 bytes
-	char reserved[512];                                  ///< \Chinese ±£Áô																			\English reserved, 512 bytes
-}GX_DEVICE_IP_INFO;
+	char szDeviceID[GX_INFO_LENGTH_64_BYTE + 4];		///< \Chinese è®¾å¤‡å”¯ä¸€æ ‡è¯†,å¦‚æœå®é™…é•¿åº¦è¶…è¿‡64å­—èŠ‚æœ‰æ•ˆå­—ç¬¦ä¸²ï¼Œåˆ™åªä¿ç•™64ä¸ªæœ‰æ•ˆå­—ç¬¦			\English the unique identifier of the device, 64+4 bytes
+	char szMAC[GX_INFO_LENGTH_32_BYTE];					///< \Chinese MACåœ°å€,å¦‚æœå®é™…é•¿åº¦è¶…è¿‡32å­—èŠ‚æœ‰æ•ˆå­—ç¬¦ä¸²ï¼Œåˆ™åªä¿ç•™31ä¸ªæœ‰æ•ˆå­—ç¬¦				\English MAC address, 32 bytes,
+	char szIP[GX_INFO_LENGTH_32_BYTE];					///< \Chinese IPåœ°å€,å¦‚æœå®é™…é•¿åº¦è¶…è¿‡32å­—èŠ‚æœ‰æ•ˆå­—ç¬¦ä¸²ï¼Œåˆ™åªä¿ç•™31ä¸ªæœ‰æ•ˆå­—ç¬¦				\English IP address, 32 bytes,
+	char szSubNetMask[GX_INFO_LENGTH_32_BYTE];			///< \Chinese å­ç½‘æ©ç ,å¦‚æœå®é™…é•¿åº¦è¶…è¿‡32å­—èŠ‚æœ‰æ•ˆå­—ç¬¦ä¸²ï¼Œåˆ™åªä¿ç•™31ä¸ªæœ‰æ•ˆå­—ç¬¦				\English subnet mask, 32 bytes
+	char szGateWay[GX_INFO_LENGTH_32_BYTE];				///< \Chinese ç½‘å…³,å¦‚æœå®é™…é•¿åº¦è¶…è¿‡32å­—èŠ‚æœ‰æ•ˆå­—ç¬¦ä¸²ï¼Œåˆ™åªä¿ç•™31ä¸ªæœ‰æ•ˆå­—ç¬¦					\English gateway, 32 bytes
+	char szNICMAC[GX_INFO_LENGTH_32_BYTE];				///< \Chinese å¯¹åº”ç½‘å¡çš„MACåœ°å€,å¦‚æœå®é™…é•¿åº¦è¶…è¿‡32å­—èŠ‚æœ‰æ•ˆå­—ç¬¦ä¸²ï¼Œåˆ™åªä¿ç•™31ä¸ªæœ‰æ•ˆå­—ç¬¦		\English the MAC address of the corresponding NIC(Network Interface Card), 32 bytes
+	char szNICIP[GX_INFO_LENGTH_32_BYTE];				///< \Chinese å¯¹åº”ç½‘å¡çš„IPåœ°å€,å¦‚æœå®é™…é•¿åº¦è¶…è¿‡32å­—èŠ‚æœ‰æ•ˆå­—ç¬¦ä¸²ï¼Œåˆ™åªä¿ç•™31ä¸ªæœ‰æ•ˆå­—ç¬¦		\English the IP address of the corresponding NIC, 32 bytes
+	char szNICSubNetMask[GX_INFO_LENGTH_32_BYTE];		///< \Chinese å¯¹åº”ç½‘å¡çš„å­ç½‘æ©ç ,å¦‚æœå®é™…é•¿åº¦è¶…è¿‡32å­—èŠ‚æœ‰æ•ˆå­—ç¬¦ä¸²ï¼Œåˆ™åªä¿ç•™31ä¸ªæœ‰æ•ˆå­—ç¬¦	\English the subnet mask of the corresponding NIC, 32 bytes
+	char szNICGateWay[GX_INFO_LENGTH_32_BYTE];			///< \Chinese å¯¹åº”ç½‘å¡çš„ç½‘å…³,å¦‚æœå®é™…é•¿åº¦è¶…è¿‡32å­—èŠ‚æœ‰æ•ˆå­—ç¬¦ä¸²ï¼Œåˆ™åªä¿ç•™31ä¸ªæœ‰æ•ˆå­—ç¬¦		\English the gateway of the corresponding NIC, 32 bytes
+	char szNICDescription[GX_INFO_LENGTH_128_BYTE + 4]; ///< \Chinese å¯¹åº”ç½‘å¡æè¿°,å¦‚æœå®é™…é•¿åº¦è¶…è¿‡128å­—èŠ‚æœ‰æ•ˆå­—ç¬¦ä¸²ï¼Œåˆ™åªä¿ç•™128ä¸ªæœ‰æ•ˆå­—ç¬¦		\English the description of the corresponding NIC, 128+4 bytes
+	char reserved[512];									///< \Chinese ä¿ç•™																			\English reserved, 512 bytes
+} GX_DEVICE_IP_INFO;
 
 typedef struct GX_DEVICE_BASE_INFO
 {
-	char szVendorName[GX_INFO_LENGTH_32_BYTE];           ///< \Chinese ³§ÉÌÃû³Æ,Èç¹ûÊµ¼Ê³¤¶È³¬¹ı32×Ö½ÚÓĞĞ§×Ö·û´®£¬ÔòÖ»±£Áô31¸öÓĞĞ§×Ö·û				\English vendor name, 32 bytes
-	char szModelName[GX_INFO_LENGTH_32_BYTE];            ///< \Chinese Éè±¸ÀàĞÍÃû³Æ,Èç¹ûÊµ¼Ê³¤¶È³¬¹ı32×Ö½ÚÓĞĞ§×Ö·û´®£¬ÔòÖ»±£Áô31¸öÓĞĞ§×Ö·û			\English model name, 32 bytes
-	char szSN[GX_INFO_LENGTH_32_BYTE];                   ///< \Chinese Éè±¸ĞòÁĞºÅ,Èç¹ûÊµ¼Ê³¤¶È³¬¹ı32×Ö½ÚÓĞĞ§×Ö·û´®£¬ÔòÖ»±£Áô31¸öÓĞĞ§×Ö·û			\English device serial number, 32 bytes
-	char szDisplayName[GX_INFO_LENGTH_128_BYTE + 4];     ///< \Chinese Éè±¸Õ¹Ê¾Ãû³Æ,Èç¹ûÊµ¼Ê³¤¶È³¬¹ı128×Ö½ÚÓĞĞ§×Ö·û´®£¬ÔòÖ»±£Áô128¸öÓĞĞ§×Ö·û		\English device display name, 128+4 bytes
-	char szDeviceID[GX_INFO_LENGTH_64_BYTE + 4];         ///< \Chinese Éè±¸Î¨Ò»±êÊ¶,Èç¹ûÊµ¼Ê³¤¶È³¬¹ı64×Ö½ÚÓĞĞ§×Ö·û´®£¬ÔòÖ»±£Áô64¸öÓĞĞ§×Ö·û			\English the unique identifier of the device, 64+4 bytes
-	char szUserID[GX_INFO_LENGTH_64_BYTE + 4];           ///< \Chinese ÓÃ»§×Ô¶¨ÒåÃû³Æ,Èç¹ûÊµ¼Ê³¤¶È³¬¹ı64×Ö½ÚÓĞĞ§×Ö·û´®£¬ÔòÖ»±£Áô64¸öÓĞĞ§×Ö·û		\English user-defined name, 64+4 bytes
-	GX_ACCESS_STATUS_CMD  accessStatus;                  ///< \Chinese Éè±¸µ±Ç°Ö§³ÖµÄ·ÃÎÊ×´Ì¬														\English access status that is currently supported by the device. Refer to GX_ACCESS_STATUS, 4 bytes
-	GX_DEVICE_CLASS   deviceClass;                       ///< \Chinese Éè±¸ÖÖÀà£¬±ÈÈçUSB2.0¡¢GEV													\English device type, such as USB2.0, GEV, 4 bytes
-	char reserved[300];                                  ///< \Chinese ±£Áô																			\English reserved, 300 bytes
-}GX_DEVICE_BASE_INFO;
+	char szVendorName[GX_INFO_LENGTH_32_BYTE];		 ///< \Chinese å‚å•†åç§°,å¦‚æœå®é™…é•¿åº¦è¶…è¿‡32å­—èŠ‚æœ‰æ•ˆå­—ç¬¦ä¸²ï¼Œåˆ™åªä¿ç•™31ä¸ªæœ‰æ•ˆå­—ç¬¦				\English vendor name, 32 bytes
+	char szModelName[GX_INFO_LENGTH_32_BYTE];		 ///< \Chinese è®¾å¤‡ç±»å‹åç§°,å¦‚æœå®é™…é•¿åº¦è¶…è¿‡32å­—èŠ‚æœ‰æ•ˆå­—ç¬¦ä¸²ï¼Œåˆ™åªä¿ç•™31ä¸ªæœ‰æ•ˆå­—ç¬¦			\English model name, 32 bytes
+	char szSN[GX_INFO_LENGTH_32_BYTE];				 ///< \Chinese è®¾å¤‡åºåˆ—å·,å¦‚æœå®é™…é•¿åº¦è¶…è¿‡32å­—èŠ‚æœ‰æ•ˆå­—ç¬¦ä¸²ï¼Œåˆ™åªä¿ç•™31ä¸ªæœ‰æ•ˆå­—ç¬¦			\English device serial number, 32 bytes
+	char szDisplayName[GX_INFO_LENGTH_128_BYTE + 4]; ///< \Chinese è®¾å¤‡å±•ç¤ºåç§°,å¦‚æœå®é™…é•¿åº¦è¶…è¿‡128å­—èŠ‚æœ‰æ•ˆå­—ç¬¦ä¸²ï¼Œåˆ™åªä¿ç•™128ä¸ªæœ‰æ•ˆå­—ç¬¦		\English device display name, 128+4 bytes
+	char szDeviceID[GX_INFO_LENGTH_64_BYTE + 4];	 ///< \Chinese è®¾å¤‡å”¯ä¸€æ ‡è¯†,å¦‚æœå®é™…é•¿åº¦è¶…è¿‡64å­—èŠ‚æœ‰æ•ˆå­—ç¬¦ä¸²ï¼Œåˆ™åªä¿ç•™64ä¸ªæœ‰æ•ˆå­—ç¬¦			\English the unique identifier of the device, 64+4 bytes
+	char szUserID[GX_INFO_LENGTH_64_BYTE + 4];		 ///< \Chinese ç”¨æˆ·è‡ªå®šä¹‰åç§°,å¦‚æœå®é™…é•¿åº¦è¶…è¿‡64å­—èŠ‚æœ‰æ•ˆå­—ç¬¦ä¸²ï¼Œåˆ™åªä¿ç•™64ä¸ªæœ‰æ•ˆå­—ç¬¦		\English user-defined name, 64+4 bytes
+	GX_ACCESS_STATUS_CMD accessStatus;				 ///< \Chinese è®¾å¤‡å½“å‰æ”¯æŒçš„è®¿é—®çŠ¶æ€														\English access status that is currently supported by the device. Refer to GX_ACCESS_STATUS, 4 bytes
+	GX_DEVICE_CLASS deviceClass;					 ///< \Chinese è®¾å¤‡ç§ç±»ï¼Œæ¯”å¦‚USB2.0ã€GEV													\English device type, such as USB2.0, GEV, 4 bytes
+	char reserved[300];								 ///< \Chinese ä¿ç•™																			\English reserved, 300 bytes
+} GX_DEVICE_BASE_INFO;
 
 typedef struct GX_INT_RANGE
 {
-	int64_t nMin;										///< \Chinese ÕûĞÍÖµ×îĞ¡Öµ										\English Minimum value
-	int64_t nMax;										///< \Chinese ÕûĞÍÖµ×î´óÖµ										\English Maximum value
-	int64_t nInc;										///< \Chinese ÕûĞÍÖµ²½³¤										\English Step size
-	int32_t reserved[8];								///< \Chinese ±£Áô												\English 32 bytes,reserved
-}GX_INT_RANGE;
+	int64_t nMin;		 ///< \Chinese æ•´å‹å€¼æœ€å°å€¼										\English Minimum value
+	int64_t nMax;		 ///< \Chinese æ•´å‹å€¼æœ€å¤§å€¼										\English Maximum value
+	int64_t nInc;		 ///< \Chinese æ•´å‹å€¼æ­¥é•¿										\English Step size
+	int32_t reserved[8]; ///< \Chinese ä¿ç•™												\English 32 bytes,reserved
+} GX_INT_RANGE;
 
 typedef struct GX_FLOAT_RANGE
 {
-	double  dMin;										///< \Chinese ¸¡µãĞÍ×îĞ¡Öµ										\English Minimum value
-	double  dMax;										///< \Chinese ¸¡µãĞÍ×î´óÖµ										\English Maximum value
-	double  dInc;										///< \Chinese ¸¡µãĞÍ²½³¤										\English Step size
-	char    szUnit[GX_INFO_LENGTH_8_BYTE];				///< \Chinese ¸¡µãĞÍµ¥Î»										\English Unit. 8 bytes
-	bool    bIncIsValid;								///< \Chinese ²½³¤ÊÇ·ñÓĞĞ§										\English Indicates whether the step size is supported, 1 byte
-	int8_t  reserved[31];								///< \Chinese ±£Áô												\English 31 bytes,reserved
-}GX_FLOAT_RANGE;
+	double dMin;						///< \Chinese æµ®ç‚¹å‹æœ€å°å€¼										\English Minimum value
+	double dMax;						///< \Chinese æµ®ç‚¹å‹æœ€å¤§å€¼										\English Maximum value
+	double dInc;						///< \Chinese æµ®ç‚¹å‹æ­¥é•¿										\English Step size
+	char szUnit[GX_INFO_LENGTH_8_BYTE]; ///< \Chinese æµ®ç‚¹å‹å•ä½										\English Unit. 8 bytes
+	bool bIncIsValid;					///< \Chinese æ­¥é•¿æ˜¯å¦æœ‰æ•ˆ										\English Indicates whether the step size is supported, 1 byte
+	int8_t reserved[31];				///< \Chinese ä¿ç•™												\English 31 bytes,reserved
+} GX_FLOAT_RANGE;
 
 typedef struct GX_ENUM_DESCRIPTION
 {
-	int64_t nValue;										///< \Chinese Ã¶¾ÙÖµ											\English The value of the enumeration item
-	char    szSymbolic[GX_INFO_LENGTH_64_BYTE];			///< \Chinese ×Ö·ûÃèÊö											\English The character description information of the enumeration item, 64 bytes
-	int32_t reserved[8];								///< \Chinese ±£Áô												\English 32 bytes,reserved
-}GX_ENUM_DESCRIPTION;
+	int64_t nValue;							 ///< \Chinese æšä¸¾å€¼											\English The value of the enumeration item
+	char szSymbolic[GX_INFO_LENGTH_64_BYTE]; ///< \Chinese å­—ç¬¦æè¿°											\English The character description information of the enumeration item, 64 bytes
+	int32_t reserved[8];					 ///< \Chinese ä¿ç•™												\English 32 bytes,reserved
+} GX_ENUM_DESCRIPTION;
 
 //------------------------------------------------------------------------------
-//Chinese£º¹¦ÄÜÂëÀàĞÍ¶¨Òå
-//English£ºCode type definition 
+// Chineseï¼šåŠŸèƒ½ç ç±»å‹å®šä¹‰
+// Englishï¼šCode type definition
 //------------------------------------------------------------------------------
 typedef enum GX_FEATURE_TYPE
 {
-	GX_FEATURE_INT = 0x10000000,						///< \Chinese ÕûĞÍÊı											\English Integer type
-	GX_FEATURE_FLOAT = 0X20000000,						///< \Chinese ¸¡µãÊı											\English Floating point type
-	GX_FEATURE_ENUM = 0x30000000,						///< \Chinese Ã¶¾Ù												\English Enum type
-	GX_FEATURE_BOOL = 0x40000000,						///< \Chinese ²¼¶û												\English Boolean type
-	GX_FEATURE_STRING = 0x50000000,						///< \Chinese ×Ö·û´®											\English String type
-	GX_FEATURE_BUFFER = 0x60000000,						///< \Chinese buffer											\English Block data type
-	GX_FEATURE_COMMAND = 0x70000000,					///< \Chinese ÃüÁî												\English Command type
-}GX_FEATURE_TYPE;
+	GX_FEATURE_INT = 0x10000000,	 ///< \Chinese æ•´å‹æ•°											\English Integer type
+	GX_FEATURE_FLOAT = 0X20000000,	 ///< \Chinese æµ®ç‚¹æ•°											\English Floating point type
+	GX_FEATURE_ENUM = 0x30000000,	 ///< \Chinese æšä¸¾												\English Enum type
+	GX_FEATURE_BOOL = 0x40000000,	 ///< \Chinese å¸ƒå°”												\English Boolean type
+	GX_FEATURE_STRING = 0x50000000,	 ///< \Chinese å­—ç¬¦ä¸²											\English String type
+	GX_FEATURE_BUFFER = 0x60000000,	 ///< \Chinese buffer											\English Block data type
+	GX_FEATURE_COMMAND = 0x70000000, ///< \Chinese å‘½ä»¤												\English Command type
+} GX_FEATURE_TYPE;
 
 //------------------------------------------------------------------------------
-//Chinese£º¹¦ÄÜÂëËùÊô²ã¼¶¶¨Òå
-//English£ºHierarchy of functional codes 
+// Chineseï¼šåŠŸèƒ½ç æ‰€å±å±‚çº§å®šä¹‰
+// Englishï¼šHierarchy of functional codes
 //------------------------------------------------------------------------------
 typedef enum GX_FEATURE_LEVEL
 {
-	GX_FEATURE_LEVEL_REMOTE_DEV = 0x00000000,			///< \Chinese RemoteDevice²ã									\English Remote device layer
-	GX_FEATURE_LEVEL_TL = 0x01000000,					///< \Chinese TL²ã												\English TL layer
-	GX_FEATURE_LEVEL_IF = 0x02000000,					///< \Chinese Interface²ã										\English Interface layer    
-	GX_FEATURE_LEVEL_DEV = 0x03000000,					///< \Chinese Device²ã											\English Device layer
-	GX_FEATURE_LEVEL_DS = 0x04000000,					///< \Chinese DataStream²ã										\English DataStream layer
-}GX_FEATURE_LEVEL;
+	GX_FEATURE_LEVEL_REMOTE_DEV = 0x00000000, ///< \Chinese RemoteDeviceå±‚									\English Remote device layer
+	GX_FEATURE_LEVEL_TL = 0x01000000,		  ///< \Chinese TLå±‚												\English TL layer
+	GX_FEATURE_LEVEL_IF = 0x02000000,		  ///< \Chinese Interfaceå±‚										\English Interface layer
+	GX_FEATURE_LEVEL_DEV = 0x03000000,		  ///< \Chinese Deviceå±‚											\English Device layer
+	GX_FEATURE_LEVEL_DS = 0x04000000,		  ///< \Chinese DataStreamå±‚										\English DataStream layer
+} GX_FEATURE_LEVEL;
 
 typedef enum GX_SENSOR_BIT_DEPTH_ENTRY
 {
-	GX_SENSOR_BIT_DEPTH_BPP8	= 8,					///< \Chinese Î»Éî8												\English BitDepth8
-	GX_SENSOR_BIT_DEPTH_BPP10	= 10,					///< \Chinese Î»Éî10											\English BitDepth10
-	GX_SENSOR_BIT_DEPTH_BPP12	= 12,					///< \Chinese Î»Éî12											\English BitDepth12
-}GX_SENSOR_BIT_DEPTH_ENTRY;
+	GX_SENSOR_BIT_DEPTH_BPP8 = 8,	///< \Chinese ä½æ·±8												\English BitDepth8
+	GX_SENSOR_BIT_DEPTH_BPP10 = 10, ///< \Chinese ä½æ·±10											\English BitDepth10
+	GX_SENSOR_BIT_DEPTH_BPP12 = 12, ///< \Chinese ä½æ·±12											\English BitDepth12
+} GX_SENSOR_BIT_DEPTH_ENTRY;
 
 typedef enum GX_ACQUISITION_MODE_ENTRY
 {
-	GX_ACQ_MODE_SINGLE_FRAME = 0,                       ///< \Chinese µ¥Ö¡Ä£Ê½											\English Single frame mode
-	GX_ACQ_MODE_MULITI_FRAME = 1,                       ///< \Chinese ¶àÖ¡Ä£Ê½											\English Multi frame mode
-	GX_ACQ_MODE_CONTINUOUS = 2,                         ///< \Chinese Á¬ĞøÄ£Ê½											\English Continuous mode
-}GX_ACQUISITION_MODE_ENTRY;
+	GX_ACQ_MODE_SINGLE_FRAME = 0, ///< \Chinese å•å¸§æ¨¡å¼											\English Single frame mode
+	GX_ACQ_MODE_MULITI_FRAME = 1, ///< \Chinese å¤šå¸§æ¨¡å¼											\English Multi frame mode
+	GX_ACQ_MODE_CONTINUOUS = 2,	  ///< \Chinese è¿ç»­æ¨¡å¼											\English Continuous mode
+} GX_ACQUISITION_MODE_ENTRY;
 
 typedef enum GX_TRIGGER_MODE_ENTRY
 {
-	GX_TRIGGER_MODE_OFF = 0,                            ///< \Chinese ¹Ø±Õ´¥·¢Ä£Ê½										\English Switch off the trigger mode
-	GX_TRIGGER_MODE_ON = 1,                             ///< \Chinese ´ò¿ª´¥·¢Ä£Ê½										\English Switch on the trigger mode
-}GX_TRIGGER_MODE_ENTRY;
+	GX_TRIGGER_MODE_OFF = 0, ///< \Chinese å…³é—­è§¦å‘æ¨¡å¼										\English Switch off the trigger mode
+	GX_TRIGGER_MODE_ON = 1,	 ///< \Chinese æ‰“å¼€è§¦å‘æ¨¡å¼										\English Switch on the trigger mode
+} GX_TRIGGER_MODE_ENTRY;
 
 typedef enum GX_OVERLAP_MODE_ENTRY
 {
-	GX_OVERLAP_MODE_OFF = 0,                             ///< \Chinese ¹Ø±Õ½»µşÄ£Ê½										\English Switch off the overlap mode
-	GX_OVERLAP_MODE_ON	= 1,                             ///< \Chinese ´ò¿ª½»µşÄ£Ê½										\English Switch on the overlap mode
-}GX_OVERLAP_MODE_ENTRY;
+	GX_OVERLAP_MODE_OFF = 0, ///< \Chinese å…³é—­äº¤å æ¨¡å¼										\English Switch off the overlap mode
+	GX_OVERLAP_MODE_ON = 1,	 ///< \Chinese æ‰“å¼€äº¤å æ¨¡å¼										\English Switch on the overlap mode
+} GX_OVERLAP_MODE_ENTRY;
 
 typedef enum GX_TRIGGER_SOURCE_ENTRY
 {
-	GX_TRIGGER_SOURCE_SOFTWARE		= 0,                 ///< \Chinese Èí´¥·¢											\English Software trigger
-	GX_TRIGGER_SOURCE_LINE0			= 1,                 ///< \Chinese ´¥·¢Ô´0											\English Trigger source 0
-	GX_TRIGGER_SOURCE_LINE1			= 2,                 ///< \Chinese ´¥·¢Ô´1											\English Trigger source 1
-	GX_TRIGGER_SOURCE_LINE2			= 3,                 ///< \Chinese ´¥·¢Ô´2											\English Trigger source 2
-	GX_TRIGGER_SOURCE_LINE3			= 4,                 ///< \Chinese ´¥·¢Ô´3											\English Trigger source 3
-	GX_TRIGGER_SOURCE_COUNTER2END   = 5,                 ///< \Chinese COUNTER2END´¥·¢ĞÅºÅ								\English Counter 2 end trigger
-	GX_TRIGGER_SOURCE_TRIGGER       = 6,                 ///< \Chinese ´¥·¢ĞÅºÅ											\English Trigger source
-	GX_TRIGGER_SOURCE_MULTISOURCE   = 7,				 ///< \Chinese ¶àÔ´´¥·¢											\English MultiSource
-	GX_TRIGGER_SOURCE_CXPTRIGGER0	= 8,                 ///< \Chinese CXP´¥·¢Ô´0										\English CXP Trigger source 0
-	GX_TRIGGER_SOURCE_CXPTRIGGER1	= 9,                 ///< \Chinese CXP´¥·¢Ô´1										\English CXP Trigger source 1
-}GX_TRIGGER_SOURCE_ENTRY;
+	GX_TRIGGER_SOURCE_SOFTWARE = 0,	   ///< \Chinese è½¯è§¦å‘											\English Software trigger
+	GX_TRIGGER_SOURCE_LINE0 = 1,	   ///< \Chinese è§¦å‘æº0											\English Trigger source 0
+	GX_TRIGGER_SOURCE_LINE1 = 2,	   ///< \Chinese è§¦å‘æº1											\English Trigger source 1
+	GX_TRIGGER_SOURCE_LINE2 = 3,	   ///< \Chinese è§¦å‘æº2											\English Trigger source 2
+	GX_TRIGGER_SOURCE_LINE3 = 4,	   ///< \Chinese è§¦å‘æº3											\English Trigger source 3
+	GX_TRIGGER_SOURCE_COUNTER2END = 5, ///< \Chinese COUNTER2ENDè§¦å‘ä¿¡å·								\English Counter 2 end trigger
+	GX_TRIGGER_SOURCE_TRIGGER = 6,	   ///< \Chinese è§¦å‘ä¿¡å·											\English Trigger source
+	GX_TRIGGER_SOURCE_MULTISOURCE = 7, ///< \Chinese å¤šæºè§¦å‘											\English MultiSource
+	GX_TRIGGER_SOURCE_CXPTRIGGER0 = 8, ///< \Chinese CXPè§¦å‘æº0										\English CXP Trigger source 0
+	GX_TRIGGER_SOURCE_CXPTRIGGER1 = 9, ///< \Chinese CXPè§¦å‘æº1										\English CXP Trigger source 1
+} GX_TRIGGER_SOURCE_ENTRY;
 
 typedef enum GX_MULTISOURCE_SELECTOR_ENTRY
 {
-	GX_MULTISOURCE_SELECTOR_SOFTWARE	= 0,			 ///< \Chinese Èí´¥·¢											\English Software MultiSource
-	GX_MULTISOURCE_SELECTOR_LINE0		= 1,			 ///< \Chinese ¶àÔ´´¥·¢Ñ¡Ôñ0									\English MultiSource selector 0
-	GX_MULTISOURCE_SELECTOR_LINE2		= 3,			 ///< \Chinese ¶àÔ´´¥·¢Ñ¡Ôñ2									\English MultiSource selector 2
-	GX_MULTISOURCE_SELECTOR_LINE3		= 4,			 ///< \Chinese ¶àÔ´´¥·¢Ñ¡Ôñ3									\English MultiSource selector 3
-}GX_MULTISOURCE_SELECTOR_ENTRY;
+	GX_MULTISOURCE_SELECTOR_SOFTWARE = 0, ///< \Chinese è½¯è§¦å‘											\English Software MultiSource
+	GX_MULTISOURCE_SELECTOR_LINE0 = 1,	  ///< \Chinese å¤šæºè§¦å‘é€‰æ‹©0									\English MultiSource selector 0
+	GX_MULTISOURCE_SELECTOR_LINE2 = 3,	  ///< \Chinese å¤šæºè§¦å‘é€‰æ‹©2									\English MultiSource selector 2
+	GX_MULTISOURCE_SELECTOR_LINE3 = 4,	  ///< \Chinese å¤šæºè§¦å‘é€‰æ‹©3									\English MultiSource selector 3
+} GX_MULTISOURCE_SELECTOR_ENTRY;
 
 typedef enum GX_TRIGGER_ACTIVATION_ENTRY
 {
-	GX_TRIGGER_ACTIVATION_FALLINGEDGE = 0,               ///< \Chinese ÏÂ½µÑØ´¥·¢										\English Falling edge trigger
-	GX_TRIGGER_ACTIVATION_RISINGEDGE  = 1,               ///< \Chinese ÉÏÉıÑØ´¥·¢										\English Rising edge trigger
-	GX_TRIGGER_ACTIVATION_ANYEDGE     = 2,               ///< \Chinese ÉÏÉı»òÏÂ½µÑØ´¥·¢									\English Falling or Rising edge trigger
-	GX_TRIGGER_ACTIVATION_LEVELHIGH   = 3,               ///< \Chinese ¸ßµçÆ½´¥·¢										\English High trigger
-	GX_TRIGGER_ACTIVATION_LEVELLOW    = 4,               ///< \Chinese µÍµçÆ½´¥·¢										\English Low trigger
-}GX_TRIGGER_ACTIVATION_ENTRY;
+	GX_TRIGGER_ACTIVATION_FALLINGEDGE = 0, ///< \Chinese ä¸‹é™æ²¿è§¦å‘										\English Falling edge trigger
+	GX_TRIGGER_ACTIVATION_RISINGEDGE = 1,  ///< \Chinese ä¸Šå‡æ²¿è§¦å‘										\English Rising edge trigger
+	GX_TRIGGER_ACTIVATION_ANYEDGE = 2,	   ///< \Chinese ä¸Šå‡æˆ–ä¸‹é™æ²¿è§¦å‘									\English Falling or Rising edge trigger
+	GX_TRIGGER_ACTIVATION_LEVELHIGH = 3,   ///< \Chinese é«˜ç”µå¹³è§¦å‘										\English High trigger
+	GX_TRIGGER_ACTIVATION_LEVELLOW = 4,	   ///< \Chinese ä½ç”µå¹³è§¦å‘										\English Low trigger
+} GX_TRIGGER_ACTIVATION_ENTRY;
 
 typedef enum GX_TRIGGER_SWITCH_ENTRY
 {
-	GX_TRIGGER_SWITCH_OFF = 0,                           ///< \Chinese ¹Ø±ÕÍâ´¥·¢										\English Switch off the external trigger
-	GX_TRIGGER_SWITCH_ON  = 1,                           ///< \Chinese ´ò¿ªÍâ´¥·¢										\English Switch on the external trigger
-}GX_TRIGGER_SWITCH_ENTRY;
+	GX_TRIGGER_SWITCH_OFF = 0, ///< \Chinese å…³é—­å¤–è§¦å‘										\English Switch off the external trigger
+	GX_TRIGGER_SWITCH_ON = 1,  ///< \Chinese æ‰“å¼€å¤–è§¦å‘										\English Switch on the external trigger
+} GX_TRIGGER_SWITCH_ENTRY;
 
 typedef enum GX_EXPOSURE_MODE_ENTRY
 {
-	GX_EXPOSURE_MODE_TIMED          = 1,                 ///< \Chinese ÆØ¹âÊ±¼ä¼Ä´æÆ÷¿ØÖÆÆØ¹âÊ±¼ä						\English Control exposure time through exposure time register
-	GX_EXPOSURE_MODE_TRIGGERWIDTH   = 2,                 ///< \Chinese ´¥·¢ĞÅºÅ¿í¶È¿ØÖÆÆØ¹âÊ±¼ä							\English Control exposure time through trigger signal width
-}GX_EXPOSURE_MODE_ENTRY;
+	GX_EXPOSURE_MODE_TIMED = 1,		   ///< \Chinese æ›å…‰æ—¶é—´å¯„å­˜å™¨æ§åˆ¶æ›å…‰æ—¶é—´						\English Control exposure time through exposure time register
+	GX_EXPOSURE_MODE_TRIGGERWIDTH = 2, ///< \Chinese è§¦å‘ä¿¡å·å®½åº¦æ§åˆ¶æ›å…‰æ—¶é—´							\English Control exposure time through trigger signal width
+} GX_EXPOSURE_MODE_ENTRY;
 
 typedef enum GX_EXPOSURE_AUTO_ENTRY
 {
-	GX_EXPOSURE_AUTO_OFF        = 0,                     ///< \Chinese ¹Ø±Õ×Ô¶¯ÆØ¹â										\English Switch off automatic exposure
-	GX_EXPOSURE_AUTO_CONTINUOUS = 1,                     ///< \Chinese Á¬Ğø×Ô¶¯ÆØ¹â										\English Continuous automatic exposure
-	GX_EXPOSURE_AUTO_ONCE       = 2,                     ///< \Chinese µ¥´Î×Ô¶¯ÆØ¹â										\English Single automatic exposure
-}GX_EXPOSURE_AUTO_ENTRY;
+	GX_EXPOSURE_AUTO_OFF = 0,		 ///< \Chinese å…³é—­è‡ªåŠ¨æ›å…‰										\English Switch off automatic exposure
+	GX_EXPOSURE_AUTO_CONTINUOUS = 1, ///< \Chinese è¿ç»­è‡ªåŠ¨æ›å…‰										\English Continuous automatic exposure
+	GX_EXPOSURE_AUTO_ONCE = 2,		 ///< \Chinese å•æ¬¡è‡ªåŠ¨æ›å…‰										\English Single automatic exposure
+} GX_EXPOSURE_AUTO_ENTRY;
 
 typedef enum GX_USER_OUTPUT_SELECTOR_ENTRY
 {
-	GX_USER_OUTPUT_SELECTOR_OUTPUT0 = 1,                 ///< \Chinese Êä³ö0											\English Output 0
-	GX_USER_OUTPUT_SELECTOR_OUTPUT1 = 2,                 ///< \Chinese Êä³ö1											\English Output 1
-	GX_USER_OUTPUT_SELECTOR_OUTPUT2 = 4,                 ///< \Chinese Êä³ö2											\English Output 2
-	GX_USER_OUTPUT_SELECTOR_OUTPUT3 = 5,                 ///< \Chinese Êä³ö3											\English Output 3
-	GX_USER_OUTPUT_SELECTOR_OUTPUT4 = 6,                 ///< \Chinese Êä³ö4											\English Output 4
-	GX_USER_OUTPUT_SELECTOR_OUTPUT5 = 7,                 ///< \Chinese Êä³ö5											\English Output 5
-	GX_USER_OUTPUT_SELECTOR_OUTPUT6 = 8,                 ///< \Chinese Êä³ö6											\English Output 6
-}GX_USER_OUTPUT_SELECTOR_ENTRY;
+	GX_USER_OUTPUT_SELECTOR_OUTPUT0 = 1, ///< \Chinese è¾“å‡º0											\English Output 0
+	GX_USER_OUTPUT_SELECTOR_OUTPUT1 = 2, ///< \Chinese è¾“å‡º1											\English Output 1
+	GX_USER_OUTPUT_SELECTOR_OUTPUT2 = 4, ///< \Chinese è¾“å‡º2											\English Output 2
+	GX_USER_OUTPUT_SELECTOR_OUTPUT3 = 5, ///< \Chinese è¾“å‡º3											\English Output 3
+	GX_USER_OUTPUT_SELECTOR_OUTPUT4 = 6, ///< \Chinese è¾“å‡º4											\English Output 4
+	GX_USER_OUTPUT_SELECTOR_OUTPUT5 = 7, ///< \Chinese è¾“å‡º5											\English Output 5
+	GX_USER_OUTPUT_SELECTOR_OUTPUT6 = 8, ///< \Chinese è¾“å‡º6											\English Output 6
+} GX_USER_OUTPUT_SELECTOR_ENTRY;
 
 typedef enum GX_USER_OUTPUT_MODE_ENTRY
 {
-	GX_USER_OUTPUT_MODE_STROBE      = 0,                 ///< \Chinese ÉÁ¹âµÆ											\English Strobe light
-	GX_USER_OUTPUT_MODE_USERDEFINED = 1,                 ///< \Chinese ÓÃ»§×Ô¶¨Òå										\English User defined
-}GX_USER_OUTPUT_MODE_ENTRY;
+	GX_USER_OUTPUT_MODE_STROBE = 0,		 ///< \Chinese é—ªå…‰ç¯											\English Strobe light
+	GX_USER_OUTPUT_MODE_USERDEFINED = 1, ///< \Chinese ç”¨æˆ·è‡ªå®šä¹‰										\English User defined
+} GX_USER_OUTPUT_MODE_ENTRY;
 
 typedef enum GX_STROBE_SWITCH_ENTRY
 {
-	GX_STROBE_SWITCH_OFF = 0,							 ///< \Chinese ¹Ø±ÕÉÁ¹âµÆ¿ª¹Ø									\English Switch off the strobe light
-	GX_STROBE_SWITCH_ON  = 1,							 ///< \Chinese ´ò¿ªÉÁ¹âµÆ¿ª¹Ø									\English Switch on the strobe light
-}GX_STROBE_SWITCH_ENTRY;
+	GX_STROBE_SWITCH_OFF = 0, ///< \Chinese å…³é—­é—ªå…‰ç¯å¼€å…³									\English Switch off the strobe light
+	GX_STROBE_SWITCH_ON = 1,  ///< \Chinese æ‰“å¼€é—ªå…‰ç¯å¼€å…³									\English Switch on the strobe light
+} GX_STROBE_SWITCH_ENTRY;
 
 typedef enum GX_GAIN_AUTO_ENTRY
 {
-	GX_GAIN_AUTO_OFF        = 0,                         ///< \Chinese ¹Ø±Õ×Ô¶¯ÔöÒæ										\English Switch off automatic gain
-	GX_GAIN_AUTO_CONTINUOUS = 1,                         ///< \Chinese Á¬Ğø×Ô¶¯ÔöÒæ										\English Continuous automatic gain
-	GX_GAIN_AUTO_ONCE       = 2,                         ///< \Chinese µ¥´Î×Ô¶¯ÔöÒæ										\English Single automatic gain
-}GX_GAIN_AUTO_ENTRY;
+	GX_GAIN_AUTO_OFF = 0,		 ///< \Chinese å…³é—­è‡ªåŠ¨å¢ç›Š										\English Switch off automatic gain
+	GX_GAIN_AUTO_CONTINUOUS = 1, ///< \Chinese è¿ç»­è‡ªåŠ¨å¢ç›Š										\English Continuous automatic gain
+	GX_GAIN_AUTO_ONCE = 2,		 ///< \Chinese å•æ¬¡è‡ªåŠ¨å¢ç›Š										\English Single automatic gain
+} GX_GAIN_AUTO_ENTRY;
 
 typedef enum GX_GAIN_SELECTOR_ENTRY
 {
-	GX_GAIN_SELECTOR_ALL   = 0,                          ///< \Chinese ËùÓĞÔöÒæÍ¨µÀ										\English All gain channels 
-	GX_GAIN_SELECTOR_RED   = 1,                          ///< \Chinese ºìÍ¨µÀÔöÒæ										\English Red channel gain
-	GX_GAIN_SELECTOR_GREEN = 2,                          ///< \Chinese ÂÌÍ¨µÀÔöÒæ										\English Green channel gain
-	GX_GAIN_SELECTOR_BLUE  = 3,                          ///< \Chinese À¶Í¨µÀÔöÒæ										\English Blue channel gain
-	GX_GAIN_SELECTOR_DIGITAL_ALL = 4,                    ///< \Chinese Êı×ÖÔöÒæ											\English Digital gain
-}GX_GAIN_SELECTOR_ENTRY;
+	GX_GAIN_SELECTOR_ALL = 0,		  ///< \Chinese æ‰€æœ‰å¢ç›Šé€šé“										\English All gain channels
+	GX_GAIN_SELECTOR_RED = 1,		  ///< \Chinese çº¢é€šé“å¢ç›Š										\English Red channel gain
+	GX_GAIN_SELECTOR_GREEN = 2,		  ///< \Chinese ç»¿é€šé“å¢ç›Š										\English Green channel gain
+	GX_GAIN_SELECTOR_BLUE = 3,		  ///< \Chinese è“é€šé“å¢ç›Š										\English Blue channel gain
+	GX_GAIN_SELECTOR_DIGITAL_ALL = 4, ///< \Chinese æ•°å­—å¢ç›Š											\English Digital gain
+} GX_GAIN_SELECTOR_ENTRY;
 
 typedef enum GX_BLACKLEVEL_AUTO_ENTRY
 {
-	GX_BLACKLEVEL_AUTO_OFF        = 0,                   ///< \Chinese ¹Ø±Õ×Ô¶¯ºÚµçÆ½									\English Switch off automatic black level
-	GX_BLACKLEVEL_AUTO_CONTINUOUS = 1,                   ///< \Chinese Á¬Ğø×Ô¶¯ºÚµçÆ½									\English Continuous automatic black level
-	GX_BLACKLEVEL_AUTO_ONCE       = 2,                   ///< \Chinese µ¥´Î×Ô¶¯ºÚµçÆ½									\English Single automatic black level
-}GX_BLACKLEVEL_AUTO_ENTRY;
+	GX_BLACKLEVEL_AUTO_OFF = 0,		   ///< \Chinese å…³é—­è‡ªåŠ¨é»‘ç”µå¹³									\English Switch off automatic black level
+	GX_BLACKLEVEL_AUTO_CONTINUOUS = 1, ///< \Chinese è¿ç»­è‡ªåŠ¨é»‘ç”µå¹³									\English Continuous automatic black level
+	GX_BLACKLEVEL_AUTO_ONCE = 2,	   ///< \Chinese å•æ¬¡è‡ªåŠ¨é»‘ç”µå¹³									\English Single automatic black level
+} GX_BLACKLEVEL_AUTO_ENTRY;
 
 typedef enum GX_BLACKLEVEL_SELECTOR_ENTRY
 {
-	GX_BLACKLEVEL_SELECTOR_ALL   = 0,                    ///< \Chinese ËùÓĞºÚµçÆ½Í¨µÀ									\English All black level channels
-	GX_BLACKLEVEL_SELECTOR_RED   = 1,                    ///< \Chinese ºìÍ¨µÀºÚµçÆ½										\English Red channel black level
-	GX_BLACKLEVEL_SELECTOR_GREEN = 2,                    ///< \Chinese ÂÌÍ¨µÀºÚµçÆ½										\English Green channel black level
-	GX_BLACKLEVEL_SELECTOR_BLUE  = 3,                    ///< \Chinese À¶Í¨µÀºÚµçÆ½										\English Blue channel black level
-	GX_BLACKLEVEL_SELECTOR_RB    = 7,
-}GX_BLACKLEVEL_SELECTOR_ENTRY;
+	GX_BLACKLEVEL_SELECTOR_ALL = 0,	  ///< \Chinese æ‰€æœ‰é»‘ç”µå¹³é€šé“									\English All black level channels
+	GX_BLACKLEVEL_SELECTOR_RED = 1,	  ///< \Chinese çº¢é€šé“é»‘ç”µå¹³										\English Red channel black level
+	GX_BLACKLEVEL_SELECTOR_GREEN = 2, ///< \Chinese ç»¿é€šé“é»‘ç”µå¹³										\English Green channel black level
+	GX_BLACKLEVEL_SELECTOR_BLUE = 3,  ///< \Chinese è“é€šé“é»‘ç”µå¹³										\English Blue channel black level
+	GX_BLACKLEVEL_SELECTOR_RB = 7,
+} GX_BLACKLEVEL_SELECTOR_ENTRY;
 
 typedef enum GX_BALANCE_WHITE_AUTO_ENTRY
 {
-	GX_BALANCE_WHITE_AUTO_OFF        = 0,                ///< \Chinese ¹Ø±Õ×Ô¶¯°×Æ½ºâ									\English Switch off automatic white balance
-	GX_BALANCE_WHITE_AUTO_CONTINUOUS = 1,                ///< \Chinese Á¬Ğø×Ô¶¯°×Æ½ºâ									\English Continuous automatic white balance
-	GX_BALANCE_WHITE_AUTO_ONCE       = 2,                ///< \Chinese µ¥´Î×Ô¶¯°×Æ½ºâ									\English Single automatic white balance
-}GX_BALANCE_WHITE_AUTO_ENTRY;
+	GX_BALANCE_WHITE_AUTO_OFF = 0,		  ///< \Chinese å…³é—­è‡ªåŠ¨ç™½å¹³è¡¡									\English Switch off automatic white balance
+	GX_BALANCE_WHITE_AUTO_CONTINUOUS = 1, ///< \Chinese è¿ç»­è‡ªåŠ¨ç™½å¹³è¡¡									\English Continuous automatic white balance
+	GX_BALANCE_WHITE_AUTO_ONCE = 2,		  ///< \Chinese å•æ¬¡è‡ªåŠ¨ç™½å¹³è¡¡									\English Single automatic white balance
+} GX_BALANCE_WHITE_AUTO_ENTRY;
 
 typedef enum GX_BALANCE_RATIO_SELECTOR_ENTRY
 {
-	GX_BALANCE_RATIO_SELECTOR_RED   = 0,                 ///< \Chinese ºìÍ¨µÀ											\English Red channel
-	GX_BALANCE_RATIO_SELECTOR_GREEN = 1,                 ///< \Chinese ÂÌÍ¨µÀ											\English Red channel
-	GX_BALANCE_RATIO_SELECTOR_BLUE  = 2,                 ///< \Chinese À¶Í¨µÀ											\English Blue channel
-}GX_BALANCE_RATIO_SELECTOR_ENTRY;
+	GX_BALANCE_RATIO_SELECTOR_RED = 0,	 ///< \Chinese çº¢é€šé“											\English Red channel
+	GX_BALANCE_RATIO_SELECTOR_GREEN = 1, ///< \Chinese ç»¿é€šé“											\English Red channel
+	GX_BALANCE_RATIO_SELECTOR_BLUE = 2,	 ///< \Chinese è“é€šé“											\English Blue channel
+} GX_BALANCE_RATIO_SELECTOR_ENTRY;
 
 typedef enum GX_COLOR_CORRECT_ENTRY
 {
-	GX_COLOR_CORRECT_OFF = 0,                            ///< \Chinese ¹Ø±Õ×Ô¶¯ÑÕÉ«Ğ£Õı									\English Switch off automatic color correction
-	GX_COLOR_CORRECT_ON  = 1,                            ///< \Chinese ´ò¿ª×Ô¶¯ÑÕÉ«Ğ£Õı									\English Switch on automatic color correction
-}GX_COLOR_CORRECT_ENTRY;
+	GX_COLOR_CORRECT_OFF = 0, ///< \Chinese å…³é—­è‡ªåŠ¨é¢œè‰²æ ¡æ­£									\English Switch off automatic color correction
+	GX_COLOR_CORRECT_ON = 1,  ///< \Chinese æ‰“å¼€è‡ªåŠ¨é¢œè‰²æ ¡æ­£									\English Switch on automatic color correction
+} GX_COLOR_CORRECT_ENTRY;
 
 typedef enum GX_DEAD_PIXEL_CORRECT_ENTRY
 {
-	GX_DEAD_PIXEL_CORRECT_OFF = 0,                       ///< \Chinese ¹Ø±Õ×Ô¶¯»µµãĞ£Õı									\English Switch off automatic bad point correction
-	GX_DEAD_PIXEL_CORRECT_ON  = 1,                       ///< \Chinese ´ò¿ª×Ô¶¯»µµãĞ£Õı									\English Switch on automatic bad point correction
-}GX_DEAD_PIXEL_CORRECT_ENTRY;
+	GX_DEAD_PIXEL_CORRECT_OFF = 0, ///< \Chinese å…³é—­è‡ªåŠ¨åç‚¹æ ¡æ­£									\English Switch off automatic bad point correction
+	GX_DEAD_PIXEL_CORRECT_ON = 1,  ///< \Chinese æ‰“å¼€è‡ªåŠ¨åç‚¹æ ¡æ­£									\English Switch on automatic bad point correction
+} GX_DEAD_PIXEL_CORRECT_ENTRY;
 
 typedef enum GX_AA_LIGHT_ENVIRMENT_ENTRY
 {
-	GX_AA_LIGHT_ENVIRMENT_NATURELIGHT = 0,               ///< \Chinese ×ÔÈ»¹â											\English Natural light
-	GX_AA_LIGHT_ENVIRMENT_AC50HZ      = 1,               ///< \Chinese 50ºÕ×ÈÈÕ¹âµÆ										\English 50 Hz fluorescent light
-	GX_AA_LIGHT_ENVIRMENT_AC60HZ      = 2,               ///< \Chinese 60ºÕ×ÈÈÕ¹âµÆ										\English 60 Hz fluorescent light
-}GX_AA_LIGHT_ENVIRMENT_ENTRY;
+	GX_AA_LIGHT_ENVIRMENT_NATURELIGHT = 0, ///< \Chinese è‡ªç„¶å…‰											\English Natural light
+	GX_AA_LIGHT_ENVIRMENT_AC50HZ = 1,	   ///< \Chinese 50èµ«å…¹æ—¥å…‰ç¯										\English 50 Hz fluorescent light
+	GX_AA_LIGHT_ENVIRMENT_AC60HZ = 2,	   ///< \Chinese 60èµ«å…¹æ—¥å…‰ç¯										\English 60 Hz fluorescent light
+} GX_AA_LIGHT_ENVIRMENT_ENTRY;
 
 typedef enum GX_DEVICE_TAP_GEOMETRY_ENTRY
 {
-	GX_DEVICE_TAP_GEOMETRY_GEOMETRY_1X_1Y	= 0,         ///< \Chinese Geometry_1X_1Y									\English Geometry_1X_1Y
-	GX_DEVICE_TAP_GEOMETRY_GEOMETRY_1X_1Y2  = 9,         ///< \Chinese Geometry_1X_1Y2									\English Geometry_1X_1Y2	
-	GX_DEVICE_TAP_GEOMETRY_GEOMETRY_1X_2YE  = 10,        ///< \Chinese Geometry_1X_2YE									\English Geometry_1X_2YE		
-}GX_DEVICE_TAP_GEOMETRY_ENTRY;
+	GX_DEVICE_TAP_GEOMETRY_GEOMETRY_1X_1Y = 0,	 ///< \Chinese Geometry_1X_1Y									\English Geometry_1X_1Y
+	GX_DEVICE_TAP_GEOMETRY_GEOMETRY_1X_1Y2 = 9,	 ///< \Chinese Geometry_1X_1Y2									\English Geometry_1X_1Y2
+	GX_DEVICE_TAP_GEOMETRY_GEOMETRY_1X_2YE = 10, ///< \Chinese Geometry_1X_2YE									\English Geometry_1X_2YE
+} GX_DEVICE_TAP_GEOMETRY_ENTRY;
 
 typedef enum GX_USER_SET_SELECTOR_ENTRY
 {
-	GX_ENUM_USER_SET_SELECTOR_DEFAULT  = 0,              ///< \Chinese Ä¬ÈÏ²ÎÊı×é										\English Default parameter group
-	GX_ENUM_USER_SET_SELECTOR_USERSET0 = 1,              ///< \Chinese ÓÃ»§²ÎÊı×é0										\English User parameter group 0
-	GX_ENUM_USER_SET_SELECTOR_USERSET1 = 2,              ///< \Chinese ÓÃ»§²ÎÊı×é1										\English User parameter group 1
-}GX_USER_SET_SELECTOR_ENTRY;
+	GX_ENUM_USER_SET_SELECTOR_DEFAULT = 0,	///< \Chinese é»˜è®¤å‚æ•°ç»„										\English Default parameter group
+	GX_ENUM_USER_SET_SELECTOR_USERSET0 = 1, ///< \Chinese ç”¨æˆ·å‚æ•°ç»„0										\English User parameter group 0
+	GX_ENUM_USER_SET_SELECTOR_USERSET1 = 2, ///< \Chinese ç”¨æˆ·å‚æ•°ç»„1										\English User parameter group 1
+} GX_USER_SET_SELECTOR_ENTRY;
 
 typedef enum GX_IMAGE_GRAY_RAISE_SWITCH_ENTRY
 {
-	GX_IMAGE_GRAY_RAISE_SWITCH_OFF = 0,                  ///< \Chinese Í¼ÏñÁÁ¶ÈÀ­Éì¿ª¹Ø									\English Switch off the image brightness stretch
-	GX_IMAGE_GRAY_RAISE_SWITCH_ON  = 1,                  ///< \Chinese Í¼ÏñÁÁ¶ÈÀ­Éì¿ª¹Ø									\English Switch on the image brightness stretch
-}GX_IMAGE_GRAY_RAISE_SWITCH_ENTRY;
+	GX_IMAGE_GRAY_RAISE_SWITCH_OFF = 0, ///< \Chinese å›¾åƒäº®åº¦æ‹‰ä¼¸å¼€å…³									\English Switch off the image brightness stretch
+	GX_IMAGE_GRAY_RAISE_SWITCH_ON = 1,	///< \Chinese å›¾åƒäº®åº¦æ‹‰ä¼¸å¼€å…³									\English Switch on the image brightness stretch
+} GX_IMAGE_GRAY_RAISE_SWITCH_ENTRY;
 
 typedef enum GX_FIXED_PATTERN_NOISE_CORRECT_MODE
 {
-	GX_FIXEDPATTERNNOISECORRECT_OFF = 0,				///< \Chinese ¹Ø±ÕÄ£°åÔëÉù										\English Switch off the pattern noise correction
-	GX_FIXEDPATTERNNOISECORRECT_ON  = 1,				///< \Chinese ¿ªÆôÄ£°åÔëÉù										\English Switch on the pattern noise correction
+	GX_FIXEDPATTERNNOISECORRECT_OFF = 0, ///< \Chinese å…³é—­æ¨¡æ¿å™ªå£°										\English Switch off the pattern noise correction
+	GX_FIXEDPATTERNNOISECORRECT_ON = 1,	 ///< \Chinese å¼€å¯æ¨¡æ¿å™ªå£°										\English Switch on the pattern noise correction
 
-}GX_FIXED_PATTERN_NOISE_CORRECT_MODE;
+} GX_FIXED_PATTERN_NOISE_CORRECT_MODE;
 
 typedef enum GX_AWB_LAMP_HOUSE_ENTRY
 {
-	GX_AWB_LAMP_HOUSE_ADAPTIVE      = 0,                ///< \Chinese ×ÔÊÊÓ¦¹âÔ´										\English Adaptive light source
-	GX_AWB_LAMP_HOUSE_D65           = 1,                ///< \Chinese Ö¸¶¨É«ÎÂ6500k										\English Color temperature 6500k
-	GX_AWB_LAMP_HOUSE_FLUORESCENCE  = 2,                ///< \Chinese Ö¸¶¨Ó«¹âµÆ										\English Fluorescent
-	GX_AWB_LAMP_HOUSE_INCANDESCENT  = 3,                ///< \Chinese Ö¸¶¨°×³ãµÆ										\English Incandescent
-	GX_AWB_LAMP_HOUSE_D75           = 4,                ///< \Chinese Ö¸¶¨É«ÎÂ7500k										\English Color temperature 7500k
-	GX_AWB_LAMP_HOUSE_D50           = 5,                ///< \Chinese Ö¸¶¨É«ÎÂ5000k										\English Color temperature 5000k
-	GX_AWB_LAMP_HOUSE_U30           = 6,                ///< \Chinese Ö¸¶¨É«ÎÂ3000k										\English Color temperature 3000k
-}GX_AWB_LAMP_HOUSE_ENTRY;
+	GX_AWB_LAMP_HOUSE_ADAPTIVE = 0,		///< \Chinese è‡ªé€‚åº”å…‰æº										\English Adaptive light source
+	GX_AWB_LAMP_HOUSE_D65 = 1,			///< \Chinese æŒ‡å®šè‰²æ¸©6500k										\English Color temperature 6500k
+	GX_AWB_LAMP_HOUSE_FLUORESCENCE = 2, ///< \Chinese æŒ‡å®šè§å…‰ç¯										\English Fluorescent
+	GX_AWB_LAMP_HOUSE_INCANDESCENT = 3, ///< \Chinese æŒ‡å®šç™½ç‚½ç¯										\English Incandescent
+	GX_AWB_LAMP_HOUSE_D75 = 4,			///< \Chinese æŒ‡å®šè‰²æ¸©7500k										\English Color temperature 7500k
+	GX_AWB_LAMP_HOUSE_D50 = 5,			///< \Chinese æŒ‡å®šè‰²æ¸©5000k										\English Color temperature 5000k
+	GX_AWB_LAMP_HOUSE_U30 = 6,			///< \Chinese æŒ‡å®šè‰²æ¸©3000k										\English Color temperature 3000k
+} GX_AWB_LAMP_HOUSE_ENTRY;
 
 typedef enum GX_TEST_PATTERN_ENTRY
 {
-	GX_ENUM_TEST_PATTERN_OFF                    = 0,    ///< \Chinese ¹Ø±Õ												\English Off
-	GX_ENUM_TEST_PATTERN_GRAY_FRAME_RAMP_MOVING = 1,    ///< \Chinese ¾²Ö¹»Ò¶ÈµİÔö										\English Static gray increment
-	GX_ENUM_TEST_PATTERN_SLANT_LINE_MOVING      = 2,    ///< \Chinese ¹ö¶¯Ğ±ÌõÎÆ										\English Rolling slant line
-	GX_ENUM_TEST_PATTERN_VERTICAL_LINE_MOVING   = 3,    ///< \Chinese ¹ö¶¯ÊúÌõÎÆ										\English Rolling vertical line
-	GX_ENUM_TEST_PATTERN_HORIZONTAL_LINE_MOVING = 4,    ///< \Chinese ¹ö¶¯ºáÌõÎÆ										\English Rolling horizontal stripe
-    GX_ENUM_TEST_PATTERN_SLANT_LINE             = 6,    ///< \Chinese ¾²Ö¹Ğ±ÌõÎÆ										\English Static slant line
-}GX_TEST_PATTERN_ENTRY;
+	GX_ENUM_TEST_PATTERN_OFF = 0,					 ///< \Chinese å…³é—­												\English Off
+	GX_ENUM_TEST_PATTERN_GRAY_FRAME_RAMP_MOVING = 1, ///< \Chinese é™æ­¢ç°åº¦é€’å¢										\English Static gray increment
+	GX_ENUM_TEST_PATTERN_SLANT_LINE_MOVING = 2,		 ///< \Chinese æ»šåŠ¨æ–œæ¡çº¹										\English Rolling slant line
+	GX_ENUM_TEST_PATTERN_VERTICAL_LINE_MOVING = 3,	 ///< \Chinese æ»šåŠ¨ç«–æ¡çº¹										\English Rolling vertical line
+	GX_ENUM_TEST_PATTERN_HORIZONTAL_LINE_MOVING = 4, ///< \Chinese æ»šåŠ¨æ¨ªæ¡çº¹										\English Rolling horizontal stripe
+	GX_ENUM_TEST_PATTERN_SLANT_LINE = 6,			 ///< \Chinese é™æ­¢æ–œæ¡çº¹										\English Static slant line
+} GX_TEST_PATTERN_ENTRY;
 
 typedef enum GX_TRIGGER_SELECTOR_ENTRY
 {
-	GX_ENUM_TRIGGER_SELECTOR_FRAME_START        = 1,    ///< \Chinese ²É¼¯Ò»Ö¡											\English Capture single frame
-    GX_ENUM_TRIGGER_SELECTOR_FRAME_BURST_START  = 2,    ///< \Chinese ²É¼¯¶àÖ¡											\English High speed continuous shooting
+	GX_ENUM_TRIGGER_SELECTOR_FRAME_START = 1,		///< \Chinese é‡‡é›†ä¸€å¸§											\English Capture single frame
+	GX_ENUM_TRIGGER_SELECTOR_FRAME_BURST_START = 2, ///< \Chinese é‡‡é›†å¤šå¸§											\English High speed continuous shooting
 } GX_TRIGGER_SELECTOR_ENTRY;
 
 typedef enum GX_LINE_SELECTOR_ENTRY
 {
-	GX_ENUM_LINE_SELECTOR_LINE0           = 0,          ///< \Chinese Òı½Å0												\English Line 0
-	GX_ENUM_LINE_SELECTOR_LINE1           = 1,          ///< \Chinese Òı½Å1												\English Line 1
-	GX_ENUM_LINE_SELECTOR_LINE2           = 2,          ///< \Chinese Òı½Å2												\English Line 2
-	GX_ENUM_LINE_SELECTOR_LINE3           = 3,          ///< \Chinese Òı½Å3												\English Line 3
-    GX_ENUM_LINE_SELECTOR_LINE4           = 4,          ///< \Chinese Òı½Å4												\English Line 4
-    GX_ENUM_LINE_SELECTOR_LINE5           = 5,          ///< \Chinese Òı½Å5												\English Line 5
-    GX_ENUM_LINE_SELECTOR_LINE6           = 6,          ///< \Chinese Òı½Å6												\English Line 6
-    GX_ENUM_LINE_SELECTOR_LINE7           = 7,          ///< \Chinese Òı½Å7												\English Line 7
-    GX_ENUM_LINE_SELECTOR_LINE8           = 8,          ///< \Chinese Òı½Å8												\English Line 8
-    GX_ENUM_LINE_SELECTOR_LINE9           = 9,          ///< \Chinese Òı½Å9												\English Line 9
-    GX_ENUM_LINE_SELECTOR_LINE10          = 10,         ///< \Chinese Òı½Å10											\English Line 10
-    GX_ENUM_LINE_SELECTOR_LINE_STROBE     = 11,         ///< \Chinese ×¨ÓÃÉÁ¹âµÆÒı½Å									\English Dedicated flash pin
-	GX_ENUM_LINE_SELECTOR_LINE11          = 12,         ///< \Chinese Òı½Å11											\English Line 11
-	GX_ENUM_LINE_SELECTOR_LINE12          = 13,         ///< \Chinese Òı½Å12											\English Line 12
-	GX_ENUM_LINE_SELECTOR_LINE13          = 14,         ///< \Chinese Òı½Å13											\English Line 13
-	GX_ENUM_LINE_SELECTOR_LINE14          = 15,         ///< \Chinese Òı½Å14											\English Line 14
-	GX_ENUM_LINE_SELECTOR_TRIGGER         = 16,         ///< \Chinese Ó²¼ş´¥·¢ÊäÈë										\English Trigger input
-	GX_ENUM_LINE_SELECTOR_IO1             = 17,         ///< \Chinese GPIOÊäÈë											\English GPIO output
-	GX_ENUM_LINE_SELECTOR_IO2             = 18,         ///< \Chinese GPIOÊäÈë											\English GPIO input
-	GX_ENUM_LINE_SELECTOR_FLASH_P         = 19,         ///< \Chinese ÉÁ¹âµÆflash_BÊä³ö									\English flash_B output
-	GX_ENUM_LINE_SELECTOR_FLASH_W         = 20,         ///< \Chinese ÉÁ¹âµÆflash_WÊä³ö									\English flash_W output
+	GX_ENUM_LINE_SELECTOR_LINE0 = 0,		///< \Chinese å¼•è„š0												\English Line 0
+	GX_ENUM_LINE_SELECTOR_LINE1 = 1,		///< \Chinese å¼•è„š1												\English Line 1
+	GX_ENUM_LINE_SELECTOR_LINE2 = 2,		///< \Chinese å¼•è„š2												\English Line 2
+	GX_ENUM_LINE_SELECTOR_LINE3 = 3,		///< \Chinese å¼•è„š3												\English Line 3
+	GX_ENUM_LINE_SELECTOR_LINE4 = 4,		///< \Chinese å¼•è„š4												\English Line 4
+	GX_ENUM_LINE_SELECTOR_LINE5 = 5,		///< \Chinese å¼•è„š5												\English Line 5
+	GX_ENUM_LINE_SELECTOR_LINE6 = 6,		///< \Chinese å¼•è„š6												\English Line 6
+	GX_ENUM_LINE_SELECTOR_LINE7 = 7,		///< \Chinese å¼•è„š7												\English Line 7
+	GX_ENUM_LINE_SELECTOR_LINE8 = 8,		///< \Chinese å¼•è„š8												\English Line 8
+	GX_ENUM_LINE_SELECTOR_LINE9 = 9,		///< \Chinese å¼•è„š9												\English Line 9
+	GX_ENUM_LINE_SELECTOR_LINE10 = 10,		///< \Chinese å¼•è„š10											\English Line 10
+	GX_ENUM_LINE_SELECTOR_LINE_STROBE = 11, ///< \Chinese ä¸“ç”¨é—ªå…‰ç¯å¼•è„š									\English Dedicated flash pin
+	GX_ENUM_LINE_SELECTOR_LINE11 = 12,		///< \Chinese å¼•è„š11											\English Line 11
+	GX_ENUM_LINE_SELECTOR_LINE12 = 13,		///< \Chinese å¼•è„š12											\English Line 12
+	GX_ENUM_LINE_SELECTOR_LINE13 = 14,		///< \Chinese å¼•è„š13											\English Line 13
+	GX_ENUM_LINE_SELECTOR_LINE14 = 15,		///< \Chinese å¼•è„š14											\English Line 14
+	GX_ENUM_LINE_SELECTOR_TRIGGER = 16,		///< \Chinese ç¡¬ä»¶è§¦å‘è¾“å…¥										\English Trigger input
+	GX_ENUM_LINE_SELECTOR_IO1 = 17,			///< \Chinese GPIOè¾“å…¥											\English GPIO output
+	GX_ENUM_LINE_SELECTOR_IO2 = 18,			///< \Chinese GPIOè¾“å…¥											\English GPIO input
+	GX_ENUM_LINE_SELECTOR_FLASH_P = 19,		///< \Chinese é—ªå…‰ç¯flash_Bè¾“å‡º									\English flash_B output
+	GX_ENUM_LINE_SELECTOR_FLASH_W = 20,		///< \Chinese é—ªå…‰ç¯flash_Wè¾“å‡º									\English flash_W output
 } GX_LINE_SELECTOR_ENTRY;
 
 typedef enum GX_LINE_MODE_ENTRY
 {
-	GX_ENUM_LINE_MODE_INPUT            = 0,             ///< \Chinese ÊäÈë												\English Input
-	GX_ENUM_LINE_MODE_OUTPUT           = 1,             ///< \Chinese Êä³ö												\English Output
+	GX_ENUM_LINE_MODE_INPUT = 0,  ///< \Chinese è¾“å…¥												\English Input
+	GX_ENUM_LINE_MODE_OUTPUT = 1, ///< \Chinese è¾“å‡º												\English Output
 } GX_LINE_MODE_ENTRY;
 
 typedef enum GX_LINE_SOURCE_ENTRY
 {
-    GX_ENUM_LINE_SOURCE_OFF                         = 0,        ///< \Chinese ¹Ø±Õ										\English Off
-    GX_ENUM_LINE_SOURCE_STROBE                      = 1,        ///< \Chinese ÉÁ¹âµÆ									\English Strobe light
-    GX_ENUM_LINE_SOURCE_USEROUTPUT0                 = 2,        ///< \Chinese ÓÃ»§×Ô¶¨ÒåÊä³ö0							\English UserDefined output 0
-    GX_ENUM_LINE_SOURCE_USEROUTPUT1                 = 3,        ///< \Chinese ÓÃ»§×Ô¶¨ÒåÊä³ö1							\English UserDefined output 1
-    GX_ENUM_LINE_SOURCE_USEROUTPUT2                 = 4,        ///< \Chinese ÓÃ»§×Ô¶¨ÒåÊä³ö2							\English UserDefined output 2
-    GX_ENUM_LINE_SOURCE_EXPOSURE_ACTIVE    			= 5,		///< \Chinese ÆØ¹â¼¤»î									\English Exposure active
-    GX_ENUM_LINE_SOURCE_FRAME_TRIGGER_WAIT          = 6,		///< \Chinese Ö¡´¥·¢µÈ´ı								\English Frame trigger wait
-    GX_ENUM_LINE_SOURCE_ACQUISITION_TRIGGER_WAIT    = 7,		///< \Chinese ²É¼¯´¥·¢µÈ´ı								\English Acquisition trigger wait
-    GX_ENUM_LINE_SOURCE_TIMER1_ACTIVE               = 8,        ///< \Chinese ¼ÆÊ±Æ÷1¼¤»î								\English Timer 1 active	
-    GX_ENUM_LINE_SOURCE_USEROUTPUT3                 = 9,        ///< \Chinese ÓÃ»§×Ô¶¨ÒåÊä³ö3							\English User defined output 3
-    GX_ENUM_LINE_SOURCE_USEROUTPUT4                 = 10,       ///< \Chinese ÓÃ»§×Ô¶¨ÒåÊä³ö4							\English User defined output 4
-    GX_ENUM_LINE_SOURCE_USEROUTPUT5                 = 11,       ///< \Chinese ÓÃ»§×Ô¶¨ÒåÊä³ö5							\English User defined output 5
-    GX_ENUM_LINE_SOURCE_USEROUTPUT6                 = 12,       ///< \Chinese ÓÃ»§×Ô¶¨ÒåÊä³ö6							\English User defined output 6
-    GX_ENUM_LINE_SOURCE_TIMER2_ACTIVE               = 13,       ///< \Chinese ¼ÆÊ±Æ÷2¼¤»î								\English Timer 2 active
-    GX_ENUM_LINE_SOURCE_TIMER3_ACTIVE               = 14,       ///< \Chinese ¼ÆÊ±Æ÷3¼¤»î								\English Timer 3 active
-	GX_ENUM_LINE_SOURCE_FRAME_TRIGGER               = 15,       ///< \Chinese Ö¡´¥·¢									\English frame trigger
-	GX_ENUM_LINE_SOURCE_Flash_W                     = 16,       ///< \Chinese Flash_w									\English Flash_w
-	GX_ENUM_LINE_SOURCE_Flash_P                     = 17,       ///< \Chinese Flash_P									\English Flash_P
-	GX_ENUM_LINE_SOURCE_SERIAL_PORT_0               = 18,		///< \Chinese SerialPort0								\English SerialPort0
+	GX_ENUM_LINE_SOURCE_OFF = 0,					  ///< \Chinese å…³é—­										\English Off
+	GX_ENUM_LINE_SOURCE_STROBE = 1,					  ///< \Chinese é—ªå…‰ç¯									\English Strobe light
+	GX_ENUM_LINE_SOURCE_USEROUTPUT0 = 2,			  ///< \Chinese ç”¨æˆ·è‡ªå®šä¹‰è¾“å‡º0							\English UserDefined output 0
+	GX_ENUM_LINE_SOURCE_USEROUTPUT1 = 3,			  ///< \Chinese ç”¨æˆ·è‡ªå®šä¹‰è¾“å‡º1							\English UserDefined output 1
+	GX_ENUM_LINE_SOURCE_USEROUTPUT2 = 4,			  ///< \Chinese ç”¨æˆ·è‡ªå®šä¹‰è¾“å‡º2							\English UserDefined output 2
+	GX_ENUM_LINE_SOURCE_EXPOSURE_ACTIVE = 5,		  ///< \Chinese æ›å…‰æ¿€æ´»									\English Exposure active
+	GX_ENUM_LINE_SOURCE_FRAME_TRIGGER_WAIT = 6,		  ///< \Chinese å¸§è§¦å‘ç­‰å¾…								\English Frame trigger wait
+	GX_ENUM_LINE_SOURCE_ACQUISITION_TRIGGER_WAIT = 7, ///< \Chinese é‡‡é›†è§¦å‘ç­‰å¾…								\English Acquisition trigger wait
+	GX_ENUM_LINE_SOURCE_TIMER1_ACTIVE = 8,			  ///< \Chinese è®¡æ—¶å™¨1æ¿€æ´»								\English Timer 1 active
+	GX_ENUM_LINE_SOURCE_USEROUTPUT3 = 9,			  ///< \Chinese ç”¨æˆ·è‡ªå®šä¹‰è¾“å‡º3							\English User defined output 3
+	GX_ENUM_LINE_SOURCE_USEROUTPUT4 = 10,			  ///< \Chinese ç”¨æˆ·è‡ªå®šä¹‰è¾“å‡º4							\English User defined output 4
+	GX_ENUM_LINE_SOURCE_USEROUTPUT5 = 11,			  ///< \Chinese ç”¨æˆ·è‡ªå®šä¹‰è¾“å‡º5							\English User defined output 5
+	GX_ENUM_LINE_SOURCE_USEROUTPUT6 = 12,			  ///< \Chinese ç”¨æˆ·è‡ªå®šä¹‰è¾“å‡º6							\English User defined output 6
+	GX_ENUM_LINE_SOURCE_TIMER2_ACTIVE = 13,			  ///< \Chinese è®¡æ—¶å™¨2æ¿€æ´»								\English Timer 2 active
+	GX_ENUM_LINE_SOURCE_TIMER3_ACTIVE = 14,			  ///< \Chinese è®¡æ—¶å™¨3æ¿€æ´»								\English Timer 3 active
+	GX_ENUM_LINE_SOURCE_FRAME_TRIGGER = 15,			  ///< \Chinese å¸§è§¦å‘									\English frame trigger
+	GX_ENUM_LINE_SOURCE_Flash_W = 16,				  ///< \Chinese Flash_w									\English Flash_w
+	GX_ENUM_LINE_SOURCE_Flash_P = 17,				  ///< \Chinese Flash_P									\English Flash_P
+	GX_ENUM_LINE_SOURCE_SERIAL_PORT_0 = 18,			  ///< \Chinese SerialPort0								\English SerialPort0
 } GX_LINE_SOURCE_ENTRY;
 
 typedef enum GX_ENCODER_SELECTOR_ENTRY
 {
-	GX_ENUM_ENCODER0            = 0,					///< \Chinese ±àÂëÆ÷Ñ¡ÔñÆ÷0										\English Encoder selector 0
-	GX_ENUM_ENCODER1            = 1,					///< \Chinese ±àÂëÆ÷Ñ¡ÔñÆ÷1										\English Encoder selector 1
-	GX_ENUM_ENCODER2            = 2,					///< \Chinese ±àÂëÆ÷Ñ¡ÔñÆ÷2										\English Encoder selector 2
+	GX_ENUM_ENCODER0 = 0, ///< \Chinese ç¼–ç å™¨é€‰æ‹©å™¨0										\English Encoder selector 0
+	GX_ENUM_ENCODER1 = 1, ///< \Chinese ç¼–ç å™¨é€‰æ‹©å™¨1										\English Encoder selector 1
+	GX_ENUM_ENCODER2 = 2, ///< \Chinese ç¼–ç å™¨é€‰æ‹©å™¨2										\English Encoder selector 2
 } GX_ENCODER_SELECTOR_ENTRY;
 
 typedef enum GX_ENCODER_SOURCEA_ENTRY
 {
-	GX_ENUM_SOURCEA_OFF               = 0,               ///< \Chinese ±àÂëÆ÷AÏà¹Ø±ÕÊäÈë								\English Encoder A related closed input
-	GX_ENUM_SOURCEA_LINE0             = 1,               ///< \Chinese ±àÂëÆ÷AÏàÊäÈëLine0								\English Encoder phase A input Line0
-	GX_ENUM_SOURCEA_LINE1             = 2,               ///< \Chinese ±àÂëÆ÷AÏàÊäÈëLine1								\English Encoder phase A input Line1
-	GX_ENUM_SOURCEA_LINE2             = 3,               ///< \Chinese ±àÂëÆ÷AÏàÊäÈëLine2								\English Encoder phase A input Line2
-	GX_ENUM_SOURCEA_LINE3             = 4,               ///< \Chinese ±àÂëÆ÷AÏàÊäÈëLine3								\English Encoder phase A input Line3
-	GX_ENUM_SOURCEA_LINE4             = 5,               ///< \Chinese ±àÂëÆ÷AÏàÊäÈëLine4								\English Encoder phase A input Line4
-	GX_ENUM_SOURCEA_LINE5             = 6,               ///< \Chinese ±àÂëÆ÷AÏàÊäÈëLine5								\English Encoder phase A input Line5
+	GX_ENUM_SOURCEA_OFF = 0,   ///< \Chinese ç¼–ç å™¨Aç›¸å…³é—­è¾“å…¥								\English Encoder A related closed input
+	GX_ENUM_SOURCEA_LINE0 = 1, ///< \Chinese ç¼–ç å™¨Aç›¸è¾“å…¥Line0								\English Encoder phase A input Line0
+	GX_ENUM_SOURCEA_LINE1 = 2, ///< \Chinese ç¼–ç å™¨Aç›¸è¾“å…¥Line1								\English Encoder phase A input Line1
+	GX_ENUM_SOURCEA_LINE2 = 3, ///< \Chinese ç¼–ç å™¨Aç›¸è¾“å…¥Line2								\English Encoder phase A input Line2
+	GX_ENUM_SOURCEA_LINE3 = 4, ///< \Chinese ç¼–ç å™¨Aç›¸è¾“å…¥Line3								\English Encoder phase A input Line3
+	GX_ENUM_SOURCEA_LINE4 = 5, ///< \Chinese ç¼–ç å™¨Aç›¸è¾“å…¥Line4								\English Encoder phase A input Line4
+	GX_ENUM_SOURCEA_LINE5 = 6, ///< \Chinese ç¼–ç å™¨Aç›¸è¾“å…¥Line5								\English Encoder phase A input Line5
 } GX_ENCODER_SOURCEA_ENTRY;
 
 typedef enum GX_ENCODER_SOURCEB_ENTRY
 {
-	GX_ENUM_SOURCEB_OFF               = 0,               ///< \Chinese ±àÂëÆ÷BÏà¹Ø±ÕÊäÈë								\English Encoder phase B close input
-	GX_ENUM_SOURCEB_LINE0             = 1,               ///< \Chinese ±àÂëÆ÷BÏàÊäÈëLine0								\English Encoder phase B input Line0
-	GX_ENUM_SOURCEB_LINE1             = 2,               ///< \Chinese ±àÂëÆ÷BÏàÊäÈëLine1								\English Encoder phase B input Line1
-	GX_ENUM_SOURCEB_LINE2             = 3,               ///< \Chinese ±àÂëÆ÷BÏàÊäÈëLine2								\English Encoder phase B input Line2
-	GX_ENUM_SOURCEB_LINE3             = 4,               ///< \Chinese ±àÂëÆ÷BÏàÊäÈëLine3								\English Encoder phase B input Line3
-	GX_ENUM_SOURCEB_LINE4             = 5,               ///< \Chinese ±àÂëÆ÷BÏàÊäÈëLine4								\English Encoder phase B input Line4
-	GX_ENUM_SOURCEB_LINE5             = 6,               ///< \Chinese ±àÂëÆ÷BÏàÊäÈëLine5								\English Encoder phase B input Line5
+	GX_ENUM_SOURCEB_OFF = 0,   ///< \Chinese ç¼–ç å™¨Bç›¸å…³é—­è¾“å…¥								\English Encoder phase B close input
+	GX_ENUM_SOURCEB_LINE0 = 1, ///< \Chinese ç¼–ç å™¨Bç›¸è¾“å…¥Line0								\English Encoder phase B input Line0
+	GX_ENUM_SOURCEB_LINE1 = 2, ///< \Chinese ç¼–ç å™¨Bç›¸è¾“å…¥Line1								\English Encoder phase B input Line1
+	GX_ENUM_SOURCEB_LINE2 = 3, ///< \Chinese ç¼–ç å™¨Bç›¸è¾“å…¥Line2								\English Encoder phase B input Line2
+	GX_ENUM_SOURCEB_LINE3 = 4, ///< \Chinese ç¼–ç å™¨Bç›¸è¾“å…¥Line3								\English Encoder phase B input Line3
+	GX_ENUM_SOURCEB_LINE4 = 5, ///< \Chinese ç¼–ç å™¨Bç›¸è¾“å…¥Line4								\English Encoder phase B input Line4
+	GX_ENUM_SOURCEB_LINE5 = 6, ///< \Chinese ç¼–ç å™¨Bç›¸è¾“å…¥Line5								\English Encoder phase B input Line5
 } GX_ENCODER_SOURCEB_ENTRY;
 
 typedef enum GX_ENCODER_MODE_ENTRY
 {
-	GX_ENUM_HIGH_RESOLUTION            = 0,				///< \Chinese ±àÂëÆ÷Ä£Ê½										\English Encoder Mode
+	GX_ENUM_HIGH_RESOLUTION = 0, ///< \Chinese ç¼–ç å™¨æ¨¡å¼										\English Encoder Mode
 } GX_ENCODER_MODE_ENTRY;
-
 
 typedef enum GX_ENCODER_DIRECTION_ENTRY
 {
-	GX_ENUM_FORWARD             = 0,					///< \Chinese ±àÂëÆ÷·½ÏòÏòÇ°									\English Encoder direction forward
-	GX_ENUM_BACKWARD            = 1,					///< \Chinese ±àÂëÆ÷·½ÏòÏòºó									\English Encoder direction backward
+	GX_ENUM_FORWARD = 0,  ///< \Chinese ç¼–ç å™¨æ–¹å‘å‘å‰									\English Encoder direction forward
+	GX_ENUM_BACKWARD = 1, ///< \Chinese ç¼–ç å™¨æ–¹å‘å‘å									\English Encoder direction backward
 } GX_ENCODER_DIRECTION_ENTRY;
 
 typedef enum GX_EVENT_SELECTOR_ENTRY
 {
-	GX_ENUM_EVENT_SELECTOR_EXPOSUREEND                 = 0x0004,		///< \Chinese ÆØ¹â½áÊø							\English End of exposure
-	GX_ENUM_EVENT_SELECTOR_BLOCK_DISCARD               = 0x9000,		///< \Chinese Í¼ÏñÖ¡¶ªÆú						\English Image frame discarding
-	GX_ENUM_EVENT_SELECTOR_EVENT_OVERRUN               = 0x9001,		///< \Chinese ÊÂ¼ş¶ÓÁĞÒç³ö						\English Event queue overflow
-	GX_ENUM_EVENT_SELECTOR_FRAMESTART_OVERTRIGGER      = 0x9002,		///< \Chinese ´¥·¢ĞÅºÅÒç³ö						\English Trigger signal overflow
-	GX_ENUM_EVENT_SELECTOR_BLOCK_NOT_EMPTY             = 0x9003,		///< \Chinese Í¼ÏñÖ¡´æ²»Îª¿Õ					\English Image frame memory is not empty
-	GX_ENUM_EVENT_SELECTOR_INTERNAL_ERROR              = 0x9004,		///< \Chinese ÄÚ²¿´íÎóÊÂ¼ş						\English Internal error events
-	GX_ENUM_EVENT_SELECTOR_FRAMEBURSTSTART_OVERTRIGGER = 0x9005,		///< \Chinese ¶àÖ¡´¥·¢ÆÁ±ÎÊÂ¼ş					\English Multi frame trigger mask event
-	GX_ENUM_EVENT_SELECTOR_FRAMESTART_WAIT             = 0x9006,		///< \Chinese Ö¡µÈ´ıÊÂ¼ş						\English Frame Wait Event
-	GX_ENUM_EVENT_SELECTOR_FRAMEBURSTSTART_WAIT        = 0x9007,		///< \Chinese ¶àÖ¡µÈ´ıÊÂ¼ş 						\English Multi frame wait event
+	GX_ENUM_EVENT_SELECTOR_EXPOSUREEND = 0x0004,				 ///< \Chinese æ›å…‰ç»“æŸ							\English End of exposure
+	GX_ENUM_EVENT_SELECTOR_BLOCK_DISCARD = 0x9000,				 ///< \Chinese å›¾åƒå¸§ä¸¢å¼ƒ						\English Image frame discarding
+	GX_ENUM_EVENT_SELECTOR_EVENT_OVERRUN = 0x9001,				 ///< \Chinese äº‹ä»¶é˜Ÿåˆ—æº¢å‡º						\English Event queue overflow
+	GX_ENUM_EVENT_SELECTOR_FRAMESTART_OVERTRIGGER = 0x9002,		 ///< \Chinese è§¦å‘ä¿¡å·æº¢å‡º						\English Trigger signal overflow
+	GX_ENUM_EVENT_SELECTOR_BLOCK_NOT_EMPTY = 0x9003,			 ///< \Chinese å›¾åƒå¸§å­˜ä¸ä¸ºç©º					\English Image frame memory is not empty
+	GX_ENUM_EVENT_SELECTOR_INTERNAL_ERROR = 0x9004,				 ///< \Chinese å†…éƒ¨é”™è¯¯äº‹ä»¶						\English Internal error events
+	GX_ENUM_EVENT_SELECTOR_FRAMEBURSTSTART_OVERTRIGGER = 0x9005, ///< \Chinese å¤šå¸§è§¦å‘å±è”½äº‹ä»¶					\English Multi frame trigger mask event
+	GX_ENUM_EVENT_SELECTOR_FRAMESTART_WAIT = 0x9006,			 ///< \Chinese å¸§ç­‰å¾…äº‹ä»¶						\English Frame Wait Event
+	GX_ENUM_EVENT_SELECTOR_FRAMEBURSTSTART_WAIT = 0x9007,		 ///< \Chinese å¤šå¸§ç­‰å¾…äº‹ä»¶ 						\English Multi frame wait event
 } GX_EVENT_SELECTOR_ENTRY;
 
 typedef enum GX_EVENT_NOTIFICATION_ENTRY
 {
-	GX_ENUM_EVENT_NOTIFICATION_OFF             = 0,						///< \Chinese ¹Ø±ÕÊÂ¼ş 							\English Turn off event
-	GX_ENUM_EVENT_NOTIFICATION_ON              = 1,						///< \Chinese ¿ªÆôÊÂ¼ş 							\English Turn on event
+	GX_ENUM_EVENT_NOTIFICATION_OFF = 0, ///< \Chinese å…³é—­äº‹ä»¶ 							\English Turn off event
+	GX_ENUM_EVENT_NOTIFICATION_ON = 1,	///< \Chinese å¼€å¯äº‹ä»¶ 							\English Turn on event
 } GX_EVENT_NOTIFICATION_ENTRY;
 
 typedef enum GX_EVENT_SIMPLE_MODE_ENTRY
 {
-	GX_EVENT_SIMPLE_MODE_OFF	= 0,									///< \Chinese ¹Ø±ÕÊÂ¼şÖ¡IDÊ¹ÄÜ					 \English Turn off block ID enable
-	GX_EVENT_SIMPLE_MODE_ON		= 1,									///< \Chinese ´ò¿ªÊÂ¼şÖ¡IDÊ¹ÄÜ					 \English Turn on block ID enable
-}GX_EVENT_SIMPLE_MODE_ENTRY;
+	GX_EVENT_SIMPLE_MODE_OFF = 0, ///< \Chinese å…³é—­äº‹ä»¶å¸§IDä½¿èƒ½					 \English Turn off block ID enable
+	GX_EVENT_SIMPLE_MODE_ON = 1,  ///< \Chinese æ‰“å¼€äº‹ä»¶å¸§IDä½¿èƒ½					 \English Turn on block ID enable
+} GX_EVENT_SIMPLE_MODE_ENTRY;
 
 typedef enum GX_LUT_SELECTOR_ENTRY
 {
-	GX_ENUM_LUT_SELECTOR_LUMINANCE             = 0,						///< \Chinese ÁÁ¶È								\English Luminance
+	GX_ENUM_LUT_SELECTOR_LUMINANCE = 0, ///< \Chinese äº®åº¦								\English Luminance
 } GX_LUT_SELECTOR_ENTRY;
 
 typedef enum GX_TRANSFERDELAY_MODE_ENTRY
 {
-	GX_ENUM_TRANSFERDELAY_MODE_OFF     = 0,								///< \Chinese ½ûÓÃ´«ÊäÑÓ³Ù						\English Disable transmission delay
-	GX_ENUM_TRANSFERDELAY_MODE_ON      = 1,								///< \Chinese ¿ªÆô´«ÊäÑÓ³Ù						\English Enable transmission delay
+	GX_ENUM_TRANSFERDELAY_MODE_OFF = 0, ///< \Chinese ç¦ç”¨ä¼ è¾“å»¶è¿Ÿ						\English Disable transmission delay
+	GX_ENUM_TRANSFERDELAY_MODE_ON = 1,	///< \Chinese å¼€å¯ä¼ è¾“å»¶è¿Ÿ						\English Enable transmission delay
 } GX_TRANSFERDELAY_MODE_ENTRY;
 
 typedef enum GX_COVER_FRAMESTORE_MODE_ENTRY
 {
-	GX_ENUM_COVER_FRAMESTORE_MODE_OFF     = 0,							///< \Chinese ½ûÓÃÖ¡´æ¸²¸Ç						\English Disable Frame Memory Coverage
-	GX_ENUM_COVER_FRAMESTORE_MODE_ON      = 1,							///< \Chinese ¿ªÆôÖ¡´æ¸²¸Ç						\English Enable Frame Memory Coverage
+	GX_ENUM_COVER_FRAMESTORE_MODE_OFF = 0, ///< \Chinese ç¦ç”¨å¸§å­˜è¦†ç›–						\English Disable Frame Memory Coverage
+	GX_ENUM_COVER_FRAMESTORE_MODE_ON = 1,  ///< \Chinese å¼€å¯å¸§å­˜è¦†ç›–						\English Enable Frame Memory Coverage
 } GX_COVER_FRAMESTORE_MODE_ENTRY;
 
 typedef enum GX_USER_SET_DEFAULT_ENTRY
 {
-	GX_ENUM_USER_SET_DEFAULT_DEFAULT      = 0,							///< \Chinese ³ö³§²ÎÊı×é						\English Default parameter group
-	GX_ENUM_USER_SET_DEFAULT_USERSET0     = 1,							///< \Chinese ÓÃ»§²ÎÊı×é0						\English User parameter group 0
+	GX_ENUM_USER_SET_DEFAULT_DEFAULT = 0,  ///< \Chinese å‡ºå‚å‚æ•°ç»„						\English Default parameter group
+	GX_ENUM_USER_SET_DEFAULT_USERSET0 = 1, ///< \Chinese ç”¨æˆ·å‚æ•°ç»„0						\English User parameter group 0
 } GX_USER_SET_DEFAULT_ENTRY;
 
 typedef enum GX_TRANSFER_CONTROL_MODE_ENTRY
 {
-	GX_ENUM_TRANSFER_CONTROL_MODE_BASIC             = 0,				///< \Chinese ¹Ø±Õ´«Êä¿ØÖÆÄ£Ê½					\English Turn off transmission control
-	GX_ENUM_TRANSFER_CONTROL_MODE_USERCONTROLED     = 1,				///< \Chinese ÓÃ»§¿ØÖÆ´«Êä¿ØÖÆÄ£Ê½				\English User-controlled transmission control mode
+	GX_ENUM_TRANSFER_CONTROL_MODE_BASIC = 0,		 ///< \Chinese å…³é—­ä¼ è¾“æ§åˆ¶æ¨¡å¼					\English Turn off transmission control
+	GX_ENUM_TRANSFER_CONTROL_MODE_USERCONTROLED = 1, ///< \Chinese ç”¨æˆ·æ§åˆ¶ä¼ è¾“æ§åˆ¶æ¨¡å¼				\English User-controlled transmission control mode
 } GX_TRANSFER_CONTROL_MODE_ENTRY;
 
 typedef enum GX_TRANSFER_OPERATION_MODE_ENTRY
 {
-	GX_ENUM_TRANSFER_OPERATION_MODE_MULTIBLOCK  = 0,					///< \Chinese Ö¸¶¨·¢ËÍÖ¡Êı						\English Specify the number of frames to be sent
+	GX_ENUM_TRANSFER_OPERATION_MODE_MULTIBLOCK = 0, ///< \Chinese æŒ‡å®šå‘é€å¸§æ•°						\English Specify the number of frames to be sent
 } GX_TRANSFER_OPERATION_MODE_ENTRY;
 
 typedef enum GX_DS_RESEND_MODE_ENTRY
 {
-	GX_DS_RESEND_MODE_OFF     = 0,										///< \Chinese ¹Ø±ÕÖØ´«Ä£Ê½						\English Turn off resend mode       
-	GX_DS_RESEND_MODE_ON      = 1,										///< \Chinese ÆôÖØ´«Ä£Ê½						\English Turn on resend mode
+	GX_DS_RESEND_MODE_OFF = 0, ///< \Chinese å…³é—­é‡ä¼ æ¨¡å¼						\English Turn off resend mode
+	GX_DS_RESEND_MODE_ON = 1,  ///< \Chinese å¯é‡ä¼ æ¨¡å¼						\English Turn on resend mode
 } GX_DS_RESEND_MODE_ENTRY;
 
 typedef enum GX_DS_MULTI_RESEND_MODE_ENTRY
 {
-	GX_DS_MULTI_RESEND_MODE_OFF = 0,									///< \Chinese ¹Ø±Õ¶ş´ÎÖØ´«Ä£Ê½					\English Turn off multiple resend mode           
-	GX_DS_MULTI_RESEND_MODE_ON = 1,										///< \Chinese ¿ªÆô¶ş´ÎÖØ´«Ä£Ê½					\English Turn on multiple resend mode
+	GX_DS_MULTI_RESEND_MODE_OFF = 0, ///< \Chinese å…³é—­äºŒæ¬¡é‡ä¼ æ¨¡å¼					\English Turn off multiple resend mode
+	GX_DS_MULTI_RESEND_MODE_ON = 1,	 ///< \Chinese å¼€å¯äºŒæ¬¡é‡ä¼ æ¨¡å¼					\English Turn on multiple resend mode
 } GX_DS_MULTI_RESEND_MODE_ENTRY;
 
 typedef enum GX_DS_STREAM_BUFFER_HANDLING_MODE_ENTRY
 {
-	GX_DS_STREAM_BUFFER_HANDLING_MODE_OLDEST_FIRST              = 1,	///< \Chinese OldestFirst Ä£Ê½					\English OldestFirst Mode
-	GX_DS_STREAM_BUFFER_HANDLING_MODE_OLDEST_FIRST_OVERWRITE    = 2,    ///< \Chinese OldestFirstOverwriteÄ£Ê½			\English OldestFirstOverwrite Mode
-	GX_DS_STREAM_BUFFER_HANDLING_MODE_NEWEST_ONLY               = 3,    ///< \Chinese NewestOnlyÄ£Ê½					\English NewestOnly Mode
+	GX_DS_STREAM_BUFFER_HANDLING_MODE_OLDEST_FIRST = 1,			  ///< \Chinese OldestFirst æ¨¡å¼					\English OldestFirst Mode
+	GX_DS_STREAM_BUFFER_HANDLING_MODE_OLDEST_FIRST_OVERWRITE = 2, ///< \Chinese OldestFirstOverwriteæ¨¡å¼			\English OldestFirstOverwrite Mode
+	GX_DS_STREAM_BUFFER_HANDLING_MODE_NEWEST_ONLY = 3,			  ///< \Chinese NewestOnlyæ¨¡å¼					\English NewestOnly Mode
 
-}GX_DS_STREAM_BUFFER_HANDLING_MODE_ENTRY;
+} GX_DS_STREAM_BUFFER_HANDLING_MODE_ENTRY;
 
 typedef enum GX_DEVICE_LINK_THROUGHPUT_LIMIT_MODE_ENTRY
 {
-	GX_DEVICE_LINK_THROUGHPUT_LIMIT_MODE_OFF   = 0,						///< \Chinese ¹Ø±ÕÉè±¸´ø¿íÏŞÖÆÄ£Ê½				\English Turn off bandwidth limitation mode
-	GX_DEVICE_LINK_THROUGHPUT_LIMIT_MODE_ON    = 1						///< \Chinese ¿ªÆôÉè±¸´ø¿íÏŞÖÆÄ£Ê½				\English Turn on bandwidth limitation mode
-}GX_DEVICE_LINK_THROUGHPUT_LIMIT_MODE_ENTRY;
+	GX_DEVICE_LINK_THROUGHPUT_LIMIT_MODE_OFF = 0, ///< \Chinese å…³é—­è®¾å¤‡å¸¦å®½é™åˆ¶æ¨¡å¼				\English Turn off bandwidth limitation mode
+	GX_DEVICE_LINK_THROUGHPUT_LIMIT_MODE_ON = 1	  ///< \Chinese å¼€å¯è®¾å¤‡å¸¦å®½é™åˆ¶æ¨¡å¼				\English Turn on bandwidth limitation mode
+} GX_DEVICE_LINK_THROUGHPUT_LIMIT_MODE_ENTRY;
 
 typedef enum GX_TEST_PATTERN_GENERATOR_SELECTOR_ENTRY
 {
-	GX_TEST_PATTERN_GENERATOR_SELECTOR_SENSOR  = 0,						///< \Chinese sensor µÄ²âÊÔÍ¼					\English Test pattern generator of sensor
-	GX_TEST_PATTERN_GENERATOR_SELECTOR_REGION0 = 1,						///< \Chinese FPGAµÄ²âÊÔÍ¼						\English Test pattern generator of FPGA
-}GX_TEST_PATTERN_GENERATOR_SELECTOR_ENTRY;
-
+	GX_TEST_PATTERN_GENERATOR_SELECTOR_SENSOR = 0,	///< \Chinese sensor çš„æµ‹è¯•å›¾					\English Test pattern generator of sensor
+	GX_TEST_PATTERN_GENERATOR_SELECTOR_REGION0 = 1, ///< \Chinese FPGAçš„æµ‹è¯•å›¾						\English Test pattern generator of FPGA
+} GX_TEST_PATTERN_GENERATOR_SELECTOR_ENTRY;
 
 typedef enum GX_CHUNK_SELECTOR_ENTRY
 {
-	GX_CHUNK_SELECTOR_CHUNK_FRAME_ID     = 1,							///< \Chinese Ö¡ºÅ								\English Frame ID
-	GX_CHUNK_SELECTOR_CHUNK_TIME_STAMP   = 2,							///< \Chinese Ê±¼ä´Á							\English Timestamp
-	GX_CHUNK_SELECTOR_CHUNK_COUNTER_VALUE= 3							///< \Chinese ¼ÆÊıÆ÷Öµ							\English Counter value
-}GX_CHUNK_SELECTOR_ENTRY;
+	GX_CHUNK_SELECTOR_CHUNK_FRAME_ID = 1,	  ///< \Chinese å¸§å·								\English Frame ID
+	GX_CHUNK_SELECTOR_CHUNK_TIME_STAMP = 2,	  ///< \Chinese æ—¶é—´æˆ³							\English Timestamp
+	GX_CHUNK_SELECTOR_CHUNK_COUNTER_VALUE = 3 ///< \Chinese è®¡æ•°å™¨å€¼							\English Counter value
+} GX_CHUNK_SELECTOR_ENTRY;
 
 typedef enum GX_ACQUISITION_FRAME_RATE_MODE_ENTRY
 {
-	GX_ACQUISITION_FRAME_RATE_MODE_OFF   = 0,							///< \Chinese ¹Ø±ÕÖ¡ÂÊ¿ØÖÆ¹¦ÄÜ					\English Turn off frame rate control mode
-	GX_ACQUISITION_FRAME_RATE_MODE_ON    = 1							///< \Chinese ¿ªÆôÖ¡ÂÊ¿ØÖÆ¹¦ÄÜ					\English Turn on frame rate control mode
-}GX_ACQUISITION_FRAME_RATE_MODE_ENTRY;
+	GX_ACQUISITION_FRAME_RATE_MODE_OFF = 0, ///< \Chinese å…³é—­å¸§ç‡æ§åˆ¶åŠŸèƒ½					\English Turn off frame rate control mode
+	GX_ACQUISITION_FRAME_RATE_MODE_ON = 1	///< \Chinese å¼€å¯å¸§ç‡æ§åˆ¶åŠŸèƒ½					\English Turn on frame rate control mode
+} GX_ACQUISITION_FRAME_RATE_MODE_ENTRY;
 
 typedef enum GX_REGION_SEND_MODE
 {
-    GX_REGION_SEND_SINGLE_ROI_MODE = 0,									///< \Chinese µ¥ROI								\English Single ROI
-    GX_REGION_SEND_MULTI_ROI_MODE  = 1									///< \Chinese ¶àROI								\English Multi ROI
-}GX_REGION_SEND_MODE;
+	GX_REGION_SEND_SINGLE_ROI_MODE = 0, ///< \Chinese å•ROI								\English Single ROI
+	GX_REGION_SEND_MULTI_ROI_MODE = 1	///< \Chinese å¤šROI								\English Multi ROI
+} GX_REGION_SEND_MODE;
 
 typedef enum GX_REGION_MODE
 {
-    GX_REGION_MODE_OFF = 0,												///< \Chinese ¹Ø±Õµ±Ç°Ñ¡ÔñµÄÇøÓò				\English Close currently selected region
-    GX_REGION_MODE_ON  = 1												///< \Chinese ´ò¿ªµ±Ç°Ñ¡ÔñµÄÇøÓò				\English Open currently selected region
-}GX_REGION_MODE;
+	GX_REGION_MODE_OFF = 0, ///< \Chinese å…³é—­å½“å‰é€‰æ‹©çš„åŒºåŸŸ				\English Close currently selected region
+	GX_REGION_MODE_ON = 1	///< \Chinese æ‰“å¼€å½“å‰é€‰æ‹©çš„åŒºåŸŸ				\English Open currently selected region
+} GX_REGION_MODE;
 
 typedef enum GX_REGION_SELECTOR_ENTRY
 {
-    GX_REGION_SELECTOR_REGION0 = 0,										///< \Chinese Region 0							\English Region 0
-    GX_REGION_SELECTOR_REGION1 = 1,										///< \Chinese Region 1							\English Region 1
-    GX_REGION_SELECTOR_REGION2 = 2,										///< \Chinese Region 2							\English Region 2
-    GX_REGION_SELECTOR_REGION3 = 3,										///< \Chinese Region 3							\English Region 3
-    GX_REGION_SELECTOR_REGION4 = 4,										///< \Chinese Region 4							\English Region 4
-    GX_REGION_SELECTOR_REGION5 = 5,										///< \Chinese Region 5							\English Region 5
-    GX_REGION_SELECTOR_REGION6 = 6,										///< \Chinese Region 6							\English Region 6
-    GX_REGION_SELECTOR_REGION7 = 7										///< \Chinese Region 7							\English Region 7
-}GX_REGION_SELECTOR_ENTRY;
+	GX_REGION_SELECTOR_REGION0 = 0, ///< \Chinese Region 0							\English Region 0
+	GX_REGION_SELECTOR_REGION1 = 1, ///< \Chinese Region 1							\English Region 1
+	GX_REGION_SELECTOR_REGION2 = 2, ///< \Chinese Region 2							\English Region 2
+	GX_REGION_SELECTOR_REGION3 = 3, ///< \Chinese Region 3							\English Region 3
+	GX_REGION_SELECTOR_REGION4 = 4, ///< \Chinese Region 4							\English Region 4
+	GX_REGION_SELECTOR_REGION5 = 5, ///< \Chinese Region 5							\English Region 5
+	GX_REGION_SELECTOR_REGION6 = 6, ///< \Chinese Region 6							\English Region 6
+	GX_REGION_SELECTOR_REGION7 = 7	///< \Chinese Region 7							\English Region 7
+} GX_REGION_SELECTOR_ENTRY;
 
 typedef enum GX_SHARPNESS_MODE_ENTRY
 {
-	GX_SHARPNESS_MODE_OFF   = 0,										///< \Chinese ¹Ø±ÕÈñ»¯¹¦ÄÜ						\English Turn off sharpness mode
-	GX_SHARPNESS_MODE_ON    = 1											///< \Chinese ¿ªÆôÈñ»¯¹¦ÄÜ						\English Turn on sharpness mode
-}GX_SHARPNESS_MODE_ENTRY;
+	GX_SHARPNESS_MODE_OFF = 0, ///< \Chinese å…³é—­é”åŒ–åŠŸèƒ½						\English Turn off sharpness mode
+	GX_SHARPNESS_MODE_ON = 1   ///< \Chinese å¼€å¯é”åŒ–åŠŸèƒ½						\English Turn on sharpness mode
+} GX_SHARPNESS_MODE_ENTRY;
 
 typedef enum GX_NOISE_REDUCTION_MODE_ENTRY
 {
-	GX_NOISE_REDUCTION_MODE_OFF   = 0,									///< \Chinese ¹Ø±Õ½µÔë¹¦ÄÜ						\English Turn off the noise reduction function
-	GX_NOISE_REDUCTION_MODE_ON    = 1									///< \Chinese ¿ªÆô½µÔë¹¦ÄÜ						\English Turn on the noise reduction function
-}GX_NOISE_REDUCTION_MODE_ENTRY;
+	GX_NOISE_REDUCTION_MODE_OFF = 0, ///< \Chinese å…³é—­é™å™ªåŠŸèƒ½						\English Turn off the noise reduction function
+	GX_NOISE_REDUCTION_MODE_ON = 1	 ///< \Chinese å¼€å¯é™å™ªåŠŸèƒ½						\English Turn on the noise reduction function
+} GX_NOISE_REDUCTION_MODE_ENTRY;
 
 typedef enum GX_SHADING_CORRECTION_MODE_ENTRY
 {
-	GX_SHADING_CORRECTION_MODE_FLAT_FIELD_CORRECTION		= 0,		///< \Chinese Æ½³¡Ğ£Õı							\English Flat field correction
-	GX_SHADING_CORRECTION_MODE_PARALLAX_CORRECTION			= 1,		///< \Chinese ÊÓ²îĞ£Õı							\English Parallax correction
-	GX_SHADING_CORRECTION_MODE_TAILOR_FLAT_FIELD_CORRECTION	= 2,		///< \Chinese ¶¨ÖÆÆ½³¡Ğ£Õı						\English Custom flat field correction
-	GX_SHADING_CORRECTION_MODE_DEVICE_FLAT_FIELD_CORRECTION	= 3			///< \Chinese Éè±¸Æ½³¡Ğ£Õı						\English Equipment flat field correction
-}GX_SHADING_CORRECTION_MODE_ENTRY;
+	GX_SHADING_CORRECTION_MODE_FLAT_FIELD_CORRECTION = 0,		 ///< \Chinese å¹³åœºæ ¡æ­£							\English Flat field correction
+	GX_SHADING_CORRECTION_MODE_PARALLAX_CORRECTION = 1,			 ///< \Chinese è§†å·®æ ¡æ­£							\English Parallax correction
+	GX_SHADING_CORRECTION_MODE_TAILOR_FLAT_FIELD_CORRECTION = 2, ///< \Chinese å®šåˆ¶å¹³åœºæ ¡æ­£						\English Custom flat field correction
+	GX_SHADING_CORRECTION_MODE_DEVICE_FLAT_FIELD_CORRECTION = 3	 ///< \Chinese è®¾å¤‡å¹³åœºæ ¡æ­£						\English Equipment flat field correction
+} GX_SHADING_CORRECTION_MODE_ENTRY;
 
 typedef enum GX_FFC_GENERATE_STATUS_ENTRY
 {
-	GX_FFC_GENERATE_STATUS_IDLE				= 0,						///< \Chinese ÏĞÖÃ								\English idle
-	GX_FFC_GENERATE_STATUS_WAITING_IMAGE	= 1,						///< \Chinese µÈ´ıÍ¼Ïñ							\English Waiting image
-	GX_FFC_GENERATE_STATUS_FINISH			= 2,						///< \Chinese Íê³É								\English complete
-}GX_FFC_GENERATE_STATUS_ENTRY;
+	GX_FFC_GENERATE_STATUS_IDLE = 0,		  ///< \Chinese é—²ç½®								\English idle
+	GX_FFC_GENERATE_STATUS_WAITING_IMAGE = 1, ///< \Chinese ç­‰å¾…å›¾åƒ							\English Waiting image
+	GX_FFC_GENERATE_STATUS_FINISH = 2,		  ///< \Chinese å®Œæˆ								\English complete
+} GX_FFC_GENERATE_STATUS_ENTRY;
 
 typedef enum GX_FFC_COEFFICIENT_ENTRY
 {
-	GX_FFC_COEFFICIENT_SET0		= 0,									///< \Chinese Æ½³¡Ğ£ÕıÏµÊıSet0					\English Flat field correction coefficient Set0
-	GX_FFC_COEFFICIENT_SET1		= 1, 									///< \Chinese Æ½³¡Ğ£ÕıÏµÊıSet1					\English Flat field correction coefficient Set1
-	GX_FFC_COEFFICIENT_SET2		= 2,									///< \Chinese Æ½³¡Ğ£ÕıÏµÊıSet2					\English Flat field correction coefficient Set2
-	GX_FFC_COEFFICIENT_SET3		= 3, 									///< \Chinese Æ½³¡Ğ£ÕıÏµÊıSet3					\English Flat field correction coefficient Set3
-	GX_FFC_COEFFICIENT_SET4		= 4,									///< \Chinese Æ½³¡Ğ£ÕıÏµÊıSet4					\English Flat field correction coefficient Set4
-	GX_FFC_COEFFICIENT_SET5		= 5, 									///< \Chinese Æ½³¡Ğ£ÕıÏµÊıSet5					\English Flat field correction coefficient Set5
-	GX_FFC_COEFFICIENT_SET6		= 6,									///< \Chinese Æ½³¡Ğ£ÕıÏµÊıSet6					\English Flat field correction coefficient Set6
-	GX_FFC_COEFFICIENT_SET7		= 7, 									///< \Chinese Æ½³¡Ğ£ÕıÏµÊıSet7					\English Flat field correction coefficient Set7
-	GX_FFC_COEFFICIENT_SET8		= 8,									///< \Chinese Æ½³¡Ğ£ÕıÏµÊıSet8					\English Flat field correction coefficient Set8
-	GX_FFC_COEFFICIENT_SET9		= 9, 									///< \Chinese Æ½³¡Ğ£ÕıÏµÊıSet9					\English Flat field correction coefficient Set9
-	GX_FFC_COEFFICIENT_SET10	= 10,									///< \Chinese Æ½³¡Ğ£ÕıÏµÊıSet10					\English Flat field correction coefficient Set10
-	GX_FFC_COEFFICIENT_SET11	= 11, 									///< \Chinese Æ½³¡Ğ£ÕıÏµÊıSet11					\English Flat field correction coefficient Set11
-	GX_FFC_COEFFICIENT_SET12	= 12,									///< \Chinese Æ½³¡Ğ£ÕıÏµÊıSet12					\English Flat field correction coefficient Set12
-	GX_FFC_COEFFICIENT_SET13	= 13,									///< \Chinese Æ½³¡Ğ£ÕıÏµÊıSet13					\English Flat field correction coefficient Set13
-	GX_FFC_COEFFICIENT_SET14	= 14,									///< \Chinese Æ½³¡Ğ£ÕıÏµÊıSet14					\English Flat field correction coefficient Set14
-	GX_FFC_COEFFICIENT_SET15	= 15,									///< \Chinese Æ½³¡Ğ£ÕıÏµÊıSet15					\English Flat field correction coefficient Set15
-}GX_FFC_COEFFICIENT_ENTRY;
+	GX_FFC_COEFFICIENT_SET0 = 0,   ///< \Chinese å¹³åœºæ ¡æ­£ç³»æ•°Set0					\English Flat field correction coefficient Set0
+	GX_FFC_COEFFICIENT_SET1 = 1,   ///< \Chinese å¹³åœºæ ¡æ­£ç³»æ•°Set1					\English Flat field correction coefficient Set1
+	GX_FFC_COEFFICIENT_SET2 = 2,   ///< \Chinese å¹³åœºæ ¡æ­£ç³»æ•°Set2					\English Flat field correction coefficient Set2
+	GX_FFC_COEFFICIENT_SET3 = 3,   ///< \Chinese å¹³åœºæ ¡æ­£ç³»æ•°Set3					\English Flat field correction coefficient Set3
+	GX_FFC_COEFFICIENT_SET4 = 4,   ///< \Chinese å¹³åœºæ ¡æ­£ç³»æ•°Set4					\English Flat field correction coefficient Set4
+	GX_FFC_COEFFICIENT_SET5 = 5,   ///< \Chinese å¹³åœºæ ¡æ­£ç³»æ•°Set5					\English Flat field correction coefficient Set5
+	GX_FFC_COEFFICIENT_SET6 = 6,   ///< \Chinese å¹³åœºæ ¡æ­£ç³»æ•°Set6					\English Flat field correction coefficient Set6
+	GX_FFC_COEFFICIENT_SET7 = 7,   ///< \Chinese å¹³åœºæ ¡æ­£ç³»æ•°Set7					\English Flat field correction coefficient Set7
+	GX_FFC_COEFFICIENT_SET8 = 8,   ///< \Chinese å¹³åœºæ ¡æ­£ç³»æ•°Set8					\English Flat field correction coefficient Set8
+	GX_FFC_COEFFICIENT_SET9 = 9,   ///< \Chinese å¹³åœºæ ¡æ­£ç³»æ•°Set9					\English Flat field correction coefficient Set9
+	GX_FFC_COEFFICIENT_SET10 = 10, ///< \Chinese å¹³åœºæ ¡æ­£ç³»æ•°Set10					\English Flat field correction coefficient Set10
+	GX_FFC_COEFFICIENT_SET11 = 11, ///< \Chinese å¹³åœºæ ¡æ­£ç³»æ•°Set11					\English Flat field correction coefficient Set11
+	GX_FFC_COEFFICIENT_SET12 = 12, ///< \Chinese å¹³åœºæ ¡æ­£ç³»æ•°Set12					\English Flat field correction coefficient Set12
+	GX_FFC_COEFFICIENT_SET13 = 13, ///< \Chinese å¹³åœºæ ¡æ­£ç³»æ•°Set13					\English Flat field correction coefficient Set13
+	GX_FFC_COEFFICIENT_SET14 = 14, ///< \Chinese å¹³åœºæ ¡æ­£ç³»æ•°Set14					\English Flat field correction coefficient Set14
+	GX_FFC_COEFFICIENT_SET15 = 15, ///< \Chinese å¹³åœºæ ¡æ­£ç³»æ•°Set15					\English Flat field correction coefficient Set15
+} GX_FFC_COEFFICIENT_ENTRY;
 
 typedef enum GX_FFC_EXPECTED_GRAY_VALUE_ENABLE_ENTRY
 {
-	GX_FFC_EXPECTED_GRAY_VALUE_ENABLE_OFF		= 0,					///< \Chinese ¹Ø±ÕÆ½³¡Ğ£ÕıÆÚÍû»Ò¶ÈÖµÊ¹ÄÜ		\English Disable flat field correction expected gray value
-	GX_FFC_EXPECTED_GRAY_VALUE_ENABLE_ON		= 1,					///< \Chinese ¿ªÆôÆ½³¡Ğ£ÕıÆÚÍû»Ò¶ÈÖµÊ¹ÄÜ		\English Enable flat field correction expected gray value
-}GX_FFC_EXPECTED_GRAY_VALUE_ENABLE_ENTRY;
+	GX_FFC_EXPECTED_GRAY_VALUE_ENABLE_OFF = 0, ///< \Chinese å…³é—­å¹³åœºæ ¡æ­£æœŸæœ›ç°åº¦å€¼ä½¿èƒ½		\English Disable flat field correction expected gray value
+	GX_FFC_EXPECTED_GRAY_VALUE_ENABLE_ON = 1,  ///< \Chinese å¼€å¯å¹³åœºæ ¡æ­£æœŸæœ›ç°åº¦å€¼ä½¿èƒ½		\English Enable flat field correction expected gray value
+} GX_FFC_EXPECTED_GRAY_VALUE_ENABLE_ENTRY;
 
 typedef enum GX_DSNU_SELECTOR_ENTRY
 {
-	GX_DSNU_SELECTOR_DEFAULT	= 0,									///< \Chinese °µ³¡Ğ£ÕıÏµÊıDefault				\English Dark field correction coefficient Default
-	GX_DSNU_SELECTOR_SET0		= 1,									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet0					\English Dark field correction coefficient Set0
-	GX_DSNU_SELECTOR_SET1		= 2, 									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet1					\English Dark field correction coefficient Set1
-	GX_DSNU_SELECTOR_SET2		= 3,									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet2					\English Dark field correction coefficient Set2
-	GX_DSNU_SELECTOR_SET3		= 4, 									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet3					\English Dark field correction coefficient Set3
-	GX_DSNU_SELECTOR_SET4		= 5,									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet4					\English Dark field correction coefficient Set4
-	GX_DSNU_SELECTOR_SET5		= 6, 									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet5					\English Dark field correction coefficient Set5
-	GX_DSNU_SELECTOR_SET6		= 7,									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet6					\English Dark field correction coefficient Set6
-	GX_DSNU_SELECTOR_SET7		= 8, 									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet7					\English Dark field correction coefficient Set7
-	GX_DSNU_SELECTOR_SET8		= 9,									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet8					\English Dark field correction coefficient Set8
-	GX_DSNU_SELECTOR_SET9		= 10, 									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet9					\English Dark field correction coefficient Set9
-	GX_DSNU_SELECTOR_SET10		= 11,									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet10					\English Dark field correction coefficient Set10
-	GX_DSNU_SELECTOR_SET11		= 12, 									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet11					\English Dark field correction coefficient Set11
-	GX_DSNU_SELECTOR_SET12		= 13,									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet12					\English Dark field correction coefficient Set12
-	GX_DSNU_SELECTOR_SET13		= 14,									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet13					\English Dark field correction coefficient Set13
-	GX_DSNU_SELECTOR_SET14		= 15,									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet14					\English Dark field correction coefficient Set14
-	GX_DSNU_SELECTOR_SET15		= 16,									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet15					\English Dark field correction coefficient Set15
-}GX_DSNU_SELECTOR_ENTRY;
+	GX_DSNU_SELECTOR_DEFAULT = 0, ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Default				\English Dark field correction coefficient Default
+	GX_DSNU_SELECTOR_SET0 = 1,	  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set0					\English Dark field correction coefficient Set0
+	GX_DSNU_SELECTOR_SET1 = 2,	  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set1					\English Dark field correction coefficient Set1
+	GX_DSNU_SELECTOR_SET2 = 3,	  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set2					\English Dark field correction coefficient Set2
+	GX_DSNU_SELECTOR_SET3 = 4,	  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set3					\English Dark field correction coefficient Set3
+	GX_DSNU_SELECTOR_SET4 = 5,	  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set4					\English Dark field correction coefficient Set4
+	GX_DSNU_SELECTOR_SET5 = 6,	  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set5					\English Dark field correction coefficient Set5
+	GX_DSNU_SELECTOR_SET6 = 7,	  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set6					\English Dark field correction coefficient Set6
+	GX_DSNU_SELECTOR_SET7 = 8,	  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set7					\English Dark field correction coefficient Set7
+	GX_DSNU_SELECTOR_SET8 = 9,	  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set8					\English Dark field correction coefficient Set8
+	GX_DSNU_SELECTOR_SET9 = 10,	  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set9					\English Dark field correction coefficient Set9
+	GX_DSNU_SELECTOR_SET10 = 11,  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set10					\English Dark field correction coefficient Set10
+	GX_DSNU_SELECTOR_SET11 = 12,  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set11					\English Dark field correction coefficient Set11
+	GX_DSNU_SELECTOR_SET12 = 13,  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set12					\English Dark field correction coefficient Set12
+	GX_DSNU_SELECTOR_SET13 = 14,  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set13					\English Dark field correction coefficient Set13
+	GX_DSNU_SELECTOR_SET14 = 15,  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set14					\English Dark field correction coefficient Set14
+	GX_DSNU_SELECTOR_SET15 = 16,  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set15					\English Dark field correction coefficient Set15
+} GX_DSNU_SELECTOR_ENTRY;
 
 typedef enum GX_DSNU_GENERATE_STATUS_ENTRY
 {
-	GX_DSNU_GENERATE_STATUS_IDLE			= 0,						///< \Chinese ÏĞÖÃ								\English idle
-	GX_DSNU_GENERATE_STATUS_WAITING_IMAGE	= 1,						///< \Chinese µÈ´ıÍ¼Ïñ							\English Waiting image
-	GX_DSNU_GENERATE_STATUS_FINISH			= 2,						///< \Chinese Íê³É								\English complete
-}GX_DSNU_GENERATE_STATUS_ENTRY;
-
+	GX_DSNU_GENERATE_STATUS_IDLE = 0,		   ///< \Chinese é—²ç½®								\English idle
+	GX_DSNU_GENERATE_STATUS_WAITING_IMAGE = 1, ///< \Chinese ç­‰å¾…å›¾åƒ							\English Waiting image
+	GX_DSNU_GENERATE_STATUS_FINISH = 2,		   ///< \Chinese å®Œæˆ								\English complete
+} GX_DSNU_GENERATE_STATUS_ENTRY;
 
 typedef enum GX_PRNU_SELECTOR_ENTRY
 {
-	GX_PRNU_SELECTOR_DEFAULT	= 0,									///< \Chinese °µ³¡Ğ£ÕıÏµÊıDefault				\English Bright field correction coefficient Default
-	GX_PRNU_SELECTOR_SET0		= 1,									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet0					\English Bright field correction coefficient Set0
-	GX_PRNU_SELECTOR_SET1		= 2, 									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet1					\English Bright field correction coefficient Set1
-	GX_PRNU_SELECTOR_SET2		= 3,									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet2					\English Bright field correction coefficient Set2
-	GX_PRNU_SELECTOR_SET3		= 4, 									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet3					\English Bright field correction coefficient Set3
-	GX_PRNU_SELECTOR_SET4		= 5,									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet4					\English Bright field correction coefficient Set4
-	GX_PRNU_SELECTOR_SET5		= 6, 									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet5					\English Bright field correction coefficient Set5
-	GX_PRNU_SELECTOR_SET6		= 7,									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet6					\English Bright field correction coefficient Set6
-	GX_PRNU_SELECTOR_SET7		= 8, 									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet7					\English Bright field correction coefficient Set7
-	GX_PRNU_SELECTOR_SET8		= 9,									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet8					\English Bright field correction coefficient Set8
-	GX_PRNU_SELECTOR_SET9		= 10, 									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet9					\English Bright field correction coefficient Set9
-	GX_PRNU_SELECTOR_SET10		= 11,									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet10					\English Bright field correction coefficient Set10
-	GX_PRNU_SELECTOR_SET11		= 12, 									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet11					\English Bright field correction coefficient Set11
-	GX_PRNU_SELECTOR_SET12		= 13,									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet12					\English Bright field correction coefficient Set12
-	GX_PRNU_SELECTOR_SET13		= 14,									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet13					\English Bright field correction coefficient Set13
-	GX_PRNU_SELECTOR_SET14		= 15,									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet14					\English Bright field correction coefficient Set14
-	GX_PRNU_SELECTOR_SET15		= 16,									///< \Chinese °µ³¡Ğ£ÕıÏµÊıSet15					\English Bright field correction coefficient Set15
-}GX_PRNU_SELECTOR_ENTRY;
+	GX_PRNU_SELECTOR_DEFAULT = 0, ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Default				\English Bright field correction coefficient Default
+	GX_PRNU_SELECTOR_SET0 = 1,	  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set0					\English Bright field correction coefficient Set0
+	GX_PRNU_SELECTOR_SET1 = 2,	  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set1					\English Bright field correction coefficient Set1
+	GX_PRNU_SELECTOR_SET2 = 3,	  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set2					\English Bright field correction coefficient Set2
+	GX_PRNU_SELECTOR_SET3 = 4,	  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set3					\English Bright field correction coefficient Set3
+	GX_PRNU_SELECTOR_SET4 = 5,	  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set4					\English Bright field correction coefficient Set4
+	GX_PRNU_SELECTOR_SET5 = 6,	  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set5					\English Bright field correction coefficient Set5
+	GX_PRNU_SELECTOR_SET6 = 7,	  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set6					\English Bright field correction coefficient Set6
+	GX_PRNU_SELECTOR_SET7 = 8,	  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set7					\English Bright field correction coefficient Set7
+	GX_PRNU_SELECTOR_SET8 = 9,	  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set8					\English Bright field correction coefficient Set8
+	GX_PRNU_SELECTOR_SET9 = 10,	  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set9					\English Bright field correction coefficient Set9
+	GX_PRNU_SELECTOR_SET10 = 11,  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set10					\English Bright field correction coefficient Set10
+	GX_PRNU_SELECTOR_SET11 = 12,  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set11					\English Bright field correction coefficient Set11
+	GX_PRNU_SELECTOR_SET12 = 13,  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set12					\English Bright field correction coefficient Set12
+	GX_PRNU_SELECTOR_SET13 = 14,  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set13					\English Bright field correction coefficient Set13
+	GX_PRNU_SELECTOR_SET14 = 15,  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set14					\English Bright field correction coefficient Set14
+	GX_PRNU_SELECTOR_SET15 = 16,  ///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°Set15					\English Bright field correction coefficient Set15
+} GX_PRNU_SELECTOR_ENTRY;
 
 typedef enum GX_PRNU_GENERATE_STATUS_ENTRY
 {
-	GX_PRNU_GENERATE_STATUS_IDLE			= 0,						///< \Chinese ÏĞÖÃ								\English idle
-	GX_PRNU_GENERATE_STATUS_WAITING_IMAGE	= 1,						///< \Chinese µÈ´ıÍ¼Ïñ							\English Waiting image
-	GX_PRNU_GENERATE_STATUS_FINISH			= 2,						///< \Chinese Íê³É								\English complete
-}GX_PRNU_GENERATE_STATUS_ENTRY;
+	GX_PRNU_GENERATE_STATUS_IDLE = 0,		   ///< \Chinese é—²ç½®								\English idle
+	GX_PRNU_GENERATE_STATUS_WAITING_IMAGE = 1, ///< \Chinese ç­‰å¾…å›¾åƒ							\English Waiting image
+	GX_PRNU_GENERATE_STATUS_FINISH = 2,		   ///< \Chinese å®Œæˆ								\English complete
+} GX_PRNU_GENERATE_STATUS_ENTRY;
 
 typedef enum GX_CXP_LINK_CONFIGURATION_ENTRY
 {
-	GX_CXP_LINK_CONFIGURATION_CXP6_X1	    = 0x00010048,				///< \Chinese Á¬½ÓÅäÖÃCXP6_X1					\English Connection configuration status CXP6_X1
-	GX_CXP_LINK_CONFIGURATION_CXP12_X1	    = 0x00010058,				///< \Chinese Á¬½ÓÅäÖÃCXP12_X1					\English Connection configuration status CXP12_X1
-	GX_CXP_LINK_CONFIGURATION_CXP6_X2	    = 0x00020048,				///< \Chinese Á¬½ÓÅäÖÃCXP6_X2					\English Connection configuration status CXP6_X2
-	GX_CXP_LINK_CONFIGURATION_CXP12_X2	    = 0x00020058,				///< \Chinese Á¬½ÓÅäÖÃCXP12_X2					\English Connection configuration status CXP12_X2
-	GX_CXP_LINK_CONFIGURATION_CXP6_X4	    = 0x00040048,				///< \Chinese Á¬½ÓÅäÖÃCXP6_X4					\English Connection configuration status CXP6_X4
-	GX_CXP_LINK_CONFIGURATION_CXP12_X4	    = 0x00040058,				///< \Chinese Á¬½ÓÅäÖÃCXP12_X4					\English Connection configuration status CXP12_X4
-	GX_CXP_LINK_CONFIGURATION_CXP3_X1	    = 0x00010038,				///< \Chinese CXPÁ¬½ÓÅäÖÃ×´Ì¬CXP3_X1			\English CXP Connection configuration status CXP3_X1
-	GX_CXP_LINK_CONFIGURATION_CXP3_X2	    = 0x00020038,				///< \Chinese CXPÁ¬½ÓÅäÖÃ×´Ì¬CXP3_X2			\English CXP Connection configuration status CXP3_X2
-	GX_CXP_LINK_CONFIGURATION_CXP3_X4	    = 0x00040038,				///< \Chinese CXPÁ¬½ÓÅäÖÃ×´Ì¬CXP3_X4			\English CXP Connection configuration status CXP3_X4
+	GX_CXP_LINK_CONFIGURATION_CXP6_X1 = 0x00010048,	 ///< \Chinese è¿æ¥é…ç½®CXP6_X1					\English Connection configuration status CXP6_X1
+	GX_CXP_LINK_CONFIGURATION_CXP12_X1 = 0x00010058, ///< \Chinese è¿æ¥é…ç½®CXP12_X1					\English Connection configuration status CXP12_X1
+	GX_CXP_LINK_CONFIGURATION_CXP6_X2 = 0x00020048,	 ///< \Chinese è¿æ¥é…ç½®CXP6_X2					\English Connection configuration status CXP6_X2
+	GX_CXP_LINK_CONFIGURATION_CXP12_X2 = 0x00020058, ///< \Chinese è¿æ¥é…ç½®CXP12_X2					\English Connection configuration status CXP12_X2
+	GX_CXP_LINK_CONFIGURATION_CXP6_X4 = 0x00040048,	 ///< \Chinese è¿æ¥é…ç½®CXP6_X4					\English Connection configuration status CXP6_X4
+	GX_CXP_LINK_CONFIGURATION_CXP12_X4 = 0x00040058, ///< \Chinese è¿æ¥é…ç½®CXP12_X4					\English Connection configuration status CXP12_X4
+	GX_CXP_LINK_CONFIGURATION_CXP3_X1 = 0x00010038,	 ///< \Chinese CXPè¿æ¥é…ç½®çŠ¶æ€CXP3_X1			\English CXP Connection configuration status CXP3_X1
+	GX_CXP_LINK_CONFIGURATION_CXP3_X2 = 0x00020038,	 ///< \Chinese CXPè¿æ¥é…ç½®çŠ¶æ€CXP3_X2			\English CXP Connection configuration status CXP3_X2
+	GX_CXP_LINK_CONFIGURATION_CXP3_X4 = 0x00040038,	 ///< \Chinese CXPè¿æ¥é…ç½®çŠ¶æ€CXP3_X4			\English CXP Connection configuration status CXP3_X4
 
-}GX_CXP_LINK_CONFIGURATION_ENTRY;
+} GX_CXP_LINK_CONFIGURATION_ENTRY;
 
 typedef enum GX_CXP_LINK_CONFIGURATION_PREFERRED_ENTRY
 {
-	GX_CXP_LINK_CONFIGURATION_PREFERRED_CXP12_X4 = 0x00040058,			///< \Chinese Ô¤ÉèÁ¬½ÓÅäÖÃCXP12_X4				\English Preset connection configuration CXP12_X4
-}GX_CXP_LINK_CONFIGURATION_PREFERRED_ENTRY;
+	GX_CXP_LINK_CONFIGURATION_PREFERRED_CXP12_X4 = 0x00040058, ///< \Chinese é¢„è®¾è¿æ¥é…ç½®CXP12_X4				\English Preset connection configuration CXP12_X4
+} GX_CXP_LINK_CONFIGURATION_PREFERRED_ENTRY;
 
 typedef enum GX_CXP_LINK_CONFIGURATION_STATUS_ENTRY
 {
-	GX_CXP_LINK_CONFIGURATION_STATUS_CXP6_X1	= 0x00010048,			///< \Chinese CXPÁ¬½ÓÅäÖÃ×´Ì¬CXP6_X1			\English CXP Connection configuration status CXP6_X1
-	GX_CXP_LINK_CONFIGURATION_STATUS_CXP12_X1	= 0x00010058,			///< \Chinese CXPÁ¬½ÓÅäÖÃ×´Ì¬CXP12_X1			\English CXP Connection configuration status CXP12_X1
-	GX_CXP_LINK_CONFIGURATION_STATUS_CXP6_X2	= 0x00020048,			///< \Chinese CXPÁ¬½ÓÅäÖÃ×´Ì¬CXP6_X2			\English CXP Connection configuration status CXP6_X2
-	GX_CXP_LINK_CONFIGURATION_STATUS_CXP12_X2	= 0x00020058,			///< \Chinese CXPÁ¬½ÓÅäÖÃ×´Ì¬CXP12_X2			\English CXP Connection configuration status CXP12_X2
-	GX_CXP_LINK_CONFIGURATION_STATUS_CXP6_X4	= 0x00040048,			///< \Chinese CXPÁ¬½ÓÅäÖÃ×´Ì¬CXP6_X4			\English CXP Connection configuration status CXP6_X4
-	GX_CXP_LINK_CONFIGURATION_STATUS_CXP12_X4	= 0x00040058,			///< \Chinese CXPÁ¬½ÓÅäÖÃ×´Ì¬CXP12_X4			\English CXP Connection configuration status CXP12_X4
-	GX_CXP_LINK_CONFIGURATION_STATUS_CXP3_X1	= 0x00010038,			///< \Chinese CXPÁ¬½ÓÅäÖÃ×´Ì¬CXP3_X1			\English CXP Connection configuration status CXP3_X1
-	GX_CXP_LINK_CONFIGURATION_STATUS_CXP3_X2	= 0x00020038,			///< \Chinese CXPÁ¬½ÓÅäÖÃ×´Ì¬CXP3_X2			\English CXP Connection configuration status CXP3_X2
-	GX_CXP_LINK_CONFIGURATION_STATUS_CXP3_X4	= 0x00040038,			///< \Chinese CXPÁ¬½ÓÅäÖÃ×´Ì¬CXP3_X4			\English CXP Connection configuration status CXP3_X4
-}GX_CXP_LINK_CONFIGURATION_STATUS_ENTRY;
+	GX_CXP_LINK_CONFIGURATION_STATUS_CXP6_X1 = 0x00010048,	///< \Chinese CXPè¿æ¥é…ç½®çŠ¶æ€CXP6_X1			\English CXP Connection configuration status CXP6_X1
+	GX_CXP_LINK_CONFIGURATION_STATUS_CXP12_X1 = 0x00010058, ///< \Chinese CXPè¿æ¥é…ç½®çŠ¶æ€CXP12_X1			\English CXP Connection configuration status CXP12_X1
+	GX_CXP_LINK_CONFIGURATION_STATUS_CXP6_X2 = 0x00020048,	///< \Chinese CXPè¿æ¥é…ç½®çŠ¶æ€CXP6_X2			\English CXP Connection configuration status CXP6_X2
+	GX_CXP_LINK_CONFIGURATION_STATUS_CXP12_X2 = 0x00020058, ///< \Chinese CXPè¿æ¥é…ç½®çŠ¶æ€CXP12_X2			\English CXP Connection configuration status CXP12_X2
+	GX_CXP_LINK_CONFIGURATION_STATUS_CXP6_X4 = 0x00040048,	///< \Chinese CXPè¿æ¥é…ç½®çŠ¶æ€CXP6_X4			\English CXP Connection configuration status CXP6_X4
+	GX_CXP_LINK_CONFIGURATION_STATUS_CXP12_X4 = 0x00040058, ///< \Chinese CXPè¿æ¥é…ç½®çŠ¶æ€CXP12_X4			\English CXP Connection configuration status CXP12_X4
+	GX_CXP_LINK_CONFIGURATION_STATUS_CXP3_X1 = 0x00010038,	///< \Chinese CXPè¿æ¥é…ç½®çŠ¶æ€CXP3_X1			\English CXP Connection configuration status CXP3_X1
+	GX_CXP_LINK_CONFIGURATION_STATUS_CXP3_X2 = 0x00020038,	///< \Chinese CXPè¿æ¥é…ç½®çŠ¶æ€CXP3_X2			\English CXP Connection configuration status CXP3_X2
+	GX_CXP_LINK_CONFIGURATION_STATUS_CXP3_X4 = 0x00040038,	///< \Chinese CXPè¿æ¥é…ç½®çŠ¶æ€CXP3_X4			\English CXP Connection configuration status CXP3_X4
+} GX_CXP_LINK_CONFIGURATION_STATUS_ENTRY;
 
 typedef enum GX_CXP_CONNECTION_SELECTOR_ENTRY
 {
-	GX_CXP_CONNECTION_SELECTOR_0	= 0,								///< \Chinese Á¬½ÓÑ¡Ôñ0							\English Connection selection 0
-	GX_CXP_CONNECTION_SELECTOR_1	= 1,								///< \Chinese Á¬½ÓÑ¡Ôñ1							\English Connection selection 1
-	GX_CXP_CONNECTION_SELECTOR_2	= 2,								///< \Chinese Á¬½ÓÑ¡Ôñ2							\English Connection selection 2
-	GX_CXP_CONNECTION_SELECTOR_3	= 3,								///< \Chinese Á¬½ÓÑ¡Ôñ3							\English Connection selection 3
-}GX_CXP_CONNECTION_SELECTOR_ENTRY;
+	GX_CXP_CONNECTION_SELECTOR_0 = 0, ///< \Chinese è¿æ¥é€‰æ‹©0							\English Connection selection 0
+	GX_CXP_CONNECTION_SELECTOR_1 = 1, ///< \Chinese è¿æ¥é€‰æ‹©1							\English Connection selection 1
+	GX_CXP_CONNECTION_SELECTOR_2 = 2, ///< \Chinese è¿æ¥é€‰æ‹©2							\English Connection selection 2
+	GX_CXP_CONNECTION_SELECTOR_3 = 3, ///< \Chinese è¿æ¥é€‰æ‹©3							\English Connection selection 3
+} GX_CXP_CONNECTION_SELECTOR_ENTRY;
 
 typedef enum GX_CXP_CONNECTION_TEST_MODE_ENTRY
 {
-	GX_CXP_CONNECTION_TEST_MODE_OFF	   = 0,								///< \Chinese ¹Ø±ÕÁ¬½Ó²âÊÔÄ£Ê½					\English Turn off connection test mode
-	GX_CXP_CONNECTION_TEST_MODE_MODE1  = 1,								///< \Chinese ´¥·¢Á¬½Ó²âÊÔÄ£Ê½					\English Trigger connection test mode
-}GX_CXP_CONNECTION_TEST_MODE_ENTRY;
+	GX_CXP_CONNECTION_TEST_MODE_OFF = 0,   ///< \Chinese å…³é—­è¿æ¥æµ‹è¯•æ¨¡å¼					\English Turn off connection test mode
+	GX_CXP_CONNECTION_TEST_MODE_MODE1 = 1, ///< \Chinese è§¦å‘è¿æ¥æµ‹è¯•æ¨¡å¼					\English Trigger connection test mode
+} GX_CXP_CONNECTION_TEST_MODE_ENTRY;
 
 typedef enum GX_SEQUENCER_MODE_ENTRY
 {
-	GX_SEQUENCER_MODE_OFF	= 0,										///< \Chinese ¹Ø±ÕĞòÁĞÆ÷Ä£Ê½					\English Close sequencer mode
-	GX_SEQUENCER_MODE_ON	= 1,										///< \Chinese ´ò¿ªĞòÁĞÆ÷Ä£Ê½					\English Open sequencer mode
-}GX_SEQUENCER_MODE_ENTRY;
+	GX_SEQUENCER_MODE_OFF = 0, ///< \Chinese å…³é—­åºåˆ—å™¨æ¨¡å¼					\English Close sequencer mode
+	GX_SEQUENCER_MODE_ON = 1,  ///< \Chinese æ‰“å¼€åºåˆ—å™¨æ¨¡å¼					\English Open sequencer mode
+} GX_SEQUENCER_MODE_ENTRY;
 
 typedef enum GX_SEQUENCER_CONFIGURATION_MODE_ENTRY
 {
-	GX_SEQUENCER_CONFIGURATION_MODE_OFF	= 0,							///< \Chinese ¹Ø±ÕĞòÁĞÆ÷ÅäÖÃÄ£Ê½				\English Turn off sequencer configuration mode
-	GX_SEQUENCER_CONFIGURATION_MODE_ON	= 1,							///< \Chinese ´ò¿ªĞòÁĞÆ÷ÅäÖÃÄ£Ê½				\English Open sequencer configuration mode
-}GX_SEQUENCER_CONFIGURATION_MODE_ENTRY;
+	GX_SEQUENCER_CONFIGURATION_MODE_OFF = 0, ///< \Chinese å…³é—­åºåˆ—å™¨é…ç½®æ¨¡å¼				\English Turn off sequencer configuration mode
+	GX_SEQUENCER_CONFIGURATION_MODE_ON = 1,	 ///< \Chinese æ‰“å¼€åºåˆ—å™¨é…ç½®æ¨¡å¼				\English Open sequencer configuration mode
+} GX_SEQUENCER_CONFIGURATION_MODE_ENTRY;
 
 typedef enum GX_SEQUENCER_FEATURE_SELECTOR_ENTRY
 {
-	GX_SEQUENCER_FEATURE_SELECTOR_FLAT_FIELD_CORRECTION	= 0,			///< \Chinese ĞòÁĞ¹¦ÄÜÑ¡Ôñ						\English Sequence function selection
-}GX_SEQUENCER_FEATURE_SELECTOR_ENTRY;
+	GX_SEQUENCER_FEATURE_SELECTOR_FLAT_FIELD_CORRECTION = 0, ///< \Chinese åºåˆ—åŠŸèƒ½é€‰æ‹©						\English Sequence function selection
+} GX_SEQUENCER_FEATURE_SELECTOR_ENTRY;
 
 typedef enum GX_SEQUENCER_TRIGGER_SOURCE_ENTRY
 {
-	GX_SEQUENCER_TRIGGER_SOURCE_FRAME_START = 7,						///< \Chinese ĞòÁĞ´¥·¢Ô´ FrameStart				\English Sequence Trigger FrameStart
+	GX_SEQUENCER_TRIGGER_SOURCE_FRAME_START = 7, ///< \Chinese åºåˆ—è§¦å‘æº FrameStart				\English Sequence Trigger FrameStart
 
-}GX_SEQUENCER_TRIGGER_SOURCE_ENTRY;
+} GX_SEQUENCER_TRIGGER_SOURCE_ENTRY;
 
 typedef enum GX_BINNING_SELECTOR_ENTRY
 {
-	GX_BINNING_SELECTOR_REGION0 = 0,									///< \Chinese BINNINGÄ£Ê½ÎªRegion0              \English BINNING mode is Region0
-	GX_BINNING_SELECTOR_SENSOR  = 1,									///< \Chinese BINNINGÄ£Ê½ÎªSensor               \English BINNING mode is Sensor
-}GX_BINNING_SELECTOR_ENTRY;
+	GX_BINNING_SELECTOR_REGION0 = 0, ///< \Chinese BINNINGæ¨¡å¼ä¸ºRegion0              \English BINNING mode is Region0
+	GX_BINNING_SELECTOR_SENSOR = 1,	 ///< \Chinese BINNINGæ¨¡å¼ä¸ºSensor               \English BINNING mode is Sensor
+} GX_BINNING_SELECTOR_ENTRY;
 
 typedef enum GX_BINNING_HORIZONTAL_MODE_ENTRY
 {
-    GX_BINNING_HORIZONTAL_MODE_SUM      = 0,							///< \Chinese BINNINGË®Æ½ÖµºÍ					\English Horizontal value sum of BINNING
-    GX_BINNING_HORIZONTAL_MODE_AVERAGE  = 1,							///< \Chinese BINNINGË®Æ½ÖµÆ½¾ùÖµ				\English Average horizontal value of BINNING
-}GX_BINNING_HORIZONTAL_MODE_ENTRY;
+	GX_BINNING_HORIZONTAL_MODE_SUM = 0,		///< \Chinese BINNINGæ°´å¹³å€¼å’Œ					\English Horizontal value sum of BINNING
+	GX_BINNING_HORIZONTAL_MODE_AVERAGE = 1, ///< \Chinese BINNINGæ°´å¹³å€¼å¹³å‡å€¼				\English Average horizontal value of BINNING
+} GX_BINNING_HORIZONTAL_MODE_ENTRY;
 
 typedef enum GX_BINNING_VERTICAL_MODE_ENTRY
 {
-    GX_BINNING_VERTICAL_MODE_SUM    = 0,								///< \Chinese BINNING´¹Ö±ÖµºÍ					\English Vertical value sum of BINNING
-    GX_BINNING_VERTICAL_MODE_AVERAGE= 1,								///< \Chinese BINNING´¹Ö±ÖµÆ½¾ùÖµ				\English Average Vertical value of BINNING
-}GX_BINNING_VERTICAL_MODE_ENTRY;
+	GX_BINNING_VERTICAL_MODE_SUM = 0,	  ///< \Chinese BINNINGå‚ç›´å€¼å’Œ					\English Vertical value sum of BINNING
+	GX_BINNING_VERTICAL_MODE_AVERAGE = 1, ///< \Chinese BINNINGå‚ç›´å€¼å¹³å‡å€¼				\English Average Vertical value of BINNING
+} GX_BINNING_VERTICAL_MODE_ENTRY;
 
 typedef enum GX_SENSOR_SHUTTER_MODE_ENTRY
 {
-	GX_SENSOR_SHUTTER_MODE_GLOBAL		= 0,							///< \Chinese ËùÓĞµÄÏñËØÍ¬Ê±ÆØ¹âÇÒÆØ¹âÊ±¼äÏàµÈ					\English All pixels are exposed at the same time and the exposure time is equal
-	GX_SENSOR_SHUTTER_MODE_ROLLING		= 1,							///< \Chinese ËùÓĞµÄÏñËØÆØ¹âÊ±¼äÏàµÈ£¬µ«ÆØ¹âÆğÊ¼Ê±¼ä²»Í¬		\English All pixels have the same exposure time, but the exposure start time is different
-	GX_SENSOR_SHUTTER_MODE_GLOBALRESET	= 2,							///< \Chinese ËùÓĞµÄÏñËØÆØ¹âÆğÊ¼Ê±¼äÏàÍ¬£¬µ«ÆØ¹âÊ±¼ä²»ÏëµÈ		\English The exposure start time of all pixels is the same, but the exposure time is not the same
-}GX_SENSOR_SHUTTER_MODE_ENTRY;
-
+	GX_SENSOR_SHUTTER_MODE_GLOBAL = 0,		///< \Chinese æ‰€æœ‰çš„åƒç´ åŒæ—¶æ›å…‰ä¸”æ›å…‰æ—¶é—´ç›¸ç­‰					\English All pixels are exposed at the same time and the exposure time is equal
+	GX_SENSOR_SHUTTER_MODE_ROLLING = 1,		///< \Chinese æ‰€æœ‰çš„åƒç´ æ›å…‰æ—¶é—´ç›¸ç­‰ï¼Œä½†æ›å…‰èµ·å§‹æ—¶é—´ä¸åŒ		\English All pixels have the same exposure time, but the exposure start time is different
+	GX_SENSOR_SHUTTER_MODE_GLOBALRESET = 2, ///< \Chinese æ‰€æœ‰çš„åƒç´ æ›å…‰èµ·å§‹æ—¶é—´ç›¸åŒï¼Œä½†æ›å…‰æ—¶é—´ä¸æƒ³ç­‰		\English The exposure start time of all pixels is the same, but the exposure time is not the same
+} GX_SENSOR_SHUTTER_MODE_ENTRY;
 
 typedef enum GX_ACQUISITION_STATUS_SELECTOR_ENTRY
 {
-    GX_ACQUISITION_STATUS_SELECTOR_ACQUISITION_TRIGGER_WAIT = 0,		///< \Chinese ²É¼¯´¥·¢µÈ´ı						\English Acquisition trigger waiting
-    GX_ACQUISITION_STATUS_SELECTOR_FRAME_TRIGGER_WAIT       = 1,		///< \Chinese Ö¡´¥·¢µÈ´ı						\English Frame trigger waiting
-}GX_ACQUISITION_STATUS_SELECTOR_ENTRY;
+	GX_ACQUISITION_STATUS_SELECTOR_ACQUISITION_TRIGGER_WAIT = 0, ///< \Chinese é‡‡é›†è§¦å‘ç­‰å¾…						\English Acquisition trigger waiting
+	GX_ACQUISITION_STATUS_SELECTOR_FRAME_TRIGGER_WAIT = 1,		 ///< \Chinese å¸§è§¦å‘ç­‰å¾…						\English Frame trigger waiting
+} GX_ACQUISITION_STATUS_SELECTOR_ENTRY;
 
 typedef enum GX_GAMMA_MODE_ENTRY
 {
-    GX_GAMMA_SELECTOR_SRGB  = 0,										///< \Chinese Ä¬ÈÏGammaĞ£Õı						\English Default gamma correction
-    GX_GAMMA_SELECTOR_USER  = 1,										///< \Chinese ÓÃ»§×Ô¶¨ÒåGammaĞ£Õı				\English User-defined gamma correction
-}GX_GAMMA_MODE_ENTRY;
+	GX_GAMMA_SELECTOR_SRGB = 0, ///< \Chinese é»˜è®¤Gammaæ ¡æ­£						\English Default gamma correction
+	GX_GAMMA_SELECTOR_USER = 1, ///< \Chinese ç”¨æˆ·è‡ªå®šä¹‰Gammaæ ¡æ­£				\English User-defined gamma correction
+} GX_GAMMA_MODE_ENTRY;
 
 typedef enum GX_LIGHT_SOURCE_PRESET_ENTRY
 {
-	GX_LIGHT_SOURCE_PRESET_OFF 							= 0,
-	GX_LIGHT_SOURCE_PRESET_CUSTOM						= 1,
-	GX_LIGHT_SOURCE_PRESET_DAYLIGHT_6500K 				= 2,
-	GX_LIGHT_SOURCE_PRESET_DAYLIGHT_5000K   			= 3,
-	GX_LIGHT_SOURCE_PRESET_COOL_WHITE_FLUORESCENCE 		= 4,
-	GX_LIGHT_SOURCE_PRESET_INCA                         = 5,
-}GX_LIGHT_SOURCE_PRESET_ENTRY;
+	GX_LIGHT_SOURCE_PRESET_OFF = 0,
+	GX_LIGHT_SOURCE_PRESET_CUSTOM = 1,
+	GX_LIGHT_SOURCE_PRESET_DAYLIGHT_6500K = 2,
+	GX_LIGHT_SOURCE_PRESET_DAYLIGHT_5000K = 3,
+	GX_LIGHT_SOURCE_PRESET_COOL_WHITE_FLUORESCENCE = 4,
+	GX_LIGHT_SOURCE_PRESET_INCA = 5,
+} GX_LIGHT_SOURCE_PRESET_ENTRY;
 
 typedef enum GX_COLOR_TRANSFORMATION_MODE_ENTRY
 {
-    GX_COLOR_TRANSFORMATION_SELECTOR_RGB_TO_RGB = 0,					///< \Chinese Ä¬ÈÏÑÕÉ«Ğ£Õı						\English Default color transformation		
-    GX_COLOR_TRANSFORMATION_SELECTOR_USER       = 1,					///< \Chinese ÓÃ»§×Ô¶¨ÒåÑÕÉ«Ğ£Õı				\English User-defined color transformation
-}GX_COLOR_TRANSFORMATION_MODE_ENTRY;
+	GX_COLOR_TRANSFORMATION_SELECTOR_RGB_TO_RGB = 0, ///< \Chinese é»˜è®¤é¢œè‰²æ ¡æ­£						\English Default color transformation
+	GX_COLOR_TRANSFORMATION_SELECTOR_USER = 1,		 ///< \Chinese ç”¨æˆ·è‡ªå®šä¹‰é¢œè‰²æ ¡æ­£				\English User-defined color transformation
+} GX_COLOR_TRANSFORMATION_MODE_ENTRY;
 
 typedef enum GX_COLOR_TRANSFORMATION_VALUE_SELECTOR_ENTRY
 {
-    GX_COLOR_TRANSFORMATION_VALUE_SELECTOR_GAIN00   = 0,
-    GX_COLOR_TRANSFORMATION_VALUE_SELECTOR_GAIN01   = 1,
-    GX_COLOR_TRANSFORMATION_VALUE_SELECTOR_GAIN02   = 2,
-    GX_COLOR_TRANSFORMATION_VALUE_SELECTOR_GAIN10   = 3,
-    GX_COLOR_TRANSFORMATION_VALUE_SELECTOR_GAIN11   = 4,
-    GX_COLOR_TRANSFORMATION_VALUE_SELECTOR_GAIN12   = 5,
-    GX_COLOR_TRANSFORMATION_VALUE_SELECTOR_GAIN20   = 6,
-    GX_COLOR_TRANSFORMATION_VALUE_SELECTOR_GAIN21   = 7,
-    GX_COLOR_TRANSFORMATION_VALUE_SELECTOR_GAIN22   = 8,
-}GX_COLOR_TRANSFORMATION_VALUE_ENTRY;
+	GX_COLOR_TRANSFORMATION_VALUE_SELECTOR_GAIN00 = 0,
+	GX_COLOR_TRANSFORMATION_VALUE_SELECTOR_GAIN01 = 1,
+	GX_COLOR_TRANSFORMATION_VALUE_SELECTOR_GAIN02 = 2,
+	GX_COLOR_TRANSFORMATION_VALUE_SELECTOR_GAIN10 = 3,
+	GX_COLOR_TRANSFORMATION_VALUE_SELECTOR_GAIN11 = 4,
+	GX_COLOR_TRANSFORMATION_VALUE_SELECTOR_GAIN12 = 5,
+	GX_COLOR_TRANSFORMATION_VALUE_SELECTOR_GAIN20 = 6,
+	GX_COLOR_TRANSFORMATION_VALUE_SELECTOR_GAIN21 = 7,
+	GX_COLOR_TRANSFORMATION_VALUE_SELECTOR_GAIN22 = 8,
+} GX_COLOR_TRANSFORMATION_VALUE_ENTRY;
 
 typedef enum GX_TIMER_SELECTOR_ENTRY
 {
-	GX_TIMER_SELECTOR_TIMER1   = 1,									///< \Chinese ¶¨Ê±Æ÷1								\English Timer1
-	GX_TIMER_SELECTOR_TIMER2   = 2,									///< \Chinese ¶¨Ê±Æ÷2								\English Timer2	
-	GX_TIMER_SELECTOR_TIMER3   = 3,									///< \Chinese ¶¨Ê±Æ÷3								\English Timer3	
-}GX_TIMER_SELECTOR_ENTRY;
+	GX_TIMER_SELECTOR_TIMER1 = 1, ///< \Chinese å®šæ—¶å™¨1								\English Timer1
+	GX_TIMER_SELECTOR_TIMER2 = 2, ///< \Chinese å®šæ—¶å™¨2								\English Timer2
+	GX_TIMER_SELECTOR_TIMER3 = 3, ///< \Chinese å®šæ—¶å™¨3								\English Timer3
+} GX_TIMER_SELECTOR_ENTRY;
 
 typedef enum GX_TIMER_TRIGGER_SOURCE_ENTRY
 {
-	GX_TIMER_TRIGGER_SOURCE_EXPOSURE_START   = 1,					///< \Chinese ½ÓÊÕÆØ¹âĞÅºÅ¿ªÊ¼¼ÆÊ±					\English Exposure start
-	GX_TIMER_TRIGGER_SOURCE_LINE10           = 10,					///< \Chinese ½ÓÊÕÒı½Å10ĞÅºÅ¿ªÊ¼¼ÆÊ±				\English Receive pin 10 signal start timing
-	GX_TIMER_TRIGGER_SOURCE_LINE14           = 14,					///< \Chinese ½ÓÊÕÒı½Å14ĞÅºÅ¿ªÊ¼¼ÆÊ±				\English Receive pin 14 signal start timing
-	GX_TIMER_TRIGGER_SOURCE_STROBE           = 16,					///< \Chinese ½ÓÊÕÉÁ¹âµÆĞÅºÅ¿ªÊ¼¼ÆÊ±				\English Start timing when receiving flash signal
-}GX_TIMER_TRIGGER_SOURCE_ENTRY;
+	GX_TIMER_TRIGGER_SOURCE_EXPOSURE_START = 1, ///< \Chinese æ¥æ”¶æ›å…‰ä¿¡å·å¼€å§‹è®¡æ—¶					\English Exposure start
+	GX_TIMER_TRIGGER_SOURCE_LINE10 = 10,		///< \Chinese æ¥æ”¶å¼•è„š10ä¿¡å·å¼€å§‹è®¡æ—¶				\English Receive pin 10 signal start timing
+	GX_TIMER_TRIGGER_SOURCE_LINE14 = 14,		///< \Chinese æ¥æ”¶å¼•è„š14ä¿¡å·å¼€å§‹è®¡æ—¶				\English Receive pin 14 signal start timing
+	GX_TIMER_TRIGGER_SOURCE_STROBE = 16,		///< \Chinese æ¥æ”¶é—ªå…‰ç¯ä¿¡å·å¼€å§‹è®¡æ—¶				\English Start timing when receiving flash signal
+} GX_TIMER_TRIGGER_SOURCE_ENTRY;
 
 typedef enum GX_COUNTER_SELECTOR_ENTRY
 {
-	GX_COUNTER_SELECTOR_COUNTER1   = 1,								///< \Chinese ¼ÆÊ±Æ÷1								\English Counter1
-	GX_COUNTER_SELECTOR_COUNTER2   = 2,								///< \Chinese ¼ÆÊ±Æ÷2								\English Counter2
-}GX_COUNTER_SELECTOR_ENTRY;
+	GX_COUNTER_SELECTOR_COUNTER1 = 1, ///< \Chinese è®¡æ—¶å™¨1								\English Counter1
+	GX_COUNTER_SELECTOR_COUNTER2 = 2, ///< \Chinese è®¡æ—¶å™¨2								\English Counter2
+} GX_COUNTER_SELECTOR_ENTRY;
 
 typedef enum GX_COUNTER_EVENT_SOURCE_ENTRY
 {
-	GX_COUNTER_EVENT_SOURCE_FRAME_START         = 1,				///< \Chinese Í³¼Æ "Ö¡¿ªÊ¼" ÊÂ¼şµÄÊıÁ¿				\English Frame start
-	GX_COUNTER_EVENT_SOURCE_FRAME_TRIGGER       = 2,				///< \Chinese Í³¼Æ "Ö¡´¥·¢" ÊÂ¼şµÄÊıÁ¿				\English Count the number of "frame triggered" events
-	GX_COUNTER_EVENT_SOURCE_ACQUISITION_TRIGGER = 3,				///< \Chinese Í³¼Æ "²É¼¯´¥·¢" ÊÂ¼şµÄÊıÁ¿			\English Count the number of "Collection Triggered" events
-	GX_COUNTER_EVENT_SOURCE_OFF					= 4,				///< \Chinese ¹Ø±Õ									\English Close
-	GX_COUNTER_EVENT_SOURCE_SOFTWARE			= 5,				///< \Chinese Í³¼Æ "Èí´¥·¢" ÊÂ¼şµÄÊıÁ¿				\English Count the number of "soft trigger" events
-	GX_COUNTER_EVENT_SOURCE_LINE0				= 6,				///< \Chinese Í³¼Æ "Line 0 ´¥·¢" ÊÂ¼şµÄÊıÁ¿			\English Count the number of "Line 0 Triggered" events
-	GX_COUNTER_EVENT_SOURCE_LINE1				= 7,				///< \Chinese Í³¼Æ "Line 1 ´¥·¢" ÊÂ¼şµÄÊıÁ¿			\English Count the number of "Line 1 Triggered" events
-	GX_COUNTER_EVENT_SOURCE_LINE2				= 8,				///< \Chinese Í³¼Æ "Line 2 ´¥·¢" ÊÂ¼şµÄÊıÁ¿			\English Count the number of "Line 2 Triggered" events
-	GX_COUNTER_EVENT_SOURCE_LINE3				= 9,				///< \Chinese Í³¼Æ "Line 3 ´¥·¢" ÊÂ¼şµÄÊıÁ¿			\English Count the number of "Line 3 Triggered" events
+	GX_COUNTER_EVENT_SOURCE_FRAME_START = 1,		 ///< \Chinese ç»Ÿè®¡ "å¸§å¼€å§‹" äº‹ä»¶çš„æ•°é‡				\English Frame start
+	GX_COUNTER_EVENT_SOURCE_FRAME_TRIGGER = 2,		 ///< \Chinese ç»Ÿè®¡ "å¸§è§¦å‘" äº‹ä»¶çš„æ•°é‡				\English Count the number of "frame triggered" events
+	GX_COUNTER_EVENT_SOURCE_ACQUISITION_TRIGGER = 3, ///< \Chinese ç»Ÿè®¡ "é‡‡é›†è§¦å‘" äº‹ä»¶çš„æ•°é‡			\English Count the number of "Collection Triggered" events
+	GX_COUNTER_EVENT_SOURCE_OFF = 4,				 ///< \Chinese å…³é—­									\English Close
+	GX_COUNTER_EVENT_SOURCE_SOFTWARE = 5,			 ///< \Chinese ç»Ÿè®¡ "è½¯è§¦å‘" äº‹ä»¶çš„æ•°é‡				\English Count the number of "soft trigger" events
+	GX_COUNTER_EVENT_SOURCE_LINE0 = 6,				 ///< \Chinese ç»Ÿè®¡ "Line 0 è§¦å‘" äº‹ä»¶çš„æ•°é‡			\English Count the number of "Line 0 Triggered" events
+	GX_COUNTER_EVENT_SOURCE_LINE1 = 7,				 ///< \Chinese ç»Ÿè®¡ "Line 1 è§¦å‘" äº‹ä»¶çš„æ•°é‡			\English Count the number of "Line 1 Triggered" events
+	GX_COUNTER_EVENT_SOURCE_LINE2 = 8,				 ///< \Chinese ç»Ÿè®¡ "Line 2 è§¦å‘" äº‹ä»¶çš„æ•°é‡			\English Count the number of "Line 2 Triggered" events
+	GX_COUNTER_EVENT_SOURCE_LINE3 = 9,				 ///< \Chinese ç»Ÿè®¡ "Line 3 è§¦å‘" äº‹ä»¶çš„æ•°é‡			\English Count the number of "Line 3 Triggered" events
 
-}GX_COUNTER_EVENT_SOURCE_ENTRY;
+} GX_COUNTER_EVENT_SOURCE_ENTRY;
 
 typedef enum GX_COUNTER_RESET_SOURCE_ENTRY
 {
-	GX_COUNTER_RESET_SOURCE_OFF			= 0,						///< \Chinese ¹Ø±Õ									\English Counter reset off
-	GX_COUNTER_RESET_SOURCE_SOFTWARE	= 1,						///< \Chinese Èí´¥·¢								\English Software
-	GX_COUNTER_RESET_SOURCE_LINE0		= 2,						///< \Chinese Òı½Å 0								\English Line 0		
-	GX_COUNTER_RESET_SOURCE_LINE1		= 3,						///< \Chinese Òı½Å 1								\English Line 1	
-	GX_COUNTER_RESET_SOURCE_LINE2		= 4,						///< \Chinese Òı½Å 2								\English Line 2	
-	GX_COUNTER_RESET_SOURCE_LINE3		= 5,						///< \Chinese Òı½Å 3								\English Line 3	
-	GX_COUNTER_RESET_SOURCE_COUNTER2END	= 6,						///< \Chinese Counter2End							\English Counter2End
-	GX_COUNTER_RESET_SOURCE_CXPTRIGGER0	= 8,						///< \Chinese CxpTrigger0							\English CxpTrigger0
-	GX_COUNTER_RESET_SOURCE_CXPTRIGGER1	= 9,						///< \Chinese CxpTrigger1							\English CxpTrigger1
+	GX_COUNTER_RESET_SOURCE_OFF = 0,		 ///< \Chinese å…³é—­									\English Counter reset off
+	GX_COUNTER_RESET_SOURCE_SOFTWARE = 1,	 ///< \Chinese è½¯è§¦å‘								\English Software
+	GX_COUNTER_RESET_SOURCE_LINE0 = 2,		 ///< \Chinese å¼•è„š 0								\English Line 0
+	GX_COUNTER_RESET_SOURCE_LINE1 = 3,		 ///< \Chinese å¼•è„š 1								\English Line 1
+	GX_COUNTER_RESET_SOURCE_LINE2 = 4,		 ///< \Chinese å¼•è„š 2								\English Line 2
+	GX_COUNTER_RESET_SOURCE_LINE3 = 5,		 ///< \Chinese å¼•è„š 3								\English Line 3
+	GX_COUNTER_RESET_SOURCE_COUNTER2END = 6, ///< \Chinese Counter2End							\English Counter2End
+	GX_COUNTER_RESET_SOURCE_CXPTRIGGER0 = 8, ///< \Chinese CxpTrigger0							\English CxpTrigger0
+	GX_COUNTER_RESET_SOURCE_CXPTRIGGER1 = 9, ///< \Chinese CxpTrigger1							\English CxpTrigger1
 
-}GX_COUNTER_RESET_SOURCE_ENTRY;
+} GX_COUNTER_RESET_SOURCE_ENTRY;
 
 typedef enum GX_COUNTER_TRIGGER_SOURCE_ENTRY
 {
-	GX_COUNTER_TRIGGER_SOURCE_OFF      = 0,							///< \Chinese ¹Ø±Õ									\English Close
-	GX_COUNTER_TRIGGER_SOURCE_SOFTWARE = 1,							///< \Chinese Èí´¥·¢								\English Software trigger
-	GX_COUNTER_TRIGGER_SOURCE_LINE0    = 2,							///< \Chinese Òı½Å 0								\English Line 0		
-	GX_COUNTER_TRIGGER_SOURCE_LINE1    = 3,							///< \Chinese Òı½Å 1								\English Line 1	
-	GX_COUNTER_TRIGGER_SOURCE_LINE2    = 4,							///< \Chinese Òı½Å 2								\English Line 2	
-	GX_COUNTER_TRIGGER_SOURCE_LINE3    = 5,							///< \Chinese Òı½Å 3								\English Line 3		
-}GX_COUNTER_TRIGGER_SOURCE_ENTRY;
+	GX_COUNTER_TRIGGER_SOURCE_OFF = 0,		///< \Chinese å…³é—­									\English Close
+	GX_COUNTER_TRIGGER_SOURCE_SOFTWARE = 1, ///< \Chinese è½¯è§¦å‘								\English Software trigger
+	GX_COUNTER_TRIGGER_SOURCE_LINE0 = 2,	///< \Chinese å¼•è„š 0								\English Line 0
+	GX_COUNTER_TRIGGER_SOURCE_LINE1 = 3,	///< \Chinese å¼•è„š 1								\English Line 1
+	GX_COUNTER_TRIGGER_SOURCE_LINE2 = 4,	///< \Chinese å¼•è„š 2								\English Line 2
+	GX_COUNTER_TRIGGER_SOURCE_LINE3 = 5,	///< \Chinese å¼•è„š 3								\English Line 3
+} GX_COUNTER_TRIGGER_SOURCE_ENTRY;
 
 typedef enum GX_COUNTER_RESET_ACTIVATION_ENTRY
 {
-	GX_COUNTER_RESET_ACTIVATION_RISING_EDGE = 1,					///< \Chinese ÔÚĞÅºÅµÄÉÏÉıÑØÖØÖÃ¼ÆÊıÆ÷				\English Rising edge counter reset.
-}GX_COUNTER_RESET_ACTIVATION_ENTRY;
+	GX_COUNTER_RESET_ACTIVATION_RISING_EDGE = 1, ///< \Chinese åœ¨ä¿¡å·çš„ä¸Šå‡æ²¿é‡ç½®è®¡æ•°å™¨				\English Rising edge counter reset.
+} GX_COUNTER_RESET_ACTIVATION_ENTRY;
 
 typedef enum GX_USER_DATA_FILED_SELECTOR_ENTRY
 {
-	GX_USER_DATA_FILED_0    = 0,									///< \Chinese FlashÊı¾İÇøÓò0						\English Flash data area 0
-	GX_USER_DATA_FILED_1    = 1,									///< \Chinese FlashÊı¾İÇøÓò1						\English Flash data area 1
-	GX_USER_DATA_FILED_2    = 2,									///< \Chinese FlashÊı¾İÇøÓò2						\English Flash data area 2
-	GX_USER_DATA_FILED_3    = 3,									///< \Chinese FlashÊı¾İÇøÓò3						\English Flash data area 3
-}GX_USER_DATA_FILED_SELECTOR_ENTRY;
+	GX_USER_DATA_FILED_0 = 0, ///< \Chinese Flashæ•°æ®åŒºåŸŸ0						\English Flash data area 0
+	GX_USER_DATA_FILED_1 = 1, ///< \Chinese Flashæ•°æ®åŒºåŸŸ1						\English Flash data area 1
+	GX_USER_DATA_FILED_2 = 2, ///< \Chinese Flashæ•°æ®åŒºåŸŸ2						\English Flash data area 2
+	GX_USER_DATA_FILED_3 = 3, ///< \Chinese Flashæ•°æ®åŒºåŸŸ3						\English Flash data area 3
+} GX_USER_DATA_FILED_SELECTOR_ENTRY;
 
 typedef enum GX_REMOVE_PARAMETER_LIMIT_ENTRY
 {
-	GX_ENUM_REMOVE_PARAMETER_LIMIT_OFF = 0,							///< \Chinese ¹Ø±Õ									\English Close
-	GX_ENUM_REMOVE_PARAMETER_LIMIT_ON  = 1,							///< \Chinese ¿ªÆô									\English Open
-}GX_REMOVE_PARAMETER_LIMIT_ENTRY;
+	GX_ENUM_REMOVE_PARAMETER_LIMIT_OFF = 0, ///< \Chinese å…³é—­									\English Close
+	GX_ENUM_REMOVE_PARAMETER_LIMIT_ON = 1,	///< \Chinese å¼€å¯									\English Open
+} GX_REMOVE_PARAMETER_LIMIT_ENTRY;
 
 typedef enum GX_FLAT_FIELD_CORRECTION_ENTRY
 {
-	GX_ENUM_FLAT_FIELD_CORRECTION_OFF = 0,							///< \Chinese ¹Ø±Õ									\English Close
-	GX_ENUM_FLAT_FIELD_CORRECTION_ON  = 1,							///< \Chinese ¿ªÆô									\English Open
-}GX_FLAT_FIELD_CORRECTION_ENTRY;
+	GX_ENUM_FLAT_FIELD_CORRECTION_OFF = 0, ///< \Chinese å…³é—­									\English Close
+	GX_ENUM_FLAT_FIELD_CORRECTION_ON = 1,  ///< \Chinese å¼€å¯									\English Open
+} GX_FLAT_FIELD_CORRECTION_ENTRY;
 
 typedef enum GX_DEVICE_TEMPERATURE_SELECTOR_ENTRY
 {
-	GX_DEVICE_TEMPERATURE_SELECTOR_SENSOR       = 1,				///< \Chinese ´«¸ĞÆ÷								\English Sensor
-    GX_DEVICE_TEMPERATURE_SELECTOR_MAINBOARD    = 2,				///< \Chinese Ö÷°å									\English Mainboard
-}GX_DEVICE_TEMPERATURE_SELECTOR_ENTRY;
+	GX_DEVICE_TEMPERATURE_SELECTOR_SENSOR = 1,	  ///< \Chinese ä¼ æ„Ÿå™¨								\English Sensor
+	GX_DEVICE_TEMPERATURE_SELECTOR_MAINBOARD = 2, ///< \Chinese ä¸»æ¿									\English Mainboard
+} GX_DEVICE_TEMPERATURE_SELECTOR_ENTRY;
 
 typedef enum GX_STOP_ACQUISITION_MODE_ENTRY
 {
-    GX_STOP_ACQUISITION_MODE_GENERAL   = 0,							///< \Chinese ÆÕÍ¨Í£²É								\English general stop acquisition mode
-    GX_STOP_ACQUISITION_MODE_LIGHT     = 1,							///< \Chinese ÇáÁ¿¼¶Í£²É							\English light stop acquisition mode
+	GX_STOP_ACQUISITION_MODE_GENERAL = 0, ///< \Chinese æ™®é€šåœé‡‡								\English general stop acquisition mode
+	GX_STOP_ACQUISITION_MODE_LIGHT = 1,	  ///< \Chinese è½»é‡çº§åœé‡‡							\English light stop acquisition mode
 } GX_STOP_ACQUISITION_MODE_ENTRY;
 
 typedef enum GX_EXPOSURE_TIME_MODE_ENTRY
 {
-	GX_EXPOSURE_TIME_MODE_ULTRASHORT  = 0,							///< \Chinese ¼«Ğ¡ÆØ¹â								\English Ultrashort exposure
-	GX_EXPOSURE_TIME_MODE_STANDARD    = 1,							///< \Chinese ±ê×¼									\English Standard exposure
+	GX_EXPOSURE_TIME_MODE_ULTRASHORT = 0, ///< \Chinese æå°æ›å…‰								\English Ultrashort exposure
+	GX_EXPOSURE_TIME_MODE_STANDARD = 1,	  ///< \Chinese æ ‡å‡†									\English Standard exposure
 } GX_EXPOSURE_TIME_MODE_ENTRY;
 
 typedef enum GX_ENUM_SATURATION_MODE_ENTRY
 {
-	GX_ENUM_SATURATION_OFF = 0,										///< \Chinese ¹Ø±Õ									\English Close
-	GX_ENUM_SATURATION_ON  = 1,										///< \Chinese ¿ªÆô									\English Open
-}GX_ENUM_SATURATION_MODE_ENTRY;
+	GX_ENUM_SATURATION_OFF = 0, ///< \Chinese å…³é—­									\English Close
+	GX_ENUM_SATURATION_ON = 1,	///< \Chinese å¼€å¯									\English Open
+} GX_ENUM_SATURATION_MODE_ENTRY;
 
 typedef enum GX_ENUM_STATIC_DEFECT_CORRECTION_ENTRY
 {
-	GX_ENUM_STATIC_DEFECT_CORRECTION_OFF = 0,						///< \Chinese ¹Ø±Õ									\English Close
-	GX_ENUM_STATIC_DEFECT_CORRECTION_ON  = 1,						///< \Chinese ¿ªÆô									\English Open
-}GX_ENUM_STATIC_DEFECT_CORRECTION_ENTRY;
+	GX_ENUM_STATIC_DEFECT_CORRECTION_OFF = 0, ///< \Chinese å…³é—­									\English Close
+	GX_ENUM_STATIC_DEFECT_CORRECTION_ON = 1,  ///< \Chinese å¼€å¯									\English Open
+} GX_ENUM_STATIC_DEFECT_CORRECTION_ENTRY;
 
 typedef enum GX_2D_NOISE_REDUCTION_MODE_ENTRY
 {
-    GX_2D_NOISE_REDUCTION_MODE_OFF      = 0,						///< \Chinese ¹Ø±Õ2D½µÔëÄ£Ê½						\English Close 2d noise reduction mode 
-    GX_2D_NOISE_REDUCTION_MODE_LOW      = 1,						///< \Chinese µÍ									\English low
-    GX_2D_NOISE_REDUCTION_MODE_MIDDLE   = 2,						///< \Chinese ÖĞ									\English middle
-    GX_2D_NOISE_REDUCTION_MODE_HIGH     = 3,						///< \Chinese ¸ß									\English high
-}GX_2D_NOISE_REDUCTION_MODE_ENTRY;
+	GX_2D_NOISE_REDUCTION_MODE_OFF = 0,	   ///< \Chinese å…³é—­2Dé™å™ªæ¨¡å¼						\English Close 2d noise reduction mode
+	GX_2D_NOISE_REDUCTION_MODE_LOW = 1,	   ///< \Chinese ä½									\English low
+	GX_2D_NOISE_REDUCTION_MODE_MIDDLE = 2, ///< \Chinese ä¸­									\English middle
+	GX_2D_NOISE_REDUCTION_MODE_HIGH = 3,   ///< \Chinese é«˜									\English high
+} GX_2D_NOISE_REDUCTION_MODE_ENTRY;
 
 typedef enum GX_3D_NOISE_REDUCTION_MODE_ENTRY
 {
-    GX_3D_NOISE_REDUCTION_MODE_OFF      = 0,						///< \Chinese ¹Ø±Õ3D½µÔëÄ£Ê½						\English Close 3d noise reduction mode 
-    GX_3D_NOISE_REDUCTION_MODE_LOW      = 1,						///< \Chinese µÍ									\English low
-    GX_3D_NOISE_REDUCTION_MODE_MIDDLE   = 2,						///< \Chinese ÖĞ									\English middle
-    GX_3D_NOISE_REDUCTION_MODE_HIGH     = 3,						///< \Chinese ¸ß									\English high
-}GX_3D_NOISE_REDUCTION_MODE_ENTRY;
+	GX_3D_NOISE_REDUCTION_MODE_OFF = 0,	   ///< \Chinese å…³é—­3Dé™å™ªæ¨¡å¼						\English Close 3d noise reduction mode
+	GX_3D_NOISE_REDUCTION_MODE_LOW = 1,	   ///< \Chinese ä½									\English low
+	GX_3D_NOISE_REDUCTION_MODE_MIDDLE = 2, ///< \Chinese ä¸­									\English middle
+	GX_3D_NOISE_REDUCTION_MODE_HIGH = 3,   ///< \Chinese é«˜									\English high
+} GX_3D_NOISE_REDUCTION_MODE_ENTRY;
 
 typedef enum GX_HDR_MODE_ENTRY
 {
-    GX_HDR_MODE_OFF         = 0,									///< \Chinese ¹Ø±ÕHDRÄ£Ê½							\English Close HDR mode
-    GX_HDR_MODE_CONTINUOUS  = 1,									///< \Chinese Á¬ĞøHDRÄ£Ê½							\English continue HDR mode
-}GX_HDR_MODE_ENTRY;
+	GX_HDR_MODE_OFF = 0,		///< \Chinese å…³é—­HDRæ¨¡å¼							\English Close HDR mode
+	GX_HDR_MODE_CONTINUOUS = 1, ///< \Chinese è¿ç»­HDRæ¨¡å¼							\English continue HDR mode
+} GX_HDR_MODE_ENTRY;
 
 typedef enum GX_MGC_MODE_ENTRY
 {
-    GX_MGC_MODE_OFF         = 0,									///< \Chinese ¹Ø±Õ¶àÖ¡»Ò¶È¿ØÖÆÄ£Ê½					\English Close multi-frame grey scale control mode 
-    GX_MGC_MODE_TWO_FRAME   = 1,									///< \Chinese Á½Ö¡»Ò¶È¿ØÖÆÄ£Ê½						\English Two frames of grey scale control 
-    GX_MGC_MODE_FOUR_FRAME  = 2,									///< \Chinese ËÄÖ¡»Ò¶È¿ØÖÆÄ£Ê½						\English Four frames of grey scale control 
-}GX_MGC_CONTROL_MODE_ENTRY;
+	GX_MGC_MODE_OFF = 0,		///< \Chinese å…³é—­å¤šå¸§ç°åº¦æ§åˆ¶æ¨¡å¼					\English Close multi-frame grey scale control mode
+	GX_MGC_MODE_TWO_FRAME = 1,	///< \Chinese ä¸¤å¸§ç°åº¦æ§åˆ¶æ¨¡å¼						\English Two frames of grey scale control
+	GX_MGC_MODE_FOUR_FRAME = 2, ///< \Chinese å››å¸§ç°åº¦æ§åˆ¶æ¨¡å¼						\English Four frames of grey scale control
+} GX_MGC_CONTROL_MODE_ENTRY;
 
 typedef enum GX_TIMER_TRIGGER_ACTIVATION_ENTRY
 {
-    GX_TIMER_TRIGGER_ACTIVATION_RISINGEDGE = 0,						///< \Chinese ¶¨Ê±Æ÷ÉÏÉıÑØ´¥·¢						\English Trigger of rising edge of timer
-}GX_TIMER_TRIGGER_ACTIVATION_ENTRY;
+	GX_TIMER_TRIGGER_ACTIVATION_RISINGEDGE = 0, ///< \Chinese å®šæ—¶å™¨ä¸Šå‡æ²¿è§¦å‘						\English Trigger of rising edge of timer
+} GX_TIMER_TRIGGER_ACTIVATION_ENTRY;
 
 typedef enum GX_ACQUISITION_BURST_MODE_ENTRY
 {
-	GX_ENUM_ACQUISITION_BURST_MODE_STANDARD    = 0,					///< \Chinese ±ê×¼Ä£Ê½								\English Standard mode       
-	GX_ENUM_ACQUISITION_BURST_MODE_HIGH_SPEED  = 1,					///< \Chinese ¸ßËÙÄ£Ê½								\English High-speed mode
-}GX_ACQUISITION_BURST_MODE_ENTRY;
+	GX_ENUM_ACQUISITION_BURST_MODE_STANDARD = 0,   ///< \Chinese æ ‡å‡†æ¨¡å¼								\English Standard mode
+	GX_ENUM_ACQUISITION_BURST_MODE_HIGH_SPEED = 1, ///< \Chinese é«˜é€Ÿæ¨¡å¼								\English High-speed mode
+} GX_ACQUISITION_BURST_MODE_ENTRY;
 
 typedef enum GX_LOWPOWER_MODE_ENTRY
 {
-    GX_LOWPOWER_MODE_OFF            = 0,							///< \Chinese Î´½øÈëµÍ¹¦ºÄÄ£Ê½						\English Exit low power consumption mode
-    GX_LOWPOWER_MODE_ON             = 1,							///< \Chinese ½øÈëµÍ¹¦ºÄÄ£Ê½						\English Enter low power consumption mode
-}GX_LOWPOWER_MODE_ENTRY;
+	GX_LOWPOWER_MODE_OFF = 0, ///< \Chinese æœªè¿›å…¥ä½åŠŸè€—æ¨¡å¼						\English Exit low power consumption mode
+	GX_LOWPOWER_MODE_ON = 1,  ///< \Chinese è¿›å…¥ä½åŠŸè€—æ¨¡å¼						\English Enter low power consumption mode
+} GX_LOWPOWER_MODE_ENTRY;
 
 typedef enum GX_CLOSE_CCD_ENTRY
 {
-    GX_CLOSE_CCD_OFF                = 0,							///< \Chinese Õı³£Ä£Ê½								\English Normal mode
-    GX_CLOSE_CCD_ON                 = 1,							///< \Chinese ½øÈëCCDµÍ¹¦ºÄÄ£Ê½						\English Enter CCD low power consumption mode
-}GX_CLOSE_CCD_ENTRY;
+	GX_CLOSE_CCD_OFF = 0, ///< \Chinese æ­£å¸¸æ¨¡å¼								\English Normal mode
+	GX_CLOSE_CCD_ON = 1,  ///< \Chinese è¿›å…¥CCDä½åŠŸè€—æ¨¡å¼						\English Enter CCD low power consumption mode
+} GX_CLOSE_CCD_ENTRY;
 
 typedef enum GX_SENSOR_SELECTOR_ENTRY
 {
-    GX_SENSOR_SELECTOR_CMOS1        = 0,							///< \Chinese Ñ¡ÔñCMOS1´«¸ĞÆ÷						\English Select CMOS 1 Sensor
-    GX_SENSOR_SELECTOR_CCD1         = 1,							///< \Chinese Ñ¡ÔñCCD1´«¸ĞÆ÷						\English Select CCD 1 Sensor
-}GX_SENSOR_SELECTOR_ENTRY;
+	GX_SENSOR_SELECTOR_CMOS1 = 0, ///< \Chinese é€‰æ‹©CMOS1ä¼ æ„Ÿå™¨						\English Select CMOS 1 Sensor
+	GX_SENSOR_SELECTOR_CCD1 = 1,  ///< \Chinese é€‰æ‹©CCD1ä¼ æ„Ÿå™¨						\English Select CCD 1 Sensor
+} GX_SENSOR_SELECTOR_ENTRY;
 
 typedef enum GX_IMU_CONFIG_ACC_RANGE_ENTRY
 {
-    GX_IMU_CONFIG_ACC_RANGE_16G     = 2,							///< \Chinese ¼ÓËÙ¼Æ²âÁ¿·¶Î§Îª16g					\English The measurement range of the accelerometer is 16g
-    GX_IMU_CONFIG_ACC_RANGE_8G      = 3,							///< \Chinese ¼ÓËÙ¼Æ²âÁ¿·¶Î§Îª8g					\English The measurement range of the accelerometer is 8g
-    GX_IMU_CONFIG_ACC_RANGE_4G      = 4,							///< \Chinese ¼ÓËÙ¼Æ²âÁ¿·¶Î§Îª4g					\English The measurement range of the accelerometer is 4g
-    GX_IMU_CONFIG_ACC_RANGE_2G      = 5,							///< \Chinese ¼ÓËÙ¼Æ²âÁ¿·¶Î§Îª5g					\English The measurement range of the accelerometer is 5g
-}GX_IMU_CONFIG_ACC_RANGE_ENTRY;
+	GX_IMU_CONFIG_ACC_RANGE_16G = 2, ///< \Chinese åŠ é€Ÿè®¡æµ‹é‡èŒƒå›´ä¸º16g					\English The measurement range of the accelerometer is 16g
+	GX_IMU_CONFIG_ACC_RANGE_8G = 3,	 ///< \Chinese åŠ é€Ÿè®¡æµ‹é‡èŒƒå›´ä¸º8g					\English The measurement range of the accelerometer is 8g
+	GX_IMU_CONFIG_ACC_RANGE_4G = 4,	 ///< \Chinese åŠ é€Ÿè®¡æµ‹é‡èŒƒå›´ä¸º4g					\English The measurement range of the accelerometer is 4g
+	GX_IMU_CONFIG_ACC_RANGE_2G = 5,	 ///< \Chinese åŠ é€Ÿè®¡æµ‹é‡èŒƒå›´ä¸º5g					\English The measurement range of the accelerometer is 5g
+} GX_IMU_CONFIG_ACC_RANGE_ENTRY;
 
 typedef enum GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_SWITCH_ENTRY
 {
-    GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_ON                    = 0, ///< \Chinese ´ò¿ª¼ÓËÙ¼ÆµÍÍ¨ÂË²¨¿ª¹Ø				\English Open the accelerometer low-pass filter switch
-    GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_OFF                   = 1, ///< \Chinese ¹Ø±Õ¼ÓËÙ¼ÆµÍÍ¨ÂË²¨¿ª¹Ø				\English Close the accelerometer low-pass filter switch
-}GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_SWITCH_ENTRY;
+	GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_ON = 0,  ///< \Chinese æ‰“å¼€åŠ é€Ÿè®¡ä½é€šæ»¤æ³¢å¼€å…³				\English Open the accelerometer low-pass filter switch
+	GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_OFF = 1, ///< \Chinese å…³é—­åŠ é€Ÿè®¡ä½é€šæ»¤æ³¢å¼€å…³				\English Close the accelerometer low-pass filter switch
+} GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_SWITCH_ENTRY;
 
 typedef enum GX_IMU_CONFIG_ACC_ODR_ENTRY
 {
-    GX_IMU_CONFIG_ACC_ODR_1000HZ    = 0,							///< \Chinese ¼ÓËÙ¼ÆÊä³öÊı¾İÂÊÎª1000Hz				\English The accelerometer output data rate is 1000Hz
-    GX_IMU_CONFIG_ACC_ODR_500HZ     = 1,							///< \Chinese ¼ÓËÙ¼ÆÊä³öÊı¾İÂÊÎª500Hz				\English The accelerometer output data rate is 500Hz
-    GX_IMU_CONFIG_ACC_ODR_250Hz     = 2,							///< \Chinese ¼ÓËÙ¼ÆÊä³öÊı¾İÂÊÎª250Hz				\English The accelerometer output data rate is 250Hz
-    GX_IMU_CONFIG_ACC_ODR_125Hz     = 3,							///< \Chinese ¼ÓËÙ¼ÆÊä³öÊı¾İÂÊÎª125Hz				\English The accelerometer output data rate is 125Hz
-    GX_IMU_CONFIG_ACC_ODR_63Hz      = 4,							///< \Chinese ¼ÓËÙ¼ÆÊä³öÊı¾İÂÊÎª63Hz				\English The accelerometer output data rate is 63Hz
-    GX_IMU_CONFIG_ACC_ODR_31Hz      = 5,							///< \Chinese ¼ÓËÙ¼ÆÊä³öÊı¾İÂÊÎª31Hz				\English The accelerometer output data rate is 31Hz
-    GX_IMU_CONFIG_ACC_ODR_16Hz      = 6,							///< \Chinese ¼ÓËÙ¼ÆÊä³öÊı¾İÂÊÎª16Hz				\English The accelerometer output data rate is 16Hz
-    GX_IMU_CONFIG_ACC_ODR_2000Hz    = 8,							///< \Chinese ¼ÓËÙ¼ÆÊä³öÊı¾İÂÊÎª2000Hz				\English The accelerometer output data rate is 2000Hz
-    GX_IMU_CONFIG_ACC_ODR_4000Hz    = 9,							///< \Chinese ¼ÓËÙ¼ÆÊä³öÊı¾İÂÊÎª4000Hz				\English The accelerometer output data rate is 4000Hz
-    GX_IMU_CONFIG_ACC_ODR_8000Hz    = 10,							///< \Chinese ¼ÓËÙ¼ÆÊä³öÊı¾İÂÊÎª8000Hz				\English The accelerometer output data rate is 8000Hz
-}GX_IMU_CONFIG_ACC_ODR_ENTRY;
+	GX_IMU_CONFIG_ACC_ODR_1000HZ = 0,  ///< \Chinese åŠ é€Ÿè®¡è¾“å‡ºæ•°æ®ç‡ä¸º1000Hz				\English The accelerometer output data rate is 1000Hz
+	GX_IMU_CONFIG_ACC_ODR_500HZ = 1,   ///< \Chinese åŠ é€Ÿè®¡è¾“å‡ºæ•°æ®ç‡ä¸º500Hz				\English The accelerometer output data rate is 500Hz
+	GX_IMU_CONFIG_ACC_ODR_250Hz = 2,   ///< \Chinese åŠ é€Ÿè®¡è¾“å‡ºæ•°æ®ç‡ä¸º250Hz				\English The accelerometer output data rate is 250Hz
+	GX_IMU_CONFIG_ACC_ODR_125Hz = 3,   ///< \Chinese åŠ é€Ÿè®¡è¾“å‡ºæ•°æ®ç‡ä¸º125Hz				\English The accelerometer output data rate is 125Hz
+	GX_IMU_CONFIG_ACC_ODR_63Hz = 4,	   ///< \Chinese åŠ é€Ÿè®¡è¾“å‡ºæ•°æ®ç‡ä¸º63Hz				\English The accelerometer output data rate is 63Hz
+	GX_IMU_CONFIG_ACC_ODR_31Hz = 5,	   ///< \Chinese åŠ é€Ÿè®¡è¾“å‡ºæ•°æ®ç‡ä¸º31Hz				\English The accelerometer output data rate is 31Hz
+	GX_IMU_CONFIG_ACC_ODR_16Hz = 6,	   ///< \Chinese åŠ é€Ÿè®¡è¾“å‡ºæ•°æ®ç‡ä¸º16Hz				\English The accelerometer output data rate is 16Hz
+	GX_IMU_CONFIG_ACC_ODR_2000Hz = 8,  ///< \Chinese åŠ é€Ÿè®¡è¾“å‡ºæ•°æ®ç‡ä¸º2000Hz				\English The accelerometer output data rate is 2000Hz
+	GX_IMU_CONFIG_ACC_ODR_4000Hz = 9,  ///< \Chinese åŠ é€Ÿè®¡è¾“å‡ºæ•°æ®ç‡ä¸º4000Hz				\English The accelerometer output data rate is 4000Hz
+	GX_IMU_CONFIG_ACC_ODR_8000Hz = 10, ///< \Chinese åŠ é€Ÿè®¡è¾“å‡ºæ•°æ®ç‡ä¸º8000Hz				\English The accelerometer output data rate is 8000Hz
+} GX_IMU_CONFIG_ACC_ODR_ENTRY;
 
 typedef enum GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_FREQUENCY_ENTRY
 {
-    GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_FREQUENCY_ODR040      = 0, ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎªODR¡Á0.40	\English Accelerometer The accelerometer low-pass cutoff frequency is ODR 0.40
-    GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_FREQUENCY_ODR025      = 1, ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎªODR¡Á0.25	\English Accelerometer The accelerometer low-pass cutoff frequency is ODR 0.25
-    GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_FREQUENCY_ODR011      = 2, ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎªODR¡Á0.11	\English Accelerometer The accelerometer low-pass cutoff frequency is ODR 0.11
-    GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_FREQUENCY_ODR004      = 3, ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎªODR¡Á0.04	\English Accelerometer The accelerometer low-pass cutoff frequency is ODR 0.04
-    GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_FREQUENCY_ODR002      = 4, ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎªODR¡Á0.02	\English Accelerometer The accelerometer low-pass cutoff frequency is ODR 0.02
-}GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_FREQUENCY_ENTRY;
+	GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_FREQUENCY_ODR040 = 0, ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸ºODRÃ—0.40	\English Accelerometer The accelerometer low-pass cutoff frequency is ODR 0.40
+	GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_FREQUENCY_ODR025 = 1, ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸ºODRÃ—0.25	\English Accelerometer The accelerometer low-pass cutoff frequency is ODR 0.25
+	GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_FREQUENCY_ODR011 = 2, ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸ºODRÃ—0.11	\English Accelerometer The accelerometer low-pass cutoff frequency is ODR 0.11
+	GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_FREQUENCY_ODR004 = 3, ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸ºODRÃ—0.04	\English Accelerometer The accelerometer low-pass cutoff frequency is ODR 0.04
+	GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_FREQUENCY_ODR002 = 4, ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸ºODRÃ—0.02	\English Accelerometer The accelerometer low-pass cutoff frequency is ODR 0.02
+} GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_FREQUENCY_ENTRY;
 
 typedef enum GX_IMU_CONFIG_GYRO_RANGE_ENTRY
 {
-    GX_IMU_CONFIG_GYRO_RANGE_125DPS     = 2,						///< \Chinese ÍÓÂİÒÇX·½Ïò²âÁ¿·¶Î§Îª125dps			\English The measuring range of gyroscope in X direction is 125dps
-    GX_IMU_CONFIG_GYRO_RANGE_250DPS     = 3,						///< \Chinese ÍÓÂİÒÇX·½Ïò²âÁ¿·¶Î§Îª250dps			\English The measuring range of gyroscope in X direction is 250dps
-    GX_IMU_CONFIG_GYRO_RANGE_500DPS     = 4,						///< \Chinese ÍÓÂİÒÇX·½Ïò²âÁ¿·¶Î§Îª500dps			\English The measuring range of gyroscope in X direction is 500dps
-    GX_IMU_CONFIG_GYRO_RANGE_1000DPS    = 5,						///< \Chinese ÍÓÂİÒÇX·½Ïò²âÁ¿·¶Î§Îª1000dps			\English The measuring range of gyroscope in X direction is 1000dps
-    GX_IMU_CONFIG_GYRO_RANGE_2000DPS    = 6,						///< \Chinese ÍÓÂİÒÇX·½Ïò²âÁ¿·¶Î§Îª2000dps			\English The measuring range of gyroscope in X direction is 2000dps
-}GX_IMU_CONFIG_GYRO_RANGE_ENTRY;
+	GX_IMU_CONFIG_GYRO_RANGE_125DPS = 2,  ///< \Chinese é™€èºä»ªXæ–¹å‘æµ‹é‡èŒƒå›´ä¸º125dps			\English The measuring range of gyroscope in X direction is 125dps
+	GX_IMU_CONFIG_GYRO_RANGE_250DPS = 3,  ///< \Chinese é™€èºä»ªXæ–¹å‘æµ‹é‡èŒƒå›´ä¸º250dps			\English The measuring range of gyroscope in X direction is 250dps
+	GX_IMU_CONFIG_GYRO_RANGE_500DPS = 4,  ///< \Chinese é™€èºä»ªXæ–¹å‘æµ‹é‡èŒƒå›´ä¸º500dps			\English The measuring range of gyroscope in X direction is 500dps
+	GX_IMU_CONFIG_GYRO_RANGE_1000DPS = 5, ///< \Chinese é™€èºä»ªXæ–¹å‘æµ‹é‡èŒƒå›´ä¸º1000dps			\English The measuring range of gyroscope in X direction is 1000dps
+	GX_IMU_CONFIG_GYRO_RANGE_2000DPS = 6, ///< \Chinese é™€èºä»ªXæ–¹å‘æµ‹é‡èŒƒå›´ä¸º2000dps			\English The measuring range of gyroscope in X direction is 2000dps
+} GX_IMU_CONFIG_GYRO_RANGE_ENTRY;
 
 typedef enum GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_SWITCH_ENTRY
 {
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_ON                   = 0, ///< \Chinese ¿ªÆôÍÓÂİÒÇµÍÍ¨ÂË²¨					\English Turn on the gyro low-pass filter
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_OFF                  = 1, ///< \Chinese ¹Ø±ÕÍÓÂİÒÇµÍÍ¨ÂË²¨					\English Turn off the gyro low-pass filter
-}GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_SWITCH_ENTRY;
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_ON = 0,	///< \Chinese å¼€å¯é™€èºä»ªä½é€šæ»¤æ³¢					\English Turn on the gyro low-pass filter
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_OFF = 1, ///< \Chinese å…³é—­é™€èºä»ªä½é€šæ»¤æ³¢					\English Turn off the gyro low-pass filter
+} GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_SWITCH_ENTRY;
 
 typedef enum GX_IMU_CONFIG_GYRO_ODR_ENTRY
 {
-    GX_IMU_CONFIG_GYRO_ODR_1000HZ       = 0,						///< \Chinese ÍÓÂİÒÇÊä³öÊı¾İÂÊÎª1000Hz				\English Gyroscope output data rate is 1000Hz
-    GX_IMU_CONFIG_GYRO_ODR_500HZ        = 1,						///< \Chinese ÍÓÂİÒÇÊä³öÊı¾İÂÊÎª500Hz				\English Gyroscope output data rate is 500Hz
-    GX_IMU_CONFIG_GYRO_ODR_250HZ        = 2,						///< \Chinese ÍÓÂİÒÇÊä³öÊı¾İÂÊÎª250Hz				\English Gyroscope output data rate is 250Hz
-    GX_IMU_CONFIG_GYRO_ODR_125HZ        = 3,						///< \Chinese ÍÓÂİÒÇÊä³öÊı¾İÂÊÎª125Hz				\English Gyroscope output data rate is 125Hz
-    GX_IMU_CONFIG_GYRO_ODR_63HZ         = 4,						///< \Chinese ÍÓÂİÒÇÊä³öÊı¾İÂÊÎª63Hz				\English Gyroscope output data rate is 63Hz
-    GX_IMU_CONFIG_GYRO_ODR_31HZ         = 5,						///< \Chinese ÍÓÂİÒÇÊä³öÊı¾İÂÊÎª31Hz				\English Gyroscope output data rate is 31Hz
-    GX_IMU_CONFIG_GYRO_ODR_4KHZ         = 9,						///< \Chinese ÍÓÂİÒÇÊä³öÊı¾İÂÊÎª4000Hz				\English Gyroscope output data rate is 4000Hz
-    GX_IMU_CONFIG_GYRO_ODR_8KHZ         = 10,						///< \Chinese ÍÓÂİÒÇÊä³öÊı¾İÂÊÎª8000Hz				\English Gyroscope output data rate is 8000Hz
-    GX_IMU_CONFIG_GYRO_ODR_16KHZ        = 11,						///< \Chinese ÍÓÂİÒÇÊä³öÊı¾İÂÊÎª16Hz				\English Gyroscope output data rate is 16Hz
-    GX_IMU_CONFIG_GYRO_ODR_32KHZ        = 12,						///< \Chinese ÍÓÂİÒÇÊä³öÊı¾İÂÊÎª32Hz				\English Gyroscope output data rate is 32Hz
-}GX_IMU_CONFIG_GYRO_ODR_ENTRY;
+	GX_IMU_CONFIG_GYRO_ODR_1000HZ = 0, ///< \Chinese é™€èºä»ªè¾“å‡ºæ•°æ®ç‡ä¸º1000Hz				\English Gyroscope output data rate is 1000Hz
+	GX_IMU_CONFIG_GYRO_ODR_500HZ = 1,  ///< \Chinese é™€èºä»ªè¾“å‡ºæ•°æ®ç‡ä¸º500Hz				\English Gyroscope output data rate is 500Hz
+	GX_IMU_CONFIG_GYRO_ODR_250HZ = 2,  ///< \Chinese é™€èºä»ªè¾“å‡ºæ•°æ®ç‡ä¸º250Hz				\English Gyroscope output data rate is 250Hz
+	GX_IMU_CONFIG_GYRO_ODR_125HZ = 3,  ///< \Chinese é™€èºä»ªè¾“å‡ºæ•°æ®ç‡ä¸º125Hz				\English Gyroscope output data rate is 125Hz
+	GX_IMU_CONFIG_GYRO_ODR_63HZ = 4,   ///< \Chinese é™€èºä»ªè¾“å‡ºæ•°æ®ç‡ä¸º63Hz				\English Gyroscope output data rate is 63Hz
+	GX_IMU_CONFIG_GYRO_ODR_31HZ = 5,   ///< \Chinese é™€èºä»ªè¾“å‡ºæ•°æ®ç‡ä¸º31Hz				\English Gyroscope output data rate is 31Hz
+	GX_IMU_CONFIG_GYRO_ODR_4KHZ = 9,   ///< \Chinese é™€èºä»ªè¾“å‡ºæ•°æ®ç‡ä¸º4000Hz				\English Gyroscope output data rate is 4000Hz
+	GX_IMU_CONFIG_GYRO_ODR_8KHZ = 10,  ///< \Chinese é™€èºä»ªè¾“å‡ºæ•°æ®ç‡ä¸º8000Hz				\English Gyroscope output data rate is 8000Hz
+	GX_IMU_CONFIG_GYRO_ODR_16KHZ = 11, ///< \Chinese é™€èºä»ªè¾“å‡ºæ•°æ®ç‡ä¸º16Hz				\English Gyroscope output data rate is 16Hz
+	GX_IMU_CONFIG_GYRO_ODR_32KHZ = 12, ///< \Chinese é™€èºä»ªè¾“å‡ºæ•°æ®ç‡ä¸º32Hz				\English Gyroscope output data rate is 32Hz
+} GX_IMU_CONFIG_GYRO_ODR_ENTRY;
 
 typedef enum GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_ENTRY
 {
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF2000HZ     = 2000,    ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª2000Hz		\English Accelerometer The accelerometer low-pass cutoff frequency is 2000Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF1600HZ     = 1600,    ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª1600Hz		\English Accelerometer The accelerometer low-pass cutoff frequency is 1600Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF1525HZ     = 1525,    ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª1525Hz		\English Accelerometer The accelerometer low-pass cutoff frequency is 1525Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF1313HZ     = 1313,    ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª1313Hz		\English Accelerometer The accelerometer low-pass cutoff frequency is 1313Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF1138HZ     = 1138,    ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª1138Hz		\English Accelerometer The accelerometer low-pass cutoff frequency is 1138Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF1000HZ     = 1000,    ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª1000Hz		\English Accelerometer The accelerometer low-pass cutoff frequency is 1000Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF863HZ      = 863,     ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª863Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 863Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF638HZ      = 638,     ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª638Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 638Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF438HZ      = 438,     ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª438Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 438Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF313HZ      = 313,     ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª313Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 313Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF213HZ      = 213,     ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª213Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 213Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF219HZ      = 219,     ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª219Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 219Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF363HZ      = 363,     ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª363Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 363Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF320HZ      = 320,     ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª320Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 320Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF250HZ      = 250,     ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª250Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 250Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF200HZ      = 200,     ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª200Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 200Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF181HZ      = 181,     ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª181Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 181Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF160HZ      = 160,     ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª160Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 160Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF125HZ      = 125,     ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª125Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 125Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF100HZ      = 100,     ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª100Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 100Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF90HZ       = 90,      ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª90Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 90Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF80HZ       = 80,      ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª80Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 80Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF63HZ       = 63,      ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª63Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 63Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF50HZ       = 50,      ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª50Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 50Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF45HZ       = 45,      ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª45Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 45Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF40HZ       = 40,      ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª40Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 40Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF31HZ       = 31,      ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª31Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 31Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF25HZ       = 25,      ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª25Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 25Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF23HZ       = 23,      ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª23Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 23Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF20HZ       = 20,      ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª20Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 20Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF15HZ       = 15,      ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª15Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 15Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF13HZ       = 13,      ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª13Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 13Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF11HZ       = 11,      ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª11Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 11Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF10HZ       = 10,      ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª10Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 10Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF8HZ        = 8,       ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª8Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 8Hz
-    GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF6HZ        = 6,       ///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊÎª6Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 6Hz
-}GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_ENTRY;
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF2000HZ = 2000, ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º2000Hz		\English Accelerometer The accelerometer low-pass cutoff frequency is 2000Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF1600HZ = 1600, ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º1600Hz		\English Accelerometer The accelerometer low-pass cutoff frequency is 1600Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF1525HZ = 1525, ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º1525Hz		\English Accelerometer The accelerometer low-pass cutoff frequency is 1525Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF1313HZ = 1313, ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º1313Hz		\English Accelerometer The accelerometer low-pass cutoff frequency is 1313Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF1138HZ = 1138, ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º1138Hz		\English Accelerometer The accelerometer low-pass cutoff frequency is 1138Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF1000HZ = 1000, ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º1000Hz		\English Accelerometer The accelerometer low-pass cutoff frequency is 1000Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF863HZ = 863,   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º863Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 863Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF638HZ = 638,   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º638Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 638Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF438HZ = 438,   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º438Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 438Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF313HZ = 313,   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º313Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 313Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF213HZ = 213,   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º213Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 213Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF219HZ = 219,   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º219Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 219Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF363HZ = 363,   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º363Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 363Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF320HZ = 320,   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º320Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 320Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF250HZ = 250,   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º250Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 250Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF200HZ = 200,   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º200Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 200Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF181HZ = 181,   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º181Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 181Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF160HZ = 160,   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º160Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 160Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF125HZ = 125,   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º125Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 125Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF100HZ = 100,   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º100Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 100Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF90HZ = 90,	   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º90Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 90Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF80HZ = 80,	   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º80Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 80Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF63HZ = 63,	   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º63Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 63Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF50HZ = 50,	   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º50Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 50Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF45HZ = 45,	   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º45Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 45Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF40HZ = 40,	   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º40Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 40Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF31HZ = 31,	   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º31Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 31Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF25HZ = 25,	   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º25Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 25Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF23HZ = 23,	   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º23Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 23Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF20HZ = 20,	   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º20Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 20Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF15HZ = 15,	   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º15Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 15Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF13HZ = 13,	   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º13Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 13Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF11HZ = 11,	   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º11Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 11Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF10HZ = 10,	   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º10Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 10Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF8HZ = 8,	   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º8Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 8Hz
+	GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_GYROLPF6HZ = 6,	   ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ä¸º6Hz			\English Accelerometer The accelerometer low-pass cutoff frequency is 6Hz
+} GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_ENTRY;
 
 typedef enum GX_IMU_TEMPERATURE_ODR_ENTRY
 {
-    GX_IMU_TEMPERATURE_ODR_500HZ    = 0,										///< \Chinese ÎÂ¶È¼ÆÊä³öÊı¾İÂÊÎª500Hz					\English The output data rate of the thermometer is 500Hz
-    GX_IMU_TEMPERATURE_ODR_250HZ    = 1,										///< \Chinese ÎÂ¶È¼ÆÊä³öÊı¾İÂÊÎª250Hz 					\English The output data rate of the thermometer is 250Hz 
-    GX_IMU_TEMPERATURE_ODR_125HZ    = 2,										///< \Chinese ÎÂ¶È¼ÆÊä³öÊı¾İÂÊÎª125Hz					\English The output data rate of the thermometer is 125Hz
-    GX_IMU_TEMPERATURE_ODR_63HZ     = 3,										///< \Chinese ÎÂ¶È¼ÆÊä³öÊı¾İÂÊÎª63Hz					\English The output data rate of the thermometer is 63Hz
-}GX_IMU_TEMPERATURE_ODR_ENTRY;
+	GX_IMU_TEMPERATURE_ODR_500HZ = 0, ///< \Chinese æ¸©åº¦è®¡è¾“å‡ºæ•°æ®ç‡ä¸º500Hz					\English The output data rate of the thermometer is 500Hz
+	GX_IMU_TEMPERATURE_ODR_250HZ = 1, ///< \Chinese æ¸©åº¦è®¡è¾“å‡ºæ•°æ®ç‡ä¸º250Hz 					\English The output data rate of the thermometer is 250Hz
+	GX_IMU_TEMPERATURE_ODR_125HZ = 2, ///< \Chinese æ¸©åº¦è®¡è¾“å‡ºæ•°æ®ç‡ä¸º125Hz					\English The output data rate of the thermometer is 125Hz
+	GX_IMU_TEMPERATURE_ODR_63HZ = 3,  ///< \Chinese æ¸©åº¦è®¡è¾“å‡ºæ•°æ®ç‡ä¸º63Hz					\English The output data rate of the thermometer is 63Hz
+} GX_IMU_TEMPERATURE_ODR_ENTRY;
 
-typedef enum GX_SERIALPORT_SELECTOR_ENTRY 
+typedef enum GX_SERIALPORT_SELECTOR_ENTRY
 {
-	GX_SERIALPORT_SERIALPORT_0    = 0,											///< \Chinese ´®¿Ú0										\English Serial port 0
+	GX_SERIALPORT_SERIALPORT_0 = 0, ///< \Chinese ä¸²å£0										\English Serial port 0
 
-}GX_SERIALPORT_SELECTOR_ENTRY;
+} GX_SERIALPORT_SELECTOR_ENTRY;
 
 typedef enum GX_SERIALPORT_SOURCE_ENTRY
 {
-	GX_SERIALPORT_SERIALPORT_SOURCE_OFF		  = 0,								///< \Chinese ´®¿ÚÊäÈëÔ´¿ª¹Ø							\English Serial port input source switch
-	GX_SERIALPORT_SERIALPORT_SOURCE_LINE_0    = 1,								///< \Chinese ´®¿ÚÊäÈëÔ´0								\English Serial port input source 0
-	GX_SERIALPORT_SERIALPORT_SOURCE_LINE_1    = 2,								///< \Chinese ´®¿ÚÊäÈëÔ´1								\English Serial port input source 1
-	GX_SERIALPORT_SERIALPORT_SOURCE_LINE_2    = 3,								///< \Chinese ´®¿ÚÊäÈëÔ´2								\English Serial port input source 2
-	GX_SERIALPORT_SERIALPORT_SOURCE_LINE_3    = 4,								///< \Chinese ´®¿ÚÊäÈëÔ´3								\English Serial port input source 3
+	GX_SERIALPORT_SERIALPORT_SOURCE_OFF = 0,	///< \Chinese ä¸²å£è¾“å…¥æºå¼€å…³							\English Serial port input source switch
+	GX_SERIALPORT_SERIALPORT_SOURCE_LINE_0 = 1, ///< \Chinese ä¸²å£è¾“å…¥æº0								\English Serial port input source 0
+	GX_SERIALPORT_SERIALPORT_SOURCE_LINE_1 = 2, ///< \Chinese ä¸²å£è¾“å…¥æº1								\English Serial port input source 1
+	GX_SERIALPORT_SERIALPORT_SOURCE_LINE_2 = 3, ///< \Chinese ä¸²å£è¾“å…¥æº2								\English Serial port input source 2
+	GX_SERIALPORT_SERIALPORT_SOURCE_LINE_3 = 4, ///< \Chinese ä¸²å£è¾“å…¥æº3								\English Serial port input source 3
 
-}GX_SERIALPORT_SOURCE_ENTRY;
+} GX_SERIALPORT_SOURCE_ENTRY;
 
 typedef enum GX_SERIALPORT_BAUNDRATE_ENTRY
 {
-	GX_SERIALPORT_BAUNDRATE_9600      = 5,										///< \Chinese ´®¿Ú²¨ÌØÂÊÎª9600Hz						\English Serial port baud rate is 9600Hz
-	GX_SERIALPORT_BAUNDRATE_19200     = 6,										///< \Chinese ´®¿Ú²¨ÌØÂÊÎª19200Hz						\English Serial port baud rate is 19200Hz
-	GX_SERIALPORT_BAUNDRATE_38400     = 7,										///< \Chinese ´®¿Ú²¨ÌØÂÊÎª38400Hz						\English Serial port baud rate is 38400Hz
-	GX_SERIALPORT_BAUNDRATE_76800     = 8,										///< \Chinese ´®¿Ú²¨ÌØÂÊÎª76800Hz						\English Serial port baud rate is 76800Hz
-	GX_SERIALPORT_BAUNDRATE_115200    = 9,										///< \Chinese ´®¿Ú²¨ÌØÂÊÎª115200Hz						\English Serial port baud rate is 115200Hz
-}GX_SERIALPORT_BAUNDRATE_ENTRY;
+	GX_SERIALPORT_BAUNDRATE_9600 = 5,	///< \Chinese ä¸²å£æ³¢ç‰¹ç‡ä¸º9600Hz						\English Serial port baud rate is 9600Hz
+	GX_SERIALPORT_BAUNDRATE_19200 = 6,	///< \Chinese ä¸²å£æ³¢ç‰¹ç‡ä¸º19200Hz						\English Serial port baud rate is 19200Hz
+	GX_SERIALPORT_BAUNDRATE_38400 = 7,	///< \Chinese ä¸²å£æ³¢ç‰¹ç‡ä¸º38400Hz						\English Serial port baud rate is 38400Hz
+	GX_SERIALPORT_BAUNDRATE_76800 = 8,	///< \Chinese ä¸²å£æ³¢ç‰¹ç‡ä¸º76800Hz						\English Serial port baud rate is 76800Hz
+	GX_SERIALPORT_BAUNDRATE_115200 = 9, ///< \Chinese ä¸²å£æ³¢ç‰¹ç‡ä¸º115200Hz						\English Serial port baud rate is 115200Hz
+} GX_SERIALPORT_BAUNDRATE_ENTRY;
 
 typedef enum GX_SERIALPORT_STOP_BITS_ENTRY
 {
-	GX_SERIALPORT_STOP_BITS_ONE				= 0,								///< \Chinese Bit1										\English Bit1
-	GX_SERIALPORT_STOP_BITS_ONEANDHALF		= 1,								///< \Chinese Bit1AndHalf								\English Bit1AndHalf
-	GX_SERIALPORT_STOP_BITS_TWO				= 2,								///< \Chinese Bit2										\English Bit2
-}GX_SERIALPORT_STOP_BITS_ENTRY;
+	GX_SERIALPORT_STOP_BITS_ONE = 0,		///< \Chinese Bit1										\English Bit1
+	GX_SERIALPORT_STOP_BITS_ONEANDHALF = 1, ///< \Chinese Bit1AndHalf								\English Bit1AndHalf
+	GX_SERIALPORT_STOP_BITS_TWO = 2,		///< \Chinese Bit2										\English Bit2
+} GX_SERIALPORT_STOP_BITS_ENTRY;
 
 typedef enum GX_SERIALPORT_PARITY_ENTRY
 {
-	GX_SERIALPORT_PARITY_NONE				= 0,								///< \Chinese None										\English None
-	GX_SERIALPORT_PARITY_ODD				= 1,								///< \Chinese ÆæÊı										\English Odd number
-	GX_SERIALPORT_PARITY_EVEN				= 2,								///< \Chinese Å¼Êı										\English even numbers
-	GX_SERIALPORT_PARITY_MARK				= 3,								///< \Chinese ±ê¼Ç										\English sign
-	GX_SERIALPORT_PARITY_SPACE				= 4,								///< \Chinese ¿Õ°×										\English blank
-}GX_SERIALPORT_PARITY_ENTRY;
+	GX_SERIALPORT_PARITY_NONE = 0,	///< \Chinese None										\English None
+	GX_SERIALPORT_PARITY_ODD = 1,	///< \Chinese å¥‡æ•°										\English Odd number
+	GX_SERIALPORT_PARITY_EVEN = 2,	///< \Chinese å¶æ•°										\English even numbers
+	GX_SERIALPORT_PARITY_MARK = 3,	///< \Chinese æ ‡è®°										\English sign
+	GX_SERIALPORT_PARITY_SPACE = 4, ///< \Chinese ç©ºç™½										\English blank
+} GX_SERIALPORT_PARITY_ENTRY;
 
 typedef struct GX_FRAME_BUFFER
 {
-    uint64_t        nFrameID;                            ///< \Chinese Í¼Æ¬Ö¡ID									    	     \English Frame identification of image
-    uint64_t        nTimestamp;                          ///< \Chinese Í¼Æ¬Ê±¼ä´Á									        \English Timestamp of image
-    uint64_t        nBufID;                              ///< \Chinese Í¼Æ¬bufID									         \English BufID
-    void_64         pImgBuf;                             ///< \Chinese Í¼Æ¬Êı¾İÖ¸Õë										 \English The image data pointer (After the frame information is enabled, the pImgBuf contains image data and frame information data)
-    GX_FRAME_STATUS nStatus;                             ///< \Chinese ÇëÇóÍ¼Æ¬×´Ì¬										 \English The state of the acquired image. Please refer to GX_FRAME_STATUS
-    int32_t         nWidth;                              ///< \Chinese Í¼Æ¬¿í¶È										        \English Image width
-    int32_t         nHeight;                             ///< \Chinese Í¼Æ¬¸ß¶È										        \English Image height
-    int32_t         nPixelFormat;                        ///< \Chinese Í¼Æ¬ÏñËØ										        \English Pixel format of image
-    int32_t         nImgSize;                            ///< \Chinese Í¼Æ¬Êı¾İ´óĞ¡										 \English Data size, in bytes (After the frame information is enabled, nImgSize is the sum of the size of the image data and the size of the frame information)
-    int32_t         nOffsetX;                            ///< \Chinese Í¼Æ¬Ë®Æ½Æ«ÒÆ									    \English X-direction offset of the image
-    int32_t         nOffsetY;                            ///< \Chinese Í¼Æ¬´¹Ö±Æ«ÒÆ									    \English Y-direction offset of the image
-    int32_t         reserved[33];                        ///< \Chinese ±£Áô									               \English reserved
-}GX_FRAME_BUFFER;
+	uint64_t nFrameID;		 ///< \Chinese å›¾ç‰‡å¸§ID									    	     \English Frame identification of image
+	uint64_t nTimestamp;	 ///< \Chinese å›¾ç‰‡æ—¶é—´æˆ³									        \English Timestamp of image
+	uint64_t nBufID;		 ///< \Chinese å›¾ç‰‡bufID									         \English BufID
+	void_64 pImgBuf;		 ///< \Chinese å›¾ç‰‡æ•°æ®æŒ‡é’ˆ										 \English The image data pointer (After the frame information is enabled, the pImgBuf contains image data and frame information data)
+	GX_FRAME_STATUS nStatus; ///< \Chinese è¯·æ±‚å›¾ç‰‡çŠ¶æ€										 \English The state of the acquired image. Please refer to GX_FRAME_STATUS
+	int32_t nWidth;			 ///< \Chinese å›¾ç‰‡å®½åº¦										        \English Image width
+	int32_t nHeight;		 ///< \Chinese å›¾ç‰‡é«˜åº¦										        \English Image height
+	int32_t nPixelFormat;	 ///< \Chinese å›¾ç‰‡åƒç´ 										        \English Pixel format of image
+	int32_t nImgSize;		 ///< \Chinese å›¾ç‰‡æ•°æ®å¤§å°										 \English Data size, in bytes (After the frame information is enabled, nImgSize is the sum of the size of the image data and the size of the frame information)
+	int32_t nOffsetX;		 ///< \Chinese å›¾ç‰‡æ°´å¹³åç§»									    \English X-direction offset of the image
+	int32_t nOffsetY;		 ///< \Chinese å›¾ç‰‡å‚ç›´åç§»									    \English Y-direction offset of the image
+	int32_t reserved[33];	 ///< \Chinese ä¿ç•™									               \English reserved
+} GX_FRAME_BUFFER;
 
 typedef enum GX_FEATURE_ID
 {
 	//////////////////////////////////////////////////////////////////////////
-	///Chinese	Ô¶¶ËÉè±¸²ã
-	///English	Remote Device Feature
+	/// Chinese	è¿œç«¯è®¾å¤‡å±‚
+	/// English	Remote Device Feature
 	//////////////////////////////////////////////////////////////////////////
 
 	//---------------DeviceInfomation Section--------------------------
-	GX_STRING_DEVICE_VENDOR_NAME               = 0   | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,     ///< \Chinese ³§ÉÌÃû³Æ															\English Name of the manufacturer of the device.
-	GX_STRING_DEVICE_MODEL_NAME                = 1   | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,     ///< \Chinese Éè±¸ĞÍºÅ															\English Model of the device.
-	GX_STRING_DEVICE_FIRMWARE_VERSION          = 2   | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,     ///< \Chinese Éè±¸¹Ì¼ş°æ±¾														\English Version of the firmware in the device.
-	GX_STRING_DEVICE_VERSION                   = 3   | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,     ///< \Chinese Éè±¸°æ±¾															\English Version of the device.
-	GX_STRING_DEVICE_SERIAL_NUMBER             = 4   | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,     ///< \Chinese Éè±¸ĞòÁĞºÅ														\English Device serial number.
-	GX_STRING_FACTORY_SETTING_VERSION          = 6   | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,     ///< \Chinese ³ö³§²ÎÊı°æ±¾														\English Factory parameter version
-	GX_STRING_DEVICE_USERID                    = 7   | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,     ///< \Chinese ÓÃ»§×Ô¶¨ÒåÃû³Æ													\English User-programmable device identifier.
-	GX_INT_DEVICE_LINK_SELECTOR                = 8   | GX_FEATURE_INT    | GX_FEATURE_LEVEL_REMOTE_DEV,     ///< \Chinese Éè±¸Á´Â·Ñ¡Ôñ														\English Selects which Link of the device to control.
-	GX_ENUM_DEVICE_LINK_THROUGHPUT_LIMIT_MODE  = 9   | GX_FEATURE_ENUM   | GX_FEATURE_LEVEL_REMOTE_DEV,     ///< \Chinese Éè±¸´ø¿íÏŞÖÆÄ£Ê½£¬²Î¿¼GX_DEVICE_LINK_THROUGHPUT_LIMIT_MODE_ENTRY	\English Controls if the DeviceLinkThroughputLimit is active.
-	GX_INT_DEVICE_LINK_THROUGHPUT_LIMIT        = 10  | GX_FEATURE_INT    | GX_FEATURE_LEVEL_REMOTE_DEV,     ///< \Chinese Éè±¸Á´Â·´ø¿íÏŞÖÆ													\English Limits the maximum bandwidth of the data that will be streamed out by the device on the selected Link.
-	GX_INT_DEVICE_LINK_CURRENT_THROUGHPUT      = 11  | GX_FEATURE_INT    | GX_FEATURE_LEVEL_REMOTE_DEV,     ///< \Chinese µ±Ç°Éè±¸²É¼¯´ø¿í													\English The bandwidth of current device acquisition
-    GX_COMMAND_DEVICE_RESET                    = 12  | GX_FEATURE_COMMAND| GX_FEATURE_LEVEL_REMOTE_DEV,     ///< \Chinese Éè±¸¸´Î»															\English reset device
-    GX_INT_TIMESTAMP_TICK_FREQUENCY            = 13  | GX_FEATURE_INT    | GX_FEATURE_LEVEL_REMOTE_DEV,     ///< \Chinese Ê±¼ä´ÁÆµÂÊ														\English Time stamp clock frequency
-    GX_COMMAND_TIMESTAMP_LATCH                 = 14  | GX_FEATURE_COMMAND| GX_FEATURE_LEVEL_REMOTE_DEV,     ///< \Chinese Ê±¼ä´ÁËø´æ 														\English Timestamp latch 
-    GX_COMMAND_TIMESTAMP_RESET                 = 15  | GX_FEATURE_COMMAND| GX_FEATURE_LEVEL_REMOTE_DEV,     ///< \Chinese ÖØÖÃÊ±¼ä´Á														\English reset Timestamp
-    GX_COMMAND_TIMESTAMP_LATCH_RESET           = 16  | GX_FEATURE_COMMAND| GX_FEATURE_LEVEL_REMOTE_DEV,     ///< \Chinese ÖØÖÃÊ±¼ä´ÁËø´æ													\English reset Timestamp latch
-    GX_INT_TIMESTAMP_LATCH_VALUE               = 17  | GX_FEATURE_INT    | GX_FEATURE_LEVEL_REMOTE_DEV,     ///< \Chinese Ê±¼ä´ÁËø´æÖµ														\English Timestamp Latch value
-	GX_STRING_DEVICE_PHY_VERSION     		   = 18  | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese Éè±¸ÍøÂçĞ¾Æ¬°æ±¾													\English Device network chip version
-	GX_ENUM_DEVICE_TEMPERATURE_SELECTOR		   = 19  | GX_FEATURE_ENUM   | GX_FEATURE_LEVEL_REMOTE_DEV,     ///< \Chinese Éè±¸ÎÂ¶ÈÑ¡Ôñ														\English Device temperature selection
-	GX_FLOAT_DEVICE_TEMPERATURE				   = 20  | GX_FEATURE_FLOAT  | GX_FEATURE_LEVEL_REMOTE_DEV, 	///< \Chinese Éè±¸ÎÂ¶È															\English Device temperature
-	GX_STRING_DEVICE_ISP_FIRMWARE_VERSION      = 21  | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,     ///< \Chinese Éè±¸ISP¹Ì¼ş°æ±¾													\English Device ISP firmware version
-	GX_ENUM_LOWPOWER_MODE                      = 22  | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,       ///< \Chinese µÍ¹¦ºÄÄ£Ê½,²Î¿¼GX_LOWPOWER_MODE_ENTRY								\English Low power consumption mode,refer to GX_LOWPOWER_MODE_ENTRY
-    GX_ENUM_CLOSE_CCD                          = 23  | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,       ///< \Chinese ¹Ø±ÕCCD,²Î¿¼GX_CLOSE_CCD_ENTRY									\English Close CCD, refer to GX_CLOSE_CCD_ENTRY
-	GX_STRING_PRODUCTION_CODE					= 24  | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,    ///< \Chinese Éú²ú´úÂë															\English Production code
-	GX_STRING_DEVICE_ORIGINAL_NAME				= 25  | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,    ///< \Chinese Ô­Ê¼Ãû³Æ															\English Original name
-	GX_INT_REVISION								= 26  | GX_FEATURE_INT    | GX_FEATURE_LEVEL_REMOTE_DEV,    ///< \Chinese CXPĞ­Òé°æ±¾														\English CXP protocol version
-	GX_INT_VERSIONS_SUPPORTED					= 27  | GX_FEATURE_INT    | GX_FEATURE_LEVEL_REMOTE_DEV,    ///< \Chinese Ö§³ÖµÄCXPĞ­Òé°æ±¾													\English Supported CXP protocol versions
-	GX_INT_VERSION_USED							= 28  | GX_FEATURE_INT    | GX_FEATURE_LEVEL_REMOTE_DEV,    ///< \Chinese Ê¹ÓÃ°æ±¾															\English Use version
-	GX_BOOL_TEC_ENABLE							= 29  | GX_FEATURE_BOOL   | GX_FEATURE_LEVEL_REMOTE_DEV,    ///< \Chinese TEC¿ª¹Ø															\English TEC switch
-	GX_FLOAT_TEC_TARGET_TEMPERATURE				= 30  | GX_FEATURE_FLOAT  | GX_FEATURE_LEVEL_REMOTE_DEV,    ///< \Chinese TECÄ¿±êÎÂ¶È														\English TEC target temperature
-	GX_BOOL_FAN_ENABLE							= 31  | GX_FEATURE_BOOL   | GX_FEATURE_LEVEL_REMOTE_DEV,    ///< \Chinese ·çÉÈ¿ª¹Ø															\English Fan switch
-	GX_INT_TEMPERATURE_DETECTION_STATUS			= 32  | GX_FEATURE_INT	  | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese ÎÂ¶È×´Ì¬¼ì²â														\English Temperature state detection
-	GX_INT_FAN_SPEED							= 33  | GX_FEATURE_INT	  | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese ·çÉÈ×ªËÙ															\English Fan speed
-	GX_FLOAT_DEVICE_HUMIDITY					= 34  | GX_FEATURE_FLOAT  | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese Éè±¸Êª¶È 															\English Equipment humidity 
-	GX_FLOAT_DEVICE_PRESSURE					= 35  | GX_FEATURE_FLOAT  | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese Éè±¸ÆøÑ¹															\English Equipment air pressure
-	GX_INT_AIR_CHANGE_DETECTION_STATUS			= 36  | GX_FEATURE_INT	  | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese »»Æø×´Ì¬¼ì²â														\English Ventilation status detection
-	GX_INT_AIR_TIGHTNESS_DETECTION_STATUS		= 37  | GX_FEATURE_INT	  | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese ÆøÃÜĞÔ×´Ì¬¼ì²â													\English Airtightness state detection
-	GX_ENUM_DEVICE_SCAN_TYPE					= 38  | GX_FEATURE_ENUM   | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese Éè±¸É¨Ãè·½Ê½														\English Device scanning mode 
-	GX_INT_TECSELFTEST_FACTORY_STATUS			= 39  | GX_FEATURE_INT	  | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese Ïà»ú×Ô¼ì³ö³§×´Ì¬                                                  \English Camera self inspection factory status
+	GX_STRING_DEVICE_VENDOR_NAME = 0 | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,			   ///< \Chinese å‚å•†åç§°															\English Name of the manufacturer of the device.
+	GX_STRING_DEVICE_MODEL_NAME = 1 | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,			   ///< \Chinese è®¾å¤‡å‹å·															\English Model of the device.
+	GX_STRING_DEVICE_FIRMWARE_VERSION = 2 | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,	   ///< \Chinese è®¾å¤‡å›ºä»¶ç‰ˆæœ¬														\English Version of the firmware in the device.
+	GX_STRING_DEVICE_VERSION = 3 | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,				   ///< \Chinese è®¾å¤‡ç‰ˆæœ¬															\English Version of the device.
+	GX_STRING_DEVICE_SERIAL_NUMBER = 4 | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,		   ///< \Chinese è®¾å¤‡åºåˆ—å·														\English Device serial number.
+	GX_STRING_FACTORY_SETTING_VERSION = 6 | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,	   ///< \Chinese å‡ºå‚å‚æ•°ç‰ˆæœ¬														\English Factory parameter version
+	GX_STRING_DEVICE_USERID = 7 | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,				   ///< \Chinese ç”¨æˆ·è‡ªå®šä¹‰åç§°													\English User-programmable device identifier.
+	GX_INT_DEVICE_LINK_SELECTOR = 8 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				   ///< \Chinese è®¾å¤‡é“¾è·¯é€‰æ‹©														\English Selects which Link of the device to control.
+	GX_ENUM_DEVICE_LINK_THROUGHPUT_LIMIT_MODE = 9 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese è®¾å¤‡å¸¦å®½é™åˆ¶æ¨¡å¼ï¼Œå‚è€ƒGX_DEVICE_LINK_THROUGHPUT_LIMIT_MODE_ENTRY	\English Controls if the DeviceLinkThroughputLimit is active.
+	GX_INT_DEVICE_LINK_THROUGHPUT_LIMIT = 10 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,	   ///< \Chinese è®¾å¤‡é“¾è·¯å¸¦å®½é™åˆ¶													\English Limits the maximum bandwidth of the data that will be streamed out by the device on the selected Link.
+	GX_INT_DEVICE_LINK_CURRENT_THROUGHPUT = 11 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,	   ///< \Chinese å½“å‰è®¾å¤‡é‡‡é›†å¸¦å®½													\English The bandwidth of current device acquisition
+	GX_COMMAND_DEVICE_RESET = 12 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,			   ///< \Chinese è®¾å¤‡å¤ä½															\English reset device
+	GX_INT_TIMESTAMP_TICK_FREQUENCY = 13 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		   ///< \Chinese æ—¶é—´æˆ³é¢‘ç‡														\English Time stamp clock frequency
+	GX_COMMAND_TIMESTAMP_LATCH = 14 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,			   ///< \Chinese æ—¶é—´æˆ³é”å­˜ 														\English Timestamp latch
+	GX_COMMAND_TIMESTAMP_RESET = 15 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,			   ///< \Chinese é‡ç½®æ—¶é—´æˆ³														\English reset Timestamp
+	GX_COMMAND_TIMESTAMP_LATCH_RESET = 16 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,	   ///< \Chinese é‡ç½®æ—¶é—´æˆ³é”å­˜													\English reset Timestamp latch
+	GX_INT_TIMESTAMP_LATCH_VALUE = 17 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			   ///< \Chinese æ—¶é—´æˆ³é”å­˜å€¼														\English Timestamp Latch value
+	GX_STRING_DEVICE_PHY_VERSION = 18 | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,		   ///< \Chinese è®¾å¤‡ç½‘ç»œèŠ¯ç‰‡ç‰ˆæœ¬													\English Device network chip version
+	GX_ENUM_DEVICE_TEMPERATURE_SELECTOR = 19 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,	   ///< \Chinese è®¾å¤‡æ¸©åº¦é€‰æ‹©														\English Device temperature selection
+	GX_FLOAT_DEVICE_TEMPERATURE = 20 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,			   ///< \Chinese è®¾å¤‡æ¸©åº¦															\English Device temperature
+	GX_STRING_DEVICE_ISP_FIRMWARE_VERSION = 21 | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,  ///< \Chinese è®¾å¤‡ISPå›ºä»¶ç‰ˆæœ¬													\English Device ISP firmware version
+	GX_ENUM_LOWPOWER_MODE = 22 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					   ///< \Chinese ä½åŠŸè€—æ¨¡å¼,å‚è€ƒGX_LOWPOWER_MODE_ENTRY								\English Low power consumption mode,refer to GX_LOWPOWER_MODE_ENTRY
+	GX_ENUM_CLOSE_CCD = 23 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						   ///< \Chinese å…³é—­CCD,å‚è€ƒGX_CLOSE_CCD_ENTRY									\English Close CCD, refer to GX_CLOSE_CCD_ENTRY
+	GX_STRING_PRODUCTION_CODE = 24 | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,			   ///< \Chinese ç”Ÿäº§ä»£ç 															\English Production code
+	GX_STRING_DEVICE_ORIGINAL_NAME = 25 | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,		   ///< \Chinese åŸå§‹åç§°															\English Original name
+	GX_INT_REVISION = 26 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						   ///< \Chinese CXPåè®®ç‰ˆæœ¬														\English CXP protocol version
+	GX_INT_VERSIONS_SUPPORTED = 27 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				   ///< \Chinese æ”¯æŒçš„CXPåè®®ç‰ˆæœ¬													\English Supported CXP protocol versions
+	GX_INT_VERSION_USED = 28 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,					   ///< \Chinese ä½¿ç”¨ç‰ˆæœ¬															\English Use version
+	GX_BOOL_TEC_ENABLE = 29 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,					   ///< \Chinese TECå¼€å…³															\English TEC switch
+	GX_FLOAT_TEC_TARGET_TEMPERATURE = 30 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,		   ///< \Chinese TECç›®æ ‡æ¸©åº¦														\English TEC target temperature
+	GX_BOOL_FAN_ENABLE = 31 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,					   ///< \Chinese é£æ‰‡å¼€å…³															\English Fan switch
+	GX_INT_TEMPERATURE_DETECTION_STATUS = 32 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,	   ///< \Chinese æ¸©åº¦çŠ¶æ€æ£€æµ‹														\English Temperature state detection
+	GX_INT_FAN_SPEED = 33 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						   ///< \Chinese é£æ‰‡è½¬é€Ÿ															\English Fan speed
+	GX_FLOAT_DEVICE_HUMIDITY = 34 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,				   ///< \Chinese è®¾å¤‡æ¹¿åº¦ 															\English Equipment humidity
+	GX_FLOAT_DEVICE_PRESSURE = 35 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,				   ///< \Chinese è®¾å¤‡æ°”å‹															\English Equipment air pressure
+	GX_INT_AIR_CHANGE_DETECTION_STATUS = 36 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		   ///< \Chinese æ¢æ°”çŠ¶æ€æ£€æµ‹														\English Ventilation status detection
+	GX_INT_AIR_TIGHTNESS_DETECTION_STATUS = 37 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,	   ///< \Chinese æ°”å¯†æ€§çŠ¶æ€æ£€æµ‹													\English Airtightness state detection
+	GX_ENUM_DEVICE_SCAN_TYPE = 38 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				   ///< \Chinese è®¾å¤‡æ‰«ææ–¹å¼														\English Device scanning mode
+	GX_INT_TECSELFTEST_FACTORY_STATUS = 39 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		   ///< \Chinese ç›¸æœºè‡ªæ£€å‡ºå‚çŠ¶æ€                                                  \English Camera self inspection factory status
 
 	//---------------ImageFormat Section--------------------------------
-	GX_INT_SENSOR_WIDTH               = 1000 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ´«¸ĞÆ÷¿í¶È														\English Effective width of the sensor in pixels.
-	GX_INT_SENSOR_HEIGHT              = 1001 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ´«¸ĞÆ÷¸ß¶È														\English Effective height of the sensor in pixels.
-	GX_INT_WIDTH_MAX                  = 1002 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ×î´ó¿í¶È															\English Maximum width of the image (in pixels).
-	GX_INT_HEIGHT_MAX                 = 1003 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ×î´ó¸ß¶È															\English Maximum height of the image (in pixels).
-	GX_INT_OFFSET_X                   = 1004 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Ë®Æ½Æ«ÒÆ															\English Horizontal offset from the origin to the region of interest (in pixels).
-	GX_INT_OFFSET_Y                   = 1005 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ´¹Ö±Æ«ÒÆ															\English Vertical offset from the origin to the region of interest (in pixels).
-	GX_INT_WIDTH                      = 1006 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Í¼Ïñ¿í¶È															\English Width of the image provided by the device (in pixels).
-	GX_INT_HEIGHT                     = 1007 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Í¼Ïñ¸ß¶È															\English Height of the image provided by the device (in pixels).
-	GX_INT_BINNING_HORIZONTAL         = 1008 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Ë®Æ½ÏñËØBinning													\English Number of horizontal photo-sensitive cells to combine together.
-	GX_INT_BINNING_VERTICAL           = 1009 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ´¹Ö±ÏñËØBinning													\English Number of vertical photo-sensitive cells to combine together.
-	GX_INT_DECIMATION_HORIZONTAL      = 1010 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Ë®Æ½ÏñËØ³éÑù														\English Horizontal sub-sampling of the image.
-	GX_INT_DECIMATION_VERTICAL        = 1011 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ´¹Ö±ÏñËØ³éÑù														\English Vertical sub-sampling of the image.
-	GX_ENUM_PIXEL_SIZE                = 1012 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÏñËØÎ»Éî,²Î¿¼GX_PIXEL_SIZE_ENTRY									\English Total size in bits of a pixel of the image.
-	GX_ENUM_PIXEL_COLOR_FILTER        = 1013 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Bayer¸ñÊ½,²Î¿¼GX_PIXEL_COLOR_FILTER_ENTRY							\English Type of color filter that is applied to the image.
-	GX_ENUM_PIXEL_FORMAT              = 1014 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÏñËØ¸ñÊ½,²Î¿¼GX_PIXEL_FORMAT_ENTRY								\English Format of the pixels provided by the device.
-	GX_BOOL_REVERSE_X                 = 1015 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Ë®Æ½·­×ª															\English Flip horizontally the image sent by the device.
-	GX_BOOL_REVERSE_Y                 = 1016 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ´¹Ö±·­×ª															\English Flip vertically the image sent by the device.
-	GX_ENUM_TEST_PATTERN              = 1017 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ²âÊÔÍ¼,²Î¿¼GX_TEST_PATTERN_ENTRY									\English Selects the type of test pattern that is generated by the device as image source.
-	GX_ENUM_TEST_PATTERN_GENERATOR_SELECTOR = 1018 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,			///< \Chinese ²âÊÔÍ¼Ô´Ñ¡Ôñ£¬²Î¿¼GX_TEST_PATTERN_GENERATOR_SELECTOR_ENTRY		\English Selects which test pattern generator is controlled by the TestPattern feature.
-    GX_ENUM_REGION_SEND_MODE          = 1019 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ROIÊä³öÄ£Ê½, ²Î¿¼GX_REGION_SEND_MODE								\English ROI output mode, see also GX_REGION_SEND_MODE_ENTRY
-    GX_ENUM_REGION_MODE               = 1020 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÇøÓò¿ª¹Ø, ²Î¿¼GX_REGION_MODE										\English zone switch, see also GX_REGION_MODE_ENTRY
-    GX_ENUM_RREGION_SELECTOR          = 1021 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÇøÓòÑ¡Ôñ£¬²Î¿¼GX_RREGION_SELECTOR									\English Selects the Region of interest to control.
-    GX_INT_CENTER_WIDTH               = 1022 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ´°¿Ú¿í¶È															\English width of window
-    GX_INT_CENTER_HEIGHT              = 1023 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ´°¿Ú¸ß¶È															\English height of window
-    GX_ENUM_BINNING_HORIZONTAL_MODE   = 1024 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Ë®Æ½ÏñËØBinningÄ£Ê½,²Î¿¼GX_BINNING_HORIZONTAL_MODE_ENTRY			\English Binning Horizontal mode, see also GX_BINNING_HORIZONTAL_MODE_ENTRY
-    GX_ENUM_BINNING_VERTICAL_MODE     = 1025 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ´¹Ö±ÏñËØBinningÄ£Ê½,²Î¿¼GX_BINNING_VERTICAL_MODE_ENTRY			\English Binning vertical mode, see also GX_BINNING_VERTICAL_MODE_ENTRY
-	GX_ENUM_SENSOR_SHUTTER_MODE		  = 1026 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese SensorÆØ¹âÊ±¼äÄ£Ê½£¬²Î¿¼GX_SENSOR_SHUTTER_MODE_ENTRY				\English Sensor shutter mode, refer to GX_SENSOR_SHUTTER_MODE_ENTRY
-	GX_INT_DECIMATION_LINENUMBER      = 1027 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ³éÑùĞĞÊı															\English decimation line number
-	GX_INT_SENSOR_DECIMATION_HORIZONTAL = 1028 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese SensorË®Æ½ÏñËØ³éÑù												\English Sensor horizontal decimation
-	GX_INT_SENSOR_DECIMATION_VERTICAL   = 1029 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Sensor´¹Ö±ÏñËØ³éÑù												\English Sensor vertical decimation								
-	GX_ENUM_SENSOR_SELECTOR             = 1030 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Ñ¡Ôñµ±Ç°´«¸ĞÆ÷ÀàĞÍ£¬²Î¿¼GX_SENSOR_SELECTOR_ENTRY					\English selector current sonsor, refer to GX_SENSOR_SELECTOR_ENTRY
-	GX_INT_CURRENT_SENSOR_WIDTH         = 1031 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese µ±Ç°´«¸ĞÆ÷Í¼Ïñ¿í¶È												\English current sonsor width
-	GX_INT_CURRENT_SENSOR_HEIGHT        = 1032 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese µ±Ç°´«¸ĞÆ÷Í¼Ïñ¸ß¶È												\English current sonsor height
-	GX_INT_CURRENT_SENSOR_OFFSETX       = 1033 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese µ±Ç°´«¸ĞÆ÷Ë®Æ½Æ«ÒÆ												\English current sonsor offset X
-	GX_INT_CURRENT_SENSOR_OFFSETY       = 1034 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese µ±Ç°´«¸ĞÆ÷´¹Ö±Æ«ÒÆ												\English current sonsor offset Y
-	GX_INT_CURRENT_SENSOR_WIDTHMAX      = 1035 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese µ±Ç°´«¸ĞÆ÷¿í¶È×î´óÖµ												\English current sonsor width max
-	GX_INT_CURRENT_SENSOR_HEIGHTMAX     = 1036 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese µ±Ç°´«¸ĞÆ÷¸ß¶È×î´óÖµ												\English current sonsor height max
-	GX_ENUM_SENSOR_BIT_DEPTH			= 1037 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese SensorÎ»Éî,²Î¿¼GX_SENSOR_BIT_DEPTH_ENTRY							\English Sensor Bit Depth, refer to GX_SENSOR_BIT_DEPTH_ENTRY
-    GX_BOOL_WATERMARK_ENABLE			= 1038 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Ë®Ó¡																\English Watermark
-	GX_ENUM_BINNING_SELECTOR            = 1039 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese BinningÑ¡Ôñ£¬²Î¿¼GX_BINNING_SELECTOR_ENTRY                        \English Binning select, refer to GX_BINNING_SELECTOR_ENTRY
-	
+	GX_INT_SENSOR_WIDTH = 1000 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese ä¼ æ„Ÿå™¨å®½åº¦														\English Effective width of the sensor in pixels.
+	GX_INT_SENSOR_HEIGHT = 1001 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese ä¼ æ„Ÿå™¨é«˜åº¦														\English Effective height of the sensor in pixels.
+	GX_INT_WIDTH_MAX = 1002 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese æœ€å¤§å®½åº¦															\English Maximum width of the image (in pixels).
+	GX_INT_HEIGHT_MAX = 1003 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese æœ€å¤§é«˜åº¦															\English Maximum height of the image (in pixels).
+	GX_INT_OFFSET_X = 1004 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese æ°´å¹³åç§»															\English Horizontal offset from the origin to the region of interest (in pixels).
+	GX_INT_OFFSET_Y = 1005 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese å‚ç›´åç§»															\English Vertical offset from the origin to the region of interest (in pixels).
+	GX_INT_WIDTH = 1006 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese å›¾åƒå®½åº¦															\English Width of the image provided by the device (in pixels).
+	GX_INT_HEIGHT = 1007 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese å›¾åƒé«˜åº¦															\English Height of the image provided by the device (in pixels).
+	GX_INT_BINNING_HORIZONTAL = 1008 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese æ°´å¹³åƒç´ Binning													\English Number of horizontal photo-sensitive cells to combine together.
+	GX_INT_BINNING_VERTICAL = 1009 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese å‚ç›´åƒç´ Binning													\English Number of vertical photo-sensitive cells to combine together.
+	GX_INT_DECIMATION_HORIZONTAL = 1010 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese æ°´å¹³åƒç´ æŠ½æ ·														\English Horizontal sub-sampling of the image.
+	GX_INT_DECIMATION_VERTICAL = 1011 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese å‚ç›´åƒç´ æŠ½æ ·														\English Vertical sub-sampling of the image.
+	GX_ENUM_PIXEL_SIZE = 1012 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese åƒç´ ä½æ·±,å‚è€ƒGX_PIXEL_SIZE_ENTRY									\English Total size in bits of a pixel of the image.
+	GX_ENUM_PIXEL_COLOR_FILTER = 1013 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Bayeræ ¼å¼,å‚è€ƒGX_PIXEL_COLOR_FILTER_ENTRY							\English Type of color filter that is applied to the image.
+	GX_ENUM_PIXEL_FORMAT = 1014 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese åƒç´ æ ¼å¼,å‚è€ƒGX_PIXEL_FORMAT_ENTRY								\English Format of the pixels provided by the device.
+	GX_BOOL_REVERSE_X = 1015 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese æ°´å¹³ç¿»è½¬															\English Flip horizontally the image sent by the device.
+	GX_BOOL_REVERSE_Y = 1016 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese å‚ç›´ç¿»è½¬															\English Flip vertically the image sent by the device.
+	GX_ENUM_TEST_PATTERN = 1017 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese æµ‹è¯•å›¾,å‚è€ƒGX_TEST_PATTERN_ENTRY									\English Selects the type of test pattern that is generated by the device as image source.
+	GX_ENUM_TEST_PATTERN_GENERATOR_SELECTOR = 1018 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese æµ‹è¯•å›¾æºé€‰æ‹©ï¼Œå‚è€ƒGX_TEST_PATTERN_GENERATOR_SELECTOR_ENTRY		\English Selects which test pattern generator is controlled by the TestPattern feature.
+	GX_ENUM_REGION_SEND_MODE = 1019 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ROIè¾“å‡ºæ¨¡å¼, å‚è€ƒGX_REGION_SEND_MODE								\English ROI output mode, see also GX_REGION_SEND_MODE_ENTRY
+	GX_ENUM_REGION_MODE = 1020 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese åŒºåŸŸå¼€å…³, å‚è€ƒGX_REGION_MODE										\English zone switch, see also GX_REGION_MODE_ENTRY
+	GX_ENUM_RREGION_SELECTOR = 1021 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese åŒºåŸŸé€‰æ‹©ï¼Œå‚è€ƒGX_RREGION_SELECTOR									\English Selects the Region of interest to control.
+	GX_INT_CENTER_WIDTH = 1022 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese çª—å£å®½åº¦															\English width of window
+	GX_INT_CENTER_HEIGHT = 1023 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese çª—å£é«˜åº¦															\English height of window
+	GX_ENUM_BINNING_HORIZONTAL_MODE = 1024 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,			///< \Chinese æ°´å¹³åƒç´ Binningæ¨¡å¼,å‚è€ƒGX_BINNING_HORIZONTAL_MODE_ENTRY			\English Binning Horizontal mode, see also GX_BINNING_HORIZONTAL_MODE_ENTRY
+	GX_ENUM_BINNING_VERTICAL_MODE = 1025 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,			///< \Chinese å‚ç›´åƒç´ Binningæ¨¡å¼,å‚è€ƒGX_BINNING_VERTICAL_MODE_ENTRY			\English Binning vertical mode, see also GX_BINNING_VERTICAL_MODE_ENTRY
+	GX_ENUM_SENSOR_SHUTTER_MODE = 1026 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Sensoræ›å…‰æ—¶é—´æ¨¡å¼ï¼Œå‚è€ƒGX_SENSOR_SHUTTER_MODE_ENTRY				\English Sensor shutter mode, refer to GX_SENSOR_SHUTTER_MODE_ENTRY
+	GX_INT_DECIMATION_LINENUMBER = 1027 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese æŠ½æ ·è¡Œæ•°															\English decimation line number
+	GX_INT_SENSOR_DECIMATION_HORIZONTAL = 1028 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese Sensoræ°´å¹³åƒç´ æŠ½æ ·												\English Sensor horizontal decimation
+	GX_INT_SENSOR_DECIMATION_VERTICAL = 1029 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese Sensorå‚ç›´åƒç´ æŠ½æ ·												\English Sensor vertical decimation
+	GX_ENUM_SENSOR_SELECTOR = 1030 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese é€‰æ‹©å½“å‰ä¼ æ„Ÿå™¨ç±»å‹ï¼Œå‚è€ƒGX_SENSOR_SELECTOR_ENTRY					\English selector current sonsor, refer to GX_SENSOR_SELECTOR_ENTRY
+	GX_INT_CURRENT_SENSOR_WIDTH = 1031 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese å½“å‰ä¼ æ„Ÿå™¨å›¾åƒå®½åº¦												\English current sonsor width
+	GX_INT_CURRENT_SENSOR_HEIGHT = 1032 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese å½“å‰ä¼ æ„Ÿå™¨å›¾åƒé«˜åº¦												\English current sonsor height
+	GX_INT_CURRENT_SENSOR_OFFSETX = 1033 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			///< \Chinese å½“å‰ä¼ æ„Ÿå™¨æ°´å¹³åç§»												\English current sonsor offset X
+	GX_INT_CURRENT_SENSOR_OFFSETY = 1034 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			///< \Chinese å½“å‰ä¼ æ„Ÿå™¨å‚ç›´åç§»												\English current sonsor offset Y
+	GX_INT_CURRENT_SENSOR_WIDTHMAX = 1035 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			///< \Chinese å½“å‰ä¼ æ„Ÿå™¨å®½åº¦æœ€å¤§å€¼												\English current sonsor width max
+	GX_INT_CURRENT_SENSOR_HEIGHTMAX = 1036 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			///< \Chinese å½“å‰ä¼ æ„Ÿå™¨é«˜åº¦æœ€å¤§å€¼												\English current sonsor height max
+	GX_ENUM_SENSOR_BIT_DEPTH = 1037 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Sensorä½æ·±,å‚è€ƒGX_SENSOR_BIT_DEPTH_ENTRY							\English Sensor Bit Depth, refer to GX_SENSOR_BIT_DEPTH_ENTRY
+	GX_BOOL_WATERMARK_ENABLE = 1038 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese æ°´å°																\English Watermark
+	GX_ENUM_BINNING_SELECTOR = 1039 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Binningé€‰æ‹©ï¼Œå‚è€ƒGX_BINNING_SELECTOR_ENTRY                        \English Binning select, refer to GX_BINNING_SELECTOR_ENTRY
+
 	//---------------TransportLayer Section-------------------------------
-	GX_INT_PAYLOAD_SIZE                              = 2000 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,  ///< \Chinese Êı¾İ´óĞ¡															\English Provides the number of bytes transferred for each image or chunk on the stream channel. 		
-	GX_BOOL_GEV_CURRENT_IPCONFIGURATION_LLA          = 2001 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese LLA·½Ê½ÅäÖÃIP													\English Controls whether the Link Local Address IP configuration scheme is activated on the given logical link.
-	GX_BOOL_GEV_CURRENT_IPCONFIGURATION_DHCP         = 2002 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese DHCP·½Ê½ÅäÖÃIP													\English Controls whether the DHCP IP configuration scheme is activated on the given logical link.
-	GX_BOOL_GEV_CURRENT_IPCONFIGURATION_PERSISTENTIP = 2003 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese ÓÀ¾ÃIP·½Ê½ÅäÖÃIP													\English Controls whether the PersistentIP configuration scheme is activated on the given logical link.
-	GX_INT_ESTIMATED_BANDWIDTH                       = 2004 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,  ///< \Chinese Ô¤¹À´ø¿í£¬µ¥Î»Bps(Bytes per second)								\English EstimatedBandwidth, Unit: Bps(Bytes per second)
-	GX_INT_GEV_HEARTBEAT_TIMEOUT                     = 2005 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,  ///< \Chinese ĞÄÌø³¬Ê±Ê±¼ä														\English Controls the current heartbeat timeout in milliseconds.
-	GX_INT_GEV_PACKETSIZE                            = 2006 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,  ///< \Chinese Á÷Í¨µÀ°ü³¤														\English Specifies the stream packet size, in bytes, to send on the selected channel for a GVSP transmitter or specifies the maximum packet size supported by a GVSP receiver.
-	GX_INT_GEV_PACKETDELAY                           = 2007 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,  ///< \Chinese Á÷Í¨µÀ°ü¼ä¸ô														\English Controls the delay (in timestamp counter unit) to insert between each packet for this stream channel.
-	GX_INT_GEV_LINK_SPEED                            = 2008 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,  ///< \Chinese Á¬½ÓËÙ¶È															\English It indicates the connection speed in Mbps for the selected network interface.
-	GX_ENUM_DEVICE_TAP_GEOMETRY						 = 2009 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese Éè±¸¼¸ºÎ½á¹¹														\English Equipment geometry
+	GX_INT_PAYLOAD_SIZE = 2000 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,								 ///< \Chinese æ•°æ®å¤§å°															\English Provides the number of bytes transferred for each image or chunk on the stream channel.
+	GX_BOOL_GEV_CURRENT_IPCONFIGURATION_LLA = 2001 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,			 ///< \Chinese LLAæ–¹å¼é…ç½®IP													\English Controls whether the Link Local Address IP configuration scheme is activated on the given logical link.
+	GX_BOOL_GEV_CURRENT_IPCONFIGURATION_DHCP = 2002 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,		 ///< \Chinese DHCPæ–¹å¼é…ç½®IP													\English Controls whether the DHCP IP configuration scheme is activated on the given logical link.
+	GX_BOOL_GEV_CURRENT_IPCONFIGURATION_PERSISTENTIP = 2003 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese æ°¸ä¹…IPæ–¹å¼é…ç½®IP													\English Controls whether the PersistentIP configuration scheme is activated on the given logical link.
+	GX_INT_ESTIMATED_BANDWIDTH = 2004 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						 ///< \Chinese é¢„ä¼°å¸¦å®½ï¼Œå•ä½Bps(Bytes per second)								\English EstimatedBandwidth, Unit: Bps(Bytes per second)
+	GX_INT_GEV_HEARTBEAT_TIMEOUT = 2005 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						 ///< \Chinese å¿ƒè·³è¶…æ—¶æ—¶é—´														\English Controls the current heartbeat timeout in milliseconds.
+	GX_INT_GEV_PACKETSIZE = 2006 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,							 ///< \Chinese æµé€šé“åŒ…é•¿														\English Specifies the stream packet size, in bytes, to send on the selected channel for a GVSP transmitter or specifies the maximum packet size supported by a GVSP receiver.
+	GX_INT_GEV_PACKETDELAY = 2007 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,							 ///< \Chinese æµé€šé“åŒ…é—´éš”														\English Controls the delay (in timestamp counter unit) to insert between each packet for this stream channel.
+	GX_INT_GEV_LINK_SPEED = 2008 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,							 ///< \Chinese è¿æ¥é€Ÿåº¦															\English It indicates the connection speed in Mbps for the selected network interface.
+	GX_ENUM_DEVICE_TAP_GEOMETRY = 2009 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						 ///< \Chinese è®¾å¤‡å‡ ä½•ç»“æ„														\English Equipment geometry
 
 	//---------------AcquisitionTrigger Section---------------------------
-	GX_ENUM_ACQUISITION_MODE          = 3000 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ²É¼¯Ä£Ê½,²Î¿¼GX_ACQUISITION_MODE_ENTRY							\English Sets the acquisition mode of the device.
-	GX_COMMAND_ACQUISITION_START      = 3001 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,			///< \Chinese ¿ªÊ¼²É¼¯															\English Starts the Acquisition of the device.
-	GX_COMMAND_ACQUISITION_STOP       = 3002 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,			///< \Chinese Í£Ö¹²É¼¯															\English Stops the Acquisition of the device at the end of the current Frame.
-	GX_INT_ACQUISITION_SPEED_LEVEL    = 3003 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ²É¼¯ËÙ¶È¼¶±ğ														\English Setting the speed level of acquiring image.
-	GX_INT_ACQUISITION_FRAME_COUNT    = 3004 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ¶àÖ¡²É¼¯Ö¡Êı														\English Number of frames to acquire in MultiFrame Acquisition mode.
-	GX_ENUM_TRIGGER_MODE              = 3005 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ´¥·¢Ä£Ê½,²Î¿¼GX_TRIGGER_MODE_ENTRY								\English Controls if the selected trigger is active.
-	GX_COMMAND_TRIGGER_SOFTWARE       = 3006 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,			///< \Chinese Èí´¥·¢															\English Generates an internal trigger.
-	GX_ENUM_TRIGGER_ACTIVATION        = 3007 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ´¥·¢¼«ĞÔ,²Î¿¼GX_TRIGGER_ACTIVATION_ENTRY							\English Specifies the activation mode of the trigger.
-	GX_ENUM_TRIGGER_SWITCH            = 3008 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Íâ´¥·¢¿ª¹Ø,²Î¿¼GX_TRIGGER_SWITCH_ENTRY							\English Control external trigger signal is valid
-	GX_FLOAT_EXPOSURE_TIME            = 3009 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÆØ¹âÊ±¼ä															\English Sets the Exposure time when ExposureMode is Timed and ExposureAuto is Off.
-	GX_ENUM_EXPOSURE_AUTO             = 3010 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ×Ô¶¯ÆØ¹â,²Î¿¼GX_EXPOSURE_AUTO_ENTRY								\English Sets the automatic exposure mode when ExposureMode is Timed.
-	GX_FLOAT_TRIGGER_FILTER_RAISING   = 3011 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÉÏÉıÑØ´¥·¢ÂË²¨													\English Raising edge signal pulse width is smaller than this value is invalid.
-	GX_FLOAT_TRIGGER_FILTER_FALLING   = 3012 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÏÂ½µÑØ´¥·¢ÂË²¨													\English Falling edge signal pulse width is smaller than this value is invalid.
-	GX_ENUM_TRIGGER_SOURCE            = 3013 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ´¥·¢Ô´,²Î¿¼GX_TRIGGER_SOURCE_ENTRY								\English Specifies the internal signal or physical input Line to use as the trigger source.
-	GX_ENUM_EXPOSURE_MODE             = 3014 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÆØ¹âÄ£Ê½£¬²Î¿¼GX_EXPOSURE_MODE_ENTRY								\English Sets the operation mode of the Exposure (or shutter).
-	GX_ENUM_TRIGGER_SELECTOR          = 3015 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ´¥·¢ÀàĞÍÑ¡Ôñ£¬²Î¿¼GX_TRIGGER_SELECTOR_ENTRY						\English Selects the type of trigger to configure.
-	GX_FLOAT_TRIGGER_DELAY            = 3016 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ´¥·¢ÑÓ³Ù															\English Specifies the delay in microseconds (us) to apply after the trigger reception before activating it.
-	GX_ENUM_TRANSFER_CONTROL_MODE     = 3017 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ´«Êä¿ØÖÆÄ£Ê½£¬²Î¿¼GX_TRANSFER_CONTROL_MODE_ENTRY					\English Selects the control method for the transfers.
-	GX_ENUM_TRANSFER_OPERATION_MODE   = 3018 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ´«Êä²Ù×÷Ä£Ê½£¬²Î¿¼GX_TRANSFER_OPERATION_MODE_ENTRY				\English Selects the operation mode of the transfer.
-	GX_COMMAND_TRANSFER_START         = 3019 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,			///< \Chinese ¿ªÊ¼´«Êä															\English Starts the streaming of data blocks out of the device.
-	GX_INT_TRANSFER_BLOCK_COUNT       = 3020 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ´«ÊäÖ¡Êı¡£														\English frame number of transmission. when set GX_ENUM_TRANSFER_OPERATION_MODE as GX_ENUM_TRANSFER_OPERATION_MODE_MULTIBLOCK, this function is actived
-	GX_BOOL_FRAMESTORE_COVER_ACTIVE   = 3021 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Ö¡´æ¸²¸ÇÊ¹ÄÜ														\English FrameBufferOverwriteActive
-	GX_ENUM_ACQUISITION_FRAME_RATE_MODE     = 3022 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,			///< \Chinese ²É¼¯Ö¡ÂÊµ÷½ÚÄ£Ê½£¬²Î¿¼GX_ACQUISITION_FRAME_RATE_MODE_ENTRY		\English Controls if the acquisitionFrameRate is active
-	GX_FLOAT_ACQUISITION_FRAME_RATE         = 3023 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ²É¼¯Ö¡ÂÊ															\English Controls the acquisition rate (in Hertz) at which the frames are captured.
-	GX_FLOAT_CURRENT_ACQUISITION_FRAME_RATE = 3024 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese µ±Ç°²É¼¯Ö¡ÂÊ														\English Indicates the maximum allowed frame acquisition rate.
-	GX_ENUM_FIXED_PATTERN_NOISE_CORRECT_MODE = 3025  | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese Ä£°åÔëÉùĞ£Õı£¬²Î¿¼GX_FIXED_PATTERN_NOISE_CORRECT_MODE				\English Controls if the FixedPatternNoise is active
-    GX_INT_ACQUISITION_BURST_FRAME_COUNT    = 3030 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			///< \Chinese ¸ßËÙÁ¬ÅÄÖ¡Êı														\English frame number of transmission
-    GX_ENUM_ACQUISITION_STATUS_SELECTOR     = 3031 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,			///< \Chinese ²É¼¯×´Ì¬Ñ¡Ôñ,²Î¿¼GX_ACQUISITION_STATUS_SELECTOR_ENTRY				\English Acquisition status selection
-    GX_BOOL_ACQUISITION_STATUS              = 3032 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,			///< \Chinese ²É¼¯×´Ì¬															\English Acquisition status
-    GX_FLOAT_EXPOSURE_DELAY                 = 30300| GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ÆØ¹âÑÓ³Ù															\English Delay of exposure
-	GX_FLOAT_EXPOSURE_OVERLAP_TIME_MAX      = 30301 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ½»µşÆØ¹âÊ±¼ä×î´óÖµ												\English Maximum overlapping exposure time
-	GX_ENUM_EXPOSURE_TIME_MODE              = 30302 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ÆØ¹âÊ±¼äÄ£Ê½,²Î¿¼GX_EXPOSURE_TIME_MODE_ENTRY						\English Exposure time mode
-	GX_ENUM_ACQUISITION_BURST_MODE          = 30303 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese Í»·¢²É¼¯Ä£Ê½£¬²Î¿¼GX_EXPOSURE_TIME_MODE_ENTRY						\English Burst acquisition mode
-	GX_ENUM_OVERLAP_MODE					= 30304 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ½»µşÄ£Ê½,²Î¿¼GX_OVERLAP_MODE_ENTRY								\English overlap mode,
-	GX_ENUM_MULTISOURCE_SELECTOR			= 30305 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ¶àÔ´´¥·¢Ñ¡Ôñ,²Î¿¼GX_MULTISOURCE_SELECTOR_ENTRY					\English MultiSourceSelector to GX_MULTISOURCE_SELECTOR_ENTRY
-	GX_BOOL_MULTISOURCE_ENABLE				= 30306 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ¶àÔ´´¥·¢Ê¹ÄÜ														\English MultiSource Trigger Enable
-	GX_BOOL_TRIGGER_CACHE_ENABLE			= 30307 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese »º´æ´¥·¢Ê¹ÄÜ														\English Trigger Cache Enable
-        
+	GX_ENUM_ACQUISITION_MODE = 3000 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				 ///< \Chinese é‡‡é›†æ¨¡å¼,å‚è€ƒGX_ACQUISITION_MODE_ENTRY							\English Sets the acquisition mode of the device.
+	GX_COMMAND_ACQUISITION_START = 3001 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,			 ///< \Chinese å¼€å§‹é‡‡é›†															\English Starts the Acquisition of the device.
+	GX_COMMAND_ACQUISITION_STOP = 3002 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,			 ///< \Chinese åœæ­¢é‡‡é›†															\English Stops the Acquisition of the device at the end of the current Frame.
+	GX_INT_ACQUISITION_SPEED_LEVEL = 3003 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			 ///< \Chinese é‡‡é›†é€Ÿåº¦çº§åˆ«														\English Setting the speed level of acquiring image.
+	GX_INT_ACQUISITION_FRAME_COUNT = 3004 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			 ///< \Chinese å¤šå¸§é‡‡é›†å¸§æ•°														\English Number of frames to acquire in MultiFrame Acquisition mode.
+	GX_ENUM_TRIGGER_MODE = 3005 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					 ///< \Chinese è§¦å‘æ¨¡å¼,å‚è€ƒGX_TRIGGER_MODE_ENTRY								\English Controls if the selected trigger is active.
+	GX_COMMAND_TRIGGER_SOFTWARE = 3006 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,			 ///< \Chinese è½¯è§¦å‘															\English Generates an internal trigger.
+	GX_ENUM_TRIGGER_ACTIVATION = 3007 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				 ///< \Chinese è§¦å‘ææ€§,å‚è€ƒGX_TRIGGER_ACTIVATION_ENTRY							\English Specifies the activation mode of the trigger.
+	GX_ENUM_TRIGGER_SWITCH = 3008 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					 ///< \Chinese å¤–è§¦å‘å¼€å…³,å‚è€ƒGX_TRIGGER_SWITCH_ENTRY							\English Control external trigger signal is valid
+	GX_FLOAT_EXPOSURE_TIME = 3009 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,					 ///< \Chinese æ›å…‰æ—¶é—´															\English Sets the Exposure time when ExposureMode is Timed and ExposureAuto is Off.
+	GX_ENUM_EXPOSURE_AUTO = 3010 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					 ///< \Chinese è‡ªåŠ¨æ›å…‰,å‚è€ƒGX_EXPOSURE_AUTO_ENTRY								\English Sets the automatic exposure mode when ExposureMode is Timed.
+	GX_FLOAT_TRIGGER_FILTER_RAISING = 3011 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,		 ///< \Chinese ä¸Šå‡æ²¿è§¦å‘æ»¤æ³¢													\English Raising edge signal pulse width is smaller than this value is invalid.
+	GX_FLOAT_TRIGGER_FILTER_FALLING = 3012 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,		 ///< \Chinese ä¸‹é™æ²¿è§¦å‘æ»¤æ³¢													\English Falling edge signal pulse width is smaller than this value is invalid.
+	GX_ENUM_TRIGGER_SOURCE = 3013 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					 ///< \Chinese è§¦å‘æº,å‚è€ƒGX_TRIGGER_SOURCE_ENTRY								\English Specifies the internal signal or physical input Line to use as the trigger source.
+	GX_ENUM_EXPOSURE_MODE = 3014 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					 ///< \Chinese æ›å…‰æ¨¡å¼ï¼Œå‚è€ƒGX_EXPOSURE_MODE_ENTRY								\English Sets the operation mode of the Exposure (or shutter).
+	GX_ENUM_TRIGGER_SELECTOR = 3015 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				 ///< \Chinese è§¦å‘ç±»å‹é€‰æ‹©ï¼Œå‚è€ƒGX_TRIGGER_SELECTOR_ENTRY						\English Selects the type of trigger to configure.
+	GX_FLOAT_TRIGGER_DELAY = 3016 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,					 ///< \Chinese è§¦å‘å»¶è¿Ÿ															\English Specifies the delay in microseconds (us) to apply after the trigger reception before activating it.
+	GX_ENUM_TRANSFER_CONTROL_MODE = 3017 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,			 ///< \Chinese ä¼ è¾“æ§åˆ¶æ¨¡å¼ï¼Œå‚è€ƒGX_TRANSFER_CONTROL_MODE_ENTRY					\English Selects the control method for the transfers.
+	GX_ENUM_TRANSFER_OPERATION_MODE = 3018 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,			 ///< \Chinese ä¼ è¾“æ“ä½œæ¨¡å¼ï¼Œå‚è€ƒGX_TRANSFER_OPERATION_MODE_ENTRY				\English Selects the operation mode of the transfer.
+	GX_COMMAND_TRANSFER_START = 3019 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,			 ///< \Chinese å¼€å§‹ä¼ è¾“															\English Starts the streaming of data blocks out of the device.
+	GX_INT_TRANSFER_BLOCK_COUNT = 3020 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				 ///< \Chinese ä¼ è¾“å¸§æ•°ã€‚														\English frame number of transmission. when set GX_ENUM_TRANSFER_OPERATION_MODE as GX_ENUM_TRANSFER_OPERATION_MODE_MULTIBLOCK, this function is actived
+	GX_BOOL_FRAMESTORE_COVER_ACTIVE = 3021 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,			 ///< \Chinese å¸§å­˜è¦†ç›–ä½¿èƒ½														\English FrameBufferOverwriteActive
+	GX_ENUM_ACQUISITION_FRAME_RATE_MODE = 3022 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		 ///< \Chinese é‡‡é›†å¸§ç‡è°ƒèŠ‚æ¨¡å¼ï¼Œå‚è€ƒGX_ACQUISITION_FRAME_RATE_MODE_ENTRY		\English Controls if the acquisitionFrameRate is active
+	GX_FLOAT_ACQUISITION_FRAME_RATE = 3023 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,		 ///< \Chinese é‡‡é›†å¸§ç‡															\English Controls the acquisition rate (in Hertz) at which the frames are captured.
+	GX_FLOAT_CURRENT_ACQUISITION_FRAME_RATE = 3024 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese å½“å‰é‡‡é›†å¸§ç‡														\English Indicates the maximum allowed frame acquisition rate.
+	GX_ENUM_FIXED_PATTERN_NOISE_CORRECT_MODE = 3025 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese æ¨¡æ¿å™ªå£°æ ¡æ­£ï¼Œå‚è€ƒGX_FIXED_PATTERN_NOISE_CORRECT_MODE				\English Controls if the FixedPatternNoise is active
+	GX_INT_ACQUISITION_BURST_FRAME_COUNT = 3030 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		 ///< \Chinese é«˜é€Ÿè¿æ‹å¸§æ•°														\English frame number of transmission
+	GX_ENUM_ACQUISITION_STATUS_SELECTOR = 3031 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		 ///< \Chinese é‡‡é›†çŠ¶æ€é€‰æ‹©,å‚è€ƒGX_ACQUISITION_STATUS_SELECTOR_ENTRY				\English Acquisition status selection
+	GX_BOOL_ACQUISITION_STATUS = 3032 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,				 ///< \Chinese é‡‡é›†çŠ¶æ€															\English Acquisition status
+	GX_FLOAT_EXPOSURE_DELAY = 30300 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,				 ///< \Chinese æ›å…‰å»¶è¿Ÿ															\English Delay of exposure
+	GX_FLOAT_EXPOSURE_OVERLAP_TIME_MAX = 30301 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,	 ///< \Chinese äº¤å æ›å…‰æ—¶é—´æœ€å¤§å€¼												\English Maximum overlapping exposure time
+	GX_ENUM_EXPOSURE_TIME_MODE = 30302 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				 ///< \Chinese æ›å…‰æ—¶é—´æ¨¡å¼,å‚è€ƒGX_EXPOSURE_TIME_MODE_ENTRY						\English Exposure time mode
+	GX_ENUM_ACQUISITION_BURST_MODE = 30303 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,			 ///< \Chinese çªå‘é‡‡é›†æ¨¡å¼ï¼Œå‚è€ƒGX_EXPOSURE_TIME_MODE_ENTRY						\English Burst acquisition mode
+	GX_ENUM_OVERLAP_MODE = 30304 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					 ///< \Chinese äº¤å æ¨¡å¼,å‚è€ƒGX_OVERLAP_MODE_ENTRY								\English overlap mode,
+	GX_ENUM_MULTISOURCE_SELECTOR = 30305 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,			 ///< \Chinese å¤šæºè§¦å‘é€‰æ‹©,å‚è€ƒGX_MULTISOURCE_SELECTOR_ENTRY					\English MultiSourceSelector to GX_MULTISOURCE_SELECTOR_ENTRY
+	GX_BOOL_MULTISOURCE_ENABLE = 30306 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,				 ///< \Chinese å¤šæºè§¦å‘ä½¿èƒ½														\English MultiSource Trigger Enable
+	GX_BOOL_TRIGGER_CACHE_ENABLE = 30307 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,			 ///< \Chinese ç¼“å­˜è§¦å‘ä½¿èƒ½														\English Trigger Cache Enable
+
 	//----------------DigitalIO Section----------------------------------
-	GX_ENUM_USER_OUTPUT_SELECTOR      = 4000 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÓÃ»§×Ô¶¨ÒåÊä³öÑ¡Ôñ,²Î¿¼GX_USER_OUTPUT_SELECTOR_ENTRY				\English Selects which bit of the User Output register will be set by UserOutputValue.
-	GX_BOOL_USER_OUTPUT_VALUE         = 4001 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÓÃ»§×Ô¶¨ÒåÊä³öÖµ													\English Sets the value of the bit selected by UserOutputSelector.
-	GX_ENUM_USER_OUTPUT_MODE          = 4002 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÓÃ»§IOÊä³öÄ£Ê½,²Î¿¼GX_USER_OUTPUT_MODE_ENTRY						\English Output signal can be used for different purposes, flash or a user-defined constant level
-	GX_ENUM_STROBE_SWITCH             = 4003 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÉÁ¹âµÆ¿ª¹Ø,²Î¿¼GX_STROBE_SWITCH_ENTRY								\English Set the flash light switch
-	GX_ENUM_LINE_SELECTOR             = 4004 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Òı½ÅÑ¡Ôñ,²Î¿¼GX_LINE_SELECTOR_ENTRY								\English Selects the physical line (or pin) of the external device connector to configure.
-	GX_ENUM_LINE_MODE                 = 4005 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Òı½Å·½Ïò,²Î¿¼GX_LINE_MODE_ENTRY									\English Controls if the physical Line is used to Input or Output a signal.
-	GX_BOOL_LINE_INVERTER             = 4006 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Òı½ÅµçÆ½·´×ª														\English Controls the inversion of the signal of the selected input or output Line.
-	GX_ENUM_LINE_SOURCE               = 4007 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Òı½ÅÊä³öÔ´,²Î¿¼GX_LINE_SOURCE_ENTRY								\English Selects which internal acquisition or I/O source signal to output on the selected Line.
-	GX_BOOL_LINE_STATUS               = 4008 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Òı½Å×´Ì¬															\English Returns the current status of the selected input or output Line.
-	GX_INT_LINE_STATUS_ALL            = 4009 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ËùÓĞÒı½ÅµÄ×´Ì¬													\English Returns the current status of all available Line signals at time of polling in a single bit field.
-    GX_FLOAT_PULSE_WIDTH              = 4010 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÓÃ»§×Ô¶¨ÒåÂö³å¿í¶È												\English User-defined pulse width
-    GX_INT_LINE_RANGE                 = 4011 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÉÁ¹âµÆÂö¿í														\English flash line ragne
-    GX_INT_LINE_DELAY                 = 4012 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÉÁ¹âµÆÑÓ³Ù														\English flash line delay
-	GX_INT_LINE_FILTER_RAISING_EDGE   = 4013 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Òı½ÅÉÏÉıÑØÂË²¨													\English Pin rising edge filtering
-	GX_INT_LINE_FILTER_FALLING_EDGE   = 4014 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Òı½ÅÏÂ½µÑØÂË²¨													\English Pin falling edge filtering
+	GX_ENUM_USER_OUTPUT_SELECTOR = 4000 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,   ///< \Chinese ç”¨æˆ·è‡ªå®šä¹‰è¾“å‡ºé€‰æ‹©,å‚è€ƒGX_USER_OUTPUT_SELECTOR_ENTRY				\English Selects which bit of the User Output register will be set by UserOutputValue.
+	GX_BOOL_USER_OUTPUT_VALUE = 4001 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,	   ///< \Chinese ç”¨æˆ·è‡ªå®šä¹‰è¾“å‡ºå€¼													\English Sets the value of the bit selected by UserOutputSelector.
+	GX_ENUM_USER_OUTPUT_MODE = 4002 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,	   ///< \Chinese ç”¨æˆ·IOè¾“å‡ºæ¨¡å¼,å‚è€ƒGX_USER_OUTPUT_MODE_ENTRY						\English Output signal can be used for different purposes, flash or a user-defined constant level
+	GX_ENUM_STROBE_SWITCH = 4003 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		   ///< \Chinese é—ªå…‰ç¯å¼€å…³,å‚è€ƒGX_STROBE_SWITCH_ENTRY								\English Set the flash light switch
+	GX_ENUM_LINE_SELECTOR = 4004 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		   ///< \Chinese å¼•è„šé€‰æ‹©,å‚è€ƒGX_LINE_SELECTOR_ENTRY								\English Selects the physical line (or pin) of the external device connector to configure.
+	GX_ENUM_LINE_MODE = 4005 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,			   ///< \Chinese å¼•è„šæ–¹å‘,å‚è€ƒGX_LINE_MODE_ENTRY									\English Controls if the physical Line is used to Input or Output a signal.
+	GX_BOOL_LINE_INVERTER = 4006 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,		   ///< \Chinese å¼•è„šç”µå¹³åè½¬														\English Controls the inversion of the signal of the selected input or output Line.
+	GX_ENUM_LINE_SOURCE = 4007 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,			   ///< \Chinese å¼•è„šè¾“å‡ºæº,å‚è€ƒGX_LINE_SOURCE_ENTRY								\English Selects which internal acquisition or I/O source signal to output on the selected Line.
+	GX_BOOL_LINE_STATUS = 4008 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,			   ///< \Chinese å¼•è„šçŠ¶æ€															\English Returns the current status of the selected input or output Line.
+	GX_INT_LINE_STATUS_ALL = 4009 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		   ///< \Chinese æ‰€æœ‰å¼•è„šçš„çŠ¶æ€													\English Returns the current status of all available Line signals at time of polling in a single bit field.
+	GX_FLOAT_PULSE_WIDTH = 4010 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,		   ///< \Chinese ç”¨æˆ·è‡ªå®šä¹‰è„‰å†²å®½åº¦												\English User-defined pulse width
+	GX_INT_LINE_RANGE = 4011 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			   ///< \Chinese é—ªå…‰ç¯è„‰å®½														\English flash line ragne
+	GX_INT_LINE_DELAY = 4012 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			   ///< \Chinese é—ªå…‰ç¯å»¶è¿Ÿ														\English flash line delay
+	GX_INT_LINE_FILTER_RAISING_EDGE = 4013 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese å¼•è„šä¸Šå‡æ²¿æ»¤æ³¢													\English Pin rising edge filtering
+	GX_INT_LINE_FILTER_FALLING_EDGE = 4014 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese å¼•è„šä¸‹é™æ²¿æ»¤æ³¢													\English Pin falling edge filtering
 
 	//----------------AnalogControls Section----------------------------
-	GX_ENUM_GAIN_AUTO                 = 5000 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ×Ô¶¯ÔöÒæ,²Î¿¼GX_GAIN_AUTO_ENTRY									\English Sets the automatic gain control (AGC) mode.
-	GX_ENUM_GAIN_SELECTOR             = 5001 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÔöÒæÍ¨µÀÑ¡Ôñ,²Î¿¼GX_GAIN_SELECTOR_ENTRY							\English Selects which Gain is controlled by the various Gain features.	
-	GX_ENUM_BLACKLEVEL_AUTO           = 5003 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ×Ô¶¯ºÚµçÆ½,²Î¿¼GX_BLACKLEVEL_AUTO_ENTRY							\English Controls the mode for automatic black level adjustment.
-	GX_ENUM_BLACKLEVEL_SELECTOR       = 5004 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ºÚµçÆ½Í¨µÀÑ¡Ôñ,²Î¿¼GX_BLACKLEVEL_SELECTOR_ENTRY					\English Selects which Black Level is controlled by the various Black Level features.	
-	GX_ENUM_BALANCE_WHITE_AUTO        = 5006 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ×Ô¶¯°×Æ½ºâ,²Î¿¼GX_BALANCE_WHITE_AUTO_ENTRY						\English Controls the mode for automatic white balancing between the color channels.
-	GX_ENUM_BALANCE_RATIO_SELECTOR    = 5007 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese °×Æ½ºâÍ¨µÀÑ¡Ôñ,²Î¿¼GX_BALANCE_RATIO_SELECTOR_ENTRY				\English Selects which Balance ratio to control.
-	GX_FLOAT_BALANCE_RATIO            = 5008 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese °×Æ½ºâÏµÊı														\English Controls ratio of the selected color component to a reference color component.
-	GX_ENUM_COLOR_CORRECT             = 5009 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÑÕÉ«Ğ£Õı,²Î¿¼GX_COLOR_CORRECT_ENTRY								\English Color correction
-	GX_ENUM_DEAD_PIXEL_CORRECT        = 5010 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese »µµãĞ£Õı,²Î¿¼GX_DEAD_PIXEL_CORRECT_ENTRY							\English The dead pixel correct function can eliminate dead pixels in the image
-	GX_FLOAT_GAIN                     = 5011 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÔöÒæ																\English The value is an float value that sets the selected gain control in units specific to the camera.
-	GX_FLOAT_BLACKLEVEL               = 5012 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ºÚµçÆ½															\English Controls the analog black level as an absolute physical value.
-    GX_BOOL_GAMMA_ENABLE              = 5013 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese GammaÊ¹ÄÜ															\English Enable bit of Gamma
-    GX_ENUM_GAMMA_MODE                = 5014 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese GammaÄ£Ê½,²Î¿¼GX_GAMMA_MODE_ENTRY									\English Gamma select
-    GX_FLOAT_GAMMA                    = 5015 | GX_FEATURE_FLOAT| GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Gamma																\English Gamma
-	GX_INT_DIGITAL_SHIFT			  = 5016 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese bit select														\English bit select
-	GX_ENUM_LIGHT_SOURCE_PRESET       = 5017 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese »·¾³¹âÔ´Ô¤Éè,²Î¿¼GX_LIGHT_SOURCE_PRESET_ENTRY						\English Ambient Light Presets
-	GX_BOOL_BLACKLEVEL_CALIB_STATUS   = 5018 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ºÚµçÆ½±ê¶¨×´Ì¬													\English BlackLevelCalibStatus
-	GX_INT_BLACKLEVEL_CALIB_VALUE     = 5019 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ºÚµçÆ½±ê¶¨Öµ														\English BlackLevelCalibValue
-	GX_FLOAT_PGA_GAIN                 = 5020 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese PGAGainÔöÒæ														\English PGAGain
-	GX_INT_FIXED_PATTERN_NOISE_CORRECT_RATIO   = 5021 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese Ä£°åÔëÉùĞ£ÕıÏµÊı                                                  \English Template noise correction coefficient
+	GX_ENUM_GAIN_AUTO = 5000 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese è‡ªåŠ¨å¢ç›Š,å‚è€ƒGX_GAIN_AUTO_ENTRY									\English Sets the automatic gain control (AGC) mode.
+	GX_ENUM_GAIN_SELECTOR = 5001 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese å¢ç›Šé€šé“é€‰æ‹©,å‚è€ƒGX_GAIN_SELECTOR_ENTRY							\English Selects which Gain is controlled by the various Gain features.
+	GX_ENUM_BLACKLEVEL_AUTO = 5003 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese è‡ªåŠ¨é»‘ç”µå¹³,å‚è€ƒGX_BLACKLEVEL_AUTO_ENTRY							\English Controls the mode for automatic black level adjustment.
+	GX_ENUM_BLACKLEVEL_SELECTOR = 5004 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese é»‘ç”µå¹³é€šé“é€‰æ‹©,å‚è€ƒGX_BLACKLEVEL_SELECTOR_ENTRY					\English Selects which Black Level is controlled by the various Black Level features.
+	GX_ENUM_BALANCE_WHITE_AUTO = 5006 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese è‡ªåŠ¨ç™½å¹³è¡¡,å‚è€ƒGX_BALANCE_WHITE_AUTO_ENTRY						\English Controls the mode for automatic white balancing between the color channels.
+	GX_ENUM_BALANCE_RATIO_SELECTOR = 5007 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,			///< \Chinese ç™½å¹³è¡¡é€šé“é€‰æ‹©,å‚è€ƒGX_BALANCE_RATIO_SELECTOR_ENTRY				\English Selects which Balance ratio to control.
+	GX_FLOAT_BALANCE_RATIO = 5008 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ç™½å¹³è¡¡ç³»æ•°														\English Controls ratio of the selected color component to a reference color component.
+	GX_ENUM_COLOR_CORRECT = 5009 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese é¢œè‰²æ ¡æ­£,å‚è€ƒGX_COLOR_CORRECT_ENTRY								\English Color correction
+	GX_ENUM_DEAD_PIXEL_CORRECT = 5010 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese åç‚¹æ ¡æ­£,å‚è€ƒGX_DEAD_PIXEL_CORRECT_ENTRY							\English The dead pixel correct function can eliminate dead pixels in the image
+	GX_FLOAT_GAIN = 5011 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese å¢ç›Š																\English The value is an float value that sets the selected gain control in units specific to the camera.
+	GX_FLOAT_BLACKLEVEL = 5012 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese é»‘ç”µå¹³															\English Controls the analog black level as an absolute physical value.
+	GX_BOOL_GAMMA_ENABLE = 5013 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese Gammaä½¿èƒ½															\English Enable bit of Gamma
+	GX_ENUM_GAMMA_MODE = 5014 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese Gammaæ¨¡å¼,å‚è€ƒGX_GAMMA_MODE_ENTRY									\English Gamma select
+	GX_FLOAT_GAMMA = 5015 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese Gamma																\English Gamma
+	GX_INT_DIGITAL_SHIFT = 5016 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese bit select														\English bit select
+	GX_ENUM_LIGHT_SOURCE_PRESET = 5017 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ç¯å¢ƒå…‰æºé¢„è®¾,å‚è€ƒGX_LIGHT_SOURCE_PRESET_ENTRY						\English Ambient Light Presets
+	GX_BOOL_BLACKLEVEL_CALIB_STATUS = 5018 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,			///< \Chinese é»‘ç”µå¹³æ ‡å®šçŠ¶æ€													\English BlackLevelCalibStatus
+	GX_INT_BLACKLEVEL_CALIB_VALUE = 5019 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			///< \Chinese é»‘ç”µå¹³æ ‡å®šå€¼														\English BlackLevelCalibValue
+	GX_FLOAT_PGA_GAIN = 5020 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese PGAGainå¢ç›Š														\English PGAGain
+	GX_INT_FIXED_PATTERN_NOISE_CORRECT_RATIO = 5021 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese æ¨¡æ¿å™ªå£°æ ¡æ­£ç³»æ•°                                                  \English Template noise correction coefficient
 
 	//---------------CustomFeature Section-------------------------
-	GX_INT_ADC_LEVEL                  = 6000 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese AD×ª»»¼¶±ğ														\English When the pixel size is not 8bits, this function can be used to choose 8bits form 10bits or 12bit for show image.
-	GX_INT_H_BLANKING                 = 6001 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Ë®Æ½ÏûÒş															\English Horizontal blanking
-	GX_INT_V_BLANKING                 = 6002 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ´¹Ö±ÏûÒş															\English Vertical blanking
-	GX_STRING_USER_PASSWORD           = 6003 | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÓÃ»§¼ÓÃÜÇøÃÜÂë													\English user password
-	GX_STRING_VERIFY_PASSWORD         = 6004 | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÓÃ»§¼ÓÃÜÇøĞ£ÑéÃÜÂë												\English verify password
-	GX_BUFFER_USER_DATA               = 6005 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÓÃ»§¼ÓÃÜÇøÄÚÈİ													\English user data
-	GX_INT_GRAY_VALUE                 = 6006 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÆÚÍû»Ò¶ÈÖµ														\English ExpectedGrayValue_InqIsImplemented
-	GX_ENUM_AA_LIGHT_ENVIRONMENT      = 6007 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ×Ô¶¯ÆØ¹â¡¢×Ô¶¯ÔöÒæ£¬¹âÕÕ»·¾³ÀàĞÍ,²Î¿¼GX_AA_LIGHT_ENVIRMENT_ENTRY	\English Automatic function according to the external light conditions better for accommodation
-	GX_INT_AAROI_OFFSETX              = 6008 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ×Ô¶¯µ÷½Ú¸ĞĞËÈ¤ÇøÓòX×ø±ê											\English This value sets the X offset (left offset) for the rect of interest in pixels for 2A, i.e., the distance in pixels between the left side of the image area and the left side of the AAROI.
-	GX_INT_AAROI_OFFSETY              = 6009 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ×Ô¶¯µ÷½Ú¸ĞĞËÈ¤ÇøÓòY×ø±ê											\English This value sets the Y offset (top offset) for the rect of interest for 2A, i.e., the distance in pixels between the top of the image area and the top of the AAROI.
-	GX_INT_AAROI_WIDTH                = 6010 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ×Ô¶¯µ÷½Ú¸ĞĞËÈ¤ÇøÓò¿í¶È											\English This value sets the width of the rect of interest in pixels for 2A.
-	GX_INT_AAROI_HEIGHT               = 6011 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ×Ô¶¯µ÷½Ú¸ĞĞËÈ¤ÇøÓò¸ß¶È											\English This value sets the height of the rect of interest in pixels for 2A.
-	GX_FLOAT_AUTO_GAIN_MIN            = 6012 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ×Ô¶¯ÔöÒæ×îĞ¡Öµ													\English Setting up automatic gain range of minimum. When the gain is set to auto mode, this function works.
-	GX_FLOAT_AUTO_GAIN_MAX            = 6013 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ×Ô¶¯ÔöÒæ×î´óÖµ													\English Setting up automatic gain range of maximum. When the gain is set to auto mode, this function works.
-	GX_FLOAT_AUTO_EXPOSURE_TIME_MIN   = 6014 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ×Ô¶¯ÆØ¹â×îĞ¡Öµ													\English Setting up automatic shutter range of minimum. When the shutter is set to auto mode, this function works.
-	GX_FLOAT_AUTO_EXPOSURE_TIME_MAX   = 6015 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ×Ô¶¯ÆØ¹â×î´óÖµ													\English Setting up automatic shutter range of maximum. When the shutter is set to auto mode, this function works.
-	GX_BUFFER_FRAME_INFORMATION       = 6016 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Í¼ÏñÖ¡ĞÅÏ¢														\English FrameInformation
-	GX_INT_CONTRAST_PARAM             = 6017 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ¶Ô±È¶È²ÎÊı														\English Contrast parameter
-	GX_FLOAT_GAMMA_PARAM              = 6018 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Ù¤Âí²ÎÊı															\English Gamma parameter
-	GX_INT_COLOR_CORRECTION_PARAM     = 6019 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÑÕÉ«Ğ£ÕıÏµÊı														\English Color correction coefficient
-	GX_ENUM_IMAGE_GRAY_RAISE_SWITCH   = 6020 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Í¼ÏñÁÁ¶ÈÀ­Éì¿ª¹Ø,²Î¿¼GX_IMAGE_GRAY_RAISE_SWITCH_ENTRY				\English Control ImageGrayRaise is valid
-	GX_ENUM_AWB_LAMP_HOUSE            = 6021 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ×Ô¶¯°×Æ½ºâ¹âÔ´,²Î¿¼GX_AWB_LAMP_HOUSE_ENTRY						\English Refers to the AWB working environment
-	GX_INT_AWBROI_OFFSETX             = 6022 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ×Ô¶¯°×Æ½ºâ¸ĞĞËÈ¤ÇøÓòX×ø±ê											\English This value sets the X offset (left offset) for the rect of interest in pixels for Auto WhiteBalance
-	GX_INT_AWBROI_OFFSETY             = 6023 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ×Ô¶¯°×Æ½ºâ¸ĞĞËÈ¤ÇøÓòY×ø±ê											\English This value sets the Y offset (top offset) for the rect of interest for Auto WhiteBalance
-	GX_INT_AWBROI_WIDTH               = 6024 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ×Ô¶¯°×Æ½ºâ¸ĞĞËÈ¤ÇøÓò¿í¶È											\English This value sets the width of the rect of interest in pixels for Auto WhiteBalance
-	GX_INT_AWBROI_HEIGHT              = 6025 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ×Ô¶¯°×Æ½ºâ¸ĞĞËÈ¤ÇøÓò¸ß¶È											\English This value sets the height of the rect of interest in pixels for Auto WhiteBalance
-	GX_ENUM_SHARPNESS_MODE            = 6026 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Èñ»¯Ä£Ê½,²Î¿¼GX_SHARPNESS_MODE_ENTRY								\English Sharpening mode
-	GX_FLOAT_SHARPNESS                = 6027 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Èñ¶È																\English Sharpness
-	GX_ENUM_USER_DATA_FILED_SELECTOR  = 6028 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÓÃ»§Ñ¡ÔñFlashÊı¾İÇøÓò£¬²Î¿¼GX_USER_DATA_FILED_SELECTOR_ENTRY		\English User selects Flash data area
-	GX_BUFFER_USER_DATA_FILED_VALUE   = 6029 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÓÃ»§ÇøÄÚÈİ														\English User Area Content              
-	GX_ENUM_FLAT_FIELD_CORRECTION     = 6030 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Æ½³¡Ğ£Õı¿ª¹Ø,²Î¿¼GX_FLAT_FIELD_CORRECTION_ENTRY					\English Flat field correction switch
-	GX_ENUM_NOISE_REDUCTION_MODE      = 6031 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ½µÔë¿ª¹Ø,²Î¿¼GX_NOISE_REDUCTION_MODE_ENTRY						\English Noise reduction switch
-	GX_FLOAT_NOISE_REDUCTION          = 6032 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ½µÔë																\English Noise reduction
-	GX_BUFFER_FFCLOAD				  = 6033 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese »ñÈ¡Æ½³¡Ğ£Õı²ÎÊı													\English Obtain flat field correction parameters
-	GX_BUFFER_FFCSAVE				  = 6034 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ±£´æÆ½³¡Ğ£Õı²ÎÊı													\English Set flat field correction parameters
-	GX_ENUM_STATIC_DEFECT_CORRECTION  = 6035 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ¾²Ì¬»µµãĞ£Õı£¬²Î¿¼GX_ENUM_STATIC_DEFECT_CORRECTION_ENTRY			\English Static bad point correction
-    GX_ENUM_2D_NOISE_REDUCTION_MODE   = 6036 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese 2D½µÔëÄ£Ê½,²Î¿¼GX_2D_NOISE_REDUCTION_MODE_ENTRY					\English 2d noise reduction mode 
-    GX_ENUM_3D_NOISE_REDUCTION_MODE   = 6037 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese 3D½µÔëÄ£Ê½,²Î¿¼GX_3D_NOISE_REDUCTION_MODE_ENTRY					\English 3d noise reduction mode 
-    GX_COMMAND_CLOSE_ISP              = 6038 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,			///< \Chinese ¹Ø±ÕISP															\English Close ISP
-    GX_BUFFER_STATIC_DEFECT_CORRECTION_VALUE_ALL           = 6039 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese ¾²Ì¬»µµãĞ£ÕıÖµ£¬²Î¿¼GX_BUFFER_FFCSAVE					\English static defect conrrection value Refer to GX_BUFFER_FFCSAVE
-    GX_BUFFER_STATIC_DEFECT_CORRECTION_FLASH_VALUE         = 6040 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese ¾²Ì¬»µµãĞ£ÕıflashÖµ£¬²Î¿¼GX_BUFFER_FFCSAVE			\English static defect conrrection flash value Refer to GX_BUFFER_FFCSAVE
-    GX_INT_STATIC_DEFECT_CORRECTION_FINISH                 = 6041 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ¾²Ì¬»µµãĞ£Õı½áÊø£¬²Î¿¼GX_INT_AWBROI_HEIGHT			\English static defect conrrection finish Refer to GX_INT_AWBROI_HEIGHT
-    GX_BUFFER_STATIC_DEFECT_CORRECTION_INFO                = 6042 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese ¾²Ì¬»µµãĞ£ÕıĞÅÏ¢£¬²Î¿¼GX_BUFFER_FFCSAVE				\English static defect conrrection Info Refer to GX_BUFFER_FFCSAVE
-	GX_COMMAND_STRIP_CALIBRATION_START                     = 6043 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese ¿ªÊ¼ÌõÎÆ±ê¶¨											\English Starts the strip calibration
-	GX_COMMAND_STRIP_CALIBRATION_STOP                      = 6044 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese ½áÊøÌõÎÆ±ê¶¨											\English Ready to stop the strip calibration
-	GX_BUFFER_USER_DATA_FILED_VALUE_ALL					   = 6045 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese Á¬ĞøÓÃ»§ÇøÄÚÈİ										\English Continuous user area content 
-	GX_ENUM_SHADING_CORRECTION_MODE					       = 6046 | GX_FEATURE_ENUM    | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese Ã÷°µĞ£ÕıÄ£Ê½											\English Shade correction mode
-	GX_COMMAND_FFC_GENERATE                                = 6047 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese Éú³ÉÆ½³¡Ğ£ÕıÏµÊı										\English Generate flat field correction factor
-	GX_ENUM_FFC_GENERATE_STATUS							   = 6048 | GX_FEATURE_ENUM    | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese Æ½³¡Ğ£Õı×´Ì¬											\English Level-field correction status
-	GX_ENUM_FFC_EXPECTED_GRAY_VALUE_ENABLE			       = 6049 | GX_FEATURE_ENUM    | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese Æ½³¡Ğ£ÕıÆÚÍû»Ò¶ÈÖµÊ¹ÄÜ								\English Level-field correction expected gray value enable
-	GX_INT_FFC_EXPECTED_GRAY						       = 6050 | GX_FEATURE_INT     | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese Æ½³¡Ğ£ÕıÆÚÍû»Ò¶ÈÖµ									\English Flat-field correction expected gray value
-	GX_INT_FFC_COEFFICIENTS_SIZE                           = 6051 | GX_FEATURE_INT     | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese Æ½³¡Ğ£ÕıÏµÊı´óĞ¡										\English Level-field correction factor size
-	GX_BUFFER_FFC_VALUE_ALL							       = 6052 | GX_FEATURE_BUFFER  | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese Æ½³¡Ğ£ÕıÖµ											\English Level-field correction value
-	GX_ENUM_DSNU_SELECTOR							       = 6053 | GX_FEATURE_ENUM    | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese °µ³¡Ğ£ÕıÏµÊıÑ¡Ôñ										\English Selection of dark field correction coefficient
-	GX_COMMAND_DSNU_GENERATE                               = 6054 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese Éú³É°µ³¡Ğ£ÕıÏµÊı										\English Generate dark field correction factor
-	GX_ENUM_DSNU_GENERATE_STATUS						   = 6055 | GX_FEATURE_ENUM    | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese °µ³¡Ğ£Õı×´Ì¬											\English Dark field correction status
-	GX_COMMAND_DSNU_SAVE                                   = 6056 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese ±£´æ°µ³¡Ğ£ÕıÏµÊı										\English Save dark-field correction factor
-	GX_COMMAND_DSNU_LOAD                                   = 6057 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese ¼ÓÔØ°µ³¡Ğ£ÕıÏµÊı										\English Load dark-field correction factor
-	GX_ENUM_PRNU_SELECTOR							       = 6058 | GX_FEATURE_ENUM    | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese Ã÷³¡Ğ£ÕıÏµÊıÑ¡Ôñ										\English Selection of bright field correction coefficient
-	GX_COMMAND_PRNU_GENERATE                               = 6059 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese Éú³ÉÃ÷³¡Ğ£ÕıÏµÊı										\English Generate bright field correction factor
-	GX_ENUM_PRNU_GENERATE_STATUS						   = 6060 | GX_FEATURE_ENUM    | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese Ã÷³¡Ğ£Õı×´Ì¬											\English Bright-field correction status
-	GX_COMMAND_PRNU_SAVE                                   = 6061 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese ±£´æÃ÷³¡Ğ£ÕıÏµÊı										\English Save the bright field correction factor
-	GX_COMMAND_PRNU_LOAD                                   = 6062 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese ¼ÓÔØÃ÷³¡Ğ£ÕıÏµÊı										\English Loaded open field correction factor
-	GX_FLOAT_SHARPNESS_NOISE_SUPPRESSION_THRESHOLD         = 6063 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese Èñ»¯ÔëÉùÒÖÖÆãĞÖµ										\English Sharpening noise suppression threshold
-	GX_INT_STATIC_DEFECT_CORRECTION_CALIB_STATUS		   = 6064 | GX_FEATURE_INT		| GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese ¾²Ì¬»µµã±ê¶¨×´Ì¬										\English Static bad point calibration status
-	GX_INT_FFC_FACTORY_STATUS							   = 6065 | GX_FEATURE_INT		| GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese Æ½³¡Ğ£Õı×´Ì¬¼ì²â										\English Level-field correction status detection
-	GX_INT_DSNU_FACTORY_STATUS							   = 6066 | GX_FEATURE_INT		| GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese °µ³¡Ğ£Õı×´Ì¬¼ì²â										\English Detection of dark-field correction state
-	GX_INT_PRNU_FACTORY_STATUS							   = 6067 | GX_FEATURE_INT		| GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese Ã÷³¡Ğ£Õı×´Ì¬¼ì²â										\English Open field correction state detection
-	GX_BUFFER_DETECT									   = 6068 | GX_FEATURE_BUFFER	| GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese BUfferÌ½²â£¨CXP£©										\English Buffer detection£¨CXP£©
-	GX_ENUM_FFC_COEFFICIENT						           = 6069 | GX_FEATURE_ENUM     | GX_FEATURE_LEVEL_REMOTE_DEV,  ///< \Chinese Æ½³¡Ğ£ÕıÏµÊıÑ¡Ôñ										\English Selection of flat field correction coefficient
-	GX_BUFFER_FFCFLASH_LOAD								   = 6070 | GX_FEATURE_BUFFER   | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese ¼ÓÔØÆ½³¡Ğ£ÕıÏµÊı										\English Load the flat field correction coefficient
-	GX_BUFFER_FFCFALSH_SAVE								   = 6071 | GX_FEATURE_BUFFER   | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese ±£´æÆ½³¡Ğ£ÕıÏµÊı										\English Save the flat field correction coefficient
-	GX_INT_FFCROI_WIDTH								       = 6072 | GX_FEATURE_INT   | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese Æ½³¡Ğ£Õı¸ĞĞËÈ¤ÇøÓò¿í¶È								\English Flat field correction ROI width
-	GX_INT_FFCROI_HEIGHT								   = 6073 | GX_FEATURE_INT   | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese Æ½³¡Ğ£Õı¸ĞĞËÈ¤ÇøÓò¸ß¶È								\English Flat field correction of the height of the region of interest
-	GX_INT_FFCROI_OFFSETX							       = 6074 | GX_FEATURE_INT   | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese Æ½³¡Ğ£Õı¸ĞĞËÈ¤ÇøÓòË®Æ½Æ«ÒÆ							\English Horizontal offset of region of interest for flat field correction
-	GX_INT_FFCROI_OFFSETY							       = 6075 | GX_FEATURE_INT   | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese Æ½³¡Ğ£Õı¸ĞĞËÈ¤ÇøÓò´¹Ö±Æ«ÒÆ							\English Flat field correction for vertical offset of region of interest
-	GX_INT_STATIC_DEFECT_CORRECTION_VALUE_ALL_AONCE_MODE   = 6076 | GX_FEATURE_INT   | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ÍòÕ×ÍøÏà»ú±êÖ¾										\English 10 Gigabit Ethernet camera logo
-	GX_COMMAND_FFCFACTORY_CALIB							   = 6077 | GX_FEATURE_COMMAND   | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese Æ½³¡Ğ£Õı³ö³§±ê¶¨										\English Factory calibration for flat field calibration
-	GX_INT_FFCFACTORY_CALIB_STATUS						   = 6078 | GX_FEATURE_INT   | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese Æ½³¡Ğ£Õı³ö³§±ê¶¨×´Ì¬									\English Factory calibration status for flat field calibration
+	GX_INT_ADC_LEVEL = 6000 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,										///< \Chinese ADè½¬æ¢çº§åˆ«														\English When the pixel size is not 8bits, this function can be used to choose 8bits form 10bits or 12bit for show image.
+	GX_INT_H_BLANKING = 6001 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,									///< \Chinese æ°´å¹³æ¶ˆéš															\English Horizontal blanking
+	GX_INT_V_BLANKING = 6002 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,									///< \Chinese å‚ç›´æ¶ˆéš															\English Vertical blanking
+	GX_STRING_USER_PASSWORD = 6003 | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese ç”¨æˆ·åŠ å¯†åŒºå¯†ç 													\English user password
+	GX_STRING_VERIFY_PASSWORD = 6004 | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese ç”¨æˆ·åŠ å¯†åŒºæ ¡éªŒå¯†ç 												\English verify password
+	GX_BUFFER_USER_DATA = 6005 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese ç”¨æˆ·åŠ å¯†åŒºå†…å®¹													\English user data
+	GX_INT_GRAY_VALUE = 6006 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,									///< \Chinese æœŸæœ›ç°åº¦å€¼														\English ExpectedGrayValue_InqIsImplemented
+	GX_ENUM_AA_LIGHT_ENVIRONMENT = 6007 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese è‡ªåŠ¨æ›å…‰ã€è‡ªåŠ¨å¢ç›Šï¼Œå…‰ç…§ç¯å¢ƒç±»å‹,å‚è€ƒGX_AA_LIGHT_ENVIRMENT_ENTRY	\English Automatic function according to the external light conditions better for accommodation
+	GX_INT_AAROI_OFFSETX = 6008 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,									///< \Chinese è‡ªåŠ¨è°ƒèŠ‚æ„Ÿå…´è¶£åŒºåŸŸXåæ ‡											\English This value sets the X offset (left offset) for the rect of interest in pixels for 2A, i.e., the distance in pixels between the left side of the image area and the left side of the AAROI.
+	GX_INT_AAROI_OFFSETY = 6009 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,									///< \Chinese è‡ªåŠ¨è°ƒèŠ‚æ„Ÿå…´è¶£åŒºåŸŸYåæ ‡											\English This value sets the Y offset (top offset) for the rect of interest for 2A, i.e., the distance in pixels between the top of the image area and the top of the AAROI.
+	GX_INT_AAROI_WIDTH = 6010 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,									///< \Chinese è‡ªåŠ¨è°ƒèŠ‚æ„Ÿå…´è¶£åŒºåŸŸå®½åº¦											\English This value sets the width of the rect of interest in pixels for 2A.
+	GX_INT_AAROI_HEIGHT = 6011 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,									///< \Chinese è‡ªåŠ¨è°ƒèŠ‚æ„Ÿå…´è¶£åŒºåŸŸé«˜åº¦											\English This value sets the height of the rect of interest in pixels for 2A.
+	GX_FLOAT_AUTO_GAIN_MIN = 6012 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese è‡ªåŠ¨å¢ç›Šæœ€å°å€¼													\English Setting up automatic gain range of minimum. When the gain is set to auto mode, this function works.
+	GX_FLOAT_AUTO_GAIN_MAX = 6013 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese è‡ªåŠ¨å¢ç›Šæœ€å¤§å€¼													\English Setting up automatic gain range of maximum. When the gain is set to auto mode, this function works.
+	GX_FLOAT_AUTO_EXPOSURE_TIME_MIN = 6014 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese è‡ªåŠ¨æ›å…‰æœ€å°å€¼													\English Setting up automatic shutter range of minimum. When the shutter is set to auto mode, this function works.
+	GX_FLOAT_AUTO_EXPOSURE_TIME_MAX = 6015 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese è‡ªåŠ¨æ›å…‰æœ€å¤§å€¼													\English Setting up automatic shutter range of maximum. When the shutter is set to auto mode, this function works.
+	GX_BUFFER_FRAME_INFORMATION = 6016 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese å›¾åƒå¸§ä¿¡æ¯														\English FrameInformation
+	GX_INT_CONTRAST_PARAM = 6017 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese å¯¹æ¯”åº¦å‚æ•°														\English Contrast parameter
+	GX_FLOAT_GAMMA_PARAM = 6018 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese ä¼½é©¬å‚æ•°															\English Gamma parameter
+	GX_INT_COLOR_CORRECTION_PARAM = 6019 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese é¢œè‰²æ ¡æ­£ç³»æ•°														\English Color correction coefficient
+	GX_ENUM_IMAGE_GRAY_RAISE_SWITCH = 6020 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese å›¾åƒäº®åº¦æ‹‰ä¼¸å¼€å…³,å‚è€ƒGX_IMAGE_GRAY_RAISE_SWITCH_ENTRY				\English Control ImageGrayRaise is valid
+	GX_ENUM_AWB_LAMP_HOUSE = 6021 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese è‡ªåŠ¨ç™½å¹³è¡¡å…‰æº,å‚è€ƒGX_AWB_LAMP_HOUSE_ENTRY						\English Refers to the AWB working environment
+	GX_INT_AWBROI_OFFSETX = 6022 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese è‡ªåŠ¨ç™½å¹³è¡¡æ„Ÿå…´è¶£åŒºåŸŸXåæ ‡											\English This value sets the X offset (left offset) for the rect of interest in pixels for Auto WhiteBalance
+	GX_INT_AWBROI_OFFSETY = 6023 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese è‡ªåŠ¨ç™½å¹³è¡¡æ„Ÿå…´è¶£åŒºåŸŸYåæ ‡											\English This value sets the Y offset (top offset) for the rect of interest for Auto WhiteBalance
+	GX_INT_AWBROI_WIDTH = 6024 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,									///< \Chinese è‡ªåŠ¨ç™½å¹³è¡¡æ„Ÿå…´è¶£åŒºåŸŸå®½åº¦											\English This value sets the width of the rect of interest in pixels for Auto WhiteBalance
+	GX_INT_AWBROI_HEIGHT = 6025 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,									///< \Chinese è‡ªåŠ¨ç™½å¹³è¡¡æ„Ÿå…´è¶£åŒºåŸŸé«˜åº¦											\English This value sets the height of the rect of interest in pixels for Auto WhiteBalance
+	GX_ENUM_SHARPNESS_MODE = 6026 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese é”åŒ–æ¨¡å¼,å‚è€ƒGX_SHARPNESS_MODE_ENTRY								\English Sharpening mode
+	GX_FLOAT_SHARPNESS = 6027 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,									///< \Chinese é”åº¦																\English Sharpness
+	GX_ENUM_USER_DATA_FILED_SELECTOR = 6028 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ç”¨æˆ·é€‰æ‹©Flashæ•°æ®åŒºåŸŸï¼Œå‚è€ƒGX_USER_DATA_FILED_SELECTOR_ENTRY		\English User selects Flash data area
+	GX_BUFFER_USER_DATA_FILED_VALUE = 6029 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ç”¨æˆ·åŒºå†…å®¹														\English User Area Content
+	GX_ENUM_FLAT_FIELD_CORRECTION = 6030 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese å¹³åœºæ ¡æ­£å¼€å…³,å‚è€ƒGX_FLAT_FIELD_CORRECTION_ENTRY					\English Flat field correction switch
+	GX_ENUM_NOISE_REDUCTION_MODE = 6031 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese é™å™ªå¼€å…³,å‚è€ƒGX_NOISE_REDUCTION_MODE_ENTRY						\English Noise reduction switch
+	GX_FLOAT_NOISE_REDUCTION = 6032 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese é™å™ª																\English Noise reduction
+	GX_BUFFER_FFCLOAD = 6033 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,									///< \Chinese è·å–å¹³åœºæ ¡æ­£å‚æ•°													\English Obtain flat field correction parameters
+	GX_BUFFER_FFCSAVE = 6034 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,									///< \Chinese ä¿å­˜å¹³åœºæ ¡æ­£å‚æ•°													\English Set flat field correction parameters
+	GX_ENUM_STATIC_DEFECT_CORRECTION = 6035 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese é™æ€åç‚¹æ ¡æ­£ï¼Œå‚è€ƒGX_ENUM_STATIC_DEFECT_CORRECTION_ENTRY			\English Static bad point correction
+	GX_ENUM_2D_NOISE_REDUCTION_MODE = 6036 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese 2Dé™å™ªæ¨¡å¼,å‚è€ƒGX_2D_NOISE_REDUCTION_MODE_ENTRY					\English 2d noise reduction mode
+	GX_ENUM_3D_NOISE_REDUCTION_MODE = 6037 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese 3Dé™å™ªæ¨¡å¼,å‚è€ƒGX_3D_NOISE_REDUCTION_MODE_ENTRY					\English 3d noise reduction mode
+	GX_COMMAND_CLOSE_ISP = 6038 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese å…³é—­ISP															\English Close ISP
+	GX_BUFFER_STATIC_DEFECT_CORRECTION_VALUE_ALL = 6039 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese é™æ€åç‚¹æ ¡æ­£å€¼ï¼Œå‚è€ƒGX_BUFFER_FFCSAVE					\English static defect conrrection value Refer to GX_BUFFER_FFCSAVE
+	GX_BUFFER_STATIC_DEFECT_CORRECTION_FLASH_VALUE = 6040 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese é™æ€åç‚¹æ ¡æ­£flashå€¼ï¼Œå‚è€ƒGX_BUFFER_FFCSAVE			\English static defect conrrection flash value Refer to GX_BUFFER_FFCSAVE
+	GX_INT_STATIC_DEFECT_CORRECTION_FINISH = 6041 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese é™æ€åç‚¹æ ¡æ­£ç»“æŸï¼Œå‚è€ƒGX_INT_AWBROI_HEIGHT			\English static defect conrrection finish Refer to GX_INT_AWBROI_HEIGHT
+	GX_BUFFER_STATIC_DEFECT_CORRECTION_INFO = 6042 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,			///< \Chinese é™æ€åç‚¹æ ¡æ­£ä¿¡æ¯ï¼Œå‚è€ƒGX_BUFFER_FFCSAVE				\English static defect conrrection Info Refer to GX_BUFFER_FFCSAVE
+	GX_COMMAND_STRIP_CALIBRATION_START = 6043 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese å¼€å§‹æ¡çº¹æ ‡å®š											\English Starts the strip calibration
+	GX_COMMAND_STRIP_CALIBRATION_STOP = 6044 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ç»“æŸæ¡çº¹æ ‡å®š											\English Ready to stop the strip calibration
+	GX_BUFFER_USER_DATA_FILED_VALUE_ALL = 6045 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese è¿ç»­ç”¨æˆ·åŒºå†…å®¹										\English Continuous user area content
+	GX_ENUM_SHADING_CORRECTION_MODE = 6046 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese æ˜æš—æ ¡æ­£æ¨¡å¼											\English Shade correction mode
+	GX_COMMAND_FFC_GENERATE = 6047 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese ç”Ÿæˆå¹³åœºæ ¡æ­£ç³»æ•°										\English Generate flat field correction factor
+	GX_ENUM_FFC_GENERATE_STATUS = 6048 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese å¹³åœºæ ¡æ­£çŠ¶æ€											\English Level-field correction status
+	GX_ENUM_FFC_EXPECTED_GRAY_VALUE_ENABLE = 6049 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese å¹³åœºæ ¡æ­£æœŸæœ›ç°åº¦å€¼ä½¿èƒ½								\English Level-field correction expected gray value enable
+	GX_INT_FFC_EXPECTED_GRAY = 6050 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese å¹³åœºæ ¡æ­£æœŸæœ›ç°åº¦å€¼									\English Flat-field correction expected gray value
+	GX_INT_FFC_COEFFICIENTS_SIZE = 6051 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese å¹³åœºæ ¡æ­£ç³»æ•°å¤§å°										\English Level-field correction factor size
+	GX_BUFFER_FFC_VALUE_ALL = 6052 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese å¹³åœºæ ¡æ­£å€¼											\English Level-field correction value
+	GX_ENUM_DSNU_SELECTOR = 6053 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese æš—åœºæ ¡æ­£ç³»æ•°é€‰æ‹©										\English Selection of dark field correction coefficient
+	GX_COMMAND_DSNU_GENERATE = 6054 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese ç”Ÿæˆæš—åœºæ ¡æ­£ç³»æ•°										\English Generate dark field correction factor
+	GX_ENUM_DSNU_GENERATE_STATUS = 6055 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese æš—åœºæ ¡æ­£çŠ¶æ€											\English Dark field correction status
+	GX_COMMAND_DSNU_SAVE = 6056 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese ä¿å­˜æš—åœºæ ¡æ­£ç³»æ•°										\English Save dark-field correction factor
+	GX_COMMAND_DSNU_LOAD = 6057 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese åŠ è½½æš—åœºæ ¡æ­£ç³»æ•°										\English Load dark-field correction factor
+	GX_ENUM_PRNU_SELECTOR = 6058 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese æ˜åœºæ ¡æ­£ç³»æ•°é€‰æ‹©										\English Selection of bright field correction coefficient
+	GX_COMMAND_PRNU_GENERATE = 6059 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese ç”Ÿæˆæ˜åœºæ ¡æ­£ç³»æ•°										\English Generate bright field correction factor
+	GX_ENUM_PRNU_GENERATE_STATUS = 6060 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese æ˜åœºæ ¡æ­£çŠ¶æ€											\English Bright-field correction status
+	GX_COMMAND_PRNU_SAVE = 6061 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese ä¿å­˜æ˜åœºæ ¡æ­£ç³»æ•°										\English Save the bright field correction factor
+	GX_COMMAND_PRNU_LOAD = 6062 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese åŠ è½½æ˜åœºæ ¡æ­£ç³»æ•°										\English Loaded open field correction factor
+	GX_FLOAT_SHARPNESS_NOISE_SUPPRESSION_THRESHOLD = 6063 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese é”åŒ–å™ªå£°æŠ‘åˆ¶é˜ˆå€¼										\English Sharpening noise suppression threshold
+	GX_INT_STATIC_DEFECT_CORRECTION_CALIB_STATUS = 6064 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			///< \Chinese é™æ€åç‚¹æ ‡å®šçŠ¶æ€										\English Static bad point calibration status
+	GX_INT_FFC_FACTORY_STATUS = 6065 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese å¹³åœºæ ¡æ­£çŠ¶æ€æ£€æµ‹										\English Level-field correction status detection
+	GX_INT_DSNU_FACTORY_STATUS = 6066 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese æš—åœºæ ¡æ­£çŠ¶æ€æ£€æµ‹										\English Detection of dark-field correction state
+	GX_INT_PRNU_FACTORY_STATUS = 6067 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese æ˜åœºæ ¡æ­£çŠ¶æ€æ£€æµ‹										\English Open field correction state detection
+	GX_BUFFER_DETECT = 6068 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,									///< \Chinese BUfferæ¢æµ‹ï¼ˆCXPï¼‰										\English Buffer detectionï¼ˆCXPï¼‰
+	GX_ENUM_FFC_COEFFICIENT = 6069 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese å¹³åœºæ ¡æ­£ç³»æ•°é€‰æ‹©										\English Selection of flat field correction coefficient
+	GX_BUFFER_FFCFLASH_LOAD = 6070 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese åŠ è½½å¹³åœºæ ¡æ­£ç³»æ•°										\English Load the flat field correction coefficient
+	GX_BUFFER_FFCFALSH_SAVE = 6071 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese ä¿å­˜å¹³åœºæ ¡æ­£ç³»æ•°										\English Save the flat field correction coefficient
+	GX_INT_FFCROI_WIDTH = 6072 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,									///< \Chinese å¹³åœºæ ¡æ­£æ„Ÿå…´è¶£åŒºåŸŸå®½åº¦								\English Flat field correction ROI width
+	GX_INT_FFCROI_HEIGHT = 6073 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,									///< \Chinese å¹³åœºæ ¡æ­£æ„Ÿå…´è¶£åŒºåŸŸé«˜åº¦								\English Flat field correction of the height of the region of interest
+	GX_INT_FFCROI_OFFSETX = 6074 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese å¹³åœºæ ¡æ­£æ„Ÿå…´è¶£åŒºåŸŸæ°´å¹³åç§»							\English Horizontal offset of region of interest for flat field correction
+	GX_INT_FFCROI_OFFSETY = 6075 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese å¹³åœºæ ¡æ­£æ„Ÿå…´è¶£åŒºåŸŸå‚ç›´åç§»							\English Flat field correction for vertical offset of region of interest
+	GX_INT_STATIC_DEFECT_CORRECTION_VALUE_ALL_AONCE_MODE = 6076 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese ä¸‡å…†ç½‘ç›¸æœºæ ‡å¿—										\English 10 Gigabit Ethernet camera logo
+	GX_COMMAND_FFCFACTORY_CALIB = 6077 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese å¹³åœºæ ¡æ­£å‡ºå‚æ ‡å®š										\English Factory calibration for flat field calibration
+	GX_INT_FFCFACTORY_CALIB_STATUS = 6078 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese å¹³åœºæ ¡æ­£å‡ºå‚æ ‡å®šçŠ¶æ€									\English Factory calibration status for flat field calibration
 
 	//---------------UserSetControl Section-------------------------
-	GX_ENUM_USER_SET_SELECTOR         = 7000 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese ²ÎÊı×éÑ¡Ôñ,²Î¿¼GX_USER_SET_SELECTOR_ENTRY						\English Selects the feature User Set to load, save or configure.
-	GX_COMMAND_USER_SET_LOAD          = 7001 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese ¼ÓÔØ²ÎÊı×é													\English Loads the User Set specified by UserSetSelector to the device and makes it active.
-	GX_COMMAND_USER_SET_SAVE          = 7002 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese ±£´æ²ÎÊı×é													\English Save the User Set specified by UserSetSelector to the non-volatile memory of the devi
-	GX_ENUM_USER_SET_DEFAULT          = 7003 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese Æô¶¯²ÎÊı×é,²Î¿¼GX_USER_SET_DEFAULT_ENTRY						\English Selects the feature User Set to load and make active by default when the device is reset.
-	GX_INT_DATA_FIELD_VALUE_ALL_USED_STATUS	= 7004 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese ÓÃ»§Êı¾İÇø³ö³§×´Ì¬											\English Factory status of user data area
+	GX_ENUM_USER_SET_SELECTOR = 7000 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,			   ///< \Chinese å‚æ•°ç»„é€‰æ‹©,å‚è€ƒGX_USER_SET_SELECTOR_ENTRY						\English Selects the feature User Set to load, save or configure.
+	GX_COMMAND_USER_SET_LOAD = 7001 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,			   ///< \Chinese åŠ è½½å‚æ•°ç»„													\English Loads the User Set specified by UserSetSelector to the device and makes it active.
+	GX_COMMAND_USER_SET_SAVE = 7002 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,			   ///< \Chinese ä¿å­˜å‚æ•°ç»„													\English Save the User Set specified by UserSetSelector to the non-volatile memory of the devi
+	GX_ENUM_USER_SET_DEFAULT = 7003 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,			   ///< \Chinese å¯åŠ¨å‚æ•°ç»„,å‚è€ƒGX_USER_SET_DEFAULT_ENTRY						\English Selects the feature User Set to load and make active by default when the device is reset.
+	GX_INT_DATA_FIELD_VALUE_ALL_USED_STATUS = 7004 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese ç”¨æˆ·æ•°æ®åŒºå‡ºå‚çŠ¶æ€											\English Factory status of user data area
 
 	//---------------Event Section-------------------------
-	GX_ENUM_EVENT_SELECTOR             = 8000 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese ÊÂ¼şÔ´Ñ¡Ôñ,²Î¿¼GX_EVENT_SELECTOR_ENTRY						\English Selects which Event to signal to the host application.
-	GX_ENUM_EVENT_NOTIFICATION         = 8001 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese ÊÂ¼şÊ¹ÄÜ,²Î¿¼GX_EVENT_NOTIFICATION_ENTRY						\English Activate or deactivate the notification to the host application of the occurrence of the selected Event.
-	GX_INT_EVENT_EXPOSUREEND           = 8002 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese ÆØ¹â½áÊøÊÂ¼şID												\English Returns the unique identifier of the ExposureEnd type of Event.
-	GX_INT_EVENT_EXPOSUREEND_TIMESTAMP = 8003 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese ÆØ¹â½áÊøÊÂ¼şÊ±¼ä´Á											\English Returns the Timestamp of the ExposureEnd Event.
-	GX_INT_EVENT_EXPOSUREEND_FRAMEID   = 8004 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese ÆØ¹â½áÊøÊÂ¼şÖ¡ID												\English Returns the unique Identifier of the Frame (or image) that generated the ExposureEnd Event.
-	GX_INT_EVENT_BLOCK_DISCARD         = 8005 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese Êı¾İ¿é¶ªÊ§ÊÂ¼şID												\English This enumeration value indicates the BlockDiscard event ID.
-	GX_INT_EVENT_BLOCK_DISCARD_TIMESTAMP = 8006 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese Êı¾İ¿é¶ªÊ§ÊÂ¼şÊ±¼ä´Á											\English Indicates the time stamp for the BlockDiscard event
-	GX_INT_EVENT_OVERRUN                 = 8007 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese ÊÂ¼ş¶ÓÁĞÒç³öÊÂ¼şID											\English This enumeration value indicates the EventOverrun event ID.
-	GX_INT_EVENT_OVERRUN_TIMESTAMP       = 8008 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese ÊÂ¼ş¶ÓÁĞÒç³öÊÂ¼şÊ±¼ä´Á										\English Indicates the time stamp of the EventOverrun event
-	GX_INT_EVENT_FRAMESTART_OVERTRIGGER  = 8009 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese ´¥·¢ĞÅºÅ±»ÆÁ±ÎÊÂ¼şID											\English This enumeration value indicates the FrameStartOverTrigger event ID.
-	GX_INT_EVENT_FRAMESTART_OVERTRIGGER_TIMESTAMP = 8010 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ´¥·¢ĞÅºÅ±»ÆÁ±ÎÊÂ¼şÊ±¼ä´Á										\English Indicates the time stamp of the FrameStartOverTrigger event
-	GX_INT_EVENT_BLOCK_NOT_EMPTY                  = 8011 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Ö¡´æ²»Îª¿ÕÊÂ¼şID												\English This enumeration value indicates the BlockNotEmpty event.
-	GX_INT_EVENT_BLOCK_NOT_EMPTY_TIMESTAMP        = 8012 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Ö¡´æ²»Îª¿ÕÊÂ¼şÊ±¼ä´Á											\English Indicates the time stamp of the BlockNotEmpty event
-	GX_INT_EVENT_INTERNAL_ERROR                   = 8013 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÄÚ²¿´íÎóÊÂ¼şID												\English This enumeration value indicates the InternalError event.
-	GX_INT_EVENT_INTERNAL_ERROR_TIMESTAMP         = 8014 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÄÚ²¿´íÎóÊÂ¼şÊ±¼ä´Á											\English Indicates the time stamp of the InternalError event
-	GX_INT_EVENT_FRAMEBURSTSTART_OVERTRIGGER      = 8015 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ¶àÖ¡´¥·¢ÆÁ±ÎÊÂ¼şID											\English Multi frame trigger mask event ID
-	GX_INT_EVENT_FRAMEBURSTSTART_OVERTRIGGER_FRAMEID      = 8016 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ¶àÖ¡´¥·¢ÆÁ±ÎÊÂ¼şÖ¡ID											\English Multi frame trigger mask event frame ID
-	GX_INT_EVENT_FRAMEBURSTSTART_OVERTRIGGER_TIMESTAMP    = 8017 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ¶àÖ¡´¥·¢ÆÁ±ÎÊÂ¼şÊ±¼ä´Á										\English Multi frame trigger mask event timestamp
-	GX_INT_EVENT_FRAMESTART_WAIT                          = 8018 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese Ö¡µÈ´ıÊÂ¼şID													\English Frame Wait Event ID
-	GX_INT_EVENT_FRAMESTART_WAIT_TIMESTAMP                = 8019 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese Ö¡µÈ´ıÊÂ¼şÊ±¼ä´Á												\English Frame Wait Event Timestamp
-	GX_INT_EVENT_FRAMEBURSTSTART_WAIT                     = 8020 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ¶àÖ¡µÈ´ıÊÂ¼şID												\English Multi frame waiting event ID
-	GX_INT_EVENT_FRAMEBURSTSTART_WAIT_TIMESTAMP           = 8021 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ¶àÖ¡µÈ´ıÊÂ¼şÊ±¼ä´Á											\English Multi frame waiting event timestamp
-	GX_INT_EVENT_BLOCK_DISCARD_FRAMEID                    = 8022 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese Êı¾İ¿é¶ªÊ§ÊÂ¼şÖ¡ID											\English Block Loss Event Frame ID
-	GX_INT_EVENT_FRAMESTART_OVERTRIGGER_FRAMEID           = 8023 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ´¥·¢ĞÅºÅ±»ÆÁ±ÎÊÂ¼şÖ¡ID										\English Trigger signal masked event frame ID
-	GX_INT_EVENT_BLOCK_NOT_EMPTY_FRAMEID                  = 8024 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese Ö¡´æ²»Îª¿ÕÊÂ¼şÖ¡ID											\English The frame memory is not empty Event frame ID
-	GX_INT_EVENT_FRAMESTART_WAIT_FRAMEID                  = 8025 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese Ö¡µÈ´ıÊÂ¼şÖ¡ID												\English Frame Wait Event Frame ID
-	GX_INT_EVENT_FRAMEBURSTSTART_WAIT_FRAMEID             = 8026 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ¶àÖ¡µÈ´ıÊÂ¼şÖ¡ID 												\English Multi frame waiting event frame ID
-	GX_ENUM_EVENT_SIMPLE_MODE							  = 8027 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ÊÂ¼şÖ¡IDÊ¹ÄÜ,²Î¿¼GX_EVENT_SIMPLE_MODE_ENTRY					\English event block ID enable,refer to GX_EVENT_SIMPLE_MODE_ENTRY
+	GX_ENUM_EVENT_SELECTOR = 8000 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,							  ///< \Chinese äº‹ä»¶æºé€‰æ‹©,å‚è€ƒGX_EVENT_SELECTOR_ENTRY						\English Selects which Event to signal to the host application.
+	GX_ENUM_EVENT_NOTIFICATION = 8001 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						  ///< \Chinese äº‹ä»¶ä½¿èƒ½,å‚è€ƒGX_EVENT_NOTIFICATION_ENTRY						\English Activate or deactivate the notification to the host application of the occurrence of the selected Event.
+	GX_INT_EVENT_EXPOSUREEND = 8002 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,							  ///< \Chinese æ›å…‰ç»“æŸäº‹ä»¶ID												\English Returns the unique identifier of the ExposureEnd type of Event.
+	GX_INT_EVENT_EXPOSUREEND_TIMESTAMP = 8003 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				  ///< \Chinese æ›å…‰ç»“æŸäº‹ä»¶æ—¶é—´æˆ³											\English Returns the Timestamp of the ExposureEnd Event.
+	GX_INT_EVENT_EXPOSUREEND_FRAMEID = 8004 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,					  ///< \Chinese æ›å…‰ç»“æŸäº‹ä»¶å¸§ID												\English Returns the unique Identifier of the Frame (or image) that generated the ExposureEnd Event.
+	GX_INT_EVENT_BLOCK_DISCARD = 8005 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						  ///< \Chinese æ•°æ®å—ä¸¢å¤±äº‹ä»¶ID												\English This enumeration value indicates the BlockDiscard event ID.
+	GX_INT_EVENT_BLOCK_DISCARD_TIMESTAMP = 8006 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				  ///< \Chinese æ•°æ®å—ä¸¢å¤±äº‹ä»¶æ—¶é—´æˆ³											\English Indicates the time stamp for the BlockDiscard event
+	GX_INT_EVENT_OVERRUN = 8007 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,								  ///< \Chinese äº‹ä»¶é˜Ÿåˆ—æº¢å‡ºäº‹ä»¶ID											\English This enumeration value indicates the EventOverrun event ID.
+	GX_INT_EVENT_OVERRUN_TIMESTAMP = 8008 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,					  ///< \Chinese äº‹ä»¶é˜Ÿåˆ—æº¢å‡ºäº‹ä»¶æ—¶é—´æˆ³										\English Indicates the time stamp of the EventOverrun event
+	GX_INT_EVENT_FRAMESTART_OVERTRIGGER = 8009 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				  ///< \Chinese è§¦å‘ä¿¡å·è¢«å±è”½äº‹ä»¶ID											\English This enumeration value indicates the FrameStartOverTrigger event ID.
+	GX_INT_EVENT_FRAMESTART_OVERTRIGGER_TIMESTAMP = 8010 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,	  ///< \Chinese è§¦å‘ä¿¡å·è¢«å±è”½äº‹ä»¶æ—¶é—´æˆ³										\English Indicates the time stamp of the FrameStartOverTrigger event
+	GX_INT_EVENT_BLOCK_NOT_EMPTY = 8011 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						  ///< \Chinese å¸§å­˜ä¸ä¸ºç©ºäº‹ä»¶ID												\English This enumeration value indicates the BlockNotEmpty event.
+	GX_INT_EVENT_BLOCK_NOT_EMPTY_TIMESTAMP = 8012 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			  ///< \Chinese å¸§å­˜ä¸ä¸ºç©ºäº‹ä»¶æ—¶é—´æˆ³											\English Indicates the time stamp of the BlockNotEmpty event
+	GX_INT_EVENT_INTERNAL_ERROR = 8013 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						  ///< \Chinese å†…éƒ¨é”™è¯¯äº‹ä»¶ID												\English This enumeration value indicates the InternalError event.
+	GX_INT_EVENT_INTERNAL_ERROR_TIMESTAMP = 8014 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			  ///< \Chinese å†…éƒ¨é”™è¯¯äº‹ä»¶æ—¶é—´æˆ³											\English Indicates the time stamp of the InternalError event
+	GX_INT_EVENT_FRAMEBURSTSTART_OVERTRIGGER = 8015 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			  ///< \Chinese å¤šå¸§è§¦å‘å±è”½äº‹ä»¶ID											\English Multi frame trigger mask event ID
+	GX_INT_EVENT_FRAMEBURSTSTART_OVERTRIGGER_FRAMEID = 8016 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,	  ///< \Chinese å¤šå¸§è§¦å‘å±è”½äº‹ä»¶å¸§ID											\English Multi frame trigger mask event frame ID
+	GX_INT_EVENT_FRAMEBURSTSTART_OVERTRIGGER_TIMESTAMP = 8017 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese å¤šå¸§è§¦å‘å±è”½äº‹ä»¶æ—¶é—´æˆ³										\English Multi frame trigger mask event timestamp
+	GX_INT_EVENT_FRAMESTART_WAIT = 8018 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						  ///< \Chinese å¸§ç­‰å¾…äº‹ä»¶ID													\English Frame Wait Event ID
+	GX_INT_EVENT_FRAMESTART_WAIT_TIMESTAMP = 8019 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			  ///< \Chinese å¸§ç­‰å¾…äº‹ä»¶æ—¶é—´æˆ³												\English Frame Wait Event Timestamp
+	GX_INT_EVENT_FRAMEBURSTSTART_WAIT = 8020 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				  ///< \Chinese å¤šå¸§ç­‰å¾…äº‹ä»¶ID												\English Multi frame waiting event ID
+	GX_INT_EVENT_FRAMEBURSTSTART_WAIT_TIMESTAMP = 8021 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		  ///< \Chinese å¤šå¸§ç­‰å¾…äº‹ä»¶æ—¶é—´æˆ³											\English Multi frame waiting event timestamp
+	GX_INT_EVENT_BLOCK_DISCARD_FRAMEID = 8022 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				  ///< \Chinese æ•°æ®å—ä¸¢å¤±äº‹ä»¶å¸§ID											\English Block Loss Event Frame ID
+	GX_INT_EVENT_FRAMESTART_OVERTRIGGER_FRAMEID = 8023 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		  ///< \Chinese è§¦å‘ä¿¡å·è¢«å±è”½äº‹ä»¶å¸§ID										\English Trigger signal masked event frame ID
+	GX_INT_EVENT_BLOCK_NOT_EMPTY_FRAMEID = 8024 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				  ///< \Chinese å¸§å­˜ä¸ä¸ºç©ºäº‹ä»¶å¸§ID											\English The frame memory is not empty Event frame ID
+	GX_INT_EVENT_FRAMESTART_WAIT_FRAMEID = 8025 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				  ///< \Chinese å¸§ç­‰å¾…äº‹ä»¶å¸§ID												\English Frame Wait Event Frame ID
+	GX_INT_EVENT_FRAMEBURSTSTART_WAIT_FRAMEID = 8026 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		  ///< \Chinese å¤šå¸§ç­‰å¾…äº‹ä»¶å¸§ID 												\English Multi frame waiting event frame ID
+	GX_ENUM_EVENT_SIMPLE_MODE = 8027 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						  ///< \Chinese äº‹ä»¶å¸§IDä½¿èƒ½,å‚è€ƒGX_EVENT_SIMPLE_MODE_ENTRY					\English event block ID enable,refer to GX_EVENT_SIMPLE_MODE_ENTRY
 
 	//---------------LUT Section-------------------------
-	GX_ENUM_LUT_SELECTOR             = 9000 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese ²éÕÒ±íÑ¡Ôñ,²Î¿¼GX_LUT_SELECTOR_ENTRY							\English Selects which LUT to control.
-	GX_BUFFER_LUT_VALUEALL           = 9001 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese ²éÕÒ±íÄÚÈİ													\English Accesses all the LUT coefficients in a single access without using individual LUTIndex.
-    GX_BOOL_LUT_ENABLE               = 9002 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese ²éÕÒ±íÊ¹ÄÜ													\English Activates the selected LUT.
-	GX_INT_LUT_INDEX                 = 9003 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese ²éÕÒ±íË÷Òı													\English Control the index (offset) of the coefficient to access in the selected LUT.
-	GX_INT_LUT_VALUE                 = 9004 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese ²éÕÒ±íÖµ														\English Returns the Value at entry LUTIndex of the LUT selected by LUTSelector.
-	GX_INT_LUT_FACTORY_STATUS		 = 9005 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese ²éÕÒ±í³ö³§×´Ì¬												\English Lookup table factory status
-	GX_INT_LUT_BLACK_THRESHOLD		 = 9006 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese °µãĞÖµ														\English Dark threshold
-	GX_INT_LUT_WHITE_THRESHOLD		 = 9007 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,								///< \Chinese ÁÁãĞÖµ														\English Bright threshold
-	GX_BOOL_LUT_REVERSE		         = 9008 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese »Ò¶È·­×ª¿ª¹Ø													\English Gray flip switch
+	GX_ENUM_LUT_SELECTOR = 9000 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,	  ///< \Chinese æŸ¥æ‰¾è¡¨é€‰æ‹©,å‚è€ƒGX_LUT_SELECTOR_ENTRY							\English Selects which LUT to control.
+	GX_BUFFER_LUT_VALUEALL = 9001 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,  ///< \Chinese æŸ¥æ‰¾è¡¨å†…å®¹													\English Accesses all the LUT coefficients in a single access without using individual LUTIndex.
+	GX_BOOL_LUT_ENABLE = 9002 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,		  ///< \Chinese æŸ¥æ‰¾è¡¨ä½¿èƒ½													\English Activates the selected LUT.
+	GX_INT_LUT_INDEX = 9003 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			  ///< \Chinese æŸ¥æ‰¾è¡¨ç´¢å¼•													\English Control the index (offset) of the coefficient to access in the selected LUT.
+	GX_INT_LUT_VALUE = 9004 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			  ///< \Chinese æŸ¥æ‰¾è¡¨å€¼														\English Returns the Value at entry LUTIndex of the LUT selected by LUTSelector.
+	GX_INT_LUT_FACTORY_STATUS = 9005 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,  ///< \Chinese æŸ¥æ‰¾è¡¨å‡ºå‚çŠ¶æ€												\English Lookup table factory status
+	GX_INT_LUT_BLACK_THRESHOLD = 9006 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese æš—é˜ˆå€¼														\English Dark threshold
+	GX_INT_LUT_WHITE_THRESHOLD = 9007 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese äº®é˜ˆå€¼														\English Bright threshold
+	GX_BOOL_LUT_REVERSE = 9008 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,		  ///< \Chinese ç°åº¦ç¿»è½¬å¼€å…³													\English Gray flip switch
 
 	//---------------ChunkData Section-------------------------
-	GX_BOOL_CHUNKMODE_ACTIVE         = 10001 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese Ö¡ĞÅÏ¢Ê¹ÄÜ													\English Activates the inclusion of Chunk data in the payload of the image.
-	GX_ENUM_CHUNK_SELECTOR           = 10002 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese Ö¡ĞÅÏ¢ÏîÑ¡Ôñ£¬²Î¿¼GX_CHUNK_SELECTOR_ENTRY						\English Selects which Chunk to enable or control.
-	GX_BOOL_CHUNK_ENABLE             = 10003 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese µ¥ÏîÖ¡ĞÅÏ¢Ê¹ÄÜ												\English Enables the inclusion of the selected Chunk data in the payload of the image.
+	GX_BOOL_CHUNKMODE_ACTIVE = 10001 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese å¸§ä¿¡æ¯ä½¿èƒ½													\English Activates the inclusion of Chunk data in the payload of the image.
+	GX_ENUM_CHUNK_SELECTOR = 10002 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,	  ///< \Chinese å¸§ä¿¡æ¯é¡¹é€‰æ‹©ï¼Œå‚è€ƒGX_CHUNK_SELECTOR_ENTRY						\English Selects which Chunk to enable or control.
+	GX_BOOL_CHUNK_ENABLE = 10003 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,	  ///< \Chinese å•é¡¹å¸§ä¿¡æ¯ä½¿èƒ½												\English Enables the inclusion of the selected Chunk data in the payload of the image.
 
-    //---------------Color Transformation Control-------------------------
-	GX_ENUM_COLOR_TRANSFORMATION_MODE       = 11000 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ÑÕÉ«×ª»»Ä£Ê½£¬²Î¿¼GX_COLOR_TRANSFORMATION_MODE_ENTRY						\English Color conversion selection, see also GX_COLOR_TRANSFORMATION_MODE_ENTRY
-    GX_BOOL_COLOR_TRANSFORMATION_ENABLE     = 11001 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ÑÕÉ«×ª»»Ê¹ÄÜ																\English Activates the selected Color Transformation module.
-    GX_ENUM_COLOR_TRANSFORMATION_VALUE_SELECTOR = 11002 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ÑÕÉ«×ª»»¾ØÕóÔªËØÑ¡Ôñ£¬²Î¿¼GX_COLOR_TRANSFORMATION_VALUE_SELECTOR_ENTRY	\English Selects the Gain factor or Offset of the Transformation matrix to access in the selected Color Transformation module.
-    GX_FLOAT_COLOR_TRANSFORMATION_VALUE     = 11003 | GX_FEATURE_FLOAT| GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ÑÕÉ«×ª»»¾ØÕóÔªËØ															\English Represents the value of the selected Gain factor or Offset inside the Transformation matrix.
-	GX_ENUM_SATURATION_MODE                 = 11004 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ±¥ºÍ¶ÈÄ£Ê½£¬²Î¿¼GX_ENUM_SATURATION_MODE_ENTRY								\English Saturation Mode refer to GX_ENUM_SATURATION_MODE_ENTRY
-	GX_INT_SATURATION                       = 11005 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese ±¥ºÍ¶È																	\English Saturation
-	
+	//---------------Color Transformation Control-------------------------
+	GX_ENUM_COLOR_TRANSFORMATION_MODE = 11000 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,			 ///< \Chinese é¢œè‰²è½¬æ¢æ¨¡å¼ï¼Œå‚è€ƒGX_COLOR_TRANSFORMATION_MODE_ENTRY						\English Color conversion selection, see also GX_COLOR_TRANSFORMATION_MODE_ENTRY
+	GX_BOOL_COLOR_TRANSFORMATION_ENABLE = 11001 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,		 ///< \Chinese é¢œè‰²è½¬æ¢ä½¿èƒ½																\English Activates the selected Color Transformation module.
+	GX_ENUM_COLOR_TRANSFORMATION_VALUE_SELECTOR = 11002 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese é¢œè‰²è½¬æ¢çŸ©é˜µå…ƒç´ é€‰æ‹©ï¼Œå‚è€ƒGX_COLOR_TRANSFORMATION_VALUE_SELECTOR_ENTRY	\English Selects the Gain factor or Offset of the Transformation matrix to access in the selected Color Transformation module.
+	GX_FLOAT_COLOR_TRANSFORMATION_VALUE = 11003 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,		 ///< \Chinese é¢œè‰²è½¬æ¢çŸ©é˜µå…ƒç´ 															\English Represents the value of the selected Gain factor or Offset inside the Transformation matrix.
+	GX_ENUM_SATURATION_MODE = 11004 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					 ///< \Chinese é¥±å’Œåº¦æ¨¡å¼ï¼Œå‚è€ƒGX_ENUM_SATURATION_MODE_ENTRY								\English Saturation Mode refer to GX_ENUM_SATURATION_MODE_ENTRY
+	GX_INT_SATURATION = 11005 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,							 ///< \Chinese é¥±å’Œåº¦																	\English Saturation
+
 	//---------------CounterAndTimerControl Section-------------------------
-	GX_ENUM_TIMER_SELECTOR                  = 12000 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ¼ÆÊ±Æ÷Ñ¡Ôñ£¬²Î¿¼GX_TIMER_SELECTOR_ENTRY						\English Selects which Counter to configure, Refer to GX_TIMER_SELECTOR_ENTRY
-	GX_FLOAT_TIMER_DURATION                 = 12001 | GX_FEATURE_FLOAT| GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ¼ÆÊ±Æ÷³ÖĞøÊ±¼ä												\English Sets the duration (in microseconds) of the Timer pulse.
-	GX_FLOAT_TIMER_DELAY                    = 12002 | GX_FEATURE_FLOAT| GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ¼ÆÊ±Æ÷ÑÓ³ÙÊ±¼ä												\English Sets the duration (in microseconds) of the delay to apply at the reception of a trigger before starting the Timer.
-	GX_ENUM_TIMER_TRIGGER_SOURCE            = 12003 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ¼ÆÊ±Æ÷´¥·¢Ô´£¬²Î¿¼GX_TIMER_TRIGGER_SOURCE_ENTRY				\English Selects the source of the trigger to start the Timer, Refer to GX_TIMER_TRIGGER_SOURCE_ENTRY
-	GX_ENUM_COUNTER_SELECTOR                = 12004 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ¼ÆÊıÆ÷Ñ¡Ôñ£¬²Î¿¼GX_COUNTER_SELECTOR_ENTRY						\English Selects which Counter to configure, Refer to GX_COUNTER_SELECTOR_ENTRY
-	GX_ENUM_COUNTER_EVENT_SOURCE            = 12005 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ¼ÆÊıÆ÷ÊÂ¼ş´¥·¢Ô´£¬²Î¿¼GX_COUNTER_EVENT_SOURCE_ENTRY			\English Select the events that will be the source to increment the Counter, Refer to GX_COUNTER_EVENT_SOURCE_ENTRY
-	GX_ENUM_COUNTER_RESET_SOURCE            = 12006 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ¼ÆÊıÆ÷¸´Î»Ô´£¬²Î¿¼GX_COUNTER_RESET_SOURCE_ENTRY				\English Selects the signals that will be the source to reset the Counter, Refer to GX_COUNTER_RESET_SOURCE_ENTRY
-	GX_ENUM_COUNTER_RESET_ACTIVATION        = 12007 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ¼ÆÊıÆ÷¸´Î»ĞÅºÅ¼«ĞÔ£¬²Î¿¼GX_COUNTER_RESET_ACTIVATION_ENTRY		\English Selects the Activation mode of the Counter Reset Source signal, Refer to GX_COUNTER_RESET_ACTIVATION_ENTRY
-	GX_COMMAND_COUNTER_RESET                = 12008 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ¼ÆÊıÆ÷¸´Î»													\English Does a software reset of the selected Counter and starts it.
-	GX_ENUM_COUNTER_TRIGGER_SOURCE          = 12009 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ¼ÆÊıÆ÷´¥·¢Ô´£¬²Î¿¼GX_COUNTER_TRIGGER_SOURCE_ENTRY				\English Counter trigger source refer to GX_COUNTER_TRIGGER_SOURCE_ENTRY
-	GX_INT_COUNTER_DURATION					= 12010 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ¼ÆÊıÆ÷³ÖĞøÊ±¼ä												\English Counter Duration
-    GX_ENUM_TIMER_TRIGGER_ACTIVATION        = 12011 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ¶¨Ê±Æ÷´¥·¢¼«ĞÔ,²Î¿¼GX_TIMER_TRIGGER_ACTIVATION_ENTRY			\English Timer Trigger Activation see also GX_TIMER_TRIGGER_ACTIVATION_ENTRY
-	GX_INT_COUNTER_VALUE				    = 12012 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ¼ÆÊıÆ÷Öµ														\English counter value
+	GX_ENUM_TIMER_SELECTOR = 12000 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,			  ///< \Chinese è®¡æ—¶å™¨é€‰æ‹©ï¼Œå‚è€ƒGX_TIMER_SELECTOR_ENTRY						\English Selects which Counter to configure, Refer to GX_TIMER_SELECTOR_ENTRY
+	GX_FLOAT_TIMER_DURATION = 12001 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,		  ///< \Chinese è®¡æ—¶å™¨æŒç»­æ—¶é—´												\English Sets the duration (in microseconds) of the Timer pulse.
+	GX_FLOAT_TIMER_DELAY = 12002 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,			  ///< \Chinese è®¡æ—¶å™¨å»¶è¿Ÿæ—¶é—´												\English Sets the duration (in microseconds) of the delay to apply at the reception of a trigger before starting the Timer.
+	GX_ENUM_TIMER_TRIGGER_SOURCE = 12003 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,	  ///< \Chinese è®¡æ—¶å™¨è§¦å‘æºï¼Œå‚è€ƒGX_TIMER_TRIGGER_SOURCE_ENTRY				\English Selects the source of the trigger to start the Timer, Refer to GX_TIMER_TRIGGER_SOURCE_ENTRY
+	GX_ENUM_COUNTER_SELECTOR = 12004 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		  ///< \Chinese è®¡æ•°å™¨é€‰æ‹©ï¼Œå‚è€ƒGX_COUNTER_SELECTOR_ENTRY						\English Selects which Counter to configure, Refer to GX_COUNTER_SELECTOR_ENTRY
+	GX_ENUM_COUNTER_EVENT_SOURCE = 12005 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,	  ///< \Chinese è®¡æ•°å™¨äº‹ä»¶è§¦å‘æºï¼Œå‚è€ƒGX_COUNTER_EVENT_SOURCE_ENTRY			\English Select the events that will be the source to increment the Counter, Refer to GX_COUNTER_EVENT_SOURCE_ENTRY
+	GX_ENUM_COUNTER_RESET_SOURCE = 12006 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,	  ///< \Chinese è®¡æ•°å™¨å¤ä½æºï¼Œå‚è€ƒGX_COUNTER_RESET_SOURCE_ENTRY				\English Selects the signals that will be the source to reset the Counter, Refer to GX_COUNTER_RESET_SOURCE_ENTRY
+	GX_ENUM_COUNTER_RESET_ACTIVATION = 12007 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese è®¡æ•°å™¨å¤ä½ä¿¡å·ææ€§ï¼Œå‚è€ƒGX_COUNTER_RESET_ACTIVATION_ENTRY		\English Selects the Activation mode of the Counter Reset Source signal, Refer to GX_COUNTER_RESET_ACTIVATION_ENTRY
+	GX_COMMAND_COUNTER_RESET = 12008 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,	  ///< \Chinese è®¡æ•°å™¨å¤ä½													\English Does a software reset of the selected Counter and starts it.
+	GX_ENUM_COUNTER_TRIGGER_SOURCE = 12009 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,	  ///< \Chinese è®¡æ•°å™¨è§¦å‘æºï¼Œå‚è€ƒGX_COUNTER_TRIGGER_SOURCE_ENTRY				\English Counter trigger source refer to GX_COUNTER_TRIGGER_SOURCE_ENTRY
+	GX_INT_COUNTER_DURATION = 12010 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			  ///< \Chinese è®¡æ•°å™¨æŒç»­æ—¶é—´												\English Counter Duration
+	GX_ENUM_TIMER_TRIGGER_ACTIVATION = 12011 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese å®šæ—¶å™¨è§¦å‘ææ€§,å‚è€ƒGX_TIMER_TRIGGER_ACTIVATION_ENTRY			\English Timer Trigger Activation see also GX_TIMER_TRIGGER_ACTIVATION_ENTRY
+	GX_INT_COUNTER_VALUE = 12012 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			  ///< \Chinese è®¡æ•°å™¨å€¼														\English counter value
 
 	//---------------RemoveParameterLimitControl Section-------------------------
-	GX_ENUM_REMOVE_PARAMETER_LIMIT          = 13000 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese È¡Ïû²ÎÊı·¶Î§ÏŞÖÆ, ²Î¿¼GX_REMOVE_PARAMETER_LIMIT_ENTRY			\English Cancel parameter range restriction, refer to GX_REMOVE_PARAMETER_LIMIT_ENTRY
+	GX_ENUM_REMOVE_PARAMETER_LIMIT = 13000 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese å–æ¶ˆå‚æ•°èŒƒå›´é™åˆ¶, å‚è€ƒGX_REMOVE_PARAMETER_LIMIT_ENTRY			\English Cancel parameter range restriction, refer to GX_REMOVE_PARAMETER_LIMIT_ENTRY
 
-    //---------------HDRControl Section-------------------------
-    GX_ENUM_HDR_MODE                        = 14000 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese HDRÄ£Ê½,²Î¿¼GX_HDR_MODE_ENTRY									\English HDR mode,Refer to GX_HDR_MODE_ENTRY
-    GX_INT_HDR_TARGET_LONG_VALUE            = 14001 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ÁÁ³¡ÆÚÍûÖµ													\English Bright field expectations 
-    GX_INT_HDR_TARGET_SHORT_VALUE           = 14002 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese °µ³¡ÆÚÍûÖµ													\English dark field expectations
-    GX_INT_HDR_TARGET_MAIN_VALUE            = 14003 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ÈÚºÏÆÚÍûÖµ													\English Convergence expectations 
+	//---------------HDRControl Section-------------------------
+	GX_ENUM_HDR_MODE = 14000 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,			  ///< \Chinese HDRæ¨¡å¼,å‚è€ƒGX_HDR_MODE_ENTRY									\English HDR mode,Refer to GX_HDR_MODE_ENTRY
+	GX_INT_HDR_TARGET_LONG_VALUE = 14001 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,  ///< \Chinese äº®åœºæœŸæœ›å€¼													\English Bright field expectations
+	GX_INT_HDR_TARGET_SHORT_VALUE = 14002 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese æš—åœºæœŸæœ›å€¼													\English dark field expectations
+	GX_INT_HDR_TARGET_MAIN_VALUE = 14003 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,  ///< \Chinese èåˆæœŸæœ›å€¼													\English Convergence expectations
 
-    //---------------MultiGrayControl Section-------------------------
-    GX_ENUM_MGC_MODE                        = 15001 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ¶àÖ¡»Ò¶È¿ØÖÆÄ£Ê½,²Î¿¼GX_MGC_MODE_ENTRY						\English Multi-frame grey scale control mode ,Refer to GX_MGC_MODE_ENTRY
-    GX_INT_MGC_SELECTOR                     = 15002 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ¶àÖ¡»Ò¶ÈÑ¡Ôñ													\English Multiframe grey color selection 
-    GX_FLOAT_MGC_EXPOSURE_TIME              = 15003 | GX_FEATURE_FLOAT| GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ¶àÖ¡»Ò¶ÈÆØ¹âÊ±¼ä												\English Multi-frame grey time exposure time 
-    GX_FLOAT_MGC_GAIN                       = 15004 | GX_FEATURE_FLOAT| GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ¶àÖ¡»Ò¶ÈÔöÒæ													\English Multiframe grey gain 
-    
-    //---------------ImageQualityControl Section-------------------------
-    GX_BUFFER_STRIPED_CALIBRATION_INFO                     = 16001 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,    ///< \Chinese ÌõÎÆ±ê¶¨ĞÅÏ¢£¬²Î¿¼GX_BUFFER_STATIC_DEFECT_CORRECTION_INFO	\English Fringe calibration information Refer to GX_BUFFER_STATIC_DEFECT_CORRECTION_INFO
-    GX_FLOAT_CONTRAST                                      = 16002 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,     ///< \Chinese ¶Ô±È¶È£¬²Î¿¼GX_FLOAT_MGC_GAIN								\English Contrast
-	GX_ENUM_HOTPIXEL_CORRECTION							   = 16003 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,     ///< \Chinese ÈÈÏñËØĞ£Õı													\English Hotpixel correction 
-    
-    //---------------GyroControl Section-------------------------
-    GX_BUFFER_IMU_DATA                                     = 17001 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese ÍÓÂİÒÇÊı¾İ																			\English IMU data
-    GX_ENUM_IMU_CONFIG_ACC_RANGE                           = 17002 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ¼ÓËÙ¼Æ²âÁ¿·¶Î§£¬²Î¿¼GX_IMU_CONFIG_ACC_RANGE_ENTRY										\English IMU config acc range, refer to GX_IMU_CONFIG_ACC_RANGE_ENTRY
-    GX_ENUM_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_SWITCH      = 17003 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ¼ÓËÙ¼ÆµÍÍ¨ÂË²¨¿ª¹Ø£¬ ²Î¿¼GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_SWITCH_ENTRY			\English IMU config acc odr low pass filter switch, refer to GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_SWITCH_ENTRY
-    GX_ENUM_IMU_CONFIG_ACC_ODR                             = 17004 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ¼ÓËÙ¼ÆÊä³öÊı¾İÂÊ£¬²Î¿¼GX_IMU_CONFIG_ACC_ODR_ENTRY										\English IMU config acc odr, refer to GX_IMU_CONFIG_ACC_ODR_ENTRY
-    GX_ENUM_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_FREQUENCY   = 17005 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ¼ÓËÙ¼Æ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊ£¬²Î¿¼GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_FREQUENCY_ENTRY	\English imu config acc odr low pass filter frequency, refer to GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_FREQUENCY_ENTRY
-    GX_ENUM_IMU_CONFIG_GYRO_XRANGE                         = 17006 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ÍÓÂİÒÇX·½Ïò²âÁ¿·¶Î§£¬²Î¿¼GX_IMU_CONFIG_GYRO_RANGE_ENTRY								\English imu config gyro Xrange, refer to GX_IMU_CONFIG_GYRO_RANGE_ENTRY
-    GX_ENUM_IMU_CONFIG_GYRO_YRANGE                         = 17007 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ÍÓÂİÒÇY·½Ïò²âÁ¿·¶Î§£¬²Î¿¼GX_IMU_CONFIG_GYRO_RANGE_ENTRY								\English imu config gyro Yrange, refer to GX_IMU_CONFIG_GYRO_RANGE_ENTRY
-    GX_ENUM_IMU_CONFIG_GYRO_ZRANGE                         = 17008 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ÍÓÂİÒÇZ·½Ïò²âÁ¿·¶Î§£¬²Î¿¼GX_IMU_CONFIG_GYRO_RANGE_ENTRY								\English imu config gyro Zrange, refer to GX_IMU_CONFIG_GYRO_RANGE_ENTRY
-    GX_ENUM_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_SWITCH     = 17009 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ÍÓÂİÒÇµÍÍ¨ÂË²¨¿ª¹Ø£¬²Î¿¼GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_SWITCH_ENTRY			\English imu config gyro odr low pass filter switch, refer to GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_SWITCH_ENTRY
-    GX_ENUM_IMU_CONFIG_GYRO_ODR                            = 17010 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ÍÓÂİÒÇÊä³öÊı¾İÂÊ£¬²Î¿¼GX_IMU_CONFIG_GYRO_ODR_ENTRY									\English imu config gyro odr, refer to GX_IMU_CONFIG_GYRO_ODR_ENTRY
-    GX_ENUM_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY  = 17011 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ¼ÓËÙ¼ÆµÍÍ¨½ØÖ¹ÆµÂÊ£¬²Î¿¼GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_ENTRY		\English imu config gyro odr low pass filter frequency, refer to GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_ENTRY
-    GX_FLOAT_IMU_ROOM_TEMPERATURE                          = 17012 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,	///< \Chinese ÍÓÂİÒÇÎÂ¶ÈÊÒÎÂÉèÖÃ																	\English imu room temperature
-    GX_ENUM_IMU_TEMPERATURE_ODR                            = 17013 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		///< \Chinese ÎÂ¶È¼ÆÊä³öÊı¾İÂÊÉèÖÃ£¬²Î¿¼GX_IMU_TEMPERATURE_ODR_ENTRY								\English imu temperature odr, refer to GX_IMU_TEMPERATURE_ODR_ENTRY
-    
+	//---------------MultiGrayControl Section-------------------------
+	GX_ENUM_MGC_MODE = 15001 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,			 ///< \Chinese å¤šå¸§ç°åº¦æ§åˆ¶æ¨¡å¼,å‚è€ƒGX_MGC_MODE_ENTRY						\English Multi-frame grey scale control mode ,Refer to GX_MGC_MODE_ENTRY
+	GX_INT_MGC_SELECTOR = 15002 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			 ///< \Chinese å¤šå¸§ç°åº¦é€‰æ‹©													\English Multiframe grey color selection
+	GX_FLOAT_MGC_EXPOSURE_TIME = 15003 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese å¤šå¸§ç°åº¦æ›å…‰æ—¶é—´												\English Multi-frame grey time exposure time
+	GX_FLOAT_MGC_GAIN = 15004 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,			 ///< \Chinese å¤šå¸§ç°åº¦å¢ç›Š													\English Multiframe grey gain
+
+	//---------------ImageQualityControl Section-------------------------
+	GX_BUFFER_STRIPED_CALIBRATION_INFO = 16001 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese æ¡çº¹æ ‡å®šä¿¡æ¯ï¼Œå‚è€ƒGX_BUFFER_STATIC_DEFECT_CORRECTION_INFO	\English Fringe calibration information Refer to GX_BUFFER_STATIC_DEFECT_CORRECTION_INFO
+	GX_FLOAT_CONTRAST = 16002 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,					  ///< \Chinese å¯¹æ¯”åº¦ï¼Œå‚è€ƒGX_FLOAT_MGC_GAIN								\English Contrast
+	GX_ENUM_HOTPIXEL_CORRECTION = 16003 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,		  ///< \Chinese çƒ­åƒç´ æ ¡æ­£													\English Hotpixel correction
+
+	//---------------GyroControl Section-------------------------
+	GX_BUFFER_IMU_DATA = 17001 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,								   ///< \Chinese é™€èºä»ªæ•°æ®																			\English IMU data
+	GX_ENUM_IMU_CONFIG_ACC_RANGE = 17002 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						   ///< \Chinese åŠ é€Ÿè®¡æµ‹é‡èŒƒå›´ï¼Œå‚è€ƒGX_IMU_CONFIG_ACC_RANGE_ENTRY										\English IMU config acc range, refer to GX_IMU_CONFIG_ACC_RANGE_ENTRY
+	GX_ENUM_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_SWITCH = 17003 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,	   ///< \Chinese åŠ é€Ÿè®¡ä½é€šæ»¤æ³¢å¼€å…³ï¼Œ å‚è€ƒGX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_SWITCH_ENTRY			\English IMU config acc odr low pass filter switch, refer to GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_SWITCH_ENTRY
+	GX_ENUM_IMU_CONFIG_ACC_ODR = 17004 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,							   ///< \Chinese åŠ é€Ÿè®¡è¾“å‡ºæ•°æ®ç‡ï¼Œå‚è€ƒGX_IMU_CONFIG_ACC_ODR_ENTRY										\English IMU config acc odr, refer to GX_IMU_CONFIG_ACC_ODR_ENTRY
+	GX_ENUM_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_FREQUENCY = 17005 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,  ///< \Chinese åŠ é€Ÿè®¡åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ï¼Œå‚è€ƒGX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_FREQUENCY_ENTRY	\English imu config acc odr low pass filter frequency, refer to GX_IMU_CONFIG_ACC_ODR_LOW_PASS_FILTER_FREQUENCY_ENTRY
+	GX_ENUM_IMU_CONFIG_GYRO_XRANGE = 17006 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						   ///< \Chinese é™€èºä»ªXæ–¹å‘æµ‹é‡èŒƒå›´ï¼Œå‚è€ƒGX_IMU_CONFIG_GYRO_RANGE_ENTRY								\English imu config gyro Xrange, refer to GX_IMU_CONFIG_GYRO_RANGE_ENTRY
+	GX_ENUM_IMU_CONFIG_GYRO_YRANGE = 17007 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						   ///< \Chinese é™€èºä»ªYæ–¹å‘æµ‹é‡èŒƒå›´ï¼Œå‚è€ƒGX_IMU_CONFIG_GYRO_RANGE_ENTRY								\English imu config gyro Yrange, refer to GX_IMU_CONFIG_GYRO_RANGE_ENTRY
+	GX_ENUM_IMU_CONFIG_GYRO_ZRANGE = 17008 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						   ///< \Chinese é™€èºä»ªZæ–¹å‘æµ‹é‡èŒƒå›´ï¼Œå‚è€ƒGX_IMU_CONFIG_GYRO_RANGE_ENTRY								\English imu config gyro Zrange, refer to GX_IMU_CONFIG_GYRO_RANGE_ENTRY
+	GX_ENUM_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_SWITCH = 17009 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,	   ///< \Chinese é™€èºä»ªä½é€šæ»¤æ³¢å¼€å…³ï¼Œå‚è€ƒGX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_SWITCH_ENTRY			\English imu config gyro odr low pass filter switch, refer to GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_SWITCH_ENTRY
+	GX_ENUM_IMU_CONFIG_GYRO_ODR = 17010 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						   ///< \Chinese é™€èºä»ªè¾“å‡ºæ•°æ®ç‡ï¼Œå‚è€ƒGX_IMU_CONFIG_GYRO_ODR_ENTRY									\English imu config gyro odr, refer to GX_IMU_CONFIG_GYRO_ODR_ENTRY
+	GX_ENUM_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY = 17011 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese åŠ é€Ÿè®¡ä½é€šæˆªæ­¢é¢‘ç‡ï¼Œå‚è€ƒGX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_ENTRY		\English imu config gyro odr low pass filter frequency, refer to GX_IMU_CONFIG_GYRO_ODR_LOW_PASS_FILTER_FREQUENCY_ENTRY
+	GX_FLOAT_IMU_ROOM_TEMPERATURE = 17012 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,						   ///< \Chinese é™€èºä»ªæ¸©åº¦å®¤æ¸©è®¾ç½®																	\English imu room temperature
+	GX_ENUM_IMU_TEMPERATURE_ODR = 17013 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						   ///< \Chinese æ¸©åº¦è®¡è¾“å‡ºæ•°æ®ç‡è®¾ç½®ï¼Œå‚è€ƒGX_IMU_TEMPERATURE_ODR_ENTRY								\English imu temperature odr, refer to GX_IMU_TEMPERATURE_ODR_ENTRY
+
 	//---------------FrameBufferControl Section-------------------------
-	GX_INT_FRAME_BUFFER_COUNT         = 18001 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese Ö¡´æÉî¶È																				\English Frame memory depth
-	GX_COMMAND_FRAME_BUFFER_FLUSH     = 18002 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese Çå¿ÕÖ¡´æ																				\English Empty the frame save  
-
+	GX_INT_FRAME_BUFFER_COUNT = 18001 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		  ///< \Chinese å¸§å­˜æ·±åº¦																				\English Frame memory depth
+	GX_COMMAND_FRAME_BUFFER_FLUSH = 18002 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese æ¸…ç©ºå¸§å­˜																				\English Empty the frame save
 
 	//----------------SerialPortControl Section----------------------------------
-	GX_ENUM_SERIALPORT_SELECTOR			= 19001 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese ´®¿ÚÑ¡Ôñ																				\English Serial port selection
-	GX_ENUM_SERIALPORT_SOURCE			= 19002 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese ´®¿ÚÊäÈëÔ´																			\English Serial port input source
-	GX_ENUM_SERIALPORT_BAUDRATE			= 19003 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese ´®¿Ú²¨ÌØÂÊ																			\English Serial baud rate
-	GX_INT_SERIALPORT_DATA_BITS			= 19004 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese ´®¿ÚÊı¾İÎ»																			\English Serial port data bit
-	GX_ENUM_SERIALPORT_STOP_BITS		= 19005 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese ´®¿ÚÍ£Ö¹Î»																			\English Serial port stop bit
-	GX_ENUM_SERIALPORT_PARITY			= 19006 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese ´®¿ÚÆæÅ¼Ğ£Ñé																			\English Serial port parity
-	GX_INT_TRANSMIT_QUEUE_MAX_CHARACTER_COUNT		= 19007 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ´«Êä¶ÓÁĞ×î´óÖµ×Ö·ûÊı																	\English Maximum number of characters in transmission queue
-	GX_INT_TRANSMIT_QUEUE_CURRENT_CHARACTER_COUNT	= 19008 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ´«Êä¶ÓÁĞµ±Ç°×Ö·ûÊı																	\English Current number of characters in the transmission queue
-	GX_INT_RECEIVE_QUEUE_MAX_CHARACTER_COUNT		= 19009 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ½ÓÊÕ¶ÓÁĞ×î´óÖµ×Ö·ûÊı																	\English Maximum number of characters in receive queue
-	GX_INT_RECEIVE_QUEUE_CURRENT_CHARACTER_COUNT	= 19010 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese ½ÓÊÕ¶ÓÁĞµ±Ç°×Ö·ûÊı																	\English Current number of characters in the receive queue
-	GX_INT_RECEIVE_FRAMING_ERROR_COUNT		= 19011 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese ½ÓÊÕÖ¡´íÎó¼ÆÊı																		\English Received frame error count
-	GX_INT_RECEIVE_PARITY_ERROR_COUNT		= 19012 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese ½ÓÊÕÆæÅ¼Ğ£Ñé´íÎó¼ÆÊı																	\English Receive parity error count
-	GX_COMMAND_RECEIVE_QUEUE_CLEAR			= 19013 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ¶ÓÁĞÇå³ı																				\English Queue Clear
-	GX_BUFFER_SERIALPORT_DATA				= 19014 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ´®¿ÚÊı¾İ																				\English serial data
-	GX_INT_SERIALPORT_DATA_LENGTH			= 19015 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese ´®¿ÚÊı¾İ³¤¶È 																			\English Serial port data length 
-	GX_INT_SERIAL_PORT_DETECTION_STATUS	    = 19016 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese ´®¿Ú×´Ì¬¼ì²â																			\English Serial port status detection	
+	GX_ENUM_SERIALPORT_SELECTOR = 19001 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				  ///< \Chinese ä¸²å£é€‰æ‹©																				\English Serial port selection
+	GX_ENUM_SERIALPORT_SOURCE = 19002 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					  ///< \Chinese ä¸²å£è¾“å…¥æº																			\English Serial port input source
+	GX_ENUM_SERIALPORT_BAUDRATE = 19003 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				  ///< \Chinese ä¸²å£æ³¢ç‰¹ç‡																			\English Serial baud rate
+	GX_INT_SERIALPORT_DATA_BITS = 19004 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,					  ///< \Chinese ä¸²å£æ•°æ®ä½																			\English Serial port data bit
+	GX_ENUM_SERIALPORT_STOP_BITS = 19005 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				  ///< \Chinese ä¸²å£åœæ­¢ä½																			\English Serial port stop bit
+	GX_ENUM_SERIALPORT_PARITY = 19006 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					  ///< \Chinese ä¸²å£å¥‡å¶æ ¡éªŒ																			\English Serial port parity
+	GX_INT_TRANSMIT_QUEUE_MAX_CHARACTER_COUNT = 19007 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,	  ///< \Chinese ä¼ è¾“é˜Ÿåˆ—æœ€å¤§å€¼å­—ç¬¦æ•°																	\English Maximum number of characters in transmission queue
+	GX_INT_TRANSMIT_QUEUE_CURRENT_CHARACTER_COUNT = 19008 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese ä¼ è¾“é˜Ÿåˆ—å½“å‰å­—ç¬¦æ•°																	\English Current number of characters in the transmission queue
+	GX_INT_RECEIVE_QUEUE_MAX_CHARACTER_COUNT = 19009 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,	  ///< \Chinese æ¥æ”¶é˜Ÿåˆ—æœ€å¤§å€¼å­—ç¬¦æ•°																	\English Maximum number of characters in receive queue
+	GX_INT_RECEIVE_QUEUE_CURRENT_CHARACTER_COUNT = 19010 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,  ///< \Chinese æ¥æ”¶é˜Ÿåˆ—å½“å‰å­—ç¬¦æ•°																	\English Current number of characters in the receive queue
+	GX_INT_RECEIVE_FRAMING_ERROR_COUNT = 19011 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			  ///< \Chinese æ¥æ”¶å¸§é”™è¯¯è®¡æ•°																		\English Received frame error count
+	GX_INT_RECEIVE_PARITY_ERROR_COUNT = 19012 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			  ///< \Chinese æ¥æ”¶å¥‡å¶æ ¡éªŒé”™è¯¯è®¡æ•°																	\English Receive parity error count
+	GX_COMMAND_RECEIVE_QUEUE_CLEAR = 19013 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,			  ///< \Chinese é˜Ÿåˆ—æ¸…é™¤																				\English Queue Clear
+	GX_BUFFER_SERIALPORT_DATA = 19014 | GX_FEATURE_BUFFER | GX_FEATURE_LEVEL_REMOTE_DEV,				  ///< \Chinese ä¸²å£æ•°æ®																				\English serial data
+	GX_INT_SERIALPORT_DATA_LENGTH = 19015 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				  ///< \Chinese ä¸²å£æ•°æ®é•¿åº¦ 																			\English Serial port data length
+	GX_INT_SERIAL_PORT_DETECTION_STATUS = 19016 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			  ///< \Chinese ä¸²å£çŠ¶æ€æ£€æµ‹																			\English Serial port status detection
 
 	//---------------CoaXPress Section-------------------------
-	GX_ENUM_CXP_LINK_CONFIGURATION				= 20001 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Á¬½ÓÅäÖÃ																				\English Connection configuration
-	GX_ENUM_CXP_LINK_CONFIGURATION_PREFERRED	= 20002 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Ô¤ÉèÁ¬½ÓÅäÖÃ																			\English Preset connection configuration
-	GX_ENUM_CXP_LINK_CONFIGURATION_STATUS		= 20003 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese CXPÁ¬½ÓÅäÖÃ×´Ì¬																		\English CXP connection configuration status
-	GX_INT_IMAGE1_STREAM_ID					= 20004 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese µÚÒ»ÕÅÍ¼Á÷ID																			\English First image flow ID
-	GX_ENUM_CXP_CONNECTION_SELECTOR			= 20005 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese Á¬½ÓÑ¡Ôñ																				\English Connection selection
-	GX_ENUM_CXP_CONNECTION_TEST_MODE			= 20006 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Á¬½Ó²âÊÔÄ£Ê½																			\English Connection test mode
-	GX_INT_CXP_CONNECTION_TEST_ERROR_COUNT		= 20007 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Á¬½Ó²âÊÔ´íÎó¼ÆÊı																		\English Connection test error count
-	GX_INT_CXP_CONNECTION_TEST_PACKET_RX_COUNT = 20008 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese Á¬½Ó²âÊÔÊı¾İ°ü½ÓÊÕ¸öÊı																\English Number of connection test packets received
-	GX_INT_CXP_CONNECTION_TEST_PACKET_TX_COUNT	= 20009 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,				///< \Chinese Á¬½Ó²âÊÔÊı¾İ°ü·¢ËÍ¸öÊı																\English Number of connection test packets sent
+	GX_ENUM_CXP_LINK_CONFIGURATION = 20001 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,			   ///< \Chinese è¿æ¥é…ç½®																				\English Connection configuration
+	GX_ENUM_CXP_LINK_CONFIGURATION_PREFERRED = 20002 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,  ///< \Chinese é¢„è®¾è¿æ¥é…ç½®																			\English Preset connection configuration
+	GX_ENUM_CXP_LINK_CONFIGURATION_STATUS = 20003 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,	   ///< \Chinese CXPè¿æ¥é…ç½®çŠ¶æ€																		\English CXP connection configuration status
+	GX_INT_IMAGE1_STREAM_ID = 20004 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,					   ///< \Chinese ç¬¬ä¸€å¼ å›¾æµID																			\English First image flow ID
+	GX_ENUM_CXP_CONNECTION_SELECTOR = 20005 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		   ///< \Chinese è¿æ¥é€‰æ‹©																				\English Connection selection
+	GX_ENUM_CXP_CONNECTION_TEST_MODE = 20006 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		   ///< \Chinese è¿æ¥æµ‹è¯•æ¨¡å¼																			\English Connection test mode
+	GX_INT_CXP_CONNECTION_TEST_ERROR_COUNT = 20007 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,	   ///< \Chinese è¿æ¥æµ‹è¯•é”™è¯¯è®¡æ•°																		\English Connection test error count
+	GX_INT_CXP_CONNECTION_TEST_PACKET_RX_COUNT = 20008 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese è¿æ¥æµ‹è¯•æ•°æ®åŒ…æ¥æ”¶ä¸ªæ•°																\English Number of connection test packets received
+	GX_INT_CXP_CONNECTION_TEST_PACKET_TX_COUNT = 20009 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese è¿æ¥æµ‹è¯•æ•°æ®åŒ…å‘é€ä¸ªæ•°																\English Number of connection test packets sent
 
 	//--------------SequencerControl Section-------------------------
-	GX_ENUM_SEQUENCER_MODE					= 21001 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ĞòÁĞÆ÷Ä£Ê½																			\English Sequencer mode
-	GX_ENUM_SEQUENCER_CONFIGURATION_MODE	= 21002 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ĞòÁĞÆ÷ÅäÖÃÄ£Ê½																		\English Sequencer configuration mode
-	GX_ENUM_SEQUENCER_FEATURE_SELECTOR		= 21003 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ĞòÁĞÆ÷¹¦ÄÜÑ¡ÔñÆ÷																		\English Sequencer function selector
-	GX_BOOL_SEQUENCER_FEATURE_ENABLE		= 21004 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ĞòÁĞÆ÷¹¦ÄÜÆôÓÃ																		\English Sequencer function enabled
-	GX_INT_SEQUENCER_SET_SELECTOR			= 21005 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ĞòÁĞÆ÷ÉèÖÃÑ¡ÔñÆ÷																		\English Sequencer setting selector
-	GX_INT_SEQUENCER_SET_COUNT				= 21006 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ĞòÁĞÆ÷¼ÆÊı																			\English Sequencer count
-	GX_INT_SEQUENCER_SET_ACTIVE			= 21007 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese ĞòÁĞÆ÷ÉèÖÃ¼¤»î																		\English Sequencer settings active
-	GX_COMMAND_SEQUENCER_SET_RESET			= 21008 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ĞòÁĞÆ÷ÉèÖÃÖØÖÃ																		\English Sequencer setting reset
-	GX_INT_SEQUENCER_PATH_SELECTOR			= 21009 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese ĞòÁĞÆ÷Â·¾¶Ñ¡Ôñ																		\English Sequencer payh selection
-	GX_INT_SEQUENCER_SET_NEXT				= 21010 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						///< \Chinese ĞòÁĞÆ÷ÉèÖÃÏÂÒ»¸ö																		\English Sequencer Next
-	GX_ENUM_SEQUENCER_TRIGGER_SOURCE		= 21011 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ĞòÁĞ´¥·¢Ô´																			\English Sequencer Trigger
-	GX_COMMAND_SEQUENCER_SET_SAVE			= 21012 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ±£´æĞòÁĞ																				\English Sequencer Save
-	GX_COMMAND_SEQUENCER_SET_LOAD			= 21013 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ¼ÓÔØĞòÁĞ																				\English Sequencer Load
+	GX_ENUM_SEQUENCER_MODE = 21001 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,				  ///< \Chinese åºåˆ—å™¨æ¨¡å¼																			\English Sequencer mode
+	GX_ENUM_SEQUENCER_CONFIGURATION_MODE = 21002 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese åºåˆ—å™¨é…ç½®æ¨¡å¼																		\English Sequencer configuration mode
+	GX_ENUM_SEQUENCER_FEATURE_SELECTOR = 21003 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,	  ///< \Chinese åºåˆ—å™¨åŠŸèƒ½é€‰æ‹©å™¨																		\English Sequencer function selector
+	GX_BOOL_SEQUENCER_FEATURE_ENABLE = 21004 | GX_FEATURE_BOOL | GX_FEATURE_LEVEL_REMOTE_DEV,	  ///< \Chinese åºåˆ—å™¨åŠŸèƒ½å¯ç”¨																		\English Sequencer function enabled
+	GX_INT_SEQUENCER_SET_SELECTOR = 21005 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		  ///< \Chinese åºåˆ—å™¨è®¾ç½®é€‰æ‹©å™¨																		\English Sequencer setting selector
+	GX_INT_SEQUENCER_SET_COUNT = 21006 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			  ///< \Chinese åºåˆ—å™¨è®¡æ•°																			\English Sequencer count
+	GX_INT_SEQUENCER_SET_ACTIVE = 21007 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			  ///< \Chinese åºåˆ—å™¨è®¾ç½®æ¿€æ´»																		\English Sequencer settings active
+	GX_COMMAND_SEQUENCER_SET_RESET = 21008 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,	  ///< \Chinese åºåˆ—å™¨è®¾ç½®é‡ç½®																		\English Sequencer setting reset
+	GX_INT_SEQUENCER_PATH_SELECTOR = 21009 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		  ///< \Chinese åºåˆ—å™¨è·¯å¾„é€‰æ‹©																		\English Sequencer payh selection
+	GX_INT_SEQUENCER_SET_NEXT = 21010 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,			  ///< \Chinese åºåˆ—å™¨è®¾ç½®ä¸‹ä¸€ä¸ª																		\English Sequencer Next
+	GX_ENUM_SEQUENCER_TRIGGER_SOURCE = 21011 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,	  ///< \Chinese åºåˆ—è§¦å‘æº																			\English Sequencer Trigger
+	GX_COMMAND_SEQUENCER_SET_SAVE = 21012 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,	  ///< \Chinese ä¿å­˜åºåˆ—																				\English Sequencer Save
+	GX_COMMAND_SEQUENCER_SET_LOAD = 21013 | GX_FEATURE_COMMAND | GX_FEATURE_LEVEL_REMOTE_DEV,	  ///< \Chinese åŠ è½½åºåˆ—																				\English Sequencer Load
 
 	//--------------EnoderControl Section-------------------------
-	GX_ENUM_ENCODER_SELECTOR				= 22001 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ±àÂëÆ÷Ñ¡ÔñÆ÷																			\English Encoder selector
-	GX_ENUM_ENCODER_DIRECTION				= 22002 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ±àÂëÆ÷·½Ïò																			\English Encoder direction
-	GX_INT_ENCODER_VALUE			        = 22003 | GX_FEATURE_INT  | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ½âÂëÆ÷Öµ																				\English Decoder value
-	GX_ENUM_ENCODER_SOURCEA					= 22004 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ±àÂëÆ÷AÏàÊäÈë																			\English Encoder phase A input
-	GX_ENUM_ENCODER_SOURCEB					= 22005 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ±àÂëÆ÷BÏàÊäÈë																			\English Encoder phase B input
-	GX_ENUM_ENCODER_MODE				    = 22006 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,					///< \Chinese ±àÂëÆ÷Ä£Ê½																			\English Encoder Mode
-
-
-	//////////////////////////////////////////////////////////////////////////
-	///Chinese	±¾µØÉè±¸²ã
-	///English	Device Feature
-	//////////////////////////////////////////////////////////////////////////
-	GX_DEV_INT_COMMAND_TIMEOUT     = 0 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DEV,											///< \Chinese ÃüÁî³¬Ê±																				\English Indicates the current command timeout of the specific Link.
-	GX_DEV_INT_COMMAND_RETRY_COUNT = 1 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DEV,											///< \Chinese ÃüÁîÖØÊÔ´ÎÊı																			\English Command retry times
+	GX_ENUM_ENCODER_SELECTOR = 22001 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,  ///< \Chinese ç¼–ç å™¨é€‰æ‹©å™¨																			\English Encoder selector
+	GX_ENUM_ENCODER_DIRECTION = 22002 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese ç¼–ç å™¨æ–¹å‘																			\English Encoder direction
+	GX_INT_ENCODER_VALUE = 22003 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,	   ///< \Chinese è§£ç å™¨å€¼																				\English Decoder value
+	GX_ENUM_ENCODER_SOURCEA = 22004 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,   ///< \Chinese ç¼–ç å™¨Aç›¸è¾“å…¥																			\English Encoder phase A input
+	GX_ENUM_ENCODER_SOURCEB = 22005 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,   ///< \Chinese ç¼–ç å™¨Bç›¸è¾“å…¥																			\English Encoder phase B input
+	GX_ENUM_ENCODER_MODE = 22006 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,	   ///< \Chinese ç¼–ç å™¨æ¨¡å¼																			\English Encoder Mode
 
 	//////////////////////////////////////////////////////////////////////////
-	///Chinese	Á÷²ã
-	///English	DataStream Feature
+	/// Chinese	æœ¬åœ°è®¾å¤‡å±‚
+	/// English	Device Feature
 	//////////////////////////////////////////////////////////////////////////
-	GX_DS_INT_ANNOUNCED_BUFFER_COUNT          = 0 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS, 								///< \Chinese ÉùÃ÷µÄBuffer¸öÊı																		\English Number of Buffers declared
-	GX_DS_INT_DELIVERED_FRAME_COUNT           = 1 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS, 								///< \Chinese ½ÓÊÕÖ¡¸öÊı(°üÀ¨²ĞÖ¡)																	\English Number of received frames (including residual frames)
-	GX_DS_INT_LOST_FRAME_COUNT                = 2 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS, 								///< \Chinese buffer²»×ãµ¼ÖÂµÄ¶ªÖ¡¸öÊı																\English Number of frames lost due to insufficient buffers
-	GX_DS_INT_INCOMPLETE_FRAME_COUNT          = 3 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS, 								///< \Chinese ½ÓÊÕµÄ²ĞÖ¡¸öÊı																		\English Number of residual frames received
-	GX_DS_INT_DELIVERED_PACKET_COUNT          = 4 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS, 								///< \Chinese ½ÓÊÕµ½µÄ°üÊı																			\English Number of packets received
-	GX_DS_INT_RESEND_PACKET_COUNT             = 5 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS, 								///< \Chinese ÖØ´«°ü¸öÊı																			\English Number of retransmission packets
-	GX_DS_INT_RESCUED_PACKED_COUNT            = 6 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS, 								///< \Chinese ÖØ´«³É¹¦°ü¸öÊı																		\English Number of successful retransmitted packets
-	GX_DS_INT_RESEND_COMMAND_COUNT            = 7 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS, 								///< \Chinese ÖØ´«ÃüÁî´ÎÊı																			\English Repeat command times
-	GX_DS_INT_UNEXPECTED_PACKED_COUNT         = 8 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS, 								///< \Chinese Òì³£°ü¸öÊı																			\English Exception packet number
-	GX_DS_INT_MAX_PACKET_COUNT_IN_ONE_BLOCK   = 9 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS, 								///< \Chinese Êı¾İ¿é×î´óÖØ´«°üÊı																	\English Maximum number of retransmissions of data blocks
-	GX_DS_INT_MAX_PACKET_COUNT_IN_ONE_COMMAND = 10 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS, 								///< \Chinese Ò»´ÎÖØ´«ÃüÁî×î´ó°üº¬µÄ°üÊı															\English Maximum number of packets contained in a retransmit command
-	GX_DS_INT_RESEND_TIMEOUT                  = 11 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS, 								///< \Chinese ÖØ´«³¬Ê±Ê±¼ä																			\English Retransmission timeout time
-	GX_DS_INT_MAX_WAIT_PACKET_COUNT           = 12 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS, 								///< \Chinese ×î´óµÈ´ı°üÊı																			\English Maximum waiting packet number
-	GX_DS_ENUM_RESEND_MODE                    = 13 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_DS, 							///< \Chinese ÖØ´«Ä£Ê½,²Î¿¼GX_DS_RESEND_MODE_ENTRY													\English Retransmission, see also GX_DS_RESEND_MODE_ENTRY
-	GX_DS_INT_MISSING_BLOCKID_COUNT           = 14 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,  							///< \Chinese BlockID¶ªÊ§¸öÊı																		\English Missing number of BlockID
-	GX_DS_INT_BLOCK_TIMEOUT                   = 15 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,  							///< \Chinese Êı¾İ¿é³¬Ê±Ê±¼ä																		\English Data block timeout
-	GX_DS_INT_STREAM_TRANSFER_SIZE            = 16 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,  							///< \Chinese ´«ÊäÊı¾İ¿é´óĞ¡																		\English size of transfer block
-	GX_DS_INT_STREAM_TRANSFER_NUMBER_URB      = 17 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,  							///< \Chinese ´«ÊäÊı¾İ¿éÊıÁ¿																		\English Number of data blocks transmitted
-	GX_DS_INT_PACKET_TIMEOUT                  = 19 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,  							///< \Chinese °ü³¬Ê±Ê±¼ä																			\English time of package timeout
-	GX_DS_INT_SOCKET_BUFFER_SIZE			  = 20 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,  							///< \Chinese Ì×½Ó×Ö»º³åÇø´óĞ¡																		\English Socket buffer size in kilobytes
-    GX_DS_ENUM_STOP_ACQUISITION_MODE		  = 21 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_DS, 							///< \Chinese Í£²ÉÄ£Ê½£¬²Î¿¼GX_STOP_ACQUISITION_MODE_ENTRY											\English stop acquisition mode
-	GX_DS_ENUM_STREAM_BUFFER_HANDLING_MODE    = 22 | GX_FEATURE_ENUM| GX_FEATURE_LEVEL_DS,  							///< \Chinese Buffer´¦ÀíÄ£Ê½,²Î¿¼GX_DS_STREAM_BUFFER_HANDLING_MODE_ENTRY							\English Buffer processing mode, refer to GX_DS_STREAM_BUFFER_HANDLING_MODE_ENTRY
-	GX_DS_INT_ACQUISITION_BUFFER_CACHE_PREC   = 23 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,  							///< \Chinese ²É¼¯buffer»º³åÊıÁ¿																	\English Number of buffer caches collected
-	GX_DS_ENUM_MULTI_RESEND_MODE			  = 24 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_DS, 							///< \Chinese ÖØ´«Ä£Ê½,²Î¿¼GX_DS_MULTI_RESEND_MODE_ENTRY										    \English Retransmission, see also GX_DS_MULTI_RESEND_MODE_ENTRY
+	GX_DEV_INT_COMMAND_TIMEOUT = 0 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DEV,		///< \Chinese å‘½ä»¤è¶…æ—¶																				\English Indicates the current command timeout of the specific Link.
+	GX_DEV_INT_COMMAND_RETRY_COUNT = 1 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DEV, ///< \Chinese å‘½ä»¤é‡è¯•æ¬¡æ•°																			\English Command retry times
 
 	//////////////////////////////////////////////////////////////////////////
-	///Chinese	·ÏÆúÇø¼ä¶Î
-	///English	Deprecated Section
+	/// Chinese	æµå±‚
+	/// English	DataStream Feature
 	//////////////////////////////////////////////////////////////////////////
-	GX_STRING_DEVICE_ID               = 4    | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,							///< \Chinese Éè±¸ĞòÁĞºÅ[ÆúÓÃ£¬¸ÄÓÃGX_STRING_DEVICE_SERIAL_NUMBER]											\English switch to GX_STRING_DEVICE_SERIAL_NUMBER	
-	GX_STRING_DEVICE_HARDWARE_VERSION = 5    | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV, 						///< \Chinese Éè±¸Ó²¼ş°æ±¾[ÆúÓÃ]																			\English Device hardware version
-	GX_INT_GAIN                       = 5002 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,    						///< \Chinese ÔöÒæ[ÆúÓÃ£¬¸ÄÓÃGX_FLOAT_GAIN]																	\English switch to GX_FLOAT_GAIN
-	GX_INT_BLACKLEVEL                 = 5005 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,    						///< \Chinese ºÚµçÆ½[ÆúÓÃ£¬¸ÄÓÃGX_FLOAT_BLACKLEVEL]															\English switch to GX_FLOAT_BLACKLEVEL
-	GX_FLOAT_BALANCE_RATIO_SELECTOR   = 5007 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,   						///< \Chinese °×Æ½ºâÍ¨µÀÑ¡Ôñ[ÆúÓÃ£¬¸ÄÓÃGX_ENUM_BALANCE_RATIO_SELECTOR]										\English switch to GX_ENUM_BALANCE_RATIO_SELECTOR
-	GX_ENUM_AA_LIGHT_ENVIRMENT        = 6007 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,   						///< \Chinese ×Ô¶¯ÆØ¹â¡¢×Ô¶¯ÔöÒæ£¬¹âÕÕ»·¾³ÀàĞÍ[ÆúÓÃ£¬¸ÄÓÃGX_ENUM_AA_LIGHT_ENVIRONMENT]						\English switch to GX_ENUM_AA_LIGHT_ENVIRONMENT
-	GX_INT_ROI_X                      = 6008 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,    						///< \Chinese ×Ô¶¯µ÷½Ú¸ĞĞËÈ¤ÇøÓòX×ø±ê[ÆúÓÃ£¬¸ÄÓÃGX_INT_AAROI_OFFSETX]										\English switch to GX_INT_AAROI_OFFSETX
-	GX_INT_ROI_Y                      = 6009 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,    						///< \Chinese ×Ô¶¯µ÷½Ú¸ĞĞËÈ¤ÇøÓòY×ø±ê[ÆúÓÃ£¬¸ÄÓÃGX_INT_AAROI_OFFSETY]										\English switch to GX_INT_AAROI_OFFSETY
-	GX_INT_ROI_WIDTH                  = 6010 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,    						///< \Chinese ×Ô¶¯µ÷½Ú¸ĞĞËÈ¤ÇøÓò¿í¶È[ÆúÓÃ£¬¸ÄÓÃGX_INT_AAROI_WIDTH]											\English switch to GX_INT_AAROI_WIDTH
-	GX_INT_ROI_HEIGHT                 = 6011 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,    						///< \Chinese ×Ô¶¯µ÷½Ú¸ĞĞËÈ¤ÇøÓò¸ß¶È[ÆúÓÃ£¬¸ÄÓÃGX_INT_AAROI_HEIGHT]											\English switch to GX_INT_AAROI_HEIGHT
-	GX_INT_AUTO_GAIN_VALUEMIN         = 6012 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,    						///< \Chinese ×Ô¶¯ÔöÒæ×îĞ¡Öµ[ÆúÓÃ£¬¸ÄÓÃGX_FLOAT_AUTO_GAIN_MIN]												\English switch to GX_FLOAT_AUTO_GAIN_MIN
-	GX_INT_AUTO_GAIN_VALUEMAX         = 6013 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,    						///< \Chinese ×Ô¶¯ÔöÒæ×î´óÖµ[ÆúÓÃ£¬¸ÄÓÃGX_FLOAT_AUTO_GAIN_MAX]												\English switch to GX_FLOAT_AUTO_GAIN_MAX
-	GX_INT_AUTO_SHUTTER_VALUEMIN      = 6014 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,    						///< \Chinese ×Ô¶¯ÆØ¹â×îĞ¡Öµ[ÆúÓÃ£¬¸ÄÓÃGX_FLOAT_AUTO_EXPOSURE_TIME_MIN]										\English switch to GX_FLOAT_AUTO_EXPOSURE_TIME_MIN
-	GX_INT_AUTO_SHUTTER_VALUEMAX      = 6015 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,    						///< \Chinese ×Ô¶¯ÆØ¹â×î´óÖµ[ÆúÓÃ£¬¸ÄÓÃGX_FLOAT_AUTO_EXPOSURE_TIME_MAX]										\English switch to GX_FLOAT_AUTO_EXPOSURE_TIME_MAX
-	GX_INT_CONTRASTPARAM              = 6017 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,    						///< \Chinese ¶Ô±È¶È²ÎÊı[ÆúÓÃ£¬¸ÄÓÃGX_INT_CONTRAST_PARAM]													\English switch to GX_INT_CONTRAST_PARAM
-	GX_FLOAT_GAMMAPARAM               = 6018 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,  						///< \Chinese Ù¤Âí²ÎÊı[ÆúÓÃ£¬¸ÄÓÃGX_FLOAT_GAMMA_PARAM]														\English switch to GX_FLOAT_GAMMA_PARAM
-	GX_INT_COLORCORRECTIONPARAM       = 6019 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,    						///< \Chinese ÑÕÉ«Ğ£ÕıÏµÊı[ÆúÓÃ£¬¸ÄÓÃGX_INT_COLOR_CORRECTION_PARAM]											\English switch to GX_INT_COLOR_CORRECTION_PARAM
-	GX_DS_INT_MAX_NUM_QUEUE_BUFFER    = 18   | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,            						///< \Chinese ²É¼¯¶ÓÁĞ×î´óBuffer¸öÊı[ÆúÓÃ£¬¿ÉÑ¡ÔñÊ¹ÓÃGXSetAcqusitionBufferNumber½Ó¿ÚÉèÖÃ²É¼¯buffer¸öÊı]		\English the max number queue buffer
+	GX_DS_INT_ANNOUNCED_BUFFER_COUNT = 0 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,		   ///< \Chinese å£°æ˜çš„Bufferä¸ªæ•°																		\English Number of Buffers declared
+	GX_DS_INT_DELIVERED_FRAME_COUNT = 1 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,			   ///< \Chinese æ¥æ”¶å¸§ä¸ªæ•°(åŒ…æ‹¬æ®‹å¸§)																	\English Number of received frames (including residual frames)
+	GX_DS_INT_LOST_FRAME_COUNT = 2 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,				   ///< \Chinese bufferä¸è¶³å¯¼è‡´çš„ä¸¢å¸§ä¸ªæ•°																\English Number of frames lost due to insufficient buffers
+	GX_DS_INT_INCOMPLETE_FRAME_COUNT = 3 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,		   ///< \Chinese æ¥æ”¶çš„æ®‹å¸§ä¸ªæ•°																		\English Number of residual frames received
+	GX_DS_INT_DELIVERED_PACKET_COUNT = 4 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,		   ///< \Chinese æ¥æ”¶åˆ°çš„åŒ…æ•°																			\English Number of packets received
+	GX_DS_INT_RESEND_PACKET_COUNT = 5 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,			   ///< \Chinese é‡ä¼ åŒ…ä¸ªæ•°																			\English Number of retransmission packets
+	GX_DS_INT_RESCUED_PACKED_COUNT = 6 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,			   ///< \Chinese é‡ä¼ æˆåŠŸåŒ…ä¸ªæ•°																		\English Number of successful retransmitted packets
+	GX_DS_INT_RESEND_COMMAND_COUNT = 7 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,			   ///< \Chinese é‡ä¼ å‘½ä»¤æ¬¡æ•°																			\English Repeat command times
+	GX_DS_INT_UNEXPECTED_PACKED_COUNT = 8 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,		   ///< \Chinese å¼‚å¸¸åŒ…ä¸ªæ•°																			\English Exception packet number
+	GX_DS_INT_MAX_PACKET_COUNT_IN_ONE_BLOCK = 9 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,	   ///< \Chinese æ•°æ®å—æœ€å¤§é‡ä¼ åŒ…æ•°																	\English Maximum number of retransmissions of data blocks
+	GX_DS_INT_MAX_PACKET_COUNT_IN_ONE_COMMAND = 10 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS, ///< \Chinese ä¸€æ¬¡é‡ä¼ å‘½ä»¤æœ€å¤§åŒ…å«çš„åŒ…æ•°															\English Maximum number of packets contained in a retransmit command
+	GX_DS_INT_RESEND_TIMEOUT = 11 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,				   ///< \Chinese é‡ä¼ è¶…æ—¶æ—¶é—´																			\English Retransmission timeout time
+	GX_DS_INT_MAX_WAIT_PACKET_COUNT = 12 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,		   ///< \Chinese æœ€å¤§ç­‰å¾…åŒ…æ•°																			\English Maximum waiting packet number
+	GX_DS_ENUM_RESEND_MODE = 13 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_DS,				   ///< \Chinese é‡ä¼ æ¨¡å¼,å‚è€ƒGX_DS_RESEND_MODE_ENTRY													\English Retransmission, see also GX_DS_RESEND_MODE_ENTRY
+	GX_DS_INT_MISSING_BLOCKID_COUNT = 14 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,		   ///< \Chinese BlockIDä¸¢å¤±ä¸ªæ•°																		\English Missing number of BlockID
+	GX_DS_INT_BLOCK_TIMEOUT = 15 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,				   ///< \Chinese æ•°æ®å—è¶…æ—¶æ—¶é—´																		\English Data block timeout
+	GX_DS_INT_STREAM_TRANSFER_SIZE = 16 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,			   ///< \Chinese ä¼ è¾“æ•°æ®å—å¤§å°																		\English size of transfer block
+	GX_DS_INT_STREAM_TRANSFER_NUMBER_URB = 17 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,	   ///< \Chinese ä¼ è¾“æ•°æ®å—æ•°é‡																		\English Number of data blocks transmitted
+	GX_DS_INT_PACKET_TIMEOUT = 19 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,				   ///< \Chinese åŒ…è¶…æ—¶æ—¶é—´																			\English time of package timeout
+	GX_DS_INT_SOCKET_BUFFER_SIZE = 20 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,			   ///< \Chinese å¥—æ¥å­—ç¼“å†²åŒºå¤§å°																		\English Socket buffer size in kilobytes
+	GX_DS_ENUM_STOP_ACQUISITION_MODE = 21 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_DS,		   ///< \Chinese åœé‡‡æ¨¡å¼ï¼Œå‚è€ƒGX_STOP_ACQUISITION_MODE_ENTRY											\English stop acquisition mode
+	GX_DS_ENUM_STREAM_BUFFER_HANDLING_MODE = 22 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_DS,   ///< \Chinese Bufferå¤„ç†æ¨¡å¼,å‚è€ƒGX_DS_STREAM_BUFFER_HANDLING_MODE_ENTRY							\English Buffer processing mode, refer to GX_DS_STREAM_BUFFER_HANDLING_MODE_ENTRY
+	GX_DS_INT_ACQUISITION_BUFFER_CACHE_PREC = 23 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,   ///< \Chinese é‡‡é›†bufferç¼“å†²æ•°é‡																	\English Number of buffer caches collected
+	GX_DS_ENUM_MULTI_RESEND_MODE = 24 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_DS,			   ///< \Chinese é‡ä¼ æ¨¡å¼,å‚è€ƒGX_DS_MULTI_RESEND_MODE_ENTRY										    \English Retransmission, see also GX_DS_MULTI_RESEND_MODE_ENTRY
 
+	//////////////////////////////////////////////////////////////////////////
+	/// Chinese	åºŸå¼ƒåŒºé—´æ®µ
+	/// English	Deprecated Section
+	//////////////////////////////////////////////////////////////////////////
+	GX_STRING_DEVICE_ID = 4 | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV,				 ///< \Chinese è®¾å¤‡åºåˆ—å·[å¼ƒç”¨ï¼Œæ”¹ç”¨GX_STRING_DEVICE_SERIAL_NUMBER]											\English switch to GX_STRING_DEVICE_SERIAL_NUMBER
+	GX_STRING_DEVICE_HARDWARE_VERSION = 5 | GX_FEATURE_STRING | GX_FEATURE_LEVEL_REMOTE_DEV, ///< \Chinese è®¾å¤‡ç¡¬ä»¶ç‰ˆæœ¬[å¼ƒç”¨]																			\English Device hardware version
+	GX_INT_GAIN = 5002 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						 ///< \Chinese å¢ç›Š[å¼ƒç”¨ï¼Œæ”¹ç”¨GX_FLOAT_GAIN]																	\English switch to GX_FLOAT_GAIN
+	GX_INT_BLACKLEVEL = 5005 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				 ///< \Chinese é»‘ç”µå¹³[å¼ƒç”¨ï¼Œæ”¹ç”¨GX_FLOAT_BLACKLEVEL]															\English switch to GX_FLOAT_BLACKLEVEL
+	GX_FLOAT_BALANCE_RATIO_SELECTOR = 5007 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,	 ///< \Chinese ç™½å¹³è¡¡é€šé“é€‰æ‹©[å¼ƒç”¨ï¼Œæ”¹ç”¨GX_ENUM_BALANCE_RATIO_SELECTOR]										\English switch to GX_ENUM_BALANCE_RATIO_SELECTOR
+	GX_ENUM_AA_LIGHT_ENVIRMENT = 6007 | GX_FEATURE_ENUM | GX_FEATURE_LEVEL_REMOTE_DEV,		 ///< \Chinese è‡ªåŠ¨æ›å…‰ã€è‡ªåŠ¨å¢ç›Šï¼Œå…‰ç…§ç¯å¢ƒç±»å‹[å¼ƒç”¨ï¼Œæ”¹ç”¨GX_ENUM_AA_LIGHT_ENVIRONMENT]						\English switch to GX_ENUM_AA_LIGHT_ENVIRONMENT
+	GX_INT_ROI_X = 6008 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						 ///< \Chinese è‡ªåŠ¨è°ƒèŠ‚æ„Ÿå…´è¶£åŒºåŸŸXåæ ‡[å¼ƒç”¨ï¼Œæ”¹ç”¨GX_INT_AAROI_OFFSETX]										\English switch to GX_INT_AAROI_OFFSETX
+	GX_INT_ROI_Y = 6009 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,						 ///< \Chinese è‡ªåŠ¨è°ƒèŠ‚æ„Ÿå…´è¶£åŒºåŸŸYåæ ‡[å¼ƒç”¨ï¼Œæ”¹ç”¨GX_INT_AAROI_OFFSETY]										\English switch to GX_INT_AAROI_OFFSETY
+	GX_INT_ROI_WIDTH = 6010 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,					 ///< \Chinese è‡ªåŠ¨è°ƒèŠ‚æ„Ÿå…´è¶£åŒºåŸŸå®½åº¦[å¼ƒç”¨ï¼Œæ”¹ç”¨GX_INT_AAROI_WIDTH]											\English switch to GX_INT_AAROI_WIDTH
+	GX_INT_ROI_HEIGHT = 6011 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				 ///< \Chinese è‡ªåŠ¨è°ƒèŠ‚æ„Ÿå…´è¶£åŒºåŸŸé«˜åº¦[å¼ƒç”¨ï¼Œæ”¹ç”¨GX_INT_AAROI_HEIGHT]											\English switch to GX_INT_AAROI_HEIGHT
+	GX_INT_AUTO_GAIN_VALUEMIN = 6012 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		 ///< \Chinese è‡ªåŠ¨å¢ç›Šæœ€å°å€¼[å¼ƒç”¨ï¼Œæ”¹ç”¨GX_FLOAT_AUTO_GAIN_MIN]												\English switch to GX_FLOAT_AUTO_GAIN_MIN
+	GX_INT_AUTO_GAIN_VALUEMAX = 6013 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		 ///< \Chinese è‡ªåŠ¨å¢ç›Šæœ€å¤§å€¼[å¼ƒç”¨ï¼Œæ”¹ç”¨GX_FLOAT_AUTO_GAIN_MAX]												\English switch to GX_FLOAT_AUTO_GAIN_MAX
+	GX_INT_AUTO_SHUTTER_VALUEMIN = 6014 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		 ///< \Chinese è‡ªåŠ¨æ›å…‰æœ€å°å€¼[å¼ƒç”¨ï¼Œæ”¹ç”¨GX_FLOAT_AUTO_EXPOSURE_TIME_MIN]										\English switch to GX_FLOAT_AUTO_EXPOSURE_TIME_MIN
+	GX_INT_AUTO_SHUTTER_VALUEMAX = 6015 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		 ///< \Chinese è‡ªåŠ¨æ›å…‰æœ€å¤§å€¼[å¼ƒç”¨ï¼Œæ”¹ç”¨GX_FLOAT_AUTO_EXPOSURE_TIME_MAX]										\English switch to GX_FLOAT_AUTO_EXPOSURE_TIME_MAX
+	GX_INT_CONTRASTPARAM = 6017 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,				 ///< \Chinese å¯¹æ¯”åº¦å‚æ•°[å¼ƒç”¨ï¼Œæ”¹ç”¨GX_INT_CONTRAST_PARAM]													\English switch to GX_INT_CONTRAST_PARAM
+	GX_FLOAT_GAMMAPARAM = 6018 | GX_FEATURE_FLOAT | GX_FEATURE_LEVEL_REMOTE_DEV,			 ///< \Chinese ä¼½é©¬å‚æ•°[å¼ƒç”¨ï¼Œæ”¹ç”¨GX_FLOAT_GAMMA_PARAM]														\English switch to GX_FLOAT_GAMMA_PARAM
+	GX_INT_COLORCORRECTIONPARAM = 6019 | GX_FEATURE_INT | GX_FEATURE_LEVEL_REMOTE_DEV,		 ///< \Chinese é¢œè‰²æ ¡æ­£ç³»æ•°[å¼ƒç”¨ï¼Œæ”¹ç”¨GX_INT_COLOR_CORRECTION_PARAM]											\English switch to GX_INT_COLOR_CORRECTION_PARAM
+	GX_DS_INT_MAX_NUM_QUEUE_BUFFER = 18 | GX_FEATURE_INT | GX_FEATURE_LEVEL_DS,				 ///< \Chinese é‡‡é›†é˜Ÿåˆ—æœ€å¤§Bufferä¸ªæ•°[å¼ƒç”¨ï¼Œå¯é€‰æ‹©ä½¿ç”¨GXSetAcqusitionBufferNumberæ¥å£è®¾ç½®é‡‡é›†bufferä¸ªæ•°]		\English the max number queue buffer
 
-}GX_FEATURE_ID;
+} GX_FEATURE_ID;
 typedef int32_t GX_FEATURE_ID_CMD;
 
-//Chinese Ö¡»º´æÖ¸Õë
-//English Frame buffer pointer type
-typedef GX_FRAME_BUFFER* PGX_FRAME_BUFFER;
+// Chinese å¸§ç¼“å­˜æŒ‡é’ˆ
+// English Frame buffer pointer type
+typedef GX_FRAME_BUFFER *PGX_FRAME_BUFFER;
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief     Ã¶¾ÙËùÓĞÉè±¸²¢ÇÒ»ñÈ¡Éè±¸¸öÊı,¶ÔÓÚÇ§Õ×ÍøÉè±¸´Ë½Ó¿Ú½öÄÜÃ¶¾ÙÍ¬Íø¶ÎÉè±¸
-\attention ´Ë½Ó¿ÚµÄ×÷ÓÃÊÇ¸üĞÂ¿âÄÚ²¿Éè±¸ÁĞ±í£¬´Ë½Ó¿Ú»á¸Ä±ä¿âÄÚ²¿Éè±¸ÁĞ±í£¬
-           ËùÒÔµ÷ÓÃGXGetAllDeviceBaseInfoºÍGXOpenDeviceÖ®Ç°ĞèÒªµ÷ÓÃ´Ë½Ó¿Ú¡£
-           Èç¹ûÔÚÓÃ»§Ö¸¶¨³¬Ê±Ê±¼äÄÚ³É¹¦Ã¶¾Ùµ½Éè±¸£¬ÔòÁ¢¼´·µ»Ø£»Èç¹ûÔÚÓÃ»§Ö¸¶¨³¬Ê±Ê±¼äÄÚÃ»ÓĞÃ¶¾Ùµ½Éè±¸£¬ÔòÒ»Ö±µÈ´ı£¬Ö±µ½´ïµ½ÓÃ»§Ö¸¶¨µÄ³¬Ê±Ê±¼ä·µ»Ø
-\param     [out]punNumDevices ·µ»ØÉè±¸¸öÊı
-\param     [in]unTimeOut      Ã¶¾ÙµÄ³¬Ê±Ê±¼ä(µ¥Î»ms)¡£
-\return    GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-           GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-           GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-           ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief     æšä¸¾æ‰€æœ‰è®¾å¤‡å¹¶ä¸”è·å–è®¾å¤‡ä¸ªæ•°,å¯¹äºåƒå…†ç½‘è®¾å¤‡æ­¤æ¥å£ä»…èƒ½æšä¸¾åŒç½‘æ®µè®¾å¤‡
+\attention æ­¤æ¥å£çš„ä½œç”¨æ˜¯æ›´æ–°åº“å†…éƒ¨è®¾å¤‡åˆ—è¡¨ï¼Œæ­¤æ¥å£ä¼šæ”¹å˜åº“å†…éƒ¨è®¾å¤‡åˆ—è¡¨ï¼Œ
+		   æ‰€ä»¥è°ƒç”¨GXGetAllDeviceBaseInfoå’ŒGXOpenDeviceä¹‹å‰éœ€è¦è°ƒç”¨æ­¤æ¥å£ã€‚
+		   å¦‚æœåœ¨ç”¨æˆ·æŒ‡å®šè¶…æ—¶æ—¶é—´å†…æˆåŠŸæšä¸¾åˆ°è®¾å¤‡ï¼Œåˆ™ç«‹å³è¿”å›ï¼›å¦‚æœåœ¨ç”¨æˆ·æŒ‡å®šè¶…æ—¶æ—¶é—´å†…æ²¡æœ‰æšä¸¾åˆ°è®¾å¤‡ï¼Œåˆ™ä¸€ç›´ç­‰å¾…ï¼Œç›´åˆ°è¾¾åˆ°ç”¨æˆ·æŒ‡å®šçš„è¶…æ—¶æ—¶é—´è¿”å›
+\param     [out]punNumDevices è¿”å›è®¾å¤‡ä¸ªæ•°
+\param     [in]unTimeOut      æšä¸¾çš„è¶…æ—¶æ—¶é—´(å•ä½ms)ã€‚
+\return    GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+		   GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+		   GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+		   å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Enumerating currently all available devices in subnet and gets the number of devices.
@@ -3380,15 +3369,15 @@ typedef GX_FRAME_BUFFER* PGX_FRAME_BUFFER;
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API  GXUpdateDeviceList   (uint32_t* punNumDevices, uint32_t nTimeOut);
+GX_API GXUpdateDeviceList(uint32_t *punNumDevices, uint32_t nTimeOut);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief		Í¨¹ıĞòºÅ´ò¿ªÉè±¸
-\param		nDeviceIndex Éè±¸ĞòºÅ£¬´Ó1¿ªÊ¼£¬ÀıÈç£º1¡¢2¡¢3¡¢4...
-\param		phDevice ·µ»ØÉè±¸¾ä±ú
-\return		GX_STATUS,²¶»ñµ×²ãµ÷ÓÃ²úÉúµÄÒì³££¬¸ù¾İÒì³£ÀàĞÍ·µ»Ø²»Í¬µÄ´íÎóÂë
+\Chineseï¼š
+\brief		é€šè¿‡åºå·æ‰“å¼€è®¾å¤‡
+\param		nDeviceIndex è®¾å¤‡åºå·ï¼Œä»1å¼€å§‹ï¼Œä¾‹å¦‚ï¼š1ã€2ã€3ã€4...
+\param		phDevice è¿”å›è®¾å¤‡å¥æŸ„
+\return		GX_STATUS,æ•è·åº•å±‚è°ƒç”¨äº§ç”Ÿçš„å¼‚å¸¸ï¼Œæ ¹æ®å¼‚å¸¸ç±»å‹è¿”å›ä¸åŒçš„é”™è¯¯ç 
 
 \English:
 \brief      Open the device by index, starting from 1.
@@ -3401,24 +3390,24 @@ GX_API  GXUpdateDeviceList   (uint32_t* punNumDevices, uint32_t nTimeOut);
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXOpenDeviceByIndex  (uint32_t nDeviceIndex, GX_DEV_HANDLE* phDevice);   // ÒÑÆúÓÃ
+GX_API GXOpenDeviceByIndex(uint32_t nDeviceIndex, GX_DEV_HANDLE *phDevice); // å·²å¼ƒç”¨
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡ËùÓĞÉè±¸µÄ»ù´¡ĞÅÏ¢
-\attention  ´Ë½Ó¿Úµ÷ÓÃÖ®Ç°ĞèÒªµ÷ÓÃGXUpdateDeviceList½Ó¿Ú£¬¸üĞÂ¿âÄÚ²¿Éè±¸ÁĞ±í
-\param		[out] pDeviceInfo   Éè±¸ĞÅÏ¢½á¹¹ÌåÖ¸Õë
-\param		[in|out]pBufferSize Éè±¸ĞÅÏ¢½á¹¹Ìå»º³åÇø´óĞ¡£¬µ¥Î»×Ö½Ú                           
-						   Èç¹ûpDeviceInfoÎªNULL£º
-						   [out]pnBufferSize·µ»ØÊµ¼Ê´óĞ¡
-						   Èç¹ûpDeviceInfo·ÇNULL£º
-						   [in]pnBufferSizeÎªÓÃ»§·ÖÅäbuffer´óĞ¡
-						   [out]pnBufferSize·µ»ØÊµ¼ÊÌî³äbuffer´óĞ¡
-\return    GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-           GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-           GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-           ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST  
+\Chineseï¼š
+\brief      è·å–æ‰€æœ‰è®¾å¤‡çš„åŸºç¡€ä¿¡æ¯
+\attention  æ­¤æ¥å£è°ƒç”¨ä¹‹å‰éœ€è¦è°ƒç”¨GXUpdateDeviceListæ¥å£ï¼Œæ›´æ–°åº“å†…éƒ¨è®¾å¤‡åˆ—è¡¨
+\param		[out] pDeviceInfo   è®¾å¤‡ä¿¡æ¯ç»“æ„ä½“æŒ‡é’ˆ
+\param		[in|out]pBufferSize è®¾å¤‡ä¿¡æ¯ç»“æ„ä½“ç¼“å†²åŒºå¤§å°ï¼Œå•ä½å­—èŠ‚
+						   å¦‚æœpDeviceInfoä¸ºNULLï¼š
+						   [out]pnBufferSizeè¿”å›å®é™…å¤§å°
+						   å¦‚æœpDeviceInfoéNULLï¼š
+						   [in]pnBufferSizeä¸ºç”¨æˆ·åˆ†é…bufferå¤§å°
+						   [out]pnBufferSizeè¿”å›å®é™…å¡«å……bufferå¤§å°
+\return    GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+		   GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+		   GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+		   å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      To get the basic information of all devices.
@@ -3438,19 +3427,19 @@ GX_API GXOpenDeviceByIndex  (uint32_t nDeviceIndex, GX_DEV_HANDLE* phDevice);   
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXGetAllDeviceBaseInfo(GX_DEVICE_BASE_INFO* pDeviceInfo, size_t* pBufferSize);
+GX_API GXGetAllDeviceBaseInfo(GX_DEVICE_BASE_INFO *pDeviceInfo, size_t *pBufferSize);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      Ö¸¶¨Éè±¸ĞòºÅ»ñÈ¡Éè±¸µÄÍøÂçĞÅÏ¢
-\attention  ´Ë½Ó¿Úµ÷ÓÃÖ®Ç°ĞèÒªµ÷ÓÃGXUpdateDeviceList½Ó¿Ú£¬¸üĞÂ¿âÄÚ²¿Éè±¸ÁĞ±í
-\param		[in]  nIndex  Éè±¸ĞòºÅ£¬´Ó1¿ªÊ¼£¬ÀıÈç£º1¡¢2¡¢3¡¢4...
-\param		[out] pstDeviceIPInfo   Éè±¸ĞÅÏ¢½á¹¹ÌåÖ¸Õë
-\return		GX_STATUS_SUCCESS    ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      æŒ‡å®šè®¾å¤‡åºå·è·å–è®¾å¤‡çš„ç½‘ç»œä¿¡æ¯
+\attention  æ­¤æ¥å£è°ƒç”¨ä¹‹å‰éœ€è¦è°ƒç”¨GXUpdateDeviceListæ¥å£ï¼Œæ›´æ–°åº“å†…éƒ¨è®¾å¤‡åˆ—è¡¨
+\param		[in]  nIndex  è®¾å¤‡åºå·ï¼Œä»1å¼€å§‹ï¼Œä¾‹å¦‚ï¼š1ã€2ã€3ã€4...
+\param		[out] pstDeviceIPInfo   è®¾å¤‡ä¿¡æ¯ç»“æ„ä½“æŒ‡é’ˆ
+\return		GX_STATUS_SUCCESS    æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      To get the network information of all devices.
@@ -3465,28 +3454,28 @@ GX_API GXGetAllDeviceBaseInfo(GX_DEVICE_BASE_INFO* pDeviceInfo, size_t* pBufferS
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXGetDeviceIPInfo    (uint32_t nIndex, GX_DEVICE_IP_INFO* pstDeviceIPInfo);
+GX_API GXGetDeviceIPInfo(uint32_t nIndex, GX_DEVICE_IP_INFO *pstDeviceIPInfo);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡¹¦ÄÜ¿ØÖÆÂë¶ÔÓ¦µÄ×Ö·û´®ÃèÊö
-\attention  ´Ë½Ó¿Ú×¨ÃÅÓÃÀ´»ñÈ¡¹¦ÄÜÃû³ÆÃèÊöĞÅÏ¢£¬·½±ãÓÃ»§×öUI³ÌĞò
-\param		[in]hDevice     Éè±¸¾ä±ú
-\param		[in]featureID   ¹¦ÄÜÂëID
-\param		[out]pszName    ÓÃ»§ÊäÈëµÄ×Ö·û´®»º³åÇøµØÖ·,×Ö·û´®³¤¶È°üº¬Ä©Î²½áÊø·û'\0'
-\param		[in,out]pnSize  ÓÃ»§ÊäÈëµÄ±íÊ¾×Ö·û´®»º³åÇøµØÖ·µÄ³¤¶È,µ¥Î»×Ö½Ú¡£
-						Èç¹ûÓÃ»§ÊäÈëµÄpszNameÎªNULL£º
-						[out]pnSize·µ»ØĞèÒªµÄÊµ¼Ê³¤¶È¡£
-						Èç¹ûÓÃ»§ÊäÈëµÄpszName·ÇNULL£º
-						[in]pnSizeÎªÓÃ»§·ÖÅäµÄbuffer´óĞ¡£»
-						[out]pnSize·µ»ØÊµ¼ÊÌî³äbuffer´óĞ¡£»
-\return    GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-           GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-		   GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-           GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-		   GX_STATUS_NEED_MORE_BUFFER    ÓÃ»§·ÖÅäµÄbuffer¹ıĞ¡
-           ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è·å–åŠŸèƒ½æ§åˆ¶ç å¯¹åº”çš„å­—ç¬¦ä¸²æè¿°
+\attention  æ­¤æ¥å£ä¸“é—¨ç”¨æ¥è·å–åŠŸèƒ½åç§°æè¿°ä¿¡æ¯ï¼Œæ–¹ä¾¿ç”¨æˆ·åšUIç¨‹åº
+\param		[in]hDevice     è®¾å¤‡å¥æŸ„
+\param		[in]featureID   åŠŸèƒ½ç ID
+\param		[out]pszName    ç”¨æˆ·è¾“å…¥çš„å­—ç¬¦ä¸²ç¼“å†²åŒºåœ°å€,å­—ç¬¦ä¸²é•¿åº¦åŒ…å«æœ«å°¾ç»“æŸç¬¦'\0'
+\param		[in,out]pnSize  ç”¨æˆ·è¾“å…¥çš„è¡¨ç¤ºå­—ç¬¦ä¸²ç¼“å†²åŒºåœ°å€çš„é•¿åº¦,å•ä½å­—èŠ‚ã€‚
+						å¦‚æœç”¨æˆ·è¾“å…¥çš„pszNameä¸ºNULLï¼š
+						[out]pnSizeè¿”å›éœ€è¦çš„å®é™…é•¿åº¦ã€‚
+						å¦‚æœç”¨æˆ·è¾“å…¥çš„pszNameéNULLï¼š
+						[in]pnSizeä¸ºç”¨æˆ·åˆ†é…çš„bufferå¤§å°ï¼›
+						[out]pnSizeè¿”å›å®é™…å¡«å……bufferå¤§å°ï¼›
+\return    GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+		   GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+		   GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+		   GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+		   GX_STATUS_NEED_MORE_BUFFER    ç”¨æˆ·åˆ†é…çš„bufferè¿‡å°
+		   å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Get the string description for the feature code.
@@ -3508,22 +3497,22 @@ GX_API GXGetDeviceIPInfo    (uint32_t nIndex, GX_DEVICE_IP_INFO* pstDeviceIPInfo
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXGetFeatureName     (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, char* pszName, size_t* pnSize);
+GX_API GXGetFeatureName(GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, char *pszName, size_t *pnSize);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ²éÑ¯µ±Ç°Ïà»úÊÇ·ñÖ§³ÖÄ³¹¦ÄÜ
-\attention  ²»Ö§³ÖÄ³¹¦ÄÜÓĞÁ½¸öÇé¿ö£º 1¡¢Í¨¹ı²éÑ¯Ïà»ú¼Ä´æÆ÷£¬²éµ½µ±Ç°Ïà»úµ±Ç°²»Ö§³Ö´Ë¹¦ÄÜ
-                                     2¡¢Ïà»úXMLÃèÊöÎÄ¼şÖĞÃ»ÓĞ´Ë¹¦ÄÜµÄÃèÊö½Úµã
-\param		[in]hDevice   Éè±¸¾ä±ú
-\param		[in]featureID ¹¦ÄÜÂëID
-\param		[out]pbIsImplemented Èç¹ûÖ§³ÖÔò·µ»Øtrue£¬Èç¹û²»Ö§³ÖÔò·µ»Øfalse
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST  
+\Chineseï¼š
+\brief      æŸ¥è¯¢å½“å‰ç›¸æœºæ˜¯å¦æ”¯æŒæŸåŠŸèƒ½
+\attention  ä¸æ”¯æŒæŸåŠŸèƒ½æœ‰ä¸¤ä¸ªæƒ…å†µï¼š 1ã€é€šè¿‡æŸ¥è¯¢ç›¸æœºå¯„å­˜å™¨ï¼ŒæŸ¥åˆ°å½“å‰ç›¸æœºå½“å‰ä¸æ”¯æŒæ­¤åŠŸèƒ½
+									 2ã€ç›¸æœºXMLæè¿°æ–‡ä»¶ä¸­æ²¡æœ‰æ­¤åŠŸèƒ½çš„æè¿°èŠ‚ç‚¹
+\param		[in]hDevice   è®¾å¤‡å¥æŸ„
+\param		[in]featureID åŠŸèƒ½ç ID
+\param		[out]pbIsImplemented å¦‚æœæ”¯æŒåˆ™è¿”å›trueï¼Œå¦‚æœä¸æ”¯æŒåˆ™è¿”å›false
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Inquire the current camera whether support a special feature. Usually the camera does not support a
@@ -3541,22 +3530,22 @@ GX_API GXGetFeatureName     (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID,
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXIsImplemented      (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, bool* pbIsImplemented);
+GX_API GXIsImplemented(GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, bool *pbIsImplemented);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ²éÑ¯Ä³¹¦ÄÜÂëµ±Ç°ÊÇ·ñ¿É¶Á
-\attention  Ä³Ğ©¹¦ÄÜµÄ¿É¶ÁÊôĞÔÊÇËæ×ÅÆäËü½ÚµãµÄµ±Ç°Öµ¸Ä±äµÄ£¬¿ÉÓÃ´Ë½Ó¿ÚÊµÊ±²éÑ¯¹¦ÄÜµ±Ç°ÊÇ·ñ¿É¶Á
-\param		[in]hDevice Éè±¸¾ä±ú
-\param		[in]featureID ¹¦ÄÜÂëID
-\param		[out]pbIsReadable ÓÃÀ´·µ»Ø½á¹û£¬Èç¹û¿É¶ÁÔò·µ»Øtrue£¬Èç¹û²»¿É¶ÁÔò·µ»Øfalse¡£
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST  
+\Chineseï¼š
+\brief      æŸ¥è¯¢æŸåŠŸèƒ½ç å½“å‰æ˜¯å¦å¯è¯»
+\attention  æŸäº›åŠŸèƒ½çš„å¯è¯»å±æ€§æ˜¯éšç€å…¶å®ƒèŠ‚ç‚¹çš„å½“å‰å€¼æ”¹å˜çš„ï¼Œå¯ç”¨æ­¤æ¥å£å®æ—¶æŸ¥è¯¢åŠŸèƒ½å½“å‰æ˜¯å¦å¯è¯»
+\param		[in]hDevice è®¾å¤‡å¥æŸ„
+\param		[in]featureID åŠŸèƒ½ç ID
+\param		[out]pbIsReadable ç”¨æ¥è¿”å›ç»“æœï¼Œå¦‚æœå¯è¯»åˆ™è¿”å›trueï¼Œå¦‚æœä¸å¯è¯»åˆ™è¿”å›falseã€‚
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Inquire if a feature code is currently readable.
@@ -3572,22 +3561,22 @@ GX_API GXIsImplemented      (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID,
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXIsReadable         (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, bool* pbIsReadable);
+GX_API GXIsReadable(GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, bool *pbIsReadable);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ²éÑ¯Ä³¹¦ÄÜÂëµ±Ç°ÊÇ·ñ¿ÉĞ´
-\attention  Ä³Ğ©¹¦ÄÜµÄ¿ÉĞ´ÊôĞÔÊÇËæ×ÅÆäËü½ÚµãµÄµ±Ç°Öµ¸Ä±äµÄ£¬¿ÉÓÃ´Ë½Ó¿ÚÊµÊ±²éÑ¯¹¦ÄÜµ±Ç°ÊÇ·ñ¿ÉĞ´
-\param		[in]hDevice Éè±¸¾ä±ú
-\param		[in]featureID ¹¦ÄÜÂëID
-\param		[out]pbIsWritable ÓÃÀ´·µ»Ø½á¹û£¬Èç¹û¿ÉĞ´Ôò·µ»Øtrue£¬Èç¹û²»¿ÉĞ´Ôò·µ»Øfalse¡£
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST  
+\Chineseï¼š
+\brief      æŸ¥è¯¢æŸåŠŸèƒ½ç å½“å‰æ˜¯å¦å¯å†™
+\attention  æŸäº›åŠŸèƒ½çš„å¯å†™å±æ€§æ˜¯éšç€å…¶å®ƒèŠ‚ç‚¹çš„å½“å‰å€¼æ”¹å˜çš„ï¼Œå¯ç”¨æ­¤æ¥å£å®æ—¶æŸ¥è¯¢åŠŸèƒ½å½“å‰æ˜¯å¦å¯å†™
+\param		[in]hDevice è®¾å¤‡å¥æŸ„
+\param		[in]featureID åŠŸèƒ½ç ID
+\param		[out]pbIsWritable ç”¨æ¥è¿”å›ç»“æœï¼Œå¦‚æœå¯å†™åˆ™è¿”å›trueï¼Œå¦‚æœä¸å¯å†™åˆ™è¿”å›falseã€‚
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Inquire if a feature code is currently writable.
@@ -3603,23 +3592,23 @@ GX_API GXIsReadable         (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID,
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXIsWritable         (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, bool* pbIsWritable);
+GX_API GXIsWritable(GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, bool *pbIsWritable);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡IntÀàĞÍÖµµÄ×îĞ¡Öµ¡¢×î´óÖµ¡¢²½³¤µÈÃèÊöĞÅÏ¢
-\attention  Ä³Ğ©ÊôĞÔµÄ·¶Î§¿ÉÄÜÊÜÆäËû¹¦ÄÜµÄÓ°Ïì£¬¿ÉÓÃµ÷ÓÃ´Ë½Ó¿Ú²éÑ¯µ±Ç°Êµ¼Ê·¶Î§
-\param		[in]hDevice    Éè±¸¾ä±ú
-\param		[in]featureID  ¹¦ÄÜÂëID
-\param		[out]pIntRange ·¶Î§ÃèÊö½á¹¹Ìå
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			GX_STATUS_ERROR_TYPE          ÓÃ»§´«ÈëµÄfeatureIDÀàĞÍ´íÎó
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      è·å–Intç±»å‹å€¼çš„æœ€å°å€¼ã€æœ€å¤§å€¼ã€æ­¥é•¿ç­‰æè¿°ä¿¡æ¯
+\attention  æŸäº›å±æ€§çš„èŒƒå›´å¯èƒ½å—å…¶ä»–åŠŸèƒ½çš„å½±å“ï¼Œå¯ç”¨è°ƒç”¨æ­¤æ¥å£æŸ¥è¯¢å½“å‰å®é™…èŒƒå›´
+\param		[in]hDevice    è®¾å¤‡å¥æŸ„
+\param		[in]featureID  åŠŸèƒ½ç ID
+\param		[out]pIntRange èŒƒå›´æè¿°ç»“æ„ä½“
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			GX_STATUS_ERROR_TYPE          ç”¨æˆ·ä¼ å…¥çš„featureIDç±»å‹é”™è¯¯
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      To get the minimum value, maximum value and steps of the int type.
@@ -3636,24 +3625,24 @@ GX_API GXIsWritable         (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID,
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXGetIntRange        (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, GX_INT_RANGE* pIntRange);
+GX_API GXGetIntRange(GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, GX_INT_RANGE *pIntRange);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡IntÀàĞÍÖµµÄµ±Ç°Öµ
-\attention  Èç¹ûµ±Ç°²»¿É·ÃÎÊ£¬µ÷ÓÃ´Ë½Ó¿Ú»á·µ»Ø´íÎóGX_STATUS_INVALID_ACCESS
-\param		[in]hDevice Éè±¸¾ä±ú
-\param		[in]featureID ¹¦ÄÜÂëID
-\param		[out]pnValue ÓÃÀ´·µ»Øµ±Ç°Öµ
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			GX_STATUS_ERROR_TYPE          ÓÃ»§´«ÈëµÄfeatureIDÀàĞÍ´íÎó
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_ACCESS      µ±Ç°²»¿É·ÃÎÊ
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      è·å–Intç±»å‹å€¼çš„å½“å‰å€¼
+\attention  å¦‚æœå½“å‰ä¸å¯è®¿é—®ï¼Œè°ƒç”¨æ­¤æ¥å£ä¼šè¿”å›é”™è¯¯GX_STATUS_INVALID_ACCESS
+\param		[in]hDevice è®¾å¤‡å¥æŸ„
+\param		[in]featureID åŠŸèƒ½ç ID
+\param		[out]pnValue ç”¨æ¥è¿”å›å½“å‰å€¼
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			GX_STATUS_ERROR_TYPE          ç”¨æˆ·ä¼ å…¥çš„featureIDç±»å‹é”™è¯¯
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_ACCESS      å½“å‰ä¸å¯è®¿é—®
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Get the current value of the int type.
@@ -3670,24 +3659,24 @@ GX_API GXGetIntRange        (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID,
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXGetInt             (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, int64_t* pnValue);
+GX_API GXGetInt(GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, int64_t *pnValue);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ÉèÖÃIntÀàĞÍÖµµÄµ±Ç°Öµ
-\attention  Èç¹ûµ±Ç°²»¿É·ÃÎÊ£¬µ÷ÓÃ´Ë½Ó¿Ú»á·µ»Ø´íÎóGX_STATUS_INVALID_ACCESS
-\param		[in]hDevice   Éè±¸¾ä±ú
-\param		[in]featureID ¹¦ÄÜÂëID
-\param		[in]pnValue   ÓÃ»§ÉèÖÃµÄµ±Ç°Öµ
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			GX_STATUS_ERROR_TYPE          ÓÃ»§´«ÈëµÄfeatureIDÀàĞÍ´íÎó
-			GX_STATUS_OUT_OF_RANGE        ÓÃ»§´«ÈëÖµÔ½½ç
-			GX_STATUS_INVALID_ACCESS      µ±Ç°²»¿É·ÃÎÊ
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      è®¾ç½®Intç±»å‹å€¼çš„å½“å‰å€¼
+\attention  å¦‚æœå½“å‰ä¸å¯è®¿é—®ï¼Œè°ƒç”¨æ­¤æ¥å£ä¼šè¿”å›é”™è¯¯GX_STATUS_INVALID_ACCESS
+\param		[in]hDevice   è®¾å¤‡å¥æŸ„
+\param		[in]featureID åŠŸèƒ½ç ID
+\param		[in]pnValue   ç”¨æˆ·è®¾ç½®çš„å½“å‰å€¼
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			GX_STATUS_ERROR_TYPE          ç”¨æˆ·ä¼ å…¥çš„featureIDç±»å‹é”™è¯¯
+			GX_STATUS_OUT_OF_RANGE        ç”¨æˆ·ä¼ å…¥å€¼è¶Šç•Œ
+			GX_STATUS_INVALID_ACCESS      å½“å‰ä¸å¯è®¿é—®
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Set the value of int type.
@@ -3706,23 +3695,23 @@ GX_API GXGetInt             (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID,
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXSetInt             (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, int64_t nValue);
+GX_API GXSetInt(GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, int64_t nValue);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡FloatÀàĞÍÖµµÄ×îĞ¡Öµ¡¢×î´óÖµ¡¢²½³¤µÈĞÅÏ¢
-\attention  Ä³Ğ©ÊôĞÔµÄ·¶Î§¿ÉÄÜÊÜÆäËû¹¦ÄÜµÄÓ°Ïì£¬¿ÉÓÃµ÷ÓÃ´Ë½Ó¿Ú²éÑ¯µ±Ç°Êµ¼Ê·¶Î§ 
-\param		[in]hDevice Éè±¸¾ä±ú
-\param		[in]featureID ¹¦ÄÜÂëID
-\param		[out]pFloatRange ·¶Î§ÃèÊö½á¹¹Ìå
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			GX_STATUS_ERROR_TYPE          ÓÃ»§´«ÈëµÄfeatureIDÀàĞÍ´íÎó
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è·å–Floatç±»å‹å€¼çš„æœ€å°å€¼ã€æœ€å¤§å€¼ã€æ­¥é•¿ç­‰ä¿¡æ¯
+\attention  æŸäº›å±æ€§çš„èŒƒå›´å¯èƒ½å—å…¶ä»–åŠŸèƒ½çš„å½±å“ï¼Œå¯ç”¨è°ƒç”¨æ­¤æ¥å£æŸ¥è¯¢å½“å‰å®é™…èŒƒå›´
+\param		[in]hDevice è®¾å¤‡å¥æŸ„
+\param		[in]featureID åŠŸèƒ½ç ID
+\param		[out]pFloatRange èŒƒå›´æè¿°ç»“æ„ä½“
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			GX_STATUS_ERROR_TYPE          ç”¨æˆ·ä¼ å…¥çš„featureIDç±»å‹é”™è¯¯
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      To get the minimum value, maximum value, steps and unit of the float type.
@@ -3739,24 +3728,24 @@ GX_API GXSetInt             (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID,
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXGetFloatRange      (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, GX_FLOAT_RANGE* pFloatRange);
+GX_API GXGetFloatRange(GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, GX_FLOAT_RANGE *pFloatRange);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ÉèÖÃ¸¡µãÀàĞÍÖµ
-\attention  Èç¹ûµ±Ç°²»¿É·ÃÎÊ£¬µ÷ÓÃ´Ë½Ó¿Ú»á·µ»Ø´íÎóGX_STATUS_INVALID_ACCESS
-\param		[in]hDevice   Éè±¸¾ä±ú
-\param		[in]featureID ¹¦ÄÜÂëID
-\param		[in]dValue    ÉèÖÃÖµ
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			GX_STATUS_ERROR_TYPE          ÓÃ»§´«ÈëµÄfeatureIDÀàĞÍ´íÎó
-			GX_STATUS_OUT_OF_RANGE        ÓÃ»§´«ÈëÖµÔ½½ç
-			GX_STATUS_INVALID_ACCESS      µ±Ç°²»¿É·ÃÎÊ
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      è®¾ç½®æµ®ç‚¹ç±»å‹å€¼
+\attention  å¦‚æœå½“å‰ä¸å¯è®¿é—®ï¼Œè°ƒç”¨æ­¤æ¥å£ä¼šè¿”å›é”™è¯¯GX_STATUS_INVALID_ACCESS
+\param		[in]hDevice   è®¾å¤‡å¥æŸ„
+\param		[in]featureID åŠŸèƒ½ç ID
+\param		[in]dValue    è®¾ç½®å€¼
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			GX_STATUS_ERROR_TYPE          ç”¨æˆ·ä¼ å…¥çš„featureIDç±»å‹é”™è¯¯
+			GX_STATUS_OUT_OF_RANGE        ç”¨æˆ·ä¼ å…¥å€¼è¶Šç•Œ
+			GX_STATUS_INVALID_ACCESS      å½“å‰ä¸å¯è®¿é—®
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Set the value of float type.
@@ -3775,24 +3764,24 @@ GX_API GXGetFloatRange      (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID,
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXSetFloat           (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, double dValue);
+GX_API GXSetFloat(GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, double dValue);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡¸¡µãÀàĞÍÖµµÄµ±Ç°Öµ
-\attention  Èç¹ûµ±Ç°²»¿É·ÃÎÊ£¬µ÷ÓÃ´Ë½Ó¿Ú»á·µ»Ø´íÎóGX_STATUS_INVALID_ACCESS
-\param		[in]hDevice   Éè±¸¾ä±ú
-\param		[in]featureID ¹¦ÄÜÂëID
-\param		[out]pdValue  ÓÃÀ´·µ»Øµ±Ç°Öµ
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			GX_STATUS_ERROR_TYPE          ÓÃ»§´«ÈëµÄfeatureIDÀàĞÍ´íÎó
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_ACCESS      µ±Ç°²»¿É·ÃÎÊ
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      è·å–æµ®ç‚¹ç±»å‹å€¼çš„å½“å‰å€¼
+\attention  å¦‚æœå½“å‰ä¸å¯è®¿é—®ï¼Œè°ƒç”¨æ­¤æ¥å£ä¼šè¿”å›é”™è¯¯GX_STATUS_INVALID_ACCESS
+\param		[in]hDevice   è®¾å¤‡å¥æŸ„
+\param		[in]featureID åŠŸèƒ½ç ID
+\param		[out]pdValue  ç”¨æ¥è¿”å›å½“å‰å€¼
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			GX_STATUS_ERROR_TYPE          ç”¨æˆ·ä¼ å…¥çš„featureIDç±»å‹é”™è¯¯
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_ACCESS      å½“å‰ä¸å¯è®¿é—®
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Get the value of float type.
@@ -3809,24 +3798,24 @@ GX_API GXSetFloat           (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID,
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXGetFloat           (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, double* pdValue);
+GX_API GXGetFloat(GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, double *pdValue);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡Ã¶¾ÙÀàĞÍÖµÓĞ¶àÉÙÏî
-\attention  Ä³Ã¶¾Ù¹¦ÄÜÀàĞÍµÄÏîÊıÊÇĞèÒª²éÑ¯µÄ£¬Í·ÎÄ¼şÖĞËùÂŞÁĞµÄÊÇËùÓĞ¿ÉÄÜµÄÏî£¬µ«ÊÇ
-            µ±Ç°Ïà»úÊµ¼ÊÖ§³ö¶àÉÙÏî£¬½¨ÒéÓÃ»§ÏÈ²éºóÓÃ¡£
-\param		[in]hDevice Éè±¸¾ä±ú
-\param		[in]featureID ¹¦ÄÜÂëID
-\param		[out]pnEntryNums Ö¸ÏòÏî¸öÊıµÄÖ¸Õë
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			GX_STATUS_ERROR_TYPE          ÓÃ»§´«ÈëµÄfeatureIDÀàĞÍ´íÎó
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      è·å–æšä¸¾ç±»å‹å€¼æœ‰å¤šå°‘é¡¹
+\attention  æŸæšä¸¾åŠŸèƒ½ç±»å‹çš„é¡¹æ•°æ˜¯éœ€è¦æŸ¥è¯¢çš„ï¼Œå¤´æ–‡ä»¶ä¸­æ‰€ç½—åˆ—çš„æ˜¯æ‰€æœ‰å¯èƒ½çš„é¡¹ï¼Œä½†æ˜¯
+			å½“å‰ç›¸æœºå®é™…æ”¯å‡ºå¤šå°‘é¡¹ï¼Œå»ºè®®ç”¨æˆ·å…ˆæŸ¥åç”¨ã€‚
+\param		[in]hDevice è®¾å¤‡å¥æŸ„
+\param		[in]featureID åŠŸèƒ½ç ID
+\param		[out]pnEntryNums æŒ‡å‘é¡¹ä¸ªæ•°çš„æŒ‡é’ˆ
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			GX_STATUS_ERROR_TYPE          ç”¨æˆ·ä¼ å…¥çš„featureIDç±»å‹é”™è¯¯
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Get the number of the options for the enumeration item.
@@ -3842,31 +3831,31 @@ GX_API GXGetFloat           (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID,
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXGetEnumEntryNums       (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, uint32_t* pnEntryNums);
+GX_API GXGetEnumEntryNums(GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, uint32_t *pnEntryNums);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡Ã¶¾ÙÀàĞÍ¹¦ÄÜµÄÃ¶¾ÙÏîµÄÃ¿Ò»ÏîµÄÃèĞğĞÅÏ¢ºÍÖµ
-\attention  ÓÃ»§×öUI³ÌĞòµÄÊ±ºòĞèÒªÃ¶¾Ù¹¦ÄÜÏîµÄÃèÊöĞÅÏ¢£»Ã¶¾Ù¹¦ÄÜÏîµÄÖµ½¨ÒéÓÃ»§ÏÈ²é
-            ºóÓÃ£¬ÒòÎªÖµ¿ÉÄÜÊÇÀëÉ¢µÄÖµ£¬Ã¿¸öÃ¶¾Ù¹¦ÄÜµÄ¿ÉÑ¡Öµ£¬ÔÚÍ·ÎÄ¼şÖĞ¶¼ÓĞ¶¨Òå¡£
-\param		[in]hDevice   Éè±¸¾ä±ú
-\param		[in]featureID ¹¦ÄÜÂëID
-\param		[out]pEnumDescription GX_ENUM_DESCRIPTIONÊı×éÖ¸Õë£¬·µ»ØµÄÃ¶¾ÙÃèÊöĞÅÏ¢
-\param		[in,out]pBufferSize ÓÃ»§´«ÈëµÄGX_ENUM_DESCRIPTIONÊı×éµÄ´óĞ¡£¬´óÎª×Ö½Ú
-							Èç¹ûpEnumDescriptionÎªNULL£º
-							[out]pnBufferSizeÎªÊµ¼ÊĞèÒªµÄbuffer´óĞ¡
-							Èç¹ûpEnumDescription·ÇNULL£º
-							[in]pnBufferSizeÎªÓÃ»§·ÖÅäµÄbuffer´óĞ¡
-							[out]pnBufferSize·µ»ØÊµ¼ÊÌî³äbuffer´óĞ¡       
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			GX_STATUS_ERROR_TYPE          ÓÃ»§´«ÈëµÄfeatureIDÀàĞÍ´íÎó
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_NEED_MORE_BUFFER    ÓÃ»§·ÖÅäµÄbuffer¹ıĞ¡
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      è·å–æšä¸¾ç±»å‹åŠŸèƒ½çš„æšä¸¾é¡¹çš„æ¯ä¸€é¡¹çš„æå™ä¿¡æ¯å’Œå€¼
+\attention  ç”¨æˆ·åšUIç¨‹åºçš„æ—¶å€™éœ€è¦æšä¸¾åŠŸèƒ½é¡¹çš„æè¿°ä¿¡æ¯ï¼›æšä¸¾åŠŸèƒ½é¡¹çš„å€¼å»ºè®®ç”¨æˆ·å…ˆæŸ¥
+			åç”¨ï¼Œå› ä¸ºå€¼å¯èƒ½æ˜¯ç¦»æ•£çš„å€¼ï¼Œæ¯ä¸ªæšä¸¾åŠŸèƒ½çš„å¯é€‰å€¼ï¼Œåœ¨å¤´æ–‡ä»¶ä¸­éƒ½æœ‰å®šä¹‰ã€‚
+\param		[in]hDevice   è®¾å¤‡å¥æŸ„
+\param		[in]featureID åŠŸèƒ½ç ID
+\param		[out]pEnumDescription GX_ENUM_DESCRIPTIONæ•°ç»„æŒ‡é’ˆï¼Œè¿”å›çš„æšä¸¾æè¿°ä¿¡æ¯
+\param		[in,out]pBufferSize ç”¨æˆ·ä¼ å…¥çš„GX_ENUM_DESCRIPTIONæ•°ç»„çš„å¤§å°ï¼Œå¤§ä¸ºå­—èŠ‚
+							å¦‚æœpEnumDescriptionä¸ºNULLï¼š
+							[out]pnBufferSizeä¸ºå®é™…éœ€è¦çš„bufferå¤§å°
+							å¦‚æœpEnumDescriptionéNULLï¼š
+							[in]pnBufferSizeä¸ºç”¨æˆ·åˆ†é…çš„bufferå¤§å°
+							[out]pnBufferSizeè¿”å›å®é™…å¡«å……bufferå¤§å°
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			GX_STATUS_ERROR_TYPE          ç”¨æˆ·ä¼ å…¥çš„featureIDç±»å‹é”™è¯¯
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_NEED_MORE_BUFFER    ç”¨æˆ·åˆ†é…çš„bufferè¿‡å°
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      To get the description information of the enumerated type values: the number of enumerated items
@@ -3890,27 +3879,27 @@ GX_API GXGetEnumEntryNums       (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featur
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXGetEnumDescription       (GX_DEV_HANDLE hDevice, 
-                                   GX_FEATURE_ID_CMD featureID, 
-                                   GX_ENUM_DESCRIPTION* pEnumDescription,
-                                   size_t* pBufferSize);
+GX_API GXGetEnumDescription(GX_DEV_HANDLE hDevice,
+							GX_FEATURE_ID_CMD featureID,
+							GX_ENUM_DESCRIPTION *pEnumDescription,
+							size_t *pBufferSize);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡Ã¶¾ÙĞÍÖµµÄµ±Ç°Öµ
-\attention  Èç¹ûµ±Ç°²»¿É·ÃÎÊ£¬µ÷ÓÃ´Ë½Ó¿Ú»á·µ»Ø´íÎóGX_STATUS_INVALID_ACCESS
-\param		[in]hDevice Éè±¸¾ä±ú
-\param		[in]featureID ¹¦ÄÜÂëID
-\param		[out]pnValue ÓÃÀ´·µ»Øµ±Ç°Öµ
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			GX_STATUS_ERROR_TYPE          ÓÃ»§´«ÈëµÄfeatureIDÀàĞÍ´íÎó
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_ACCESS      µ±Ç°²»¿É·ÃÎÊ
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      è·å–æšä¸¾å‹å€¼çš„å½“å‰å€¼
+\attention  å¦‚æœå½“å‰ä¸å¯è®¿é—®ï¼Œè°ƒç”¨æ­¤æ¥å£ä¼šè¿”å›é”™è¯¯GX_STATUS_INVALID_ACCESS
+\param		[in]hDevice è®¾å¤‡å¥æŸ„
+\param		[in]featureID åŠŸèƒ½ç ID
+\param		[out]pnValue ç”¨æ¥è¿”å›å½“å‰å€¼
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			GX_STATUS_ERROR_TYPE          ç”¨æˆ·ä¼ å…¥çš„featureIDç±»å‹é”™è¯¯
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_ACCESS      å½“å‰ä¸å¯è®¿é—®
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      To get the current enumeration value.
@@ -3927,24 +3916,24 @@ GX_API GXGetEnumDescription       (GX_DEV_HANDLE hDevice,
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXGetEnum			      (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, int64_t* pnValue);
+GX_API GXGetEnum(GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, int64_t *pnValue);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ÉèÖÃÃ¶¾ÙĞÍÖµµÄµ±Ç°Öµ
-\attention  Èç¹ûµ±Ç°²»¿É·ÃÎÊ£¬µ÷ÓÃ´Ë½Ó¿Ú»á·µ»Ø´íÎóGX_STATUS_INVALID_ACCESS
-\param		[in]hDevice   Éè±¸¾ä±ú
-\param		[in]featureID ¹¦ÄÜÂëID
-\param		[in]pnValue   ÓÃ»§ÉèÖÃµÄµ±Ç°Öµ
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			GX_STATUS_ERROR_TYPE          ÓÃ»§´«ÈëµÄfeatureIDÀàĞÍ´íÎó
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§´«ÈëÖµ·Ç·¨
-			GX_STATUS_INVALID_ACCESS      µ±Ç°²»¿É·ÃÎÊ
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è®¾ç½®æšä¸¾å‹å€¼çš„å½“å‰å€¼
+\attention  å¦‚æœå½“å‰ä¸å¯è®¿é—®ï¼Œè°ƒç”¨æ­¤æ¥å£ä¼šè¿”å›é”™è¯¯GX_STATUS_INVALID_ACCESS
+\param		[in]hDevice   è®¾å¤‡å¥æŸ„
+\param		[in]featureID åŠŸèƒ½ç ID
+\param		[in]pnValue   ç”¨æˆ·è®¾ç½®çš„å½“å‰å€¼
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			GX_STATUS_ERROR_TYPE          ç”¨æˆ·ä¼ å…¥çš„featureIDç±»å‹é”™è¯¯
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·ä¼ å…¥å€¼éæ³•
+			GX_STATUS_INVALID_ACCESS      å½“å‰ä¸å¯è®¿é—®
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Set the enumeration value.
@@ -3962,24 +3951,24 @@ GX_API GXGetEnum			      (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, in
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXSetEnum			      (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, int64_t nValue);
+GX_API GXSetEnum(GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, int64_t nValue);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡²¼¶ûĞÍÖµµÄµ±Ç°Öµ
-\attention  Èç¹ûµ±Ç°²»¿É·ÃÎÊ£¬µ÷ÓÃ´Ë½Ó¿Ú»á·µ»Ø´íÎóGX_STATUS_INVALID_ACCESS
-\param		[in]hDevice Éè±¸¾ä±ú
-\param		[in]featureID ¹¦ÄÜÂëID
-\param		[out]pbValue ÓÃÀ´·µ»Øµ±Ç°Öµ
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			GX_STATUS_ERROR_TYPE          ÓÃ»§´«ÈëµÄfeatureIDÀàĞÍ´íÎó
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_ACCESS      µ±Ç°²»¿É·ÃÎÊ
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      è·å–å¸ƒå°”å‹å€¼çš„å½“å‰å€¼
+\attention  å¦‚æœå½“å‰ä¸å¯è®¿é—®ï¼Œè°ƒç”¨æ­¤æ¥å£ä¼šè¿”å›é”™è¯¯GX_STATUS_INVALID_ACCESS
+\param		[in]hDevice è®¾å¤‡å¥æŸ„
+\param		[in]featureID åŠŸèƒ½ç ID
+\param		[out]pbValue ç”¨æ¥è¿”å›å½“å‰å€¼
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			GX_STATUS_ERROR_TYPE          ç”¨æˆ·ä¼ å…¥çš„featureIDç±»å‹é”™è¯¯
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_ACCESS      å½“å‰ä¸å¯è®¿é—®
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Get the value of bool type.
@@ -3996,23 +3985,23 @@ GX_API GXSetEnum			      (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, in
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXGetBool			      (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, bool* pbValue);
+GX_API GXGetBool(GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, bool *pbValue);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ÉèÖÃ²¼¶ûĞÍÖµµÄµ±Ç°Öµ
-\attention  Èç¹ûµ±Ç°²»¿É·ÃÎÊ£¬µ÷ÓÃ´Ë½Ó¿Ú»á·µ»Ø´íÎóGX_STATUS_INVALID_ACCESS
-\param		[in]hDevice   Éè±¸¾ä±ú
-\param		[in]featureID ¹¦ÄÜÂëID
-\param		[in]pbValue   ÓÃ»§ÉèÖÃµÄµ±Ç°Öµ
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			GX_STATUS_ERROR_TYPE          ÓÃ»§´«ÈëµÄfeatureIDÀàĞÍ´íÎó
-			GX_STATUS_INVALID_ACCESS      µ±Ç°²»¿É·ÃÎÊ
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      è®¾ç½®å¸ƒå°”å‹å€¼çš„å½“å‰å€¼
+\attention  å¦‚æœå½“å‰ä¸å¯è®¿é—®ï¼Œè°ƒç”¨æ­¤æ¥å£ä¼šè¿”å›é”™è¯¯GX_STATUS_INVALID_ACCESS
+\param		[in]hDevice   è®¾å¤‡å¥æŸ„
+\param		[in]featureID åŠŸèƒ½ç ID
+\param		[in]pbValue   ç”¨æˆ·è®¾ç½®çš„å½“å‰å€¼
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			GX_STATUS_ERROR_TYPE          ç”¨æˆ·ä¼ å…¥çš„featureIDç±»å‹é”™è¯¯
+			GX_STATUS_INVALID_ACCESS      å½“å‰ä¸å¯è®¿é—®
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Set the value of bool type.
@@ -4028,23 +4017,23 @@ GX_API GXGetBool			      (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, bo
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXSetBool			      (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, bool bValue);
+GX_API GXSetBool(GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, bool bValue);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡×Ö·û´®ÀàĞÍÖµµÄ³¤¶È
-\attention  ´Ë½Ó¿ÚÓëGxGetString½Ó¿Ú×éºÏÊ¹ÓÃ,±ãÓÚÓÃ»§ÉêÇëbuffer
-\param		[in]hDevice   Éè±¸¾ä±ú
-\param		[in]featureID ¹¦ÄÜÂëID
-\param		[out]pnSize   ÓÃÀ´·µ»Ø×Ö·û´®µ±Ç°Öµ³¤¶È£¬°üº¬×Ö·û´®Ä©Î²½áÊø·û'\0'¡£
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			GX_STATUS_ERROR_TYPE          ÓÃ»§´«ÈëµÄfeatureIDÀàĞÍ´íÎó
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      è·å–å­—ç¬¦ä¸²ç±»å‹å€¼çš„é•¿åº¦
+\attention  æ­¤æ¥å£ä¸GxGetStringæ¥å£ç»„åˆä½¿ç”¨,ä¾¿äºç”¨æˆ·ç”³è¯·buffer
+\param		[in]hDevice   è®¾å¤‡å¥æŸ„
+\param		[in]featureID åŠŸèƒ½ç ID
+\param		[out]pnSize   ç”¨æ¥è¿”å›å­—ç¬¦ä¸²å½“å‰å€¼é•¿åº¦ï¼ŒåŒ…å«å­—ç¬¦ä¸²æœ«å°¾ç»“æŸç¬¦'\0'ã€‚
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			GX_STATUS_ERROR_TYPE          ç”¨æˆ·ä¼ å…¥çš„featureIDç±»å‹é”™è¯¯
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Get the current value length of the character string type. Unit: byte. The user can allocate the buffer size
@@ -4062,23 +4051,23 @@ GX_API GXSetBool			      (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, bo
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXGetStringLength	      (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, size_t* pnSize);
+GX_API GXGetStringLength(GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, size_t *pnSize);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡×Ö·û´®ÀàĞÍÖµµÄ³¤¶È
-\attention  ´Ë½Ó¿ÚÓëGxGetString½Ó¿Ú×éºÏÊ¹ÓÃ,±ãÓÚÓÃ»§ÉêÇëbuffer
-\param		[in]hDevice   Éè±¸¾ä±ú
-\param		[in]featureID ¹¦ÄÜÂëID
-\param		[out]pnSize   ÓÃÀ´·µ»Ø×Ö·û´®×î´ó³¤¶È£¬°üº¬×Ö·û´®Ä©Î²½áÊø·û'\0'¡£
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			GX_STATUS_ERROR_TYPE          ÓÃ»§´«ÈëµÄfeatureIDÀàĞÍ´íÎó
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è·å–å­—ç¬¦ä¸²ç±»å‹å€¼çš„é•¿åº¦
+\attention  æ­¤æ¥å£ä¸GxGetStringæ¥å£ç»„åˆä½¿ç”¨,ä¾¿äºç”¨æˆ·ç”³è¯·buffer
+\param		[in]hDevice   è®¾å¤‡å¥æŸ„
+\param		[in]featureID åŠŸèƒ½ç ID
+\param		[out]pnSize   ç”¨æ¥è¿”å›å­—ç¬¦ä¸²æœ€å¤§é•¿åº¦ï¼ŒåŒ…å«å­—ç¬¦ä¸²æœ«å°¾ç»“æŸç¬¦'\0'ã€‚
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			GX_STATUS_ERROR_TYPE          ç”¨æˆ·ä¼ å…¥çš„featureIDç±»å‹é”™è¯¯
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Get the maximum length of the string type value. Unit: byte. The user allocates buffer according to
@@ -4098,31 +4087,31 @@ GX_API GXGetStringLength	      (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD feature
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXGetStringMaxLength	      (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, size_t* pnSize);
+GX_API GXGetStringMaxLength(GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, size_t *pnSize);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡×Ö·û´®
-\attention  ¶ÁÈ¡×Ö·û´®Ö®Ç°ĞèÒªµ÷ÓÃGXGetStringLength½Ó¿Ú»ñÈ¡³¤¶È
-\param		[in]hDevice Éè±¸¾ä±ú
-\param		[in]featureID ¹¦ÄÜÂëID
-\param		[out]pszContent ÓÃ»§ÊäÈëµÄ×Ö·û´®»º³åÇøµØÖ·,Ä©Î²°üº¬½áÊø·û'\0'
-\param		[in,out]pnSize ±íÊ¾ÓÃ»§ÊäÈëµÄ×Ö·û´®»º³åÇøµØÖ·µÄ³¤¶È
-						Èç¹ûpszContentÎªNULL£º
-						[out]pnSizeÎªÊµ¼ÊĞèÒªµÄbuffer´óĞ¡
-						Èç¹ûpszContent·ÇNULL£º
-						[in]pnSizeÎªÓÃ»§·ÖÅäµÄbuffer´óĞ¡
-						[out]pnSize·µ»ØÊµ¼ÊÌî³äbuffer´óĞ¡
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			GX_STATUS_ERROR_TYPE          ÓÃ»§´«ÈëµÄfeatureIDÀàĞÍ´íÎó
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_ACCESS      µ±Ç°²»¿É·ÃÎÊ
-			GX_STATUS_NEED_MORE_BUFFER    ÓÃ»§·ÖÅäµÄbuffer¹ıĞ¡
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      è·å–å­—ç¬¦ä¸²
+\attention  è¯»å–å­—ç¬¦ä¸²ä¹‹å‰éœ€è¦è°ƒç”¨GXGetStringLengthæ¥å£è·å–é•¿åº¦
+\param		[in]hDevice è®¾å¤‡å¥æŸ„
+\param		[in]featureID åŠŸèƒ½ç ID
+\param		[out]pszContent ç”¨æˆ·è¾“å…¥çš„å­—ç¬¦ä¸²ç¼“å†²åŒºåœ°å€,æœ«å°¾åŒ…å«ç»“æŸç¬¦'\0'
+\param		[in,out]pnSize è¡¨ç¤ºç”¨æˆ·è¾“å…¥çš„å­—ç¬¦ä¸²ç¼“å†²åŒºåœ°å€çš„é•¿åº¦
+						å¦‚æœpszContentä¸ºNULLï¼š
+						[out]pnSizeä¸ºå®é™…éœ€è¦çš„bufferå¤§å°
+						å¦‚æœpszContentéNULLï¼š
+						[in]pnSizeä¸ºç”¨æˆ·åˆ†é…çš„bufferå¤§å°
+						[out]pnSizeè¿”å›å®é™…å¡«å……bufferå¤§å°
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			GX_STATUS_ERROR_TYPE          ç”¨æˆ·ä¼ å…¥çš„featureIDç±»å‹é”™è¯¯
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_ACCESS      å½“å‰ä¸å¯è®¿é—®
+			GX_STATUS_NEED_MORE_BUFFER    ç”¨æˆ·åˆ†é…çš„bufferè¿‡å°
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Get the content of the string type value.
@@ -4146,28 +4135,28 @@ GX_API GXGetStringMaxLength	      (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD feat
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXGetString			      (GX_DEV_HANDLE hDevice, 
-								   GX_FEATURE_ID_CMD featureID, 
-								   char* pszContent, 
-								   size_t* pnSize);
+GX_API GXGetString(GX_DEV_HANDLE hDevice,
+				   GX_FEATURE_ID_CMD featureID,
+				   char *pszContent,
+				   size_t *pnSize);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ÉèÖÃ×Ö·û´®
-\attention  ÎŞ
-\param		[in]hDevice Éè±¸¾ä±ú
-\param		[in]featureID ¹¦ÄÜÂëID
-\param		[in]pszContent ÓÃ»§ÊäÈëµÄ×Ö·û´®£¬×Ö·û´®Ä©Î²°üº¬½áÊø·û'\0'
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			 GX_STATUS_ERROR_TYPE          ÓÃ»§´«ÈëµÄfeatureIDÀàĞÍ´íÎó
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§´«ÈëÖ¸ÕëÎªNULL
-			GX_STATUS_OUT_OF_RANGE        ÓÃ»§Ğ´ÈëÄÚÈİ³¬¹ı×Ö·û´®×î´ó³¤¶È
-			GX_STATUS_INVALID_ACCESS      µ±Ç°²»¿É·ÃÎÊ
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      è®¾ç½®å­—ç¬¦ä¸²
+\attention  æ— 
+\param		[in]hDevice è®¾å¤‡å¥æŸ„
+\param		[in]featureID åŠŸèƒ½ç ID
+\param		[in]pszContent ç”¨æˆ·è¾“å…¥çš„å­—ç¬¦ä¸²ï¼Œå­—ç¬¦ä¸²æœ«å°¾åŒ…å«ç»“æŸç¬¦'\0'
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			 GX_STATUS_ERROR_TYPE          ç”¨æˆ·ä¼ å…¥çš„featureIDç±»å‹é”™è¯¯
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·ä¼ å…¥æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_OUT_OF_RANGE        ç”¨æˆ·å†™å…¥å†…å®¹è¶…è¿‡å­—ç¬¦ä¸²æœ€å¤§é•¿åº¦
+			GX_STATUS_INVALID_ACCESS      å½“å‰ä¸å¯è®¿é—®
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Set the content of the string value.
@@ -4186,23 +4175,23 @@ GX_API GXGetString			      (GX_DEV_HANDLE hDevice,
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXSetString			      (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, char* pszContent);
+GX_API GXSetString(GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, char *pszContent);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡bufferÀàĞÍÖµµÄ³¤¶È
-\attention  ´Ë½Ó¿ÚÓëGxGetBuffer½Ó¿Ú×éºÏÊ¹ÓÃ,±ãÓÚÓÃ»§ÉêÇëbuffer
-\param		[in]hDevice   Éè±¸¾ä±ú
-\param		[in]featureID ¹¦ÄÜÂëID
-\param		[out]pnSize   ÓÃÀ´·µ»Ø³¤¶ÈÖµ¡£
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			GX_STATUS_ERROR_TYPE          ÓÃ»§´«ÈëµÄfeatureIDÀàĞÍ´íÎó
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è·å–bufferç±»å‹å€¼çš„é•¿åº¦
+\attention  æ­¤æ¥å£ä¸GxGetBufferæ¥å£ç»„åˆä½¿ç”¨,ä¾¿äºç”¨æˆ·ç”³è¯·buffer
+\param		[in]hDevice   è®¾å¤‡å¥æŸ„
+\param		[in]featureID åŠŸèƒ½ç ID
+\param		[out]pnSize   ç”¨æ¥è¿”å›é•¿åº¦å€¼ã€‚
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			GX_STATUS_ERROR_TYPE          ç”¨æˆ·ä¼ å…¥çš„featureIDç±»å‹é”™è¯¯
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Get the length of the chunk data and the unit is byte, the user can apply the buffer based on the
@@ -4219,31 +4208,31 @@ GX_API GXSetString			      (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, 
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXGetBufferLength	      (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, size_t* pnSize);
+GX_API GXGetBufferLength(GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, size_t *pnSize);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      »ñÈ¡bufferÊı¾İ¿é
-\attention  ¶ÁÈ¡bufferÊı¾İ¿éÖ®Ç°ĞèÒªµ÷ÓÃGXGetBufferLength½Ó¿Ú»ñÈ¡³¤¶È
-\param		[in]hDevice Éè±¸¾ä±ú
-\param		[in]featureID ¹¦ÄÜÂëID
-\param		[out]pBuffer ÓÃ»§ÊäÈëµÄ»º³åÇøµØÖ·
-\param		[in,out]pnSize ±íÊ¾ÓÃ»§ÊäÈëµÄ»º³åÇøµØÖ·µÄ³¤¶È
-						Èç¹ûpBufferÎªNULL£º
-						[out]pnSizeÎªÊµ¼ÊĞèÒªµÄbuffer´óĞ¡
-						Èç¹ûpBuffer·ÇNULL£º
-						[in]pnSizeÎªÓÃ»§·ÖÅäµÄbuffer´óĞ¡
-						[out]pnSize·µ»ØÊµ¼ÊÌî³äbuffer´óĞ¡
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			GX_STATUS_ERROR_TYPE          ÓÃ»§´«ÈëµÄfeatureIDÀàĞÍ´íÎó
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§ÊäÈëµÄÖ¸ÕëÎªNULL
-			GX_STATUS_INVALID_ACCESS      µ±Ç°²»¿É·ÃÎÊ
-			GX_STATUS_NEED_MORE_BUFFER    ÓÃ»§·ÖÅäµÄbuffer¹ıĞ¡
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      è·å–bufferæ•°æ®å—
+\attention  è¯»å–bufferæ•°æ®å—ä¹‹å‰éœ€è¦è°ƒç”¨GXGetBufferLengthæ¥å£è·å–é•¿åº¦
+\param		[in]hDevice è®¾å¤‡å¥æŸ„
+\param		[in]featureID åŠŸèƒ½ç ID
+\param		[out]pBuffer ç”¨æˆ·è¾“å…¥çš„ç¼“å†²åŒºåœ°å€
+\param		[in,out]pnSize è¡¨ç¤ºç”¨æˆ·è¾“å…¥çš„ç¼“å†²åŒºåœ°å€çš„é•¿åº¦
+						å¦‚æœpBufferä¸ºNULLï¼š
+						[out]pnSizeä¸ºå®é™…éœ€è¦çš„bufferå¤§å°
+						å¦‚æœpBufferéNULLï¼š
+						[in]pnSizeä¸ºç”¨æˆ·åˆ†é…çš„bufferå¤§å°
+						[out]pnSizeè¿”å›å®é™…å¡«å……bufferå¤§å°
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			GX_STATUS_ERROR_TYPE          ç”¨æˆ·ä¼ å…¥çš„featureIDç±»å‹é”™è¯¯
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·è¾“å…¥çš„æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_INVALID_ACCESS      å½“å‰ä¸å¯è®¿é—®
+			GX_STATUS_NEED_MORE_BUFFER    ç”¨æˆ·åˆ†é…çš„bufferè¿‡å°
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Get the chunk data.
@@ -4267,29 +4256,29 @@ GX_API GXGetBufferLength	      (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD feature
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXGetBuffer			      (GX_DEV_HANDLE hDevice, 
-								   GX_FEATURE_ID_CMD featureID, 
-								   uint8_t* pBuffer, 
-								   size_t* pnSize);
+GX_API GXGetBuffer(GX_DEV_HANDLE hDevice,
+				   GX_FEATURE_ID_CMD featureID,
+				   uint8_t *pBuffer,
+				   size_t *pnSize);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ÉèÖÃbufferÊı¾İ¿é
-\attention  ÎŞ
-\param		[in]hDevice   Éè±¸¾ä±ú
-\param		[in]featureID ¹¦ÄÜÂëID
-\param		[in]pBuffer   ÓÃ»§ÊäÈëµÄ»º³åÇøµØÖ·
-\param		[in]nSize     ±íÊ¾ÓÃ»§ÊäÈëµÄ»º³åÇøµØÖ·µÄ³¤¶È
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			GX_STATUS_ERROR_TYPE          ÓÃ»§´«ÈëµÄfeatureIDÀàĞÍ´íÎó
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§´«ÈëÖ¸ÕëÎªNULL
-			GX_STATUS_OUT_OF_RANGE        ÓÃ»§Ğ´ÈëÄÚÈİ³¬¹ı×Ö·û´®×î´ó³¤¶È
-			GX_STATUS_INVALID_ACCESS      µ±Ç°²»¿É·ÃÎÊ
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      è®¾ç½®bufferæ•°æ®å—
+\attention  æ— 
+\param		[in]hDevice   è®¾å¤‡å¥æŸ„
+\param		[in]featureID åŠŸèƒ½ç ID
+\param		[in]pBuffer   ç”¨æˆ·è¾“å…¥çš„ç¼“å†²åŒºåœ°å€
+\param		[in]nSize     è¡¨ç¤ºç”¨æˆ·è¾“å…¥çš„ç¼“å†²åŒºåœ°å€çš„é•¿åº¦
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			GX_STATUS_ERROR_TYPE          ç”¨æˆ·ä¼ å…¥çš„featureIDç±»å‹é”™è¯¯
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·ä¼ å…¥æŒ‡é’ˆä¸ºNULL
+			GX_STATUS_OUT_OF_RANGE        ç”¨æˆ·å†™å…¥å†…å®¹è¶…è¿‡å­—ç¬¦ä¸²æœ€å¤§é•¿åº¦
+			GX_STATUS_INVALID_ACCESS      å½“å‰ä¸å¯è®¿é—®
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Set the chunk data.
@@ -4309,25 +4298,25 @@ GX_API GXGetBuffer			      (GX_DEV_HANDLE hDevice,
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXSetBuffer			      (GX_DEV_HANDLE hDevice, 
-								   GX_FEATURE_ID_CMD featureID, 
-								   uint8_t* pBuffer, 
-								   size_t nSize);
+GX_API GXSetBuffer(GX_DEV_HANDLE hDevice,
+				   GX_FEATURE_ID_CMD featureID,
+				   uint8_t *pBuffer,
+				   size_t nSize);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ·¢ËÍ¿ØÖÆÃüÁî
-\attention  ÎŞ
-\param		[in]hDevice    Éè±¸¾ä±ú
-\param		[in]featureID  ¹¦ÄÜÂëID
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			GX_STATUS_ERROR_TYPE          ÓÃ»§´«ÈëµÄfeatureIDÀàĞÍ´íÎó
-			GX_STATUS_INVALID_ACCESS      µ±Ç°²»¿É·ÃÎÊ
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      å‘é€æ§åˆ¶å‘½ä»¤
+\attention  æ— 
+\param		[in]hDevice    è®¾å¤‡å¥æŸ„
+\param		[in]featureID  åŠŸèƒ½ç ID
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			GX_STATUS_ERROR_TYPE          ç”¨æˆ·ä¼ å…¥çš„featureIDç±»å‹é”™è¯¯
+			GX_STATUS_INVALID_ACCESS      å½“å‰ä¸å¯è®¿é—®
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Send the command.
@@ -4342,23 +4331,23 @@ GX_API GXSetBuffer			      (GX_DEV_HANDLE hDevice,
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXSendCommand		      (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID);
+GX_API GXSendCommand(GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ²É¼¯Ö®ºó¿ÉÍ¨¹ı´Ë½Ó¿Ú»ñÈ¡Ò»ÕÅÍ¼Æ¬
-\attention  ÎŞ
-\param		[in]hDevice    Éè±¸¾ä±ú
-\param      [out]ppFrameBuffer      ´ı·Å»Ø GxIAPI ¿âµÄÍ¼ÏñÊı¾İ Buf Ö¸Õë
-\param      [in]nTimeOut            ³¬Ê±Ê±¼äµ¥ÔªºÁÃë
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			GX_STATUS_ERROR_TYPE          ÓÃ»§´«ÈëµÄfeatureIDÀàĞÍ´íÎó
-			GX_STATUS_INVALID_ACCESS      µ±Ç°²»¿É·ÃÎÊ
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      é‡‡é›†ä¹‹åå¯é€šè¿‡æ­¤æ¥å£è·å–ä¸€å¼ å›¾ç‰‡
+\attention  æ— 
+\param		[in]hDevice    è®¾å¤‡å¥æŸ„
+\param      [out]ppFrameBuffer      å¾…æ”¾å› GxIAPI åº“çš„å›¾åƒæ•°æ® Buf æŒ‡é’ˆ
+\param      [in]nTimeOut            è¶…æ—¶æ—¶é—´å•å…ƒæ¯«ç§’
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			GX_STATUS_ERROR_TYPE          ç”¨æˆ·ä¼ å…¥çš„featureIDç±»å‹é”™è¯¯
+			GX_STATUS_INVALID_ACCESS      å½“å‰ä¸å¯è®¿é—®
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      After starting the acquisition, an image (zero copy) can be acquired through this interface.
@@ -4366,66 +4355,66 @@ GX_API GXSendCommand		      (GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID)
 \param      [out]ppFrameBuffer      Address pointer of image data output by the interface.
 \param      [in]nTimeOut            Take timeout time (unit: ms).
 \return     GX_STATUS_SUCCESS               The operation is successful and no error occurs.
-            GX_STATUS_NOT_INIT_API          The GXInitLib initialization library is not called.
-            GX_STATUS_INVALID_HANDLE        The handle that the user introduces is illegal.
-            GX_STATUS_INVALID_PARAMETER     The pointer that the user introduces is NULL.
-            GX_STATUS_INVALID_CALL          Acquisition is not started or the callback is registered. It
-                                            is not allowed to call the interface.
-            GX_STATUS_TIMEOUT               Acquire image timeout error.
-            GX_STATUS_ERROR                 Unspecified internal errors that are not expected to occur.
-            The errors that are not covered above please reference GX_STATUS_LIST.
+			GX_STATUS_NOT_INIT_API          The GXInitLib initialization library is not called.
+			GX_STATUS_INVALID_HANDLE        The handle that the user introduces is illegal.
+			GX_STATUS_INVALID_PARAMETER     The pointer that the user introduces is NULL.
+			GX_STATUS_INVALID_CALL          Acquisition is not started or the callback is registered. It
+											is not allowed to call the interface.
+			GX_STATUS_TIMEOUT               Acquire image timeout error.
+			GX_STATUS_ERROR                 Unspecified internal errors that are not expected to occur.
+			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXDQBuf (GX_DEV_HANDLE hDevice, 
-                PGX_FRAME_BUFFER *ppFrameBuffer,
-                uint32_t nTimeOut);
+GX_API GXDQBuf(GX_DEV_HANDLE hDevice,
+			   PGX_FRAME_BUFFER *ppFrameBuffer,
+			   uint32_t nTimeOut);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ÔÚ¿ªÊ¼²É¼¯Ö®ºó£¬Í¨¹ı´Ë½Ó¿Ú¿ÉÒÔ½«Í¼ÏñÊı¾İ Buf ·Å»Ø GxIAPI ¿â£¬¼ÌĞøÓÃÓÚ²É¼¯¡£
-\attention  ÎŞ
-\param		[in]hDevice    Éè±¸¾ä±ú
-\param      [out]ppFrameBuffer      ´ı·Å»Ø GxIAPI ¿âµÄÍ¼ÏñÊı¾İ Buf Ö¸Õë
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_NOT_IMPLEMENTED     µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ
-			GX_STATUS_ERROR_TYPE          ÓÃ»§´«ÈëµÄfeatureIDÀàĞÍ´íÎó
-			GX_STATUS_INVALID_ACCESS      µ±Ç°²»¿É·ÃÎÊ
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      åœ¨å¼€å§‹é‡‡é›†ä¹‹åï¼Œé€šè¿‡æ­¤æ¥å£å¯ä»¥å°†å›¾åƒæ•°æ® Buf æ”¾å› GxIAPI åº“ï¼Œç»§ç»­ç”¨äºé‡‡é›†ã€‚
+\attention  æ— 
+\param		[in]hDevice    è®¾å¤‡å¥æŸ„
+\param      [out]ppFrameBuffer      å¾…æ”¾å› GxIAPI åº“çš„å›¾åƒæ•°æ® Buf æŒ‡é’ˆ
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_NOT_IMPLEMENTED     å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½
+			GX_STATUS_ERROR_TYPE          ç”¨æˆ·ä¼ å…¥çš„featureIDç±»å‹é”™è¯¯
+			GX_STATUS_INVALID_ACCESS      å½“å‰ä¸å¯è®¿é—®
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      After the acquisition is started, the image data buffer can be placed back into the GxIAPI
-            library through this interface and continue to be used for acquisition.
+			library through this interface and continue to be used for acquisition.
 \param      [in]hDevice             The handle of the device.
 \param      [in]pFrameBuffer        Image data buffer pointer to be placed back into the GxIAPI library.
 \return     GX_STATUS_SUCCESS               The operation is successful and no error occurs.
-            GX_STATUS_NOT_INIT_API          The GXInitLib initialization library is not called.
-            GX_STATUS_INVALID_HANDLE        The handle that the user introduces is illegal.
-            GX_STATUS_INVALID_PARAMETER     The pointer that the user introduces is NULL.
-            GX_STATUS_INVALID_CALL          Acquisition is not started or the callback is registered. It
-                                           is not allowed to call the interface.
-            The errors that are not covered above please reference GX_STATUS_LIST.
+			GX_STATUS_NOT_INIT_API          The GXInitLib initialization library is not called.
+			GX_STATUS_INVALID_HANDLE        The handle that the user introduces is illegal.
+			GX_STATUS_INVALID_PARAMETER     The pointer that the user introduces is NULL.
+			GX_STATUS_INVALID_CALL          Acquisition is not started or the callback is registered. It
+										   is not allowed to call the interface.
+			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXQBuf (GX_DEV_HANDLE hDevice, PGX_FRAME_BUFFER pFrameBuffer);
+GX_API GXQBuf(GX_DEV_HANDLE hDevice, PGX_FRAME_BUFFER pFrameBuffer);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ×¢²áÊôĞÔ¸üĞÂ»Øµ÷º¯Êı
-\attention  ÓÃ»§¿ÉÍ¨¹ı´Ë½Ó¿Ú»ñÈ¡ÊÂ¼şÊı¾İ£¬Ïê¼ûÊ¾Àı³ÌĞò
-\param		[in]hDevice     Éè±¸¾ä±ú
-\param		[in]pUserParam  ÓÃ»§Ë½ÓĞÊı¾İ
-\param		[in]callBackFun ÓÃ»§×¢²áµÄ»Øµ÷º¯Êı
-\param		[in]featureID   ¹¦ÄÜÂë
-\param		[out]pHCallBack  »Øµ÷º¯Êı¾ä±ú
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			GX_STATUS_INVALID_PARAMETER   ÓÃ»§´«Èë»Øµ÷º¯Êı·Ç·¨
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      æ³¨å†Œå±æ€§æ›´æ–°å›è°ƒå‡½æ•°
+\attention  ç”¨æˆ·å¯é€šè¿‡æ­¤æ¥å£è·å–äº‹ä»¶æ•°æ®ï¼Œè¯¦è§ç¤ºä¾‹ç¨‹åº
+\param		[in]hDevice     è®¾å¤‡å¥æŸ„
+\param		[in]pUserParam  ç”¨æˆ·ç§æœ‰æ•°æ®
+\param		[in]callBackFun ç”¨æˆ·æ³¨å†Œçš„å›è°ƒå‡½æ•°
+\param		[in]featureID   åŠŸèƒ½ç 
+\param		[out]pHCallBack  å›è°ƒå‡½æ•°å¥æŸ„
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			GX_STATUS_INVALID_PARAMETER   ç”¨æˆ·ä¼ å…¥å›è°ƒå‡½æ•°éæ³•
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Register the capture callback function, corresponding to GXUnregisterCaptureCallback.
@@ -4444,24 +4433,24 @@ GX_API GXQBuf (GX_DEV_HANDLE hDevice, PGX_FRAME_BUFFER pFrameBuffer);
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXRegisterFeatureCallback  (GX_DEV_HANDLE hDevice, 
-								   void* pUserParam, 
-								   GXFeatureCallBack  callBackFun, 
-								   GX_FEATURE_ID_CMD  featureID,
-								   GX_FEATURE_CALLBACK_HANDLE *pHCallBack);
+GX_API GXRegisterFeatureCallback(GX_DEV_HANDLE hDevice,
+								 void *pUserParam,
+								 GXFeatureCallBack callBackFun,
+								 GX_FEATURE_ID_CMD featureID,
+								 GX_FEATURE_CALLBACK_HANDLE *pHCallBack);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ×¢ÏúÊôĞÔ¸üĞÂ»Øµ÷º¯Êı
-\attention  ÓëGXRegisterFeatureCallbackÅäÌ×Ê¹ÓÃ£¬Ã¿´Î×¢²á¶¼±ØĞëÓĞÏàÓ¦µÄ×¢ÏúÓëÖ®¶ÔÓ¦
-\param		[in]hDevice     Éè±¸¾ä±ú
-\param		[in]featureID   ¹¦ÄÜÂë
-\param		[out]pHCallBack  »Øµ÷º¯Êı¾ä±ú
-\return		GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			ÆäËü´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST 
+\Chineseï¼š
+\brief      æ³¨é”€å±æ€§æ›´æ–°å›è°ƒå‡½æ•°
+\attention  ä¸GXRegisterFeatureCallbacké…å¥—ä½¿ç”¨ï¼Œæ¯æ¬¡æ³¨å†Œéƒ½å¿…é¡»æœ‰ç›¸åº”çš„æ³¨é”€ä¸ä¹‹å¯¹åº”
+\param		[in]hDevice     è®¾å¤‡å¥æŸ„
+\param		[in]featureID   åŠŸèƒ½ç 
+\param		[out]pHCallBack  å›è°ƒå‡½æ•°å¥æŸ„
+\return		GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			å…¶å®ƒé”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Unregister the capture callback function, corresponding to GXRegisterCaptureCallback.
@@ -4476,19 +4465,18 @@ GX_API GXRegisterFeatureCallback  (GX_DEV_HANDLE hDevice,
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXUnregisterFeatureCallback(GX_DEV_HANDLE  hDevice, GX_FEATURE_ID_CMD featureID, GX_FEATURE_CALLBACK_HANDLE  hCallBack);
-
+GX_API GXUnregisterFeatureCallback(GX_DEV_HANDLE hDevice, GX_FEATURE_ID_CMD featureID, GX_FEATURE_CALLBACK_HANDLE hCallBack);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      µ¼³öÏà»úµ±Ç°²ÎÊıµ½ÅäÖÃÎÄ¼ş£¨ANSI½Ó¿Ú£©
-\param		[in]hDevice         Éè±¸¾ä±ú
-\param		[in]pszFilePath     ÅäÖÃÎÄ¼şÊä³öÂ·¾¶
-\return     GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			ÉÏÃæÃ»ÓĞº­¸Çµ½µÄ£¬²»³£¼ûµÄ´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      å¯¼å‡ºç›¸æœºå½“å‰å‚æ•°åˆ°é…ç½®æ–‡ä»¶ï¼ˆANSIæ¥å£ï¼‰
+\param		[in]hDevice         è®¾å¤‡å¥æŸ„
+\param		[in]pszFilePath     é…ç½®æ–‡ä»¶è¾“å‡ºè·¯å¾„
+\return     GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			ä¸Šé¢æ²¡æœ‰æ¶µç›–åˆ°çš„ï¼Œä¸å¸¸è§çš„é”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Export the current parameter of the camera to the configuration file.(ANSI)
@@ -4500,19 +4488,18 @@ GX_API GXUnregisterFeatureCallback(GX_DEV_HANDLE  hDevice, GX_FEATURE_ID_CMD fea
 			The errors that are not covered above please reference GX_STATUS_LIST.
 */
 //----------------------------------------------------------------------------------
-GX_API GXExportConfigFile (GX_DEV_HANDLE hDevice, const char * pszFilePath);
-
+GX_API GXExportConfigFile(GX_DEV_HANDLE hDevice, const char *pszFilePath);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      µ¼³öÏà»úµ±Ç°²ÎÊıµ½ÅäÖÃÎÄ¼ş£¨UNICODE½Ó¿Ú£©
-\param		[in]hDevice         Éè±¸¾ä±ú
-\param		[in]pszFilePath     ÅäÖÃÎÄ¼şÊä³öÂ·¾¶£¨wchar_tÀàĞÍ£©
-\return     GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			ÉÏÃæÃ»ÓĞº­¸Çµ½µÄ£¬²»³£¼ûµÄ´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      å¯¼å‡ºç›¸æœºå½“å‰å‚æ•°åˆ°é…ç½®æ–‡ä»¶ï¼ˆUNICODEæ¥å£ï¼‰
+\param		[in]hDevice         è®¾å¤‡å¥æŸ„
+\param		[in]pszFilePath     é…ç½®æ–‡ä»¶è¾“å‡ºè·¯å¾„ï¼ˆwchar_tç±»å‹ï¼‰
+\return     GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			ä¸Šé¢æ²¡æœ‰æ¶µç›–åˆ°çš„ï¼Œä¸å¸¸è§çš„é”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief		(unicode interface)
@@ -4524,19 +4511,19 @@ GX_API GXExportConfigFile (GX_DEV_HANDLE hDevice, const char * pszFilePath);
 			Other status refer to GX_STATUS_LIST
 */
 //----------------------------------------------------------------------------------
-GX_API GXExportConfigFileW(GX_DEV_HANDLE hDevice, const wchar_t * pszFilePath);
+GX_API GXExportConfigFileW(GX_DEV_HANDLE hDevice, const wchar_t *pszFilePath);
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ½«ÅäÖÃÎÄ¼şÖĞ²ÎÊıµ¼Èëµ½Ïà»ú£¨ANSI½Ó¿Ú£©
-\param		[in]hDevice         Éè±¸¾ä±ú
-\param		[in]pszFilePath     ÅäÖÃÎÄ¼şÂ·¾¶
-\param		[in]bVerify         Èç¹û´ËÖµÎªtrue£¬ËùÓĞµ¼Èë½øÈ¥µÄÖµ½«»á±»¶Á³ö½øĞĞĞ£ÑéÊÇ·ñÒ»ÖÂ
-\return     GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			ÉÏÃæÃ»ÓĞº­¸Çµ½µÄ£¬²»³£¼ûµÄ´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      å°†é…ç½®æ–‡ä»¶ä¸­å‚æ•°å¯¼å…¥åˆ°ç›¸æœºï¼ˆANSIæ¥å£ï¼‰
+\param		[in]hDevice         è®¾å¤‡å¥æŸ„
+\param		[in]pszFilePath     é…ç½®æ–‡ä»¶è·¯å¾„
+\param		[in]bVerify         å¦‚æœæ­¤å€¼ä¸ºtrueï¼Œæ‰€æœ‰å¯¼å…¥è¿›å»çš„å€¼å°†ä¼šè¢«è¯»å‡ºè¿›è¡Œæ ¡éªŒæ˜¯å¦ä¸€è‡´
+\return     GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			ä¸Šé¢æ²¡æœ‰æ¶µç›–åˆ°çš„ï¼Œä¸å¸¸è§çš„é”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Import the configuration file for the camera.(ANSI)
@@ -4550,22 +4537,22 @@ GX_API GXExportConfigFileW(GX_DEV_HANDLE hDevice, const wchar_t * pszFilePath);
 */
 //----------------------------------------------------------------------------------
 #ifndef __cplusplus
-GX_API GXImportConfigFile(GX_DEV_HANDLE hDevice, const char * pszFilePath, bool bVerify);
+GX_API GXImportConfigFile(GX_DEV_HANDLE hDevice, const char *pszFilePath, bool bVerify);
 #else
-GX_API GXImportConfigFile(GX_DEV_HANDLE hDevice, const char * pszFilePath, bool bVerify = false);
+GX_API GXImportConfigFile(GX_DEV_HANDLE hDevice, const char *pszFilePath, bool bVerify = false);
 #endif
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ½«ÅäÖÃÎÄ¼şÖĞ²ÎÊıµ¼Èëµ½Ïà»ú£¨UNICODE½Ó¿Ú£©
-\param		[in]hDevice         Éè±¸¾ä±ú
-\param		[in]pszFilePath     ÅäÖÃÎÄ¼şÂ·¾¶
-\param		[in]bVerify         Èç¹û´ËÖµÎªtrue£¬ËùÓĞµ¼Èë½øÈ¥µÄÖµ½«»á±»¶Á³ö½øĞĞĞ£ÑéÊÇ·ñÒ»ÖÂ
-\return     GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			ÉÏÃæÃ»ÓĞº­¸Çµ½µÄ£¬²»³£¼ûµÄ´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      å°†é…ç½®æ–‡ä»¶ä¸­å‚æ•°å¯¼å…¥åˆ°ç›¸æœºï¼ˆUNICODEæ¥å£ï¼‰
+\param		[in]hDevice         è®¾å¤‡å¥æŸ„
+\param		[in]pszFilePath     é…ç½®æ–‡ä»¶è·¯å¾„
+\param		[in]bVerify         å¦‚æœæ­¤å€¼ä¸ºtrueï¼Œæ‰€æœ‰å¯¼å…¥è¿›å»çš„å€¼å°†ä¼šè¢«è¯»å‡ºè¿›è¡Œæ ¡éªŒæ˜¯å¦ä¸€è‡´
+\return     GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			ä¸Šé¢æ²¡æœ‰æ¶µç›–åˆ°çš„ï¼Œä¸å¸¸è§çš„é”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief		(unicode interface)
@@ -4579,24 +4566,24 @@ GX_API GXImportConfigFile(GX_DEV_HANDLE hDevice, const char * pszFilePath, bool 
 */
 //----------------------------------------------------------------------------------
 #ifndef __cplusplus
-GX_API GXImportConfigFileW(GX_DEV_HANDLE hDevice, const wchar_t * pszFilePath, bool bVerify);
+GX_API GXImportConfigFileW(GX_DEV_HANDLE hDevice, const wchar_t *pszFilePath, bool bVerify);
 #else
-GX_API GXImportConfigFileW(GX_DEV_HANDLE hDevice, const wchar_t * pszFilePath, bool bVerify = false);
+GX_API GXImportConfigFileW(GX_DEV_HANDLE hDevice, const wchar_t *pszFilePath, bool bVerify = false);
 #endif
 
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ¶ÁÓÃ»§Ö¸¶¨¼Ä´æÆ÷µÄÖµ
-\param		[in]hDevice         Éè±¸¾ä±ú
-\param		[in]ui64Address     ¼Ä´æÆ÷µØÖ·
-\param		[out]pBuffer        ·µ»Ø¼Ä´æÆ÷µÄÖµ£¬²»ÄÜÎªNULL
-\param		[in, out]piSize     [in]ÓÃ»§ÉêÇëµÄBuffer´óĞ¡
-								[out]³É¹¦¶ÁÈ¡¼Ä´æÆ÷µÄÖµºó£¬·µ»ØÊµ¼Ê´óĞ¡
-\return     GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			ÉÏÃæÃ»ÓĞº­¸Çµ½µÄ£¬²»³£¼ûµÄ´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      è¯»ç”¨æˆ·æŒ‡å®šå¯„å­˜å™¨çš„å€¼
+\param		[in]hDevice         è®¾å¤‡å¥æŸ„
+\param		[in]ui64Address     å¯„å­˜å™¨åœ°å€
+\param		[out]pBuffer        è¿”å›å¯„å­˜å™¨çš„å€¼ï¼Œä¸èƒ½ä¸ºNULL
+\param		[in, out]piSize     [in]ç”¨æˆ·ç”³è¯·çš„Bufferå¤§å°
+								[out]æˆåŠŸè¯»å–å¯„å­˜å™¨çš„å€¼åï¼Œè¿”å›å®é™…å¤§å°
+\return     GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			ä¸Šé¢æ²¡æœ‰æ¶µç›–åˆ°çš„ï¼Œä¸å¸¸è§çš„é”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Read the value of the specified register
@@ -4613,20 +4600,19 @@ GX_API GXImportConfigFileW(GX_DEV_HANDLE hDevice, const wchar_t * pszFilePath, b
 //----------------------------------------------------------------------------------
 GX_API GXReadRemoteDevicePort(GX_DEV_HANDLE hDevice, uint64_t ui64Address, void *pBuffer, size_t *piSize);
 
-
 //----------------------------------------------------------------------------------
 /**
-\Chinese£º
-\brief      ÏòÓÃ»§Ö¸¶¨µÄ¼Ä´æÆ÷ÖĞĞ´ÈëÓÃ»§¸ø¶¨µÄÊı¾İ
-\param		[in]hDevice         Éè±¸¾ä±ú
-\param		[in]ui64Address     ¼Ä´æÆ÷µØÖ·
-\param		[in]pBuffer         ·µ»Ø¼Ä´æÆ÷µÄÖµ£¬²»ÄÜÎªNULL
-\param		[in, out]piSize     [in]ÓÃ»§ÒªĞ´ÈëµÄBuffer³¤¶È
-								[out]·µ»ØÊµ¼ÊĞ´Èë¼Ä´æÆ÷µÄ³¤¶È
-\return     GX_STATUS_SUCCESS             ²Ù×÷³É¹¦£¬Ã»ÓĞ·¢Éú´íÎó
-			GX_STATUS_NOT_INIT_API        Ã»ÓĞµ÷ÓÃGXInitLib³õÊ¼»¯¿â
-			GX_STATUS_INVALID_HANDLE      ÓÃ»§´«Èë·Ç·¨µÄ¾ä±ú
-			ÉÏÃæÃ»ÓĞº­¸Çµ½µÄ£¬²»³£¼ûµÄ´íÎóÇé¿öÇë²Î¼ûGX_STATUS_LIST
+\Chineseï¼š
+\brief      å‘ç”¨æˆ·æŒ‡å®šçš„å¯„å­˜å™¨ä¸­å†™å…¥ç”¨æˆ·ç»™å®šçš„æ•°æ®
+\param		[in]hDevice         è®¾å¤‡å¥æŸ„
+\param		[in]ui64Address     å¯„å­˜å™¨åœ°å€
+\param		[in]pBuffer         è¿”å›å¯„å­˜å™¨çš„å€¼ï¼Œä¸èƒ½ä¸ºNULL
+\param		[in, out]piSize     [in]ç”¨æˆ·è¦å†™å…¥çš„Bufferé•¿åº¦
+								[out]è¿”å›å®é™…å†™å…¥å¯„å­˜å™¨çš„é•¿åº¦
+\return     GX_STATUS_SUCCESS             æ“ä½œæˆåŠŸï¼Œæ²¡æœ‰å‘ç”Ÿé”™è¯¯
+			GX_STATUS_NOT_INIT_API        æ²¡æœ‰è°ƒç”¨GXInitLibåˆå§‹åŒ–åº“
+			GX_STATUS_INVALID_HANDLE      ç”¨æˆ·ä¼ å…¥éæ³•çš„å¥æŸ„
+			ä¸Šé¢æ²¡æœ‰æ¶µç›–åˆ°çš„ï¼Œä¸å¸¸è§çš„é”™è¯¯æƒ…å†µè¯·å‚è§GX_STATUS_LIST
 
 \English:
 \brief      Write the given data to the specified register.
@@ -4643,7 +4629,6 @@ GX_API GXReadRemoteDevicePort(GX_DEV_HANDLE hDevice, uint64_t ui64Address, void 
 //----------------------------------------------------------------------------------
 GX_API GXWriteRemoteDevicePort(GX_DEV_HANDLE hDevice, uint64_t ui64Address, const void *pBuffer, size_t *piSize);
 
-#endif  //1
+#endif // 1
 
-#endif  //GX_GALAXY_H
-
+#endif // GX_GALAXY_H

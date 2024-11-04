@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 
-list(APPEND CMAKE_PREFIX_PATH C:\\opencv\\new\\install\\x64\\mingw\\bin\\)
+list(APPEND CMAKE_PREFIX_PATH E:\\WYL_workspace\\OpenCV_4.10\\x64\\mingw\\bin\\)
 
 find_package(OpenCV REQUIRED)
 

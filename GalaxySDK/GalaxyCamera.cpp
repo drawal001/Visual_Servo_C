@@ -1,8 +1,42 @@
 #include "GalaxyCamera.h"
 
-GxCamera::GxCamera(std::string id)
+#define HIGHLIGHT_(...)                               \
+    do                                                \
+    {                                                 \
+        printf("\033[35minfo - \033[0m" __VA_ARGS__); \
+        printf("\n");                                 \
+    } while (false)
+
+#define WARNING_(...)                                 \
+    do                                                \
+    {                                                 \
+        printf("\033[33mwarn - \033[0m" __VA_ARGS__); \
+        printf("\n");                                 \
+    } while (false)
+
+#define PASS_(...)                                    \
+    do                                                \
+    {                                                 \
+        printf("\033[32minfo - \033[0m" __VA_ARGS__); \
+        printf("\n");                                 \
+    } while (false)
+
+#define ERROR_(...)                                   \
+    do                                                \
+    {                                                 \
+        printf("\033[31m err - \033[0m" __VA_ARGS__); \
+        printf("\n");                                 \
+    } while (false)
+
+#define INFO_(...)                     \
+    do                                 \
+    {                                  \
+        printf("info - " __VA_ARGS__); \
+        printf("\n");                  \
+    } while (false)
+
+GxCamera::GxCamera(std::string_view id) : _id(id)
 {
-    _id = id;
     _init = init();
 }
 
@@ -20,7 +54,7 @@ bool GxCamera::init()
     auto status = GXInitLib();
     if (status != GX_STATUS_SUCCESS)
     {
-        std::cerr << "Failed to init the lib, error: " << getGxError() << std::endl;
+        ERROR_("Failed to init the lib, error: %s", getGxError());
         return false;
     }
     // 枚举相机
@@ -28,14 +62,15 @@ bool GxCamera::init()
     status = GXUpdateAllDeviceList(&nums, 1000);
     if (status != GX_STATUS_SUCCESS)
     {
-        std::cerr << "Failed to update device list, error: " << getGxError() << std::endl;
+        ERROR_("Failed to update device list, error: %s", getGxError());
         return false;
     }
     if (nums == 0)
     {
-        std::cerr << "Could not find any camera device" << std::endl;
+        ERROR_("Could not find any camera device");
         return false;
     }
+    PASS_("Success to enum the camera device, num = %d", nums);
     // 获取设备信息
     std::unordered_set<std::string> mac_set{};
     std::vector<GX_DEVICE_BASE_INFO> device_info(nums);
@@ -43,7 +78,7 @@ bool GxCamera::init()
     status = GXGetAllDeviceBaseInfo(device_info.data(), &base_info_size);
     if (status != GX_STATUS_SUCCESS)
     {
-        std::cerr << "Failed to get device info, error: " << getGxError() << std::endl;
+        ERROR_("Failed to get device info, error: %s", getGxError());
         return false;
     }
 
@@ -51,17 +86,15 @@ bool GxCamera::init()
     GX_OPEN_PARAM open_param;
     open_param.accessMode = GX_ACCESS_EXCLUSIVE;
     open_param.openMode = GX_OPEN_MAC;
-    for (int32_t i = 0; i < nums; ++i)
+    for (uint32_t i = 0; i < nums; ++i)
     {
         GX_DEVICE_IP_INFO ip_info;
         if (device_info[i].deviceClass != GX_DEVICE_CLASS_GEV)
-        {
             continue;
-        }
-        status = GXGetDeviceIPInfo(i, &ip_info);
+        status = GXGetDeviceIPInfo(i + 1, &ip_info);
         if (status != GX_STATUS_SUCCESS)
         {
-            std::cerr << "Failed to get device IP, error: " << getGxError() << std::endl;
+            ERROR_("Failed to get device IP, error: %s", getGxError());
             return false;
         }
         mac_set.emplace(ip_info.szMAC);
@@ -78,13 +111,17 @@ bool GxCamera::init()
     }
     else
     {
-        std::cerr << "Could not find the device matched with the provided MAC" << std::endl;
+        ERROR_("Could not find the device matched with the provided MAC");
+        for (const auto &mac : mac_set)
+        {
+            INFO_("current MAC: %s", mac.c_str());
+        }
         return false;
     }
 
     if (status != GX_STATUS_SUCCESS)
     {
-        std::cerr << "Failed to open the camera, error: " << getGxError() << std::endl;
+        ERROR_("Failed to open the camera, error: %s", getGxError());
         return false;
     }
     else
@@ -104,27 +141,29 @@ bool GxCamera::init()
     status = GXGetInt(_handle, GX_INT_PAYLOAD_SIZE, &_payload);
     if (status != GX_STATUS_SUCCESS || _payload <= 0)
     {
-        std::cerr << "Failed to get payload size, error: " << getGxError() << std::endl;
+        ERROR_("Failed to get payload size, error: %s", getGxError());
         return false;
     }
-    _data.pImgBuf = new char[_payload];
+    _data.pImgBuf = malloc(_payload);
     status = GXSendCommand(_handle, GX_COMMAND_ACQUISITION_START);
     if (status != GX_STATUS_SUCCESS)
     {
-        std::cerr << "Failed to start stream, error: " << getGxError() << std::endl;
+        ERROR_("Failed to start stream, error: %s", getGxError());
+        free(_data.pImgBuf);
         return false;
     }
     _init = true;
 
     return true;
 }
+
 bool GxCamera::retrieve(cv::OutputArray image)
 {
-    //获取像素格式、图像宽高、图像缓冲区
+    // 获取像素格式、图像宽高、图像缓冲区
     int32_t pixel_format = _data.nPixelFormat;
     int32_t width = _data.nWidth, height = _data.nHeight;
     void *buffer = _data.pImgBuf;
-    //解码与转码
+    // 解码与转码
     if (pixel_format == GX_PIXEL_FORMAT_MONO8)
     {
         image.assign(cv::Mat(height, width, CV_8UC1, buffer));
@@ -144,7 +183,7 @@ bool GxCamera::retrieve(cv::OutputArray image)
     }
     else
     {
-        std::cerr << "Invalid pixel format" << std::endl;
+        ERROR_("Invalid pixel format");
         return false;
     }
     return true;
@@ -153,9 +192,9 @@ bool GxCamera::retrieve(cv::OutputArray image)
 bool GxCamera::read(cv::OutputArray image)
 {
     auto status = GXGetImage(_handle, &_data, 1000);
-    if (status != GX_STATUS_SUCCESS) 
+    if (status != GX_STATUS_SUCCESS)
     {
-        std::cerr << "Failed to read image, error: " << getGxError() << std::endl;
+        ERROR_("Failed to read image, error: %s", getGxError());
         reconnect();
         return false;
     }
@@ -163,9 +202,9 @@ bool GxCamera::read(cv::OutputArray image)
     return flag;
 }
 
-
-bool GxCamera::reconnect() {
-    std::cerr << "camera device reconnect " << std::endl;
+bool GxCamera::reconnect()
+{
+    ERROR_("camera device reconnect ");
     release();
     Sleep(100);
     return init();
@@ -174,13 +213,15 @@ bool GxCamera::reconnect() {
 void GxCamera::release()
 {
     auto status = GXSendCommand(_handle, GX_COMMAND_ACQUISITION_STOP);
-    if (status != GX_STATUS_SUCCESS) {
-        std::cerr << "Failed to stop stream, error: " << getGxError() << std::endl;
+    if (status != GX_STATUS_SUCCESS)
+    {
+        ERROR_("Failed to stop stream, error: %s", getGxError());
     }
+    free(_data.pImgBuf);
     status = GXCloseDevice(_handle);
     if (status != GX_STATUS_SUCCESS)
     {
-        std::cerr << "Failed to close camera, error: " << getGxError() << std::endl;
+        ERROR_("Failed to close camera, error: %s", getGxError());
     }
     GXCloseLib();
 }

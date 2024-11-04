@@ -9,9 +9,10 @@
 #include <unordered_map>
 #include <opencv2/imgproc.hpp>
 
-    class GxCamera {
+class GxCamera
+{
 public:
-    GxCamera(std::string id);
+    GxCamera(std::string_view id);
     ~GxCamera();
     const char *getGxError();
     bool init();

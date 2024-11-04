@@ -1,6 +1,6 @@
 /**
 @File      GXErrorList.h
-@Brief     the errorn list for the GxIAPI dll module. 
+@Brief     the errorn list for the GxIAPI dll module.
 @Author    Software Department
 @Date      2023-06-20
 @Version   1.0.2306.9201
@@ -9,64 +9,62 @@
 #ifndef GX_ERROR_LIST_H
 #define GX_ERROR_LIST_H
 
-
 //////////////////////////////////////////////////////////////////////////
-//Chinese£º	ÀàĞÍ¶¨Òå£¬ÒÔÏÂÀàĞÍ¶¼ÔÚ±ê×¼C¿âÍ·ÎÄ¼şstdint.hÖĞÓĞ¶¨Òå£¬µ«ÊÇÔÚÎ¢ÈíµÄ±àÒëÆ½Ì¨
-//			VS2010Ö®Ç°µÄ°æ±¾ÖĞ¶¼²»°üº¬´ËÎÄ¼ş,ËùÒÔÔÚ´ËĞèÒªÖØ¶¨Òå
+// Chineseï¼š	ç±»å‹å®šä¹‰ï¼Œä»¥ä¸‹ç±»å‹éƒ½åœ¨æ ‡å‡†Cåº“å¤´æ–‡ä»¶stdint.hä¸­æœ‰å®šä¹‰ï¼Œä½†æ˜¯åœ¨å¾®è½¯çš„ç¼–è¯‘å¹³å°
+//			VS2010ä¹‹å‰çš„ç‰ˆæœ¬ä¸­éƒ½ä¸åŒ…å«æ­¤æ–‡ä»¶,æ‰€ä»¥åœ¨æ­¤éœ€è¦é‡å®šä¹‰
 
-//English:	The following types are defined in the standard C library header file stdint.h, but are available on Microsoft's compilation platform
+// English:	The following types are defined in the standard C library header file stdint.h, but are available on Microsoft's compilation platform
 //			This file was not included in previous versions of VS2010, so it needs to be redefined here
 //////////////////////////////////////////////////////////////////////////
 
 #if defined(_WIN32)
-	#ifndef _STDINT_H 
-		#ifdef _MSC_VER // Microsoft compiler
-			#if _MSC_VER < 1600
-				typedef __int8            int8_t;
-				typedef __int16           int16_t;
-				typedef __int32           int32_t;
-				typedef __int64           int64_t;
-				typedef unsigned __int8   uint8_t;
-				typedef unsigned __int16  uint16_t;
-				typedef unsigned __int32  uint32_t;
-				typedef unsigned __int64  uint64_t;
-			#else
-				// In Visual Studio 2010 is stdint.h already included
-				#include <stdint.h>
-			#endif
-		#else
-			// Not a Microsoft compiler
-			#include <stdint.h>
-		#endif
-	#endif 
+#ifndef _STDINT_H
+#ifdef _MSC_VER // Microsoft compiler
+#if _MSC_VER < 1600
+typedef __int8 int8_t;
+typedef __int16 int16_t;
+typedef __int32 int32_t;
+typedef __int64 int64_t;
+typedef unsigned __int8 uint8_t;
+typedef unsigned __int16 uint16_t;
+typedef unsigned __int32 uint32_t;
+typedef unsigned __int64 uint64_t;
 #else
-	// Linux
-	#include <stdint.h>
+// In Visual Studio 2010 is stdint.h already included
+#include <stdint.h>
+#endif
+#else
+// Not a Microsoft compiler
+#include <stdint.h>
+#endif
+#endif
+#else
+// Linux
+#include <stdint.h>
 #endif
 
 //------------------------------------------------------------------------------
-//Chinese£º ´íÎóÂë¶¨Òå
-//English:	Error code definition
+// Chineseï¼š é”™è¯¯ç å®šä¹‰
+// English:	Error code definition
 //------------------------------------------------------------------------------
 typedef enum GX_STATUS_LIST
 {
-	GX_STATUS_SUCCESS                =  0,           ///< \Chinese	³É¹¦															\English	Success
-	GX_STATUS_ERROR					 = -1,           ///< \Chinese	²»ÆÚÍû·¢ÉúµÄÎ´Ã÷È·Ö¸Ã÷µÄÄÚ²¿´íÎó								\English	There is an unspecified internal error that is not expected to occur
-	GX_STATUS_NOT_FOUND_TL           = -2,           ///< \Chinese	ÕÒ²»µ½TL¿â														\English	The TL library cannot be found
-	GX_STATUS_NOT_FOUND_DEVICE       = -3,           ///< \Chinese	ÕÒ²»µ½Éè±¸														\English	The device is not found
-	GX_STATUS_OFFLINE                = -4,           ///< \Chinese	µ±Ç°Éè±¸ÎªµôÏß×´Ì¬												\English	The current device is in an offline status
-	GX_STATUS_INVALID_PARAMETER		 = -5,           ///< \Chinese	ÎŞĞ§²ÎÊı,Ò»°ãÊÇÖ¸ÕëÎªNULL»òÊäÈëµÄIPµÈ²ÎÊı¸ñÊ½ÎŞĞ§				\English	Invalid parameter. Generally, the pointer is NULL or the input IP and other parameter formats are invalid
-	GX_STATUS_INVALID_HANDLE         = -6,           ///< \Chinese	ÎŞĞ§¾ä±ú														\English	Invalid handle
-	GX_STATUS_INVALID_CALL			 = -7,           ///< \Chinese	ÎŞĞ§µÄ½Ó¿Úµ÷ÓÃ,×¨Ö¸Èí¼ş½Ó¿ÚÂß¼­´íÎó								\English	The interface is invalid, which refers to software interface logic error
-	GX_STATUS_INVALID_ACCESS		 = -8,           ///< \Chinese	¹¦ÄÜµ±Ç°²»¿É·ÃÎÊ»òÉè±¸·ÃÎÊÄ£Ê½´íÎó								\English	The function is currently inaccessible or the device access mode is incorrect
-	GX_STATUS_NEED_MORE_BUFFER		 = -9,           ///< \Chinese	ÓÃ»§ÉêÇëµÄbuffer²»×ã:¶Á²Ù×÷Ê±ÓÃ»§ÊäÈëbuffersizeĞ¡ÓÚÊµ¼ÊĞèÒª		\English	The user request buffer is insufficient: the user input buffersize during the read operation is less than the actual need
-	GX_STATUS_ERROR_TYPE			 = -10,          ///< \Chinese	ÓÃ»§Ê¹ÓÃµÄFeatureIDÀàĞÍ´íÎó£¬±ÈÈçÕûĞÍ½Ó¿ÚÊ¹ÓÃÁË¸¡µãĞÍµÄ¹¦ÄÜÂë	\English	The type of FeatureID used by the user is incorrect, such as an integer interface using a floating - point function code
-	GX_STATUS_OUT_OF_RANGE           = -11,          ///< \Chinese	ÓÃ»§Ğ´ÈëµÄÖµÔ½½ç												\English	The value written by the user is crossed
-	GX_STATUS_NOT_IMPLEMENTED        = -12,          ///< \Chinese	µ±Ç°²»Ö§³ÖµÄ¹¦ÄÜ												\English	This function is not currently supported
-	GX_STATUS_NOT_INIT_API           = -13,          ///< \Chinese	Ã»ÓĞµ÷ÓÃ³õÊ¼»¯½Ó¿Ú												\English	There is no call to initialize the interface
-	GX_STATUS_TIMEOUT                = -14,          ///< \Chinese	³¬Ê±´íÎó														\English	Timeout error
-}GX_STATUS_LIST;
+	GX_STATUS_SUCCESS = 0,			  ///< \Chinese	æˆåŠŸ															\English	Success
+	GX_STATUS_ERROR = -1,			  ///< \Chinese	ä¸æœŸæœ›å‘ç”Ÿçš„æœªæ˜ç¡®æŒ‡æ˜çš„å†…éƒ¨é”™è¯¯								\English	There is an unspecified internal error that is not expected to occur
+	GX_STATUS_NOT_FOUND_TL = -2,	  ///< \Chinese	æ‰¾ä¸åˆ°TLåº“														\English	The TL library cannot be found
+	GX_STATUS_NOT_FOUND_DEVICE = -3,  ///< \Chinese	æ‰¾ä¸åˆ°è®¾å¤‡														\English	The device is not found
+	GX_STATUS_OFFLINE = -4,			  ///< \Chinese	å½“å‰è®¾å¤‡ä¸ºæ‰çº¿çŠ¶æ€												\English	The current device is in an offline status
+	GX_STATUS_INVALID_PARAMETER = -5, ///< \Chinese	æ— æ•ˆå‚æ•°,ä¸€èˆ¬æ˜¯æŒ‡é’ˆä¸ºNULLæˆ–è¾“å…¥çš„IPç­‰å‚æ•°æ ¼å¼æ— æ•ˆ				\English	Invalid parameter. Generally, the pointer is NULL or the input IP and other parameter formats are invalid
+	GX_STATUS_INVALID_HANDLE = -6,	  ///< \Chinese	æ— æ•ˆå¥æŸ„														\English	Invalid handle
+	GX_STATUS_INVALID_CALL = -7,	  ///< \Chinese	æ— æ•ˆçš„æ¥å£è°ƒç”¨,ä¸“æŒ‡è½¯ä»¶æ¥å£é€»è¾‘é”™è¯¯								\English	The interface is invalid, which refers to software interface logic error
+	GX_STATUS_INVALID_ACCESS = -8,	  ///< \Chinese	åŠŸèƒ½å½“å‰ä¸å¯è®¿é—®æˆ–è®¾å¤‡è®¿é—®æ¨¡å¼é”™è¯¯								\English	The function is currently inaccessible or the device access mode is incorrect
+	GX_STATUS_NEED_MORE_BUFFER = -9,  ///< \Chinese	ç”¨æˆ·ç”³è¯·çš„bufferä¸è¶³:è¯»æ“ä½œæ—¶ç”¨æˆ·è¾“å…¥buffersizeå°äºå®é™…éœ€è¦		\English	The user request buffer is insufficient: the user input buffersize during the read operation is less than the actual need
+	GX_STATUS_ERROR_TYPE = -10,		  ///< \Chinese	ç”¨æˆ·ä½¿ç”¨çš„FeatureIDç±»å‹é”™è¯¯ï¼Œæ¯”å¦‚æ•´å‹æ¥å£ä½¿ç”¨äº†æµ®ç‚¹å‹çš„åŠŸèƒ½ç 	\English	The type of FeatureID used by the user is incorrect, such as an integer interface using a floating - point function code
+	GX_STATUS_OUT_OF_RANGE = -11,	  ///< \Chinese	ç”¨æˆ·å†™å…¥çš„å€¼è¶Šç•Œ												\English	The value written by the user is crossed
+	GX_STATUS_NOT_IMPLEMENTED = -12,  ///< \Chinese	å½“å‰ä¸æ”¯æŒçš„åŠŸèƒ½												\English	This function is not currently supported
+	GX_STATUS_NOT_INIT_API = -13,	  ///< \Chinese	æ²¡æœ‰è°ƒç”¨åˆå§‹åŒ–æ¥å£												\English	There is no call to initialize the interface
+	GX_STATUS_TIMEOUT = -14,		  ///< \Chinese	è¶…æ—¶é”™è¯¯														\English	Timeout error
+} GX_STATUS_LIST;
 typedef int32_t GX_STATUS;
 
-
-#endif //GX_ERROR_LIST_H
+#endif // GX_ERROR_LIST_H
