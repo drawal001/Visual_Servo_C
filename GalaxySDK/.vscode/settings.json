@@ -83,6 +83,7 @@
     "thread": "cpp",
     "xmemory0": "cpp",
     "xstddef": "cpp",
-    "xtree": "cpp"
+    "xtree": "cpp",
+    "xhash": "cpp"
   }
 }
