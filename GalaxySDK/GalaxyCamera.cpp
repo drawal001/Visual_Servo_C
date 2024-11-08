@@ -37,10 +37,10 @@
 
 GxCamera::GxCamera(std::string_view id) : _id(id)
 {
-    _init = init();
+    _isInit = Init();
 }
 
-const char *GxCamera::getGxError()
+const char *GxCamera::GetGxError()
 {
     size_t size = 256;
     static char err_info[256];
@@ -48,13 +48,13 @@ const char *GxCamera::getGxError()
     return err_info;
 }
 
-bool GxCamera::init()
+bool GxCamera::Init()
 {
     // 初始化Lib
     auto status = GXInitLib();
     if (status != GX_STATUS_SUCCESS)
     {
-        ERROR_("Failed to init the lib, error: %s", getGxError());
+        ERROR_("Failed to init the lib, error: %s", GetGxError());
         return false;
     }
     // 枚举相机
@@ -62,7 +62,7 @@ bool GxCamera::init()
     status = GXUpdateAllDeviceList(&nums, 1000);
     if (status != GX_STATUS_SUCCESS)
     {
-        ERROR_("Failed to update device list, error: %s", getGxError());
+        ERROR_("Failed to update device list, error: %s", GetGxError());
         return false;
     }
     if (nums == 0)
@@ -78,7 +78,7 @@ bool GxCamera::init()
     status = GXGetAllDeviceBaseInfo(device_info.data(), &base_info_size);
     if (status != GX_STATUS_SUCCESS)
     {
-        ERROR_("Failed to get device info, error: %s", getGxError());
+        ERROR_("Failed to get device info, error: %s", GetGxError());
         return false;
     }
 
@@ -94,7 +94,7 @@ bool GxCamera::init()
         status = GXGetDeviceIPInfo(i + 1, &ip_info);
         if (status != GX_STATUS_SUCCESS)
         {
-            ERROR_("Failed to get device IP, error: %s", getGxError());
+            ERROR_("Failed to get device IP, error: %s", GetGxError());
             return false;
         }
         mac_set.emplace(ip_info.szMAC);
@@ -121,7 +121,7 @@ bool GxCamera::init()
 
     if (status != GX_STATUS_SUCCESS)
     {
-        ERROR_("Failed to open the camera, error: %s", getGxError());
+        ERROR_("Failed to open the camera, error: %s", GetGxError());
         return false;
     }
     else
@@ -141,23 +141,27 @@ bool GxCamera::init()
     status = GXGetInt(_handle, GX_INT_PAYLOAD_SIZE, &_payload);
     if (status != GX_STATUS_SUCCESS || _payload <= 0)
     {
-        ERROR_("Failed to get payload size, error: %s", getGxError());
+        ERROR_("Failed to get payload size, error: %s", GetGxError());
         return false;
     }
     _data.pImgBuf = malloc(_payload);
     status = GXSendCommand(_handle, GX_COMMAND_ACQUISITION_START);
     if (status != GX_STATUS_SUCCESS)
     {
-        ERROR_("Failed to start stream, error: %s", getGxError());
+        ERROR_("Failed to start stream, error: %s", GetGxError());
         free(_data.pImgBuf);
         return false;
     }
-    _init = true;
+    _isInit = true;
 
     return true;
 }
 
-bool GxCamera::retrieve(cv::OutputArray image)
+bool GxCamera::IsInit(){
+    return _isInit;
+}
+
+bool GxCamera::Retrieve(cv::OutputArray image)
 {
     // 获取像素格式、图像宽高、图像缓冲区
     int32_t pixel_format = _data.nPixelFormat;
@@ -189,44 +193,44 @@ bool GxCamera::retrieve(cv::OutputArray image)
     return true;
 }
 
-bool GxCamera::read(cv::OutputArray image)
+bool GxCamera::Read(cv::OutputArray image)
 {
     auto status = GXGetImage(_handle, &_data, 1000);
     if (status != GX_STATUS_SUCCESS)
     {
-        ERROR_("Failed to read image, error: %s", getGxError());
-        reconnect();
+        ERROR_("Failed to read image, error: %s", GetGxError());
+        Reconnect();
         return false;
     }
-    auto flag = retrieve(image);
+    auto flag = Retrieve(image);
     return flag;
 }
 
-bool GxCamera::reconnect()
+bool GxCamera::Reconnect()
 {
     ERROR_("camera device reconnect ");
-    release();
+    Release();
     Sleep(100);
-    return init();
+    return Init();
 }
 
-void GxCamera::release()
+void GxCamera::Release()
 {
     auto status = GXSendCommand(_handle, GX_COMMAND_ACQUISITION_STOP);
     if (status != GX_STATUS_SUCCESS)
     {
-        ERROR_("Failed to stop stream, error: %s", getGxError());
+        ERROR_("Failed to stop stream, error: %s", GetGxError());
     }
     free(_data.pImgBuf);
     status = GXCloseDevice(_handle);
     if (status != GX_STATUS_SUCCESS)
     {
-        ERROR_("Failed to close camera, error: %s", getGxError());
+        ERROR_("Failed to close camera, error: %s", GetGxError());
     }
     GXCloseLib();
 }
 
 GxCamera::~GxCamera()
 {
-    release();
+    Release();
 }
