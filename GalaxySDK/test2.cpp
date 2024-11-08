@@ -3,6 +3,9 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui.hpp>
 #include <string>
+#include <vector>
+
+// #include <filesystem>
 
 constexpr auto CAMERA_TOP = "00-21-49-03-4D-95";
 
@@ -14,7 +17,6 @@ int main()
         std::cerr << "Failed to init camera1" << std::endl;
         return -1;
     }
-
     cv::Mat cameraMatrix = (cv::Mat_<double>(3, 3) << 105.9035, 0.04435, 0, 0, 105.689, 0, 0, 0, 1);
     cv::Mat distCoeffs = (cv::Mat_<double>(1, 5) << 0, 0, 0, 0, 0);
 
@@ -31,28 +33,25 @@ int main()
     int count = 0;
     while (camera1.Read(a))
     {
-
         cv::Mat dst;
         cv::remap(a, dst, map1, map2, cv::INTER_NEAREST);
+
+        std::vector<cv::Point2f> corner;
+        if (!cv::findChessboardCorners(dst, cv::Size(19, 15), corner))
+        {
+            std::cerr << "Failed to find corners in image" << std::endl;
+            continue;
+        }
+        const cv::TermCriteria criteria{cv::TermCriteria::EPS | cv::TermCriteria::COUNT, 30, 0.001};
+        cv::cornerSubPix(dst, corner, cv::Size(6, 6), cv::Size(-1, -1), criteria);
+        cv::drawChessboardCorners(dst, cv::Size(19, 15), corner, true);
+
         cv::imshow(window_name, dst);
         if (cv::waitKey(1) == 27)
         {
             break;
         }
-        if (cv::waitKey(1) == 32)
-        {
-
-            std::string filename = "E:/WYL_workspace/Visual_Servo_C/GalaxySDK/image/calibration_" + std::to_string(count) + ".png";
-            count++;
-
-            if (!cv::imwrite(filename, dst))
-            {
-                std::cerr << "Failed to get picture" << std::endl;
-                break;
-            }
-            else
-                std::cout << "success to save picture " << count << std::endl;
-        }
     }
     cv::destroyAllWindows();
+    return 0;
 }
