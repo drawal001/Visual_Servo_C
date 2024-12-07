@@ -84,6 +84,7 @@
     "xmemory0": "cpp",
     "xstddef": "cpp",
     "xtree": "cpp",
-    "xhash": "cpp"
+    "xhash": "cpp",
+    "codecvt": "cpp"
   }
 }

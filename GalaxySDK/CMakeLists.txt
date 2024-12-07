@@ -14,6 +14,8 @@ set_target_properties(GalaxySDK PROPERTIES
     "${PROJECT_SOURCE_DIR}/VCSDK/lib/x64/GxIAPI.lib"
 )
 
+add_compile_definitions(ROOT="${CMAKE_SOURCE_DIR}/")
+
 get_target_property(
     xxxx GalaxySDK IMPORTED_IMPLIB
 )
@@ -23,7 +25,7 @@ target_link_libraries(GalaxyCamera GalaxySDK)
 
 include_directories("${PROJECT_SOURCE_DIR}/VCSDK/inc")
 
-list(APPEND CMAKE_PREFIX_PATH C:\\opencv\\new\\install\\x64\\mingw\\bin\\)
+list(APPEND CMAKE_PREFIX_PATH C:\\opencv\\new\\install\\x64\\mingw\\bin)
 find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIR})
 
@@ -33,10 +35,10 @@ else()
     message("ddd")
 endif()
 
-add_executable(Main main.cpp)
-target_link_libraries(Main GalaxyCamera)
-target_include_directories(Main PUBLIC "${PROJECT_SOURCE_DIR}/VCSDK/inc")
+# add_executable(Main main.cpp)
+# target_link_libraries(Main GalaxyCamera)
+# target_include_directories(Main PUBLIC "${PROJECT_SOURCE_DIR}/VCSDK/inc")
 
-# add_executable(Test test.cpp)
-# target_link_libraries(Test GalaxyCamera)
-# target_include_directories(Test PUBLIC "${PROJECT_SOURCE_DIR}/VCSDK/inc")
+add_executable(new_topC new_topC.cpp)
+target_link_libraries(new_topC GalaxyCamera)
+target_include_directories(new_topC PUBLIC "${PROJECT_SOURCE_DIR}/VCSDK/inc")
